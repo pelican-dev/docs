@@ -1,19 +1,29 @@
 {
-  "index": "Introduction",
-  
-  "panel": {
-    "title": "Panel Install",
+  "*": {
     "type": "page"
   },
 
-  "daemon": {
-    "title": "Daemon Install",
-    "type": "page"
+  "index": {
+    "display": "hidden",
+    "theme": {
+      "layout": "raw",
+      "sidebar": false,
+      "toc": true
+    }
   },
 
   "about": {
-    "title": "About Pelican",
+    "title": "About",
     "type": "page",
-    "newWindow": false
+    "theme": {
+      "layout": "raw",
+      "sidebar": false,
+      "toc": true
+    }
+  },
+  
+  "docs": {
+    "title": "Docs",
+    "display": "children"
   }
 }
