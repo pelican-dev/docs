@@ -1,5 +1,11 @@
 {
   "index": {
     "title": "Quickstart"
+  },
+  "panel": {
+    "title": "Panel"
+  },
+  "daemon": {
+    "title": "Daemon"
   }
 }
