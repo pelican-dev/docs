@@ -1,15 +1,19 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
+  
+  "panel": {
+    "title": "Panel Install",
     "type": "page"
   },
-  "contact": {
-    "title": "Contact ↗",
+
+  "daemon": {
+    "title": "Daemon Install",
+    "type": "page"
+  },
+
+  "about": {
+    "title": "About Pelican",
     "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
+    "newWindow": false
   }
 }
