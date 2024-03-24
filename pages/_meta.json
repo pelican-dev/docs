@@ -11,6 +11,11 @@
       "toc": true
     }
   },
+  
+  "docs": {
+    "title": "Docs",
+    "display": "children"
+  },
 
   "about": {
     "title": "About",
@@ -20,10 +25,5 @@
       "sidebar": false,
       "toc": true
     }
-  },
-  
-  "docs": {
-    "title": "Docs",
-    "display": "children"
   }
 }
