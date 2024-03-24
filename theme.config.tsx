@@ -1,6 +1,15 @@
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
+  sidebar: {
+    defaultMenuCollapseLevel: 1,
+    toggleButton: true,
+  },
+  docsRepositoryBase: 'https://github.com/pelican-dev/docs',
+  toc: {
+    float: true,
+    backToTop: true,
+  },
   logo: (
     <>
       <svg width="32" height="32" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,9 +40,12 @@ const config: DocsThemeConfig = {
           </linearGradient>
         </defs>
       </svg>
-
+      Pelican
     </>
   ),
+  editLink: {
+    text: "Edit this page on GitHub",
+  },
   search: {
     placeholder: 'Search',
   },
@@ -43,9 +55,11 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://discord.gg/pelican-panel/',
   },
-  docsRepositoryBase: 'https://github.com/pelican-dev/docs',
   footer: {
     text: 'Pelican Panel <3',
+  },
+  nextThemes: {
+    defaultTheme: "system",
   },
 }
 
