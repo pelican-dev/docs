@@ -1,4 +1,6 @@
 {
   "getting-started":"Choosing an Operating System",
-  "webserver-config":"Webserver Configuration"
+  "webserver-config":"Webserver Configuration",
+  "optional-config": "Optional Configurations",
+  "updating-panel": "Update Process"
 }
