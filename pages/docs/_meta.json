@@ -1,11 +1,17 @@
 {
   "index": {
-    "title": "Quickstart"
+    "title": "Welcome To Pelican"
+  },
+  "about":{
+    "title": "About"
   },
   "panel": {
     "title": "Panel"
   },
-  "daemon": {
-    "title": "Daemon"
+  "wings": {
+    "title": "Wings"
+  },
+  "glossary": {
+    "title": "Glossary"
   }
 }

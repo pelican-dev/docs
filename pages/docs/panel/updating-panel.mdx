@@ -1,10 +1,10 @@
-import { Callout,Tabs } from 'nextra/components';
+import { Callout,Tabs,Steps } from 'nextra/components';
 
 # Updating the Panel
 
 This documentation covers the process for updating the panel portion of Pelican.
 
-## Panel Version Requirements
+## Version Requirements
 
 Each version of Pterodactyl Panel also has a corresponding minimum version of Wings that
 is required for it to run. Please see the chart below for how these versions line up. In
@@ -25,99 +25,97 @@ TODO:
 TODO:
 
 ## Manual Update
+<Steps>
+    ### Enter Maintenance Mode
 
-### Enter Maintenance Mode
+    Whenever you are performing an update you should be sure to place your Panel into maintenance mode. This will prevent
+    users from encountering unexpected errors.
 
-Whenever you are performing an update you should be sure to place your Panel into maintenance mode. This will prevent
-users from encountering unexpected errors and ensure everything can be updated before users encounter
-potentially new features.
+    ```sh
+    cd /var/www/pelican
+    php artisan down
+    ```
 
-```sh
-cd /var/www/pelican
-php artisan down
-```
+    ### Download Update
 
-### Download the Update
+    The first step in the update process is to download the new panel files from GitHub. The command below will download
+    the release archive for the most recent version of Pelican, save it in the current directory and will automatically
+    unpack the archive into your current folder.
 
-The first step in the update process is to download the new panel files from GitHub. The command below will download
-the release archive for the most recent version of Pelican, save it in the current directory and will automatically
-unpack the archive into your current folder.
-
-```sh copy
-curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | tar -xzv
-```
-
-Once all of the files are downloaded we need to set the correct permissions on the cache and storage directories to avoid
-any webserver related errors.
-
-```sh copy
-chmod -R 755 storage/* bootstrap/cache
-```
-
-### Update Dependencies
-
-After you've downloaded all of the new files you will need to update the core components of the panel. To do this,
-simply run the commands below and follow any prompts.
-
-```sh copy
-composer install --no-dev --optimize-autoloader
-```
-
-### Clear Compiled Template Cache
-
-You'll also want to clear the compiled template cache to ensure that new and modified templates show up correctly for
-users.
-
-```sh
-php artisan view:clear
-php artisan config:clear
-```
-
-### Database Updates
-
-You'll also need to update your database schema. Running the command below
-will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
-remember, _never edit core eggs we ship_! They will be overwritten by this update process.
-
-```sh copy
-php artisan migrate --seed --force
-```
-
-### Set Permissions
-
-The last step is to set the proper owner of the files to be the user that runs your webserver. In most cases this
-is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
-
-<Tabs items={['NGINX/Apache','Rocky Linux NGINX','Rocky Linux Apache']}>
-    <Tabs.Tab>
     ```sh copy
-    chown -R www-data:www-data /var/www/pelican/* 
+    curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | tar -xzv
     ```
-    </Tabs.Tab>
-    <Tabs.Tab>
-    ```sh copy 
-    chown -R nginx:nginx /var/www/pelican/* 
+
+    Once all of the files are downloaded we need to set the correct permissions on the cache and storage directories to avoid
+    any webserver related errors.
+
+    ```sh copy
+    chmod -R 755 storage/* bootstrap/cache
     ```
-    </Tabs.Tab>
-    <Tabs.Tab>
-    ```sh copy 
-    chown -R apache:apache /var/www/pelican/* 
+
+    ### Update Dependencies
+
+    After you've downloaded all of the new files you will need to update the core components of the panel. To do this,
+    simply run the commands below and follow any prompts.
+
+    ```sh copy
+    composer install --no-dev --optimize-autoloader
     ```
-    </Tabs.Tab>
-</Tabs>
-### Restarting Queue Workers
 
-After _every_ update you should restart the queue worker to ensure that the new code is loaded in and used.
+    ### Clear Compiled Template Cache
 
-```sh
-php artisan queue:restart
-```
+    You'll also want to clear the compiled template cache to ensure that new and modified templates show up correctly for
+    users.
 
-### Exit Maintenance Mode
+    ```sh
+    php artisan view:clear
+    php artisan config:clear
+    ```
 
-Now that everything has been updated you need to exit maintenance mode so that the Panel can resume accepting
-connections.
+    ### Update Database
+    You'll also need to update your database schema. Running the command below
+    will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
+    remember, _never edit core eggs we ship_! They will be overwritten by this update process.
 
-```sh
-php artisan up
-```
+    ```sh copy
+    php artisan migrate --seed --force
+    ```
+
+    ### Set Permissions
+
+    The last step is to set proper ownership of the files. In most cases this
+    is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
+
+    <Tabs items={['NGINX/Apache','Rocky Linux NGINX','Rocky Linux Apache']}>
+        <Tabs.Tab>
+        ```sh copy
+        chown -R www-data:www-data /var/www/pelican/* 
+        ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+        ```sh copy 
+        chown -R nginx:nginx /var/www/pelican/* 
+        ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+        ```sh copy 
+        chown -R apache:apache /var/www/pelican/* 
+        ```
+        </Tabs.Tab>
+    </Tabs>
+    ### Restart Queue Workers
+
+    After _every update_ you should restart the queue worker.
+
+    ```sh
+    php artisan queue:restart
+    ```
+
+    ### Exit Maintenance Mode
+
+    Now that everything has been updated you need to exit maintenance mode.
+
+    ```sh
+    php artisan up
+    ```
+</Steps>

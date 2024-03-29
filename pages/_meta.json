@@ -2,7 +2,6 @@
   "*": {
     "type": "page"
   },
-
   "index": {
     "display": "hidden",
     "theme": {
@@ -11,19 +10,12 @@
       "toc": true
     }
   },
-  
   "docs": {
-    "title": "Documentation",
+    "title": "Install",
     "display": "children"
-  },
-
-  "about": {
-    "title": "About",
-    "type": "page",
-    "theme": {
-      "layout": "raw",
-      "sidebar": false,
-      "toc": true
-    }
+  }, 
+  "api": {
+    "title": "API",
+    "display": "children"
   }
 }

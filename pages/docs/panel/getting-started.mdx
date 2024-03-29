@@ -1,4 +1,4 @@
-import { Callout,Tabs } from 'nextra/components';
+import { Callout,Tabs,Steps } from 'nextra/components';
 
 # Getting Started
 
@@ -9,14 +9,17 @@ software; take some time and read rather than copy and pasting and then complain
 
 This panel does not exist as a drag-and-drop service to run your servers.
 
+<Callout type="warning">
 **If you expect to be able to install this with no understanding
 of basic linux system administration you should stop and turn around now.**
+</Callout>
 
-## Picking a Server OS
+<Steps>
+### Picking an OS
 
-Pelican runs on a wide range of operating systems, so pick whichever you are most comfortable using.
+Pelican runs on a wide range of operating systems, so pick whichever you are most comfortable using. Note: Other OS's, not listed below, might still work. 
 
-<Callout>
+<Callout type="info">
 OpenVZ, **unless specifically configured**, will **not** work with Pelican.  
 </Callout>
 
@@ -28,7 +31,8 @@ OpenVZ, **unless specifically configured**, will **not** work with Pelican.
 | **Rocky Linux**  |        9|         ✅︎         |                                                             |
 | **Debian**       |       11|         ✅︎         |                                                             |
 |                  |       12|         ✅︎         |                                                             |
-## Dependencies
+
+### Dependencies
 
 * PHP `8.2` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `intl` and `fpm`
 * MySQL `8` **or** MariaDB `10.2`+
@@ -40,7 +44,7 @@ OpenVZ, **unless specifically configured**, will **not** work with Pelican.
 * `git`
 * `composer` v2
 
-## Create Directories & Downloading Files
+### Create Directories & Downloading Files
 
 The first step in this process is to create the folder where the panel will live and then move ourselves into that
 newly created folder.
@@ -61,7 +65,7 @@ tar -xzvf panel.tar.gz
 chmod -R 755 storage/* bootstrap/cache/
 ```
 
-## Installation
+### Installation
 
 Next we will setup the default environment settings file, dependencies, and then generate a new application encryption key.
 
@@ -79,11 +83,11 @@ php artisan key:generate --force
 ```
 </Callout>
 
-## Database Setup
+### Database Setup
 
 You will need a database and a user with the correct permissions created for that database before continuing any further. 
 
-### Logging Into MySQL
+#### Logging Into MySQL
 The first step in this process is to login to the MySQL command line where we will be executing statements to get
 things setup. To do so, simply run the command below and provide the Root MySQL account's password that you setup when
 installing MySQL. If you do not remember doing this, chances are you can just hit enter as no password is set.
@@ -92,7 +96,7 @@ installing MySQL. If you do not remember doing this, chances are you can just hi
 mysql -u root -p
 ```
 
-### Creating MySQL User
+#### Creating MySQL User
 Next, we will create a user called `pelican` and allow logins from localhost which prevents any external connections
 to our database. You can also use `%` as a wildcard or enter a numeric IP. We will also set the account password
 to `somePassword`.
@@ -101,7 +105,7 @@ to `somePassword`.
 CREATE USER 'pelican'@'127.0.0.1' IDENTIFIED BY 'somePassword';
 ```
 
-### Creating Database
+#### Creating Database
 Next, we need to create a database for the panel. In this tutorial we will be naming the database `panel`, but you can
 substitute that for whatever name you wish.
 
@@ -109,7 +113,7 @@ substitute that for whatever name you wish.
 CREATE DATABASE panel;
 ```
 
-### Assigning Permissions
+#### Assigning Permissions
 Finally, we need to tell MySQL that our pelican user should have access to the panel database. To do this, simply
 run the command below.
 
@@ -175,12 +179,12 @@ use them correctly.
     </Tabs.Tab>
 </Tabs>
 
-## Queue Listener
+### Queue Listener
 
 We make use of queues to make the application faster and handle sending emails and other actions in the background.
 You will need to setup the queue worker for these actions to be processed.
 
-### Crontab Configuration
+#### Crontab Configuration
 
 The first thing we need to do is create a new cronjob that runs every minute to process specific tasks, such
 as session cleanup and sending scheduled tasks to daemons. You'll want to open your crontab using `sudo crontab -e` and
@@ -190,7 +194,7 @@ then paste the line below.
 * * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
 ```
 
-### Creating Queue Worker
+#### Creating Queue Worker
 
 Next you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible
 for sending emails and handling many other background tasks.
@@ -241,5 +245,5 @@ Finally, enable the service and set it to boot on machine start.
 ```sh copy
 sudo systemctl enable --now pelicanq.service
 ```
-
+</Steps>
 #### Next Step: [Web-server Configuration](./webserver_configuration)

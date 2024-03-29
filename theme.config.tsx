@@ -56,7 +56,7 @@ const config: DocsThemeConfig = {
     link: 'https://discord.gg/pelican-panel/',
   },
   footer: {
-    text: 'Pelican Panel <3',
+    text: 'Pelican Panel',
   },
   nextThemes: {
     defaultTheme: "system",
