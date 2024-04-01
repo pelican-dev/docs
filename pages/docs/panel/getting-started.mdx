@@ -23,19 +23,25 @@ Pelican runs on a wide range of operating systems, so pick whichever you are mos
 OpenVZ, **unless specifically configured**, will **not** work with Pelican.  
 </Callout>
 
-| Operating System | Version |     Supported      | Notes                                                       |
-|------------------|---------|:------------------:|-------------------------------------------------------------|
-| **Ubuntu**       |    20.04|         ✅︎         |                                                             |
-|                  |**22.04**|         ✅︎         | Documentation written assuming Ubuntu 20.04 as the base OS. |
-|                  |    24.04|         ✅︎         |                                                             |
-| **Rocky Linux**  |        9|         ✅︎         |                                                             |
-| **Debian**       |       11|         ✅︎         |                                                             |
-|                  |       12|         ✅︎         |                                                             |
+| Operating System | Version | Supported | Notes                                                       |
+|:----------------:|:-------:|:---------:|:-----------------------------------------------------------:|
+| **Ubuntu**       |    20.04|      ✅   |                                                             |
+|                  |**22.04**|      ✅   | Documentation written assuming Ubuntu 22.04 as the base OS. |
+| **Rocky Linux**  |        9|      ✅   |                                                             |
+| **Debian**       |       11|      ✅   |                                                             |
+|                  |       12|      ✅   |                                                             |
 
 ### Dependencies
+<Callout type="info">
+The `ondrej/php` repo is requried to install php8.2 and the requried extensions.  
+It can be added with the following command.
+```sh copy
+sudo add-apt-repository ppa:ondrej/php
+```
+</Callout>
 
-* PHP `8.2` with the following extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml` or `dom`, `curl`, `zip`, `intl` and `fpm`
-* MySQL `8` **or** MariaDB `10.2`+
+* PHP `8.2` with the following extensions: `gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl` and `fpm`
+* MySQL `8` (`mysql-server`) **or** MariaDB `10.2`+
 * Redis (`redis-server`)
 * A webserver (Apache, NGINX, Caddy, etc.)
 * `curl`

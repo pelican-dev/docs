@@ -241,7 +241,8 @@ When using the SSL(https) configuration you MUST create SSL certificates, otherw
                     root /var/www/pelican/public
                     index index.php
 
-                    env PHP_VALUE "upload_max_filesize = 100M \n post_max_size = 100M"
+                    env PHP_VALUE "upload_max_filesize = 100M
+                    post_max_size = 100M"
                     env HTTP_PROXY ""
                     env HTTPS "on"
 
@@ -293,7 +294,8 @@ When using the SSL(https) configuration you MUST create SSL certificates, otherw
                     root /var/www/pelican/public
                     index index.php
 
-                    env PHP_VALUE "upload_max_filesize = 100M \n post_max_size = 100M"
+                    env PHP_VALUE "upload_max_filesize = 100M
+                    post_max_size = 100M"
                     env HTTP_PROXY ""
 
                     read_timeout 300s
