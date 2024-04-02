@@ -1,4 +1,4 @@
-# Additional Configuration
+# Optional Configuration
 
 ## Backups
 
@@ -11,7 +11,7 @@ When changing Pelican's backup storage method, users may still download or delet
 By default, Pelican uses local storage via daemon for backups. That said, this method of backup storage can be explicitly set with the following configuration in the `.env` file:
 
 ```sh copy
-APP_BACKUP_DRIVER=daemon
+APP_BACKUP_DRIVER=daemons
 ```
 
 Do note that, when using local storage via the daemon, the destination for backups is set in the daemon config file with the following setting key:
@@ -51,22 +51,19 @@ The following `.env` snippet configures 1GB parts and uses 120 minutes as the pr
 BACKUP_MAX_PART_SIZE=1073741824
 BACKUP_PRESIGNED_URL_LIFESPAN=120
 ```
-
+s
 #### Storage Class
 
 Should you need to specify a storage class, use the `AWS_BACKUPS_STORAGE_CLASS` environment variable. Default option is `STANDARD` (S3 Standard).
 
-The following `.env` snippet sets the class to `STANDARD_IA` (this is an example).
-
 ```sh copy
-# STANDARD_IA is an example.
-AWS_BACKUPS_STORAGE_CLASS=STANDARD_IA
+AWS_BACKUPS_STORAGE_CLASS=
 ```
 
 ## Reverse Proxy Setup
 
 When running Pelican behind a reverse proxy, such as [Cloudflare's Flexible SSL](https://support.cloudflare.com/hc/en-us/articles/200170416-What-do-the-SSL-options-mean-)
-or Nginx/Apache/Caddy, etc., you will need to make a quick modification to the Panel to ensure things continue to work as expected. By default, when using these reverse proxies,
+or NGINX/Apache/Caddy, etc., you will need to make a quick modification to the Panel to ensure things continue to work as expected. By default, when using these reverse proxies,
 your Panel will not correctly handle requests. You'll most likely be unable to login or see security warnings in your browser console as it attempts to load insecure assets.
 This is because the internal logic the Panel uses to determine how links should be generated thinks it is running over HTTP and not over HTTPS.
 
@@ -97,7 +94,7 @@ Below is an example of how to set this.
 TRUSTED_PROXIES=173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22
 ```
 
-#### Editing your database
+#### Disabling recaptcha
 
 If you cannot access your panel, you can modify the database directly using the following commands.
 

@@ -1,5 +1,5 @@
 {
-    "install": "Installing Wings",
-    "update": "Updating Wings",
-    "ssl": "Creating SSL Certificates"
+    "installing-wings": "Installing Wings",
+    "updating-wings": "Updating Wings",
+    "optional-config": "Optional Configuration"
 }
