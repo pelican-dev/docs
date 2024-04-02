@@ -40,14 +40,16 @@ const config: DocsThemeConfig = {
           </linearGradient>
         </defs>
       </svg>
-      Pelican
+      <span style={{ marginLeft: '.4em', fontWeight: 800 }}>
+        Pelican.dev
+      </span>
     </>
   ),
   editLink: {
     text: "Edit this page on GitHub",
   },
   search: {
-    placeholder: 'Search',
+    placeholder: 'Search...',
   },
   project: {
     link: 'https://github.com/pelican-dev/',
@@ -61,6 +63,14 @@ const config: DocsThemeConfig = {
   nextThemes: {
     defaultTheme: "system",
   },
+  banner: {
+    text: (
+      <span>
+        🎉 Comming Soon! April 24th, 2024 🎉
+      </span>
+    )
+  },
+  darkMode: false,
 }
 
 export default config
