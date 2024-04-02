@@ -1,3 +1,5 @@
 {
-    "os": "Choosing an Operating System"
+    "install": "Installing Wings",
+    "update": "Updating Wings",
+    "ssl": "Creating SSL Certificates"
 }
