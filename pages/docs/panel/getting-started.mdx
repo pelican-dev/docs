@@ -26,7 +26,7 @@ OpenVZ, **unless specifically configured**, will **not** work with Pelican.
 | Operating System | Version | Supported | Notes                                                       |
 |:----------------:|:-------:|:---------:|:-----------------------------------------------------------:|
 | **Ubuntu**       | 20.04   |     ✅︎    | Ubuntu 20.04 EoL is April 2025, not recommended             |
-|                  |**22.04**|     ✅︎    | Documentation written assuming Ubuntu 18.04 as the base OS. |
+|                  |**22.04**|     ✅︎    | Documentation written assuming Ubuntu 22.04 as the base OS. |
 |                  | 24.04   |     ✅︎    |                                                             |
 | **Rocky Linux**  | 9       |     ✅︎    |                                                             |
 | **Debian**       | 11      |     ✅︎    |                                                             |
@@ -84,7 +84,8 @@ composer install --no-dev --optimize-autoloader
 <Callout type="error">
 Only run the command below if you are installing Pelican for the first time!  
 If you're trying to update your panel, [Go Here](./updating-panel)  
-**Running this command with an existing install will cause dataloss!**
+
+**Running this command with an existing install will cause irrecoverable dataloss!**
 ```sh copy
 php artisan key:generate --force
 ```

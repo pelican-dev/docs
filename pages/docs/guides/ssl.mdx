@@ -128,49 +128,67 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
     <Callout type="warning">
     This is for advanced users, whose server systems do not have access to port 80. 
     The command below is for Ubuntu distributions and CloudFlare API (you may google for other APIs for other DNS providers), 
-    but you can always check [acme.sh's official site](https://github.com/Neilpang/acme.sh) for installation instructions.
+    but you can always check [acme.sh's official site](https://github.com/Neilpang/acme.sh) for installation instructions.  
+
+    Make sure you read both instructions, as some people may have moved to CloudFlare's [new authorization system](https://blog.cloudflare.com/permissions-best-practices) (Modern), but other's [have not](https://community.cloudflare.com/t/cannot-add-new-member-error-1005/421516) (Legacy).
     </Callout>
 
     ```sh copy
     curl https://get.acme.sh | sh
     ```
+    <Tabs items={['Legacy', 'Modern']}>
+        <Tabs.Tab>
+            ### Obtaining CloudFlare API Key (Legacy)
 
-    ### Obtaining CloudFlare API Key
+            After installing acme.sh, we need to fetch a CloudFlare API key. 
+            On Cloudfare's website, select your domain, then on the right side, copy your "Zone ID" and "Account ID".
+            Click on "Get your API token", click on "Create Token" > select the template "Edit zone DNS" > select the scope of "Zone Resources"  
+            Click on "Continue to summary", copy your token.
 
-    After installing acme.sh, we need to fetch a CloudFlare API key. On Cloudfare's website, select your domain, then on the right side, copy your "Zone ID" and "Account ID" then click on "Get your API token", click on "Create Token" > select the template "Edit zone DNS" > select the scope of "Zone Ressources" and then click on "Continue to summary", copy your token.
+            ### Creating a Certificate
 
-    ### Creating a Certificate
+            Since the configuration file is based on Certbot, we need to create the folder manually.
 
-    Since the configuration file is based on Certbot, we need to create the folder manually.
+            ```sh /example.com/
+            sudo mkdir -p /etc/letsencrypt/live/example.com
+            ```
 
-    ```sh copy /example.com/
-    sudo mkdir -p /etc/letsencrypt/live/example.com
-    ```
+            After installing acme.sh and obtaining CloudFlare API key, we need to then generate a certificate. First input the CloudFlare API credentials.
 
-    After installing acme.sh and obtaining CloudFlare API key, we need to then generate a certificate. First input the CloudFlare API credentials.
+            ```sh copy
+            export CF_Token="Your_CloudFlare_API_Key"
+            export CF_Account_ID="Your_CloudFlare_Account_ID"
+            export CF_Zone_ID="Your_CloudFlare_Zone_ID"
+            ```
+        </Tabs.Tab>
+        <Tabs.Tab>
+            ### Obtaining CloudFlare API Key (Modern)
 
-    ```sh copy
-    export CF_Token="Your_CloudFlare_API_Key"
-    export CF_Account_ID="Your_CloudFlare_Account_ID"
-    export CF_Zone_ID="Your_CloudFlare_Zone_ID"
-    ```
+            After installing acme.sh, we need to fetch a CloudFlare API key. 
+            - Cloudfare's website, click on your profile on the top right.  
+            - Go to "My Profile" --> "[API Tokens](https://dash.cloudflare.com/profile/api-tokens)".  
+            - Click "Create Token" and use the "Edit zone DNS" template.  
+            - Then once on the next page, goto "Zone Resources" and "Include" - "Specific Zone" - (Select the domain you want to use).  
+            - Continue to the summery.  
+            - Confirm you'd like to create the token.
 
-    Then create the certificate.
+            ### Creating a Certificate
 
-    ```sh copy /example.com/
-    acme.sh --issue --dns dns_cf -d "example.com" --server letsencrypt \
-    --key-file /etc/letsencrypt/live/example.com/privkey.pem \
-    --fullchain-file /etc/letsencrypt/live/example.com/fullchain.pem
-    ```
+            Since the configuration file is based on Certbot, we need to create the folder manually.
 
-    ### Auto Renewal
+            ```sh /example.com/
+            sudo mkdir -p /etc/letsencrypt/live/example.com
+            ```
 
-    After running the script for the first time, it will be added to the crontab automatically.  
-    You may edit the auto renewal interval by editing the crontab.
+            After installing acme.sh and obtaining CloudFlare API key, we need to then generate a certificate. First input the CloudFlare API credentials.
 
-    ```sh copy
-    sudo crontab -e
-    ```
+            ```sh copy
+            export CF_Key="Your_CloudFlare_API_Key"
+            export CF_Email="Your_CloudFlare_Email"
+            ```
+        </Tabs.Tab>
+    </Tabs>
+
     </Tabs.Tab>
 
     <Tabs.Tab>
