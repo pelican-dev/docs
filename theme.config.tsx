@@ -52,10 +52,10 @@ const config: DocsThemeConfig = {
     placeholder: 'Search...',
   },
   project: {
-    link: 'https://github.com/pelican-dev/',
+    link: 'https://github.com/pelican-dev',
   },
   chat: {
-    link: 'https://discord.gg/pelican-panel/',
+    link: 'https://discord.gg/pelican-panel',
   },
   footer: {
     text: 'Pelican Panel',
@@ -68,7 +68,8 @@ const config: DocsThemeConfig = {
       <span>
         🎉 Comming Soon! April 24th, 2024 🎉
       </span>
-    )
+    ),
+    dismissible: false,
   },
   darkMode: false,
 }
