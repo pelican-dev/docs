@@ -45,6 +45,16 @@ const config: DocsThemeConfig = {
       </span>
     </>
   ),
+  head: function Head() {
+    return (
+      <>
+        <link
+          rel="shortcut icon"
+          href={`/favicon.ico`}
+        />
+      </>
+    )
+  },
   editLink: {
     text: "Edit this page on GitHub",
   },
