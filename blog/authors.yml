@@ -1,0 +1,25 @@
+lance:
+  name: Lance Pioch
+  title: Backend Maintainer
+  url: https://github.com/lancepioch
+  image_url: https://github.com/lancepioch.png
+parker:
+  name: Michael Parker
+  title: Egg/Docker Maintainer
+  url: https://github.com/parkervcp
+  image_url: https://github.com/parkervcp.png
+charles:
+  name: Charles Morgan
+  title: Documentation Maintainer
+  url: https://github.com/notAreYouScared
+  image_url: https://github.com/notAreYouScared.png
+kubi:
+  name: Ryan Kubiak
+  title: Wings Maintainer
+  url: https://github.com/iamkubi
+  image_url:  https://github.com/iamkubi.png
+alex:
+ name: Alex 'Scai' Vlad
+ title: Frontend Maintainer
+ url: https://github.com/alexevladgabriel
+ image_url: https://github.com/alexevladgabriel.png
