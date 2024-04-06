@@ -1,55 +1,54 @@
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: rgb(56, 189, 248);
-  --ifm-color-primary-light: rgb(125, 211, 252);
-  --ifm-color-primary-lighter: rgb(186, 230, 253);
+  --ifm-color-primary-lightester: rgb(240, 249, 255);
   --ifm-color-primary-lightest: rgb(224, 242, 254);
+  --ifm-color-primary-lighter: rgb(186, 230, 253);
+  --ifm-color-primary-light: rgb(125, 211, 252);
+  --ifm-color-primary: rgb(56, 189, 248);
   --ifm-color-primary-dark: rgb(14, 165, 233);
   --ifm-color-primary-darker: rgb(2, 132, 199);
   --ifm-color-primary-darkest: rgb(3, 105, 161);
-  --ifm-navbar-link-color: rgb(56, 189, 248);
+  --ifm-color-primary-darkester: rgb(7, 89, 133);
+  --ifm-color-primary-darkestest: rgb(12, 74, 110);
+  --ifm-color-primary-darkestester: rgb(8, 47, 73);
+
+  --ifm-navbar-link-color: var(--ifm-color-primary);
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] {
+  --docusaurus-highlighted-code-line-bg: var(--ifm-color-primary-lighter);
+
+  .hero--primary {
+    --ifm-hero-background-color: var(--ifm-color-primary-dark);
+  }
+
+  .hero .hero__subtitle {
+    color: white;
+  }
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: rgb(56, 189, 248);
-  --ifm-color-primary-light: rgb(125, 211, 252);
-  --ifm-color-primary-lighter: rgb(186, 230, 253);
-  --ifm-color-primary-lightest: rgb(224, 242, 254);
-  --ifm-color-primary-dark: rgb(14, 165, 233);
-  --ifm-color-primary-darker: rgb(2, 132, 199);
-  --ifm-color-primary-darkest: rgb(3, 105, 161);
-  --ifm-navbar-link-color: rgb(56, 189, 248);
   --ifm-heading-color: white;
-  --ifm-hero-text-color: white;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-}
+  --docusaurus-highlighted-code-line-bg: var(--ifm-color-primary-darkestest);
 
-.hero--primary {
-  --ifm-hero-background-color: var(--ifm-color-primary-dark);
-}
+  .hero--primary {
+    --ifm-hero-background-color: var(--ifm-color-primary-darkest);
+  }
 
-.hero--dark {
-  --ifm-hero-background-color: #303846;
-  --ifm-hero-text-color: rgb(83, 78, 78);
-}
+  .hero--dark {
+    --ifm-hero-background-color: #303846;
+    --ifm-hero-text-color: rgb(83, 78, 78);
+  }
 
-html[data-theme='dark'] .hero__subtitle {
-  color: white;
-}
-
-html[data-theme='light'] .hero__subtitle {
-  color: black;
+  .hero__subtitle {
+    color: white;
+  }
 }
 
 .footer {
   text-align: center;
-}
-
-.footer--dark {
-  --ifm-footer-background-color: rgb(12, 74, 110);
 }
 
 html[data-theme='dark'] .github-link {
