@@ -73,7 +73,7 @@ chmod -R 755 storage/* bootstrap/cache/
 
 ### Installation
 
-Next we will setup the default environment settings file, dependencies, and then generate a new application encryption key.
+Next we will set up the default environment settings file, dependencies, and then generate a new application encryption key.
 
 ```sh copy
 cp .env.example .env
@@ -146,9 +146,10 @@ php artisan p:environment:mail
 
 ### Database Initialization 
 
-Now we need to setup all of the base data for the Panel in the database you created earlier. **The command below
-may take some time to run depending on your machine. Please _DO NOT_ exit the process until it is completed!** This
-command will setup the database tables and then add all of the Nests & Eggs that power the panel.
+Now we need to set up database for the Panel that you created before.
+**The command below may take some time to run depending on your machine.
+Please _DO NOT_ exit the process until it is completed!**
+After the database tables are created, it'll add some default Eggs to your Panel.
 
 ```sh copy
 php artisan migrate --seed --force
@@ -161,6 +162,15 @@ At this time passwords **must** meet the following requirements: 8 characters, m
 
 ```sh copy
 php artisan p:user:make
+```
+
+### Crontab Configuration
+
+We need to create a new cronjob that runs every minute to process specific tasks, such as session cleanup and scheduled tasks.
+You'll want to open your crontab using `sudo crontab -e` and then paste the line below.
+
+```sh copy
+* * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
 ```
 
 ### Setting Permissions
@@ -185,13 +195,3 @@ use them correctly.
     ```
     </TabItem>
 </Tabs>
-
-#### Crontab Configuration
-
-The first thing we need to do is create a new cronjob that runs every minute to process specific tasks,
-such as session cleanup and scheduled tasks.
-You'll want to open your crontab using `sudo crontab -e` and then paste the line below.
-
-```sh copy
-* * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
-```
