@@ -17,7 +17,7 @@ only the versions listed below.
 | Operating System | Version | Supported | Notes                                                       |
 |:----------------:|:-------:|:---------:|:-----------------------------------------------------------:|
 | **Ubuntu**       | 20.04   |     ✅︎    | Ubuntu 20.04 EoL is April 2025, not recommended             |
-|                  |**22.04**|     ✅︎    | Documentation written assuming Ubuntu 18.04 as the base OS. |
+|                  |**22.04**|     ✅︎    | Documentation written assuming Ubuntu 22.04 as the base OS. |
 |                  | 24.04   |     ✅︎    |                                                             |
 | **Rocky Linux**  | 9       |     ✅︎    |                                                             |
 | **Debian**       | 11      |     ✅︎    |                                                             |
@@ -137,7 +137,7 @@ You may optionally add the `--debug` flag to run Wings in debug mode.
 Running Wings in the background is a simple task, just make sure that it runs without errors before doing
 this. Place the contents below in a file called `wings.service` in the `/etc/systemd/system` directory.
 
-```text {9} copy
+```ini {9} title="/etc/systemd/system/wings.service"
 [Unit]
 Description=Wings Daemon
 After=docker.service

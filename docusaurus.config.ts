@@ -2,6 +2,9 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const lightCodeTheme = prismThemes.github;
+const darkCodeTheme = prismThemes.dracula;
+
 const config: Config = {
   title: 'Pelican',
   tagline: 'From prehistoric to peak performance: Pelican takes flight!',
@@ -66,6 +69,11 @@ const config: Config = {
         },
       ],
     },
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     footer: {
       logo: {
         src: 'img/logo.png',
@@ -104,7 +112,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/pelican-dev',
+              href: 'https://github.com/pelican-dev',
             },
           ],
         }
@@ -112,10 +120,13 @@ const config: Config = {
       copyright: `Copyright © ${new Date().getFullYear()} Pelican`,
     },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+      additionalLanguages: ['bash', 'nginx', 'apacheconf', 'ini', 'sql', 'yaml'],
+
     },
   } satisfies Preset.ThemeConfig,
+  plugins: [require.resolve('docusaurus-lunr-search')],
 };
 
 export default config;
