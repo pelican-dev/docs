@@ -66,6 +66,11 @@ const config: Config = {
         },
       ],
     },
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     footer: {
       logo: {
         src: 'img/logo.png',
