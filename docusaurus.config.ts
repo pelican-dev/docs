@@ -83,7 +83,7 @@ const config: Config = {
             },
             {
               label: 'Wings',
-              to: '/docs/wings/installing-wings',
+              to: '/docs/wings/install',
             },
             {
               label: 'SSL Setup',

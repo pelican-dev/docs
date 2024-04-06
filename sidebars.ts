@@ -22,7 +22,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Wings',
-      items: ['wings/installing-wings','wings/optional-config', 'wings/updating-wings'],
+      items: ['wings/install','wings/optional-config', 'wings/updating-wings'],
     },
     {
       type: 'category',
