@@ -109,7 +109,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/pelican-dev',
+              href: 'https://github.com/pelican-dev',
             },
           ],
         }
