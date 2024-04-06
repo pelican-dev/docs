@@ -12,11 +12,10 @@
   --ifm-color-primary-darkestest: rgb(12, 74, 110);
   --ifm-color-primary-darkestester: rgb(8, 47, 73);
 
-  --ifm-navbar-link-color: var(--ifm-color-primary);
   --ifm-code-font-size: 95%;
 }
 
-html [data-theme='light'] {
+[data-theme='light'] {
   --docusaurus-highlighted-code-line-bg: var(--ifm-color-primary-lighter);
 
   .hero--primary {
@@ -29,7 +28,7 @@ html [data-theme='light'] {
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-html [data-theme='dark'] {
+[data-theme='dark'] {
   --ifm-heading-color: white;
   --docusaurus-highlighted-code-line-bg: var(--ifm-color-primary-darkestest);
 
