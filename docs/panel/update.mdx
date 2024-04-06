@@ -13,7 +13,7 @@ is required for it to run.
 Please see the chart below for how these versions line up. In
 most cases your base Wings version should match that of your Panel.
 
-| Panel Version | Wings Version | Supported | PHP Version  |
+| Panel Version | Wings Version  | Supported | PHP Version  |
 | :-----------: | :------------: | :-------: | :----------: |
 | 3.x           | 3.x            | ✅︎        | 8.2          |
 
@@ -91,19 +91,19 @@ is `www-data` but can vary from system to system &mdash; sometimes being `nginx`
 
 <Tabs className="unique-tabs">
     <TabItem value="NGINX/Apache">
-    ```sh copy
-    chown -R www-data:www-data /var/www/pelican/* 
-    ```
+        ```sh copy
+        chown -R www-data:www-data /var/www/pelican/* 
+        ```
     </TabItem>
     <TabItem value="Rockey Linux NGINX">
-    ```sh copy 
-    chown -R nginx:nginx /var/www/pelican/* 
-    ```
+        ```sh copy 
+        chown -R nginx:nginx /var/www/pelican/* 
+        ```
     </TabItem>
     <TabItem value="Rockey Linux Apaches">
-    ```sh copy 
-    chown -R apache:apache /var/www/pelican/* 
-    ```
+        ```sh copy 
+        chown -R apache:apache /var/www/pelican/* 
+        ```
     </TabItem>
 </Tabs>
 ### Restart Queue Workers
