@@ -119,6 +119,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['bash', 'nginx', 'apacheconf', 'ini', 'sql', 'yaml'],
     },
   } satisfies Preset.ThemeConfig,
   plugins: [require.resolve('docusaurus-lunr-search')],
