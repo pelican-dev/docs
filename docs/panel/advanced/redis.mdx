@@ -1,0 +1,56 @@
+import Admonition from '@theme/Admonition';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Redis
+
+### Queue Listener
+
+We make use of queues to make the application faster and handle sending emails and other actions in the background.
+You will need to setup the queue worker for these actions to be processed.
+
+#### Creating Queue Worker
+
+Next you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible
+for sending emails and handling many other background tasks.
+
+Create a file called `pelican.service` in `/etc/systemd/system` with the contents below.
+
+```ini {11,12} title="/etc/systemd/system/pelican.service" copy
+# Pelican Queue File
+# ----------------------------------
+
+[Unit]
+Description=Pelican Queue Service
+After=redis-server.service
+
+[Service]
+# On some systems the user and group might be different.
+# Some systems use `apache` or `nginx` as the user and group.
+User=www-data
+Group=www-data
+Restart=always
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --sleep=3 --tries=3
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+
+<Admonition type="info" title="Redis on Rocky Linux">
+    If you are using Rocky Linux, you will need to replace `redis-server.service` with `redis.service` at the `After=` line in order to ensure `redis` starts before the queue worker.
+</Admonition>
+
+If you are using redis for your system, you will want to make sure to enable that it will start on boot. You can do that by running the following command:
+
+```sh copy
+sudo systemctl enable --now redis-server
+```
+
+Finally, enable the service and set it to boot on machine start.
+
+```sh copy
+sudo systemctl enable --now pelican.service
+```

@@ -17,7 +17,19 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Panel',
-      items: ['panel/getting-started', 'panel/webserver-config', 'panel/optional-config', 'panel/update'],
+      items: [
+        'panel/getting-started',
+        'panel/webserver-config',
+        'panel/optional-config',
+        'panel/update',
+        {
+          type: 'category',
+          label: 'Advanced',
+          items: [
+              'panel/advanced/redis'
+          ]
+        }
+      ],
     },
     {
       type: 'category',
