@@ -19,22 +19,19 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
-            to="/docs/" style={{ fontSize: '26px' }}>
-              Install Pelican
-          </Link>
+            className="button button--secondary button--md"
+            to="/docs/" style={{ fontSize: '26px' }}
+          >Install Pelican</Link>
           <Link
             style={{ paddingTop: '10px', margin: '15px' }}
             className="button button--secondary button--sm"
-            to="https://github.com/pelican-dev/panel">
-              <Icon icon="logos:github-icon" height='36px' />
-          </Link>
+            to="https://github.com/pelican-dev/panel"
+          ><Icon icon="logos:github-icon" height='36px' /></Link>
           <Link
             style={{paddingTop: '10px'}}
             className="button button--secondary button--sm"
-            to="https://discord.gg/pelican-panel">
-              <Icon icon="logos:discord-icon" height='36px' />
-          </Link>
+            to="https://discord.gg/pelican-panel"
+          ><Icon icon="logos:discord-icon" height='36px' /></Link>
         </div>
       </div>
     </header>
