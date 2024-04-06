@@ -2,31 +2,27 @@
 id: glossary
 ---
 
-# What is..?
+# What is ...?
 
 ### Things & Words
-**Panel** — This refers to Panel portion of Pelican, and is what allows you to interface with wings and the servers hosted on those wing instances. 
 
-**Node** — A node is a physical machine that runs an instance of Wings.
+**Panel** — A web application that interfaces with Wings and lets you control your Servers.
 
-**Wings** — The newer service written in Go that interfaces with Docker and the Panel to provide secure access for
-controlling servers via the Panel.
+**Node** — A node is a computer that runs Wings to connect to the Panel.
 
-**Server** — In this case, a server refers to a running instance that is created by wings. These servers are
-created on nodes, and you can have multiple servers per node.
+**Wings** — This application gives you secure control of your Servers via your Panel.
 
-**Docker** — Docker is a platform that lets you separate the application from your infrastructure into isolated, secure containers.
+**Server** — In our case, a server refers to a running container (instance) that is maintained by Wings.
 
-**Docker Image**  — A Docker image contains everything needed to run a containerized application. (e.g. Java for a Minecraft Server).
+**Docker** — Docker is a platform that lets you run applications in isolated and secure containers.
 
-**Container** — Each server will be running inside an isolated container to enforce hardware limitations
-(such as CPU and RAM) and avoid any interference between servers on one node. These are created by Docker.
+**Docker Image**  — A Docker image contains everything (libraries, dependencies, files) needed to run a Server.
 
-**Nest** — Each nest is usually used as a specific game or service, for example: Minecraft, Teamspeak or Terraria and can contain many eggs.
+**Container** — A virtualized and isolated environment for your Server to run in.
 
-**Egg**  — Each egg is usually used to store the configuration of a specific type of game, for example: Vanilla, Spigot or Bungeecord for Minecraft.
+**Egg**  — Holds the configuration to run a Docker Image in a specific manner.
 
-**Yolks**  — A curated collection of core docker images that can be used with Pelican's Egg system.
+**Yolks**  — A curated collection of (core) Docker Images that can be used with Pelican's Eggs.
 
 
 ## Basic Example Setup Diagram
