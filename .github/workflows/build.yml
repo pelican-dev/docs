@@ -1,4 +1,4 @@
-name: 'Deploy to GitHub Pages'
+name: 'Build'
 on:
   workflow_dispatch:
   workflow_call:
@@ -23,15 +23,6 @@ jobs:
             version: 8
             run_install: true # pnpm will install dependencies recursively.
 
-      - name: 'Use SSH agent'
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} #Must be setup
-      - name: 'Deploy to GitHub Pages'
-        env:
-          USE_SSH: true      
+      - name: 'Build'   
         run: |
-          export NODE_OPTIONS="--max_old_space_size=4096"
-          git config --global user.email "action@github.com"
-          git config --global user.name "actions-user"
-          pnpm deploy
+          pnpm build
