@@ -86,8 +86,8 @@ const config: Config = {
               to: '/docs/wings/installing-wings',
             },
             {
-              label: 'Other Guides',
-              to: '/docs/guides/'
+              label: 'SSL Setup',
+              to: '/docs/guides/ssl'
             },
           ],
         },
