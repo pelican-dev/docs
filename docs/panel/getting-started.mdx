@@ -188,9 +188,9 @@ use them correctly.
 
 #### Crontab Configuration
 
-The first thing we need to do is create a new cronjob that runs every minute to process specific tasks, such
-as session cleanup and sending scheduled tasks to daemons. You'll want to open your crontab using `sudo crontab -e` and
-then paste the line below.
+The first thing we need to do is create a new cronjob that runs every minute to process specific tasks,
+such as session cleanup and scheduled tasks.
+You'll want to open your crontab using `sudo crontab -e` and then paste the line below.
 
 ```sh copy
 * * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
