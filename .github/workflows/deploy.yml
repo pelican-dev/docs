@@ -1,0 +1,37 @@
+name: 'Deploy to GitHub Pages'
+on:
+  workflow_dispatch:
+  workflow_call:
+  push:
+    branches:
+      - 'dinodoc'
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+      - name: 'Setup Node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v3
+        name: Install pnpm
+        with:
+            version: 8
+            run_install: true # pnpm will install dependencies recursively.
+
+      - name: 'Use SSH agent'
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }} #Must be setup
+      - name: 'Deploy to GitHub Pages'
+        env:
+          USE_SSH: true      
+        run: |
+          export NODE_OPTIONS="--max_old_space_size=4096"
+          git config --global user.email "action@github.com"
+          git config --global user.name "actions-user"
+          pnpm deploy
