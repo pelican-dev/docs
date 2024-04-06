@@ -54,6 +54,7 @@ const config: Config = {
           label: 'Install',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
+        {to: '/donate', label: 'Donate', position: 'left'},
         {
           href: 'https://github.com/pelican-dev/',
           position: 'right',
