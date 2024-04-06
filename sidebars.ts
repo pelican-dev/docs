@@ -17,7 +17,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Panel',
-      items: ['panel/getting-started', 'panel/webserver-config', 'panel/optional-config', 'panel/updating-panel'],
+      items: ['panel/getting-started', 'panel/webserver-config', 'panel/optional-config', 'panel/update'],
     },
     {
       type: 'category',
