@@ -1,21 +1,28 @@
+import Admonition from '@theme/Admonition';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Webserver Configuration
 
-<Callout type="info">
-When using the SSL(https) configuration you MUST create SSL certificates, otherwise your webserver will fail to start. See the [Creating SSL Certificates](/tutorials/creating_ssl_certificates.html) documentation page to learn how to create these certificates before continuing.
-</Callout>
-<Tabs items={['NGINX', 'Apache', 'Caddy']}>
-    <Tabs.Tab>
+<Admonition type="info">
+    When using the SSL (https) configuration you MUST create SSL certificates, otherwise your webserver will fail to start.
+    See the [Creating SSL Certificates](/docs/guides/ssl) documentation page to learn how to create these certificates before continuing.
+</Admonition>
+<Tabs>
+    <TabItem value="nginx" label="Nginx">
         First, remove the default NGINX configuration.
             ```sh copy
             rm /etc/nginx/sites-enabled/default
             ```
             Now, you should paste the contents of the file below, replacing `<domain>` with your domain or IP being used in a file called
             `pelican.conf` and place the file in `/etc/nginx/sites-available/`.
+        <Tabs>
+            <TabItem value="ahttps" label="https">
+                <Admonition type="warning">
+                    Note: IPs cannot be used with SSL.
+                </Admonition>
 
-        <Tabs items={['https','http']}>
-            <Tabs.Tab>
-                <Callout>Note: IPs cannot be used with SSL</Callout>
-                ```nginx copy {5,11,26-27} /<domain>/
+                ```nginx copy {5,11,25-26} /<domain>/
                 server_tokens off;
 
                 server {
@@ -82,8 +89,8 @@ When using the SSL(https) configuration you MUST create SSL certificates, otherw
                     }
                 }
                 ```
-            </Tabs.Tab>
-            <Tabs.Tab>
+            </TabItem>
+            <TabItem value="bhttp" label="http">
                 ```nginx copy {3} /<domain>/
                 server {
                     listen 80;
@@ -131,20 +138,21 @@ When using the SSL(https) configuration you MUST create SSL certificates, otherw
                     }
                 }
                 ```
-            </Tabs.Tab>
-            ### Enabling Configuration
-
-            The final step is to enable your NGINX configuration and restart it.
-
-            ```sh
-            sudo ln -s /etc/nginx/sites-available/pelican.conf /etc/nginx/sites-enabled/pelican.conf
-
-            # You need to restart nginx to load the new config file.
-            sudo systemctl restart nginx
-            ```
+            </TabItem>
         </Tabs>
-    </Tabs.Tab>
-    <Tabs.Tab>
+        ### Enabling Configuration
+
+        The final step is to enable your NGINX configuration and restart it.
+
+        ```sh
+        sudo ln -s /etc/nginx/sites-available/pelican.conf /etc/nginx/sites-enabled/pelican.conf
+
+        # You need to restart nginx to load the new config file.
+        sudo systemctl restart nginx
+        ```
+
+    </TabItem>
+    <TabItem value="apache" label="Apache">
         First, remove the default Apache configuration.
 
         ```sh copy
@@ -155,72 +163,85 @@ When using the SSL(https) configuration you MUST create SSL certificates, otherw
         `pelican.conf` and place the file in `/etc/apache2/sites-available`.
 
         Note: When using Apache, make sure you have the `libapache2-mod-php` package installed or else PHP will not display on your webserver.
-        <Tabs items={['https','http']}>
-            <Tabs.Tab>
+        <Tabs>
+            <TabItem value="chttps" label="https">
+                <Admonition type="warning">
+                    Note: IPs cannot be used with SSL.
+                </Admonition>
             ```apache copy {2,10,24-25} /<domain>/
-            <VirtualHost *:80>
-                ServerName <domain>
-                
-                RewriteEngine On
-                RewriteCond %{HTTPS} !=on
-                RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L] 
+                <VirtualHost *:80>
+                    ServerName <domain>
+                    
+                    RewriteEngine On
+                    RewriteCond %{HTTPS} !=on
+                    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L] 
+                    </VirtualHost>
+
+                    <VirtualHost *:443>
+                    ServerName <domain>
+                    DocumentRoot "/var/www/pelican/public"
+
+                    AllowEncodedSlashes On
+                    
+                    php_value upload_max_filesize 100M
+                    php_value post_max_size 100M
+
+                    <Directory "/var/www/pelican/public">
+                        Require all granted
+                        AllowOverride all
+                    </Directory>
+
+                    SSLEngine on
+                    SSLCertificateFile /etc/letsencrypt/live/<domain>/fullchain.pem
+                    SSLCertificateKeyFile /etc/letsencrypt/live/<domain>/privkey.pem
                 </VirtualHost>
-
-                <VirtualHost *:443>
-                ServerName <domain>
-                DocumentRoot "/var/www/pelican/public"
-
-                AllowEncodedSlashes On
-                
-                php_value upload_max_filesize 100M
-                php_value post_max_size 100M
-
-                <Directory "/var/www/pelican/public">
-                    Require all granted
-                    AllowOverride all
-                </Directory>
-
-                SSLEngine on
-                SSLCertificateFile /etc/letsencrypt/live/<domain>/fullchain.pem
-                SSLCertificateKeyFile /etc/letsencrypt/live/<domain>/privkey.pem
-            </VirtualHost>
-                ```
-            </Tabs.Tab>
-            <Tabs.Tab>
-            ```apache copy {2} /<domain>/
-            <VirtualHost *:80>
-                ServerName <domain>
-                DocumentRoot "/var/www/pelican/public"
-            
-                AllowEncodedSlashes On
-            
-                php_value upload_max_filesize 100M
-                php_value post_max_size 100M
-            
-                <Directory "/var/www/pelican/public">
-                    AllowOverride all
-                    Require all granted
-                </Directory>
-            </VirtualHost>
             ```
-            </Tabs.Tab>
+
+            </TabItem>
+            <TabItem value="dhttp" label="http">
+
+            ```apache copy {2} /<domain>/
+                <VirtualHost *:80>
+                    ServerName <domain>
+                    DocumentRoot "/var/www/pelican/public"
+                
+                    AllowEncodedSlashes On
+                
+                    php_value upload_max_filesize 100M
+                    php_value post_max_size 100M
+                
+                    <Directory "/var/www/pelican/public">
+                        AllowOverride all
+                        Require all granted
+                    </Directory>
+                </VirtualHost>
+            ```
+
+            </TabItem>
         </Tabs>
         ### Enabling Configuration
 
         Once you've created the file above, simply run the commands below.
+        
         ```sh
         sudo ln -s /etc/apache2/sites-available/pelican.conf /etc/apache2/sites-enabled/pelican.conf
         sudo a2enmod rewrite
         sudo systemctl restart apache2
         ```
-    </Tabs.Tab>
-    <Tabs.Tab>
+        
+    </TabItem>
+    <TabItem value="caddy" label="Caddy">
        First, remove the default Caddy configuration.
+       
         ```sh copy
         rm /etc/caddy/Caddyfile
         ```
-        <Tabs items={['https','http']}>
-            <Tabs.Tab>
+        
+        <Tabs>
+            <TabItem value="ehttps" label="https">
+            <Admonition type="warning">
+                Note: IPs cannot be used with SSL.
+            </Admonition>
             ``` copy {9} /<domain>/
             {
                 servers :443 {
@@ -272,8 +293,10 @@ When using the SSL(https) configuration you MUST create SSL certificates, otherw
                 }
             }
             ```
-            </Tabs.Tab>
-            <Tabs.Tab>
+            
+            </TabItem>
+            <TabItem value="fhttp" label="http">
+
             ``` copy {9} /<domain>/
             {
                 servers :80 {
@@ -324,11 +347,14 @@ When using the SSL(https) configuration you MUST create SSL certificates, otherw
                 }
             }
             ```
-            </Tabs.Tab>
+            
+            </TabItem>
         </Tabs>
+        
         The final step is to restart Caddy.
+
         ```sh copy
         systemctl restart caddy
         ```
-    </Tabs.Tab>
+    </TabItem>
 </Tabs>

@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Pelican.Dev',
-  tagline: 'Dinosaurs are cool',
+  title: 'Pelican',
+  tagline: 'From prehistoric to peak performance: Pelican takes flight!',
   favicon: 'img/favicon.ico',
   markdown: {
     mermaid: true
@@ -15,13 +15,6 @@ const config: Config = {
   projectName: 'docs',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
   themes: ['@docusaurus/theme-mermaid'],
   presets: [
     [
@@ -41,21 +34,19 @@ const config: Config = {
       } satisfies Preset.Options,
     ]
   ],
-
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
-    announcementBar: {
-      isCloseable: false,
-      id: 'release',
-      content: 'Comming Soon!'
-    },
+    //announcementBar: {
+    //  isCloseable: false,
+    //  id: 'release',
+    //  content: 'Stay Tuned!',
+    //  backgroundColor: '#38bdf8',
+    //},
     navbar: {
       title: 'Pelican.dev',
       logo: {
         src: 'img/logo.png',
       },
       items: [
-        
         {
           sidebarId: 'Sidebar',
           type: 'docSidebar',
@@ -65,12 +56,22 @@ const config: Config = {
         {to: '/blog', label: 'Blog', position: 'left'},
         {
           href: 'https://github.com/pelican-dev/',
-          label: 'GitHub',
           position: 'right',
+          className: 'github-link',
+        },
+        {
+          href: 'https://discord.gg/pelican-panel',
+          position: 'right',
+          className: 'discord-link',
         },
       ],
     },
     footer: {
+      logo: {
+        src: 'img/logo.png',
+        height: '64px',
+        width: '64px',
+      },
       style: 'dark',
       links: [
         {
@@ -108,7 +109,7 @@ const config: Config = {
           ],
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Pelican.dev Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Pelican`,
     },
     prism: {
       theme: prismThemes.github,

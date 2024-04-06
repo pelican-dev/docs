@@ -4,6 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 import styles from './index.module.css';
 
@@ -19,8 +20,20 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            to="/docs/" style={{ fontSize: '26px' }}>
+              Install Pelican
+          </Link>
+          <Link
+            style={{ paddingTop: '10px', margin: '15px' }}
+            className="button button--secondary button--sm"
+            to="https://github.com/pelican-dev/panel">
+              <Icon icon="logos:github-icon" height='36px' />
+          </Link>
+          <Link
+            style={{paddingTop: '10px'}}
+            className="button button--secondary button--sm"
+            to="https://discord.gg/pelican-panel">
+              <Icon icon="logos:discord-icon" height='36px' />
           </Link>
         </div>
       </div>
@@ -33,7 +46,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Caww-Kaww">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
