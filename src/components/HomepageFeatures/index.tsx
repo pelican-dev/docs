@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
     icon: 'tabler:currency-dollar-off',
     description: (
       <>
-        Pelican is 100% free to use forever. All of our code is completely open source on GitHub.
+        Pelican is 100% free to use forever for your self, friends, family, and others. All of our code is completely open source on GitHub.
       </>
     )
   },
