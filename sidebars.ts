@@ -17,6 +17,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Panel',
+      collapsed: false,
       items: [
         'panel/getting-started',
         'panel/webserver-config',
