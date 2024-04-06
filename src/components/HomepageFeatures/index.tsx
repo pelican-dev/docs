@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import Link from "@docusaurus/Link";
 
 type FeatureItem = {
   title: string;
@@ -33,7 +34,14 @@ const FeatureList: FeatureItem[] = [
     icon: 'tabler:eggs',
     description: (
       <>
-        We support Minecraft, Terraria, Palworld, Enshrouded, Ark, Factory and so much more!
+        <>We support </>
+          <Link to={'https://minecraft.net'}>Minecraft</Link><>, </>
+          <Link to={'https://terraria.org'}>Terraria</Link><>, </>
+          <Link to={'https://www.pocketpair.jp/palworld'}>Palworld</Link><>, </>
+          <Link to={'https://www.valheimgame.com'}>Valheim</Link><>, </>
+          <Link to={'https://enshrouded.com'}>Enshrouded</Link><>, </>
+          <Link to={'https://factorio.com'}>Factorio</Link><>, </>
+          <Link to={'https://github.com/pelican-eggs'}>and so much more</Link>.
         Please check our eggs out, we like them scrambled!
       </>
     ),
