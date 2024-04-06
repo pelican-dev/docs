@@ -29,7 +29,7 @@ const config: Config = {
           showReadingTime: true,
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: './src/css/custom.scss',
         },
       } satisfies Preset.Options,
     ]
@@ -122,7 +122,10 @@ const config: Config = {
       additionalLanguages: ['bash', 'nginx', 'apacheconf', 'ini', 'sql', 'yaml'],
     },
   } satisfies Preset.ThemeConfig,
-  plugins: [require.resolve('docusaurus-lunr-search')],
+  plugins: [
+      require.resolve('docusaurus-lunr-search'),
+      'docusaurus-plugin-sass'
+  ],
 };
 
 export default config;

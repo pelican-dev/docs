@@ -28,10 +28,12 @@
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "docusaurus-lunr-search": "^3.3.2",
+    "docusaurus-plugin-sass": "^0.2.5",
     "lunr": "^2.3.9",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "sass": "^1.74.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.2.1",
