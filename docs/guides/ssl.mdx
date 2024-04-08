@@ -56,17 +56,17 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
         <Tabs>
             <TabItem value="t1ng" label="NGINX">
-                ```sh copy /example.com/
+                ```sh copy
                 certbot certonly --nginx -d example.com
                 ```
             </TabItem>
             <TabItem value="t1ap2" label="Apache">
-                ```sh copy /example.com/
+                ```sh copy
                 certbot certonly --apache -d example.com
                 ```
             </TabItem>
             <TabItem value="t1stalone" label="Standalone">
-                ```sh copy /example.com/
+                ```sh copy
                 certbot certonly --standalone -d example.com
                 ```
             </TabItem>
@@ -76,7 +76,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
         DNS challenge requires you to create a new TXT DNS record to verify domain ownership, instead of having to expose port 80. The instructions are displayed when you run the certbot command below.
 
-        ```sh copy /example.com/
+        ```sh copy
         certbot -d example.com --manual --preferred-challenges dns certonly
         ```
 
@@ -105,7 +105,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
         Stop Nginx:
 
-        ```sh copys
+        ```sh copy
         systemctl stop nginx
         ```
 
@@ -154,7 +154,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
                 Since the configuration file is based on Certbot, we need to create the folder manually.
 
-                ```sh /example.com/
+                ```sh
                 sudo mkdir -p /etc/letsencrypt/live/example.com
                 ```
 
@@ -182,7 +182,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
                 Since the configuration file is based on Certbot, we need to create the folder manually.
 
-                ```sh /example.com/
+                ```sh
                 sudo mkdir -p /etc/letsencrypt/live/example.com
                 ```
 

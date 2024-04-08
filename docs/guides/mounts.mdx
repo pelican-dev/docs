@@ -12,7 +12,7 @@ For security reasons it is not possible to mount directories on a node by defaul
 
 In the Wings configuration file (`/etc/pelican/config.yml`) the `allowed_mounts` field is used to list mountable directories. The listed directories and all their subdirectories can be mounted.
 
-```yml copy /example/ title="/etc/pelican/config.yml"
+```yml copy title="/etc/pelican/config.yml"
 allowed_mounts:
 - /example
 ```
@@ -41,7 +41,7 @@ You have to configure mounts in admin Panel in order to use them with your serve
 4. After creating the mount, you are required to add both **Eggs** and **Nodes** that this mount may be used on.
 
 <Admonition type="warning">
-All servers using the same mounts will **only** share their contents when they are on the same node. Mounts are not synchronized between nodes.
+  All servers using the same mounts will **only** share their contents when they are on the same node. Mounts are not synchronized between nodes.
 </Admonition>
 
 ### Assigning a Mount to a Server
