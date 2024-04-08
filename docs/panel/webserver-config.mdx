@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
     <TabItem value="nginx" label="Nginx">
         First, remove the default NGINX configuration.
-        ```sh copy
+        ```sh
         rm /etc/nginx/sites-enabled/default
         ```
         Now, you should paste the contents of the file below, replacing `<domain>` with your domain or IP being used in a file called
@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
                     Note: IPs cannot be used with SSL.
                 </Admonition>
 
-                ```nginx copy {5,11,25-26} title="/etc/nginx/sites-available/pelican.conf"
+                ```nginx {5,11,25-26} title="/etc/nginx/sites-available/pelican.conf"
                 server_tokens off;
 
                 server {
@@ -91,7 +91,7 @@ import TabItem from '@theme/TabItem';
                 ```
             </TabItem>
             <TabItem value="bhttp" label="http">
-                ```nginx copy {3} title="/etc/nginx/sites-available/pelican.conf"
+                ```nginx {3} title="/etc/nginx/sites-available/pelican.conf"
                 server {
                     listen 80;
                     server_name <domain>;
@@ -155,7 +155,7 @@ import TabItem from '@theme/TabItem';
     <TabItem value="apache" label="Apache">
         First, remove the default Apache configuration.
 
-        ```sh copy
+        ```sh
         a2dissite 000-default.conf
         ```
 
@@ -168,7 +168,7 @@ import TabItem from '@theme/TabItem';
                 <Admonition type="warning">
                     Note: IPs cannot be used with SSL.
                 </Admonition>
-                ```apacheconf copy {2,10,24-25} title="/etc/apache2/sites-available/pelican.conf"
+                ```apacheconf {2,10,24-25} title="/etc/apache2/sites-available/pelican.conf"
                     <VirtualHost *:80>
                         ServerName <domain>
                         
@@ -198,7 +198,7 @@ import TabItem from '@theme/TabItem';
                 ```
             </TabItem>
             <TabItem value="dhttp" label="http">
-                ```apacheconf copy {2} title="/etc/apache2/sites-available/pelican.conf"
+                ```apacheconf {2} title="/etc/apache2/sites-available/pelican.conf"
                     <VirtualHost *:80>
                         ServerName <domain>
                         DocumentRoot "/var/www/pelican/public"
@@ -230,7 +230,7 @@ import TabItem from '@theme/TabItem';
     <TabItem value="caddy" label="Caddy">
     First, remove the default Caddy configuration.
        
-    ```sh copy
+    ```sh
     rm /etc/caddy/Caddyfile
     ```
 
@@ -241,7 +241,7 @@ import TabItem from '@theme/TabItem';
                 <Admonition type="warning">
                     Note: IPs cannot be used with SSL.
                 </Admonition>
-                ``` copy {9} title="/etc/caddy/Caddyfile"
+                ``` {9} title="/etc/caddy/Caddyfile"
                 {
                     servers :443 {
                         timeouts {
@@ -294,7 +294,7 @@ import TabItem from '@theme/TabItem';
                 ```
             </TabItem>
             <TabItem value="fhttp" label="http">
-                ``` copy {9} title="/etc/caddy/Caddyfile"
+                ``` {9} title="/etc/caddy/Caddyfile"
                 {
                     servers :80 {
                         timeouts {
@@ -348,7 +348,7 @@ import TabItem from '@theme/TabItem';
         </Tabs>
         The final step is to restart Caddy.
 
-        ```sh copy
+        ```sh
         systemctl restart caddy
         ```
     </TabItem>

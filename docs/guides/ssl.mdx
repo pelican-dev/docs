@@ -18,17 +18,17 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
         
         <Tabs>
             <TabItem value="t1cb" label="Certbot">
-                ```sh copy
+                ```sh
                 sudo apt install -y certbot-nginx
                 ```
             </TabItem>
             <TabItem value="t1ap" label="Apache">
-                ```sh copy
+                ```sh
                 sudo apt install -y certbot-apache
                 ```
             </TabItem>
             <TabItem value="t1cd" label="Caddy / Other">
-                ```sh copy
+                ```sh
                 sudo apt install -y certbot
                 ```
             </TabItem>
@@ -56,17 +56,17 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
         <Tabs>
             <TabItem value="t1ng" label="NGINX">
-                ```sh copy
+                ```sh
                 certbot certonly --nginx -d example.com
                 ```
             </TabItem>
             <TabItem value="t1ap2" label="Apache">
-                ```sh copy
+                ```sh
                 certbot certonly --apache -d example.com
                 ```
             </TabItem>
             <TabItem value="t1stalone" label="Standalone">
-                ```sh copy
+                ```sh
                 certbot certonly --standalone -d example.com
                 ```
             </TabItem>
@@ -76,7 +76,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
         DNS challenge requires you to create a new TXT DNS record to verify domain ownership, instead of having to expose port 80. The instructions are displayed when you run the certbot command below.
 
-        ```sh copy
+        ```sh
         certbot -d example.com --manual --preferred-challenges dns certonly
         ```
 
@@ -92,7 +92,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
             which provides more options, and is much more powerful than certbot.
         </Admonition>
 
-        ```text copy
+        ```text
         0 23 * * * certbot renew --quiet --deploy-hook "systemctl restart nginx"
         ```
 
@@ -105,25 +105,25 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
         Stop Nginx:
 
-        ```sh copy
+        ```sh
         systemctl stop nginx
         ```
 
         Renew the certificate:
 
-        ```sh copy
+        ```sh
         certbot renew
         ```
 
         Once the process has completed, you can restart Nginx:
 
-        ```sh copy
+        ```sh
         systemctl start nginx
         ```
 
         You may also need to restart Wings as not every service is able to automatically apply an updated certificate:
 
-        ```sh copy
+        ```sh
         systemctl restart wings
         ```
     </TabItem>
@@ -137,7 +137,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
             Make sure you read both instructions, as some people may have moved to CloudFlare's [new authorization system](https://blog.cloudflare.com/permissions-best-practices) (Modern), but other's [have not](https://community.cloudflare.com/t/cannot-add-new-member-error-1005/421516) (Legacy).
         </Admonition>
 
-        ```sh copy
+        ```sh
         curl https://get.acme.sh | sh
         ```
         <Tabs>
@@ -160,7 +160,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
                 After installing acme.sh and obtaining CloudFlare API key, we need to then generate a certificate. First input the CloudFlare API credentials.
 
-                ```sh copy
+                ```sh
                 export CF_Token="Your_CloudFlare_API_Key"
                 export CF_Account_ID="Your_CloudFlare_Account_ID"
                 export CF_Zone_ID="Your_CloudFlare_Zone_ID"
@@ -188,7 +188,7 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
                 After installing acme.sh and obtaining CloudFlare API key, we need to then generate a certificate. First input the CloudFlare API credentials.
 
-                ```sh copy
+                ```sh
                 export CF_Key="Your_CloudFlare_API_Key"
                 export CF_Email="Your_CloudFlare_Email"
                 ```
@@ -231,13 +231,13 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
         We recommend that you create the secret file in the following location: `/etc/caddy/.secrets.env`.
 
-        ```sh copy
+        ```sh
         CLOUDFLARE_API_TOKEN=<cloudflare api token>
         ```
 
         For security reasons, we recommend setting permissions to `0600` (only owner can read or write to the file).
 
-        ```sh copy
+        ```sh
         # Set ownership of the `.secrets.env` file to `caddy` system user
         chown caddy:caddy /etc/caddy/.secrets.env
 

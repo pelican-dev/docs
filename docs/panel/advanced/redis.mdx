@@ -16,7 +16,7 @@ for sending emails and handling many other background tasks.
 
 Create a file called `pelican.service` in `/etc/systemd/system` with the contents below.
 
-```ini {11,12} title="/etc/systemd/system/pelican.service" copy
+```ini {11,12} title="/etc/systemd/system/pelican.service"
 # Pelican Queue File
 # ----------------------------------
 
@@ -45,12 +45,12 @@ WantedBy=multi-user.target
 
 If you are using redis for your system, you will want to make sure to enable that it will start on boot. You can do that by running the following command:
 
-```sh copy
+```sh
 sudo systemctl enable --now redis-server
 ```
 
 Finally, enable the service and set it to boot on machine start.
 
-```sh copy
+```sh
 sudo systemctl enable --now pelican.service
 ```

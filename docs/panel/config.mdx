@@ -10,13 +10,13 @@ When changing Pelican's backup storage method, users may still download or delet
 
 By default, Pelican uses local storage via Wings for backups. That said, this method of backup storage can be explicitly set with the following configuration in the `.env` file:
 
-```sh copy
+```sh
 APP_BACKUP_DRIVER=daemons
 ```
 
 Please note that, when using local storage via Wings, the destination for backups is set in the Wings config file with the following setting key:
 
-```yml copy {2}
+```yml {2}
 system:
   backup_directory: /path/to/backup/storage
 ```
@@ -25,7 +25,7 @@ system:
 
 AWS S3 (or compatible storage) can be used to store remote or cloud-based backups. The following configuration options have to be set in the `.env` file or as environment variables in order to enable it:
 
-```sh copy
+```sh
 # Sets your panel to use s3 for backups
 APP_BACKUP_DRIVER=s3
 
@@ -47,7 +47,7 @@ You can configure the maximal part size using the `BACKUP_MAX_PART_SIZE` environ
 
 The following `.env` snippet configures 1GB parts and uses 120 minutes as the pre-signed URL lifespan:
 
-```sh copy
+```sh
 BACKUP_MAX_PART_SIZE=1073741824
 BACKUP_PRESIGNED_URL_LIFESPAN=120
 ```
@@ -56,7 +56,7 @@ BACKUP_PRESIGNED_URL_LIFESPAN=120
 
 Should you need to specify a storage class, use the `AWS_BACKUPS_STORAGE_CLASS` environment variable. Default option is `STANDARD` (S3 Standard).
 
-```sh copy
+```sh
 AWS_BACKUPS_STORAGE_CLASS=
 ```
 
@@ -75,7 +75,7 @@ the chances are that something like `TRUSTED_PROXIES=127.0.0.1` will work for yo
 
 To properly respond to an NGINX reverse proxy, the NGINX `location` config must contain the following lines:
 
-```NGINX copy
+```NGINX
 proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header Host $host;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -90,7 +90,7 @@ proxy_request_buffering off;
 If you're using Cloudflare's Flexible SSL you should set `TRUSTED_PROXIES` to contain [their IP addresses](https://www.cloudflare.com/ips/).
 Below is an example of how to set this.
 
-```text copy
+```text
 TRUSTED_PROXIES=173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22
 ```
 
@@ -98,7 +98,7 @@ TRUSTED_PROXIES=173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,14
 
 If you cannot access your panel, you can modify the database directly using the following commands.
 
-```sql copy
+```sql
 mysql -u root -p
 UPDATE panel.settings SET value = 'false' WHERE `key` = 'settings::recaptcha:enabled';
 ```
@@ -109,7 +109,7 @@ If possible you should use the panel to update your 2FA settings. If you can't a
 
 ### Disable 2FA requirement
 
-```sql copy
+```sql
 mysql -u root -p
 UPDATE panel.settings SET value = 0 WHERE `key` = 'settings::pelican:auth:2fa_required';
 ```
@@ -118,6 +118,6 @@ UPDATE panel.settings SET value = 0 WHERE `key` = 'settings::pelican:auth:2fa_re
 
 Run the following command in your `/var/www/pelican` directory.
 
-```sh copy
+```sh
 php artisan p:user:disable2fa
 ```

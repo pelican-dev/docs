@@ -24,7 +24,7 @@ You can use these settings to authenticate against (private) docker registries w
 
 ### Example of usage
 
-```yml copy
+```yml
 docker:
   registries:
     registry.example.com:
@@ -42,7 +42,7 @@ Changing network mode to `host` grants Pelican direct access to all machine inte
 
 ### Example of usage
 
-```yml copy
+```yml
 docker:
   network:
     name: host
@@ -68,7 +68,7 @@ Restart wings and your game server to apply the new limit.
 
 ### Example of usage
 
-```yml copy
+```yml
 docker:
   ...
   container_pid_limit: 512
@@ -92,7 +92,7 @@ You can use these settings to adjust or completely disable throttling.
 
 ### Example of usage
 
-```yml copy
+```yml
 throttles:
   enabled: true
   lines: 2000
@@ -113,7 +113,7 @@ Defines the limits on the installer containers that prevents a server's installa
 
 ### Example of usage
 
-```yml copy
+```yml
 installer_limits:
   memory: 1024
   cpu: 100

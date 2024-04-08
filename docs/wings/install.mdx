@@ -42,7 +42,7 @@ If the result doesn't contain `OpenVZ` or`LXC`, it should be fine. The result of
 
 Should that not work for some reason, or you're still unsure, you can also run the command below.
 
-```sh copy
+```sh
 sudo dmidecode -s system-manufacturer
 ```
 
@@ -50,7 +50,7 @@ sudo dmidecode -s system-manufacturer
 
 For a quick install of Docker CE, you can use the command below:
 
-```sh copy
+```sh
 curl -sSL https://get.docker.com/ | CHANNEL=stable sh
 ```
 
@@ -63,7 +63,7 @@ If the above command does not work, please reference the official Docker documen
 
 If you are on an operating system with systemd (Ubuntu 16+, Debian 8+, CentOS 7+) run the command below to have Docker start when you boot your machine.
 
-```sh copy
+```sh
 sudo systemctl enable --now docker
 ```
 
@@ -79,7 +79,7 @@ sure the line includes `swapaccount=1` somewhere inside the double-quotes.
 After that, run `sudo update-grub` followed by `sudo reboot` to restart the server and have swap enabled.
 Below is an example of what the line should look like, _do not copy this line verbatim. It often has additional OS-specific parameters._
 
-```text copy
+```text
 GRUB_CMDLINE_LINUX_DEFAULT="swapaccount=1"
 ```
 
@@ -126,7 +126,7 @@ To start Wings, simply run the command below, which will start it in a debug mod
 Once you confirmed that it is running without errors, use `CTRL+C` to terminate the process and daemonize it by following the instructions below. 
 Depending on your server's internet connection pulling and starting Wings for the first time may take a few minutes.
 
-```sh copy
+```sh
 sudo wings --debug
 ```
 
@@ -137,7 +137,7 @@ You may optionally add the `--debug` flag to run Wings in debug mode.
 Running Wings in the background is a simple task, just make sure that it runs without errors before doing
 this. Place the contents below in a file called `wings.service` in the `/etc/systemd/system` directory.
 
-```ini {9} copy title="/etc/systemd/system/wings.service"
+```ini {9} title="/etc/systemd/system/wings.service"
 [Unit]
 Description=Wings Daemon
 After=docker.service
@@ -161,6 +161,6 @@ WantedBy=multi-user.target
 
 Then, run the commands below to reload systemd and start Wings.
 
-```sh copy
+```sh
 systemctl enable --now wings
 ```

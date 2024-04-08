@@ -45,14 +45,14 @@ The first step in the update process is to download the new panel files from Git
 the release archive for the most recent version of Pelican, save it in the current directory and will automatically
 unpack the archive into your current folder.
 
-```sh copy
+```sh
 curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | tar -xzv
 ```
 
 Once all of the files are downloaded we need to set the correct permissions on the cache and storage directories to avoid
 any webserver related errors.
 
-```sh copy
+```sh
 chmod -R 755 storage/* bootstrap/cache
 ```
 
@@ -61,7 +61,7 @@ chmod -R 755 storage/* bootstrap/cache
 After you've downloaded all of the new files you will need to update the core components of the panel. To do this,
 simply run the commands below and follow any prompts.
 
-```sh copy
+```sh
 composer install --no-dev --optimize-autoloader
 ```
 
@@ -70,7 +70,7 @@ composer install --no-dev --optimize-autoloader
 You'll also want to clear the compiled template cache to ensure that new and modified templates show up correctly for
 users.
 
-```sh copy
+```sh
 php artisan view:clear
 php artisan config:clear
 ```
@@ -80,7 +80,7 @@ You'll also need to update your database schema. Running the command below
 will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
 remember, _never edit core eggs we ship_! They will be overwritten by this update process.
 
-```sh copy
+```sh
 php artisan migrate --seed --force
 ```
 
@@ -91,17 +91,17 @@ is `www-data` but can vary from system to system &mdash; sometimes being `nginx`
 
 <Tabs className="unique-tabs">
     <TabItem value="NGINX/Apache">
-        ```sh copy
+        ```sh
         chown -R www-data:www-data /var/www/pelican/* 
         ```
     </TabItem>
     <TabItem value="Rockey Linux NGINX">
-        ```sh copy 
+        ```sh 
         chown -R nginx:nginx /var/www/pelican/* 
         ```
     </TabItem>
     <TabItem value="Rockey Linux Apaches">
-        ```sh copy 
+        ```sh 
         chown -R apache:apache /var/www/pelican/* 
         ```
     </TabItem>
@@ -110,7 +110,7 @@ is `www-data` but can vary from system to system &mdash; sometimes being `nginx`
 
 After _every update_ you should restart the queue worker.
 
-```sh copy
+```sh
 php artisan queue:restart
 ```
 
@@ -118,6 +118,6 @@ php artisan queue:restart
 
 Now that everything has been updated you need to exit maintenance mode.
 
-```sh copy
+```sh
 php artisan up
 ```
