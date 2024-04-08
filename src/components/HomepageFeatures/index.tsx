@@ -42,7 +42,7 @@ const FeatureList: FeatureItem[] = [
           <Link to={'https://enshrouded.com'}>Enshrouded</Link><>, </>
           <Link to={'https://factorio.com'}>Factorio</Link><>, </>
           <Link to={'https://github.com/pelican-eggs'}>and so much more</Link>.
-        Please check our eggs out, we like them scrambled!
+        Check our eggs out, we like them scrambled!
       </>
     ),
   },
