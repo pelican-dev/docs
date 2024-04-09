@@ -2,24 +2,24 @@ lance:
   name: Lance Pioch
   title: Lead Maintainer
   url: https://github.com/lancepioch
-  image_url: /img/1.png
+  image_url: /img/blog/1.png
 parker:
   name: Michael Parker
   title: Egg Maintainer
   url: https://github.com/parkervcp
-  image_url: /img/2.png
+  image_url: /img/blog/2.png
 charles:
   name: Charles Morgan
   title: Docs Maintainer
   url: https://github.com/notareyouscared
-  image_url: /img/3.png
+  image_url: /img/blog/3.png
 kubi:
   name: Ryan Kubi
   title: Wings Maintainer
   url: https://github.com/iamkubi
-  image_url:  /img/4.png
+  image_url:  /img/blog/4.png
 alex:
  name: Alex Scai
  title: Panel Maintainer
  url: https://github.com/alexevladgabriel
- image_url: /img/5.png
+ image_url: /img/blog/5.png
