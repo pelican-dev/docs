@@ -8,6 +8,7 @@ import Heading from '@theme/Heading';
 import { Icon } from '@iconify/react/dist/iconify.js';
 
 import styles from './index.module.css';
+import HomepageLook from '../components/HomepageFeatures/look';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -49,6 +50,7 @@ export default function Home(): JSX.Element {
       <main>
         <HomepageWhat />
         <HomepageWhy />
+        <HomepageLook />
       </main>
     </Layout>
   );

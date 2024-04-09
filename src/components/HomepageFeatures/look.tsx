@@ -41,12 +41,17 @@ function Feature({title, img}: FeatureItem) {
   );
 }
 
-export default function HomepageWhat(): JSX.Element {
+export default function HomepageLook(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
-      <h1 style={{textAlign: 'center'}}>What is Pelican?</h1>
-      <p style={{textAlign: 'center', fontSize: '26px'}}>Pelican is the ultimate, free game server control panel offering high flying security. It's a breeze to manage your servers with our sleek and user-friendly interface. And thanks to Docker, they all run in their own safe space.</p>
+      <h1 style={{textAlign: 'center'}}>Shots of the Screen</h1>
+        <div className="row">
+          {FeatureList.map((props, idx) => (
+            <Feature key={idx} {...props} />
+          ))}
+        </div>
+        <h5 style={{textAlign: 'center'}}>pre-release screenshots</h5>
       </div>
     </section>
   );
