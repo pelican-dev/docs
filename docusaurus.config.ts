@@ -41,6 +41,12 @@ const config: Config = {
     //  content: 'Stay Tuned!',
     //  backgroundColor: '#38bdf8',
     //},
+    matomo: { 
+      matomoUrl: 'https://track.areyouscared.dev',
+      siteId: '1',
+      phpLoader: 'matomo.php',
+      jsLoader: 'matomo.js'
+    },
     navbar: {
       title: 'Pelican.dev',
       logo: {
@@ -125,7 +131,8 @@ const config: Config = {
   } satisfies Preset.ThemeConfig,
   plugins: [
       require.resolve('docusaurus-lunr-search'),
-      'docusaurus-plugin-sass'
+      'docusaurus-plugin-sass',
+      'docusaurus-plugin-matomo'
   ],
 };
 

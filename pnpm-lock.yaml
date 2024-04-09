@@ -44,6 +44,9 @@ dependencies:
   docusaurus-lunr-search:
     specifier: ^3.3.2
     version: 3.3.2(@docusaurus/core@3.2.1)(react-dom@18.2.0)(react@18.2.0)
+  docusaurus-plugin-matomo:
+    specifier: ^0.0.8
+    version: 0.0.8(@docusaurus/core@3.2.1)
   docusaurus-plugin-sass:
     specifier: ^0.2.5
     version: 0.2.5(@docusaurus/core@3.2.1)(sass@1.74.1)(webpack@5.91.0)
@@ -4779,6 +4782,15 @@ packages:
       to-vfile: 6.1.0
       unified: 9.2.2
       unist-util-is: 4.1.0
+    dev: false
+
+  /docusaurus-plugin-matomo@0.0.8(@docusaurus/core@3.2.1):
+    resolution: {integrity: sha512-YSaDdjxI7uN1FuNLSGrQy4BmDEXwwyL6vac7GfmS7wFBLck/Ias5jHqENPBHXe36m2cYzyesGPQL1EsS9vanwA==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      '@docusaurus/core': ^2.0.0-alpha.56 || ^3.0.0
+    dependencies:
+      '@docusaurus/core': 3.2.1(@docusaurus/types@3.2.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
     dev: false
 
   /docusaurus-plugin-sass@0.2.5(@docusaurus/core@3.2.1)(sass@1.74.1)(webpack@5.91.0):
