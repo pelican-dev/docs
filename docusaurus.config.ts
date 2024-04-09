@@ -42,7 +42,7 @@ const config: Config = {
     //  backgroundColor: '#38bdf8',
     //},
     matomo: { 
-      matomoUrl: 'https://track.areyouscared.dev',
+      matomoUrl: 'https://track.areyouscared.dev/',
       siteId: '2', //Change in prod
       phpLoader: 'matomo.php',
       jsLoader: 'matomo.js'
