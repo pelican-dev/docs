@@ -26,9 +26,9 @@ only the versions listed below.
 ## System Requirements
 
 <Admonition type="warning">
-Please be aware that some hosts install a modified kernel that does not support some docker features required for Wings to operate correctly. Please
-check your kernel by running `uname -r`. If your kernel ends in `-xxxx-grs-ipv6-64` or `-xxxx-mod-std-ipv6-64` you're
-probably using a non-supported kernel. You should contact your host, and request a non-modified kernel.
+    Please be aware that some hosts install a modified kernel that does not support some docker features required for Wings to operate correctly. Please
+    check your kernel by running `uname -r`. If your kernel ends in `-xxxx-grs-ipv6-64` or `-xxxx-mod-std-ipv6-64` you're
+    probably using a non-supported kernel. You should contact your host, and request a non-modified kernel.
 </Admonition>
 
 To run Wings, you will need a Linux system capable of running Docker containers. Most VPS and almost all
@@ -55,8 +55,8 @@ curl -sSL https://get.docker.com/ | CHANNEL=stable sh
 ```
 
 <Admonition type="info" title="Installing Docker CE">
-If the above command does not work, please reference the official Docker documentation for how to install Docker CE on your server.
-- [Docker CE Install Overview](https://docs.docker.com/engine/install/)
+    If the above command does not work, please reference the official Docker documentation for how to install Docker CE on your server.
+    - [Docker CE Install Overview](https://docs.docker.com/engine/install/)
 </Admonition>
 
 #### Start Docker on Boot
@@ -84,8 +84,8 @@ GRUB_CMDLINE_LINUX_DEFAULT="swapaccount=1"
 ```
 
 <Admonition type="info" title="GRUB Configurations">
-Some Linux distros may ignore `GRUB_CMDLINE_LINUX_DEFAULT`.  
-Therefore you might have to use `GRUB_CMDLINE_LINUX` instead should the above variable not work for you.
+    Some Linux distros may ignore `GRUB_CMDLINE_LINUX_DEFAULT`.  
+    Therefore you might have to use `GRUB_CMDLINE_LINUX` instead should the above variable not work for you.
 </Admonition>
 
 ### Installing Wings
@@ -100,8 +100,8 @@ sudo chmod u+x /usr/local/bin/wings
 ```
 
 <Admonition type="warning" title="OVH/SYS Dedicated Servers">
-If you are using a server provided by OVH or SoYouStart please be aware that your main drive space is probably allocated to
-`/home`, and not `/` by default. Please consider using `/home/daemon-data` for server data. This can be set when creating the node.
+    If you are using a server provided by OVH or SoYouStart please be aware that your main drive space is probably allocated to
+    `/home`, and not `/` by default. Please consider using `/home/daemon-data` for server data. This can be set when creating the node.
 </Admonition>
 
 ### Configure
@@ -115,9 +115,9 @@ Copy the code block content, paste it into a new file called `config.yml` in `/e
 Alternatively, you can click on the Generate Token button, copy the sh command and paste it into your terminal.
 
 <Admonition type="warning" title="Using ssl?">
-If your Panel is using SSL, then Wings must also use SSL.  
-  
-See [Creating SSL Certificates](../guides/ssl) documentation page for how to create these certificates before continuing.
+    If your Panel is using SSL, then Wings must also use SSL.  
+    
+    See [Creating SSL Certificates](../guides/ssl) documentation page for how to create these certificates before continuing.
 </Admonition>
 
 ### Starting Wings
