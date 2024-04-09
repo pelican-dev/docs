@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
 type FeatureItem = {
   title: string;
@@ -31,11 +33,9 @@ const FeatureList: FeatureItem[] = [
 function Feature({title, img}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
+      <div className="text--center" style={{paddingBottom: '20px'}}>
+        <Zoom><img src={img}/></Zoom>
         <Heading as="h3">{title}</Heading>
-      </div>
-      <div className="text--center" style={{paddingBottom: '15px'}}>
-        <a href={img} ><img src={img}/></a>
       </div>
     </div>
   );

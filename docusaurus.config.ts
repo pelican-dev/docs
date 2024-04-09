@@ -54,10 +54,9 @@ const config: Config = {
       },
       items: [
         {
-          sidebarId: 'Sidebar',
-          type: 'docSidebar',
-          position: 'left',
+          to: '/docs/panel/getting-started',
           label: 'Install',
+          position: 'left'
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {to: '/donate', label: 'Donate', position: 'left'},
