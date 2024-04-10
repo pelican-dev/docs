@@ -43,7 +43,7 @@ const config: Config = {
     //},
     matomo: { 
       matomoUrl: 'https://track.areyouscared.dev/',
-      siteId: '2', //Change in prod
+      siteId: '2', //TODO: Change for Launch
       phpLoader: 'matomo.php',
       jsLoader: 'matomo.js'
     },
@@ -85,6 +85,7 @@ const config: Config = {
       },
       style: 'dark',
       links: [
+        /* TODO REMOVE THIS LINE ON LAUNCH
         {
           title: 'Documentation',
           items: [
@@ -101,7 +102,7 @@ const config: Config = {
               to: '/docs/guides/ssl'
             },
           ],
-        },
+        }, // */
         {
           title: 'Community',
           items: [
@@ -129,7 +130,7 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
-      require.resolve('docusaurus-lunr-search'),
+      // TODO FOR LAUNCH: require.resolve('docusaurus-lunr-search'),
       'docusaurus-plugin-sass',
       'docusaurus-plugin-matomo'
   ],

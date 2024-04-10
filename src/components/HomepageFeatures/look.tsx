@@ -51,7 +51,14 @@ export default function HomepageLook(): JSX.Element {
             <Feature key={idx} {...props} />
           ))}
         </div>
-        <h5 style={{textAlign: 'center'}}>pre-release screenshots</h5>
+        <span style={{textAlign: 'center', fontStyle: 'italic', fontWeight: 'normal'}}>
+          <h5 style={{fontWeight: 'normal'}}>
+            These are the current prerelease screenshots.
+            <br /><br />
+            Just like this website, these also have light mode which looks fantastic!
+          </h5>
+        </span>
+
       </div>
     </section>
   );

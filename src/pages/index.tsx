@@ -23,7 +23,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--md disabled"
             to="/" style={{ fontSize: '26px' }}
-          >Comming Soon!</Link>
+          >Coming Soon!</Link>
           <Link
             style={{ paddingTop: '10px', margin: '15px' }}
             className="button button--secondary button--sm"
