@@ -53,11 +53,11 @@ const config: Config = {
         src: 'img/logo.png',
       },
       items: [
-        {
-          to: '/docs/panel/getting-started',
-          label: 'Install',
-          position: 'left'
-        },
+        //{
+        //  to: '/docs/panel/getting-started',
+        //  label: 'Install',
+        //  position: 'left'
+        //},
         {to: '/blog', label: 'Blog', position: 'left'},
         {to: '/donate', label: 'Donate', position: 'left'},
         {
