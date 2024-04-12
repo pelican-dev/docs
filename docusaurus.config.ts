@@ -1,38 +1,41 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
+import tailwindPlugin from "./src/plugins/tailwind-config.cjs";
 
 const config: Config = {
-  title: 'Pelican',
-  tagline: 'From prehistoric to peak performance: Pelican takes flight!',
-  favicon: 'img/favicon.ico',
+  title: "Pelican",
+  tagline: "From prehistoric to peak performance: Pelican takes flight!",
+  favicon: "img/favicon.ico",
   markdown: {
-    mermaid: true
+    mermaid: true,
   },
-  url: 'https://pelican.dev',
-  baseUrl: '/',
-  organizationName: 'pelican-dev',
-  projectName: 'docs',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  themes: ['@docusaurus/theme-mermaid'],
+  url: "https://pelican.dev",
+  baseUrl: "/",
+  organizationName: "pelican-dev",
+  projectName: "docs",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  themes: ["@docusaurus/theme-mermaid"],
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          editUrl:
-            'https://github.com/pelican-dev/docs/',
+          sidebarPath: "./sidebars.ts",
+          editUrl: "https://github.com/pelican-dev/docs/",
         },
         blog: {
           showReadingTime: true,
         },
         theme: {
-          customCss: './src/css/custom.scss',
+          customCss: [
+            require.resolve("./src/css/tailwind.css"),
+            require.resolve("./src/css/custom.scss"),
+          ],
         },
       } satisfies Preset.Options,
-    ]
+    ],
   ],
   themeConfig: {
     //announcementBar: {
@@ -41,16 +44,16 @@ const config: Config = {
     //  content: 'Stay Tuned!',
     //  backgroundColor: '#38bdf8',
     //},
-    matomo: { 
-      matomoUrl: 'https://track.areyouscared.dev/',
-      siteId: '2', //TODO: Change for Launch
-      phpLoader: 'matomo.php',
-      jsLoader: 'matomo.js'
+    matomo: {
+      matomoUrl: "https://track.areyouscared.dev/",
+      siteId: "2", //TODO: Change for Launch
+      phpLoader: "matomo.php",
+      jsLoader: "matomo.js",
     },
     navbar: {
-      title: 'Pelican.dev',
+      title: "Pelican.dev",
       logo: {
-        src: 'img/logo.png',
+        src: "img/logo.png",
       },
       items: [
         //{
@@ -58,32 +61,32 @@ const config: Config = {
         //  label: 'Install',
         //  position: 'left'
         //},
-        {to: '/blog', label: 'Blog', position: 'left'},
-        {to: '/donate', label: 'Donate', position: 'left'},
+        { to: "/blog", label: "Blog", position: "left" },
+        { to: "/donate", label: "Donate", position: "left" },
         {
-          href: 'https://github.com/pelican-dev/',
-          position: 'right',
-          className: 'github-link',
+          href: "https://github.com/pelican-dev/",
+          position: "right",
+          className: "github-link",
         },
         {
-          href: 'https://discord.gg/pelican-panel',
-          position: 'right',
-          className: 'discord-link',
+          href: "https://discord.gg/pelican-panel",
+          position: "right",
+          className: "discord-link",
         },
       ],
     },
     colorMode: {
-      defaultMode: 'dark',
+      defaultMode: "dark",
       disableSwitch: false,
       respectPrefersColorScheme: true,
     },
     footer: {
       logo: {
-        src: 'img/logo.png',
-        height: '64px',
-        width: '64px',
+        src: "img/logo.png",
+        height: "64px",
+        width: "64px",
       },
-      style: 'dark',
+      style: "dark",
       links: [
         /* TODO REMOVE THIS LINE ON LAUNCH
         {
@@ -104,35 +107,43 @@ const config: Config = {
           ],
         }, // */
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'Discord',
-              href: 'https://discord.gg/pelican-panel',
+              label: "Discord",
+              href: "https://discord.gg/pelican-panel",
             },
             {
-              label: 'Blog',
-              to: '/blog',
+              label: "Blog",
+              to: "/blog",
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/pelican-dev',
+              label: "GitHub",
+              href: "https://github.com/pelican-dev",
             },
           ],
-        }
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Pelican`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ['bash', 'nginx', 'apacheconf', 'ini', 'sql', 'yaml'],
+      additionalLanguages: [
+        "bash",
+        "nginx",
+        "apacheconf",
+        "ini",
+        "sql",
+        "yaml",
+      ],
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
-      // TODO FOR LAUNCH: require.resolve('docusaurus-lunr-search'),
-      'docusaurus-plugin-sass',
-      'docusaurus-plugin-matomo'
+    // TODO FOR LAUNCH: require.resolve('docusaurus-lunr-search'),l
+    "docusaurus-plugin-sass",
+    "docusaurus-plugin-matomo",
+    tailwindPlugin,
   ],
 };
 
