@@ -50,11 +50,12 @@ const config: Config = {
         src: "img/logo.png",
       },
       items: [
-        {
+        /* Enable on first release.
+         {
           to: '/docs/panel/getting-started',
           label: 'Install',
           position: 'left'
-        },
+        },  */
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/donate", label: "Donate", position: "left" },
         {
@@ -82,6 +83,7 @@ const config: Config = {
       },
       style: "dark",
       links: [
+      /* Enable on first release.
         {
           title: 'Documentation',
           items: [
@@ -98,7 +100,7 @@ const config: Config = {
               to: '/docs/guides/ssl'
             },
           ],
-        },
+        },*/
         {
           title: "Community",
           items: [
@@ -133,7 +135,7 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
-    require.resolve('docusaurus-lunr-search'),
+    //require.resolve('docusaurus-lunr-search'),
     "docusaurus-plugin-sass",
     "docusaurus-plugin-matomo",
     tailwindPlugin,
