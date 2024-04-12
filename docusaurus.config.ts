@@ -51,7 +51,7 @@ const config: Config = {
       jsLoader: "matomo.js",
     },
     navbar: {
-      title: "Pelican.dev",
+      title: "Pelican",
       logo: {
         src: "img/logo.png",
       },
