@@ -38,15 +38,9 @@ const config: Config = {
     ],
   ],
   themeConfig: {
-    //announcementBar: {
-    //  isCloseable: false,
-    //  id: 'release',
-    //  content: 'Stay Tuned!',
-    //  backgroundColor: '#38bdf8',
-    //},
     matomo: {
       matomoUrl: "https://track.areyouscared.dev/",
-      siteId: "2", //TODO: Change for Launch
+      siteId: "1",
       phpLoader: "matomo.php",
       jsLoader: "matomo.js",
     },
@@ -56,11 +50,11 @@ const config: Config = {
         src: "img/logo.png",
       },
       items: [
-        //{
-        //  to: '/docs/panel/getting-started',
-        //  label: 'Install',
-        //  position: 'left'
-        //},
+        {
+          to: '/docs/panel/getting-started',
+          label: 'Install',
+          position: 'left'
+        },
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/donate", label: "Donate", position: "left" },
         {
@@ -88,7 +82,6 @@ const config: Config = {
       },
       style: "dark",
       links: [
-        /* TODO REMOVE THIS LINE ON LAUNCH
         {
           title: 'Documentation',
           items: [
@@ -105,7 +98,7 @@ const config: Config = {
               to: '/docs/guides/ssl'
             },
           ],
-        }, // */
+        },
         {
           title: "Community",
           items: [
@@ -140,7 +133,7 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
-    // TODO FOR LAUNCH: require.resolve('docusaurus-lunr-search'),l
+    require.resolve('docusaurus-lunr-search'),
     "docusaurus-plugin-sass",
     "docusaurus-plugin-matomo",
     tailwindPlugin,

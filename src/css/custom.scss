@@ -136,3 +136,16 @@ html[data-theme='light'] .discord-link {
     }
   }
 }
+
+// Has to be a better way to style the announcment bar....
+html[data-theme='dark'] .content_node_modules--pnpm-\@docusaurus\+theme-classic\@3-2-1_\@types\+react\@18-2-74_react-dom\@18-2-0_react\@18-2-0_typescript\@5-2-2-node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-Content-styles-module {
+  font-size: larger;
+  color: white;
+  padding: 1rem;
+}
+
+html[data-theme='light'] .content_node_modules--pnpm-\@docusaurus\+theme-classic\@3-2-1_\@types\+react\@18-2-74_react-dom\@18-2-0_react\@18-2-0_typescript\@5-2-2-node_modules-\@docusaurus-theme-classic-lib-theme-AnnouncementBar-Content-styles-module {
+  font-size: larger;
+  color: white;
+  padding: 1rem;
+}
