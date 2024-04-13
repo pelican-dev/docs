@@ -42,9 +42,9 @@ sudo add-apt-repository ppa:ondrej/php
 </Callout>
 
 * PHP `8.2` with the following extensions: `gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl` and `fpm`
-* MySQL `8` (`mysql-server`) **or** MariaDB `10.2`+
+* MariaDB `10.2`+
 * Redis (`redis-server`)
-* A webserver (Apache, NGINX, Caddy, etc.)
+* A WebServer (Apache, NGINX, Caddy, etc.)
 * `curl`
 * `tar`
 * `unzip`
@@ -93,18 +93,20 @@ php artisan key:generate --force
 
 ### Database Setup
 
-You will need a database and a user with the correct permissions created for that database before continuing any further. 
+Firstly change the character-set-collations in `/etc/mysql/mariadb.conf.d/50-server.cnf` to utf8mb4=utf8mb4_general_ci.
+And after that restart mariadb using `service mariadb restart`.
+Next you will need a database and a user with the correct permissions created for that database before continuing any further. 
 
-#### Logging Into MySQL
-The first step in this process is to login to the MySQL command line where we will be executing statements to get
-things setup. To do so, simply run the command below and provide the Root MySQL account's password that you setup when
-installing MySQL. If you do not remember doing this, chances are you can just hit enter as no password is set.
+#### Logging Into MariaDB
+The first step in this process is to login to the MariaDB command line where we will be executing statements to get
+things setup. To do so, simply run the command below and provide the Root MariaDB account's password that you setup when
+installing MariaDB. If you do not remember doing this, chances are you can just hit enter as no password is set.
 
 ```sh copy
-mysql -u root -p
+mariadb -u root -p
 ```
 
-#### Creating MySQL User
+#### Creating MariaDB User
 Next, we will create a user called `pelican` and allow logins from localhost which prevents any external connections
 to our database. You can also use `%` as a wildcard or enter a numeric IP. We will also set the account password
 to `somePassword`.
@@ -122,7 +124,7 @@ CREATE DATABASE panel;
 ```
 
 #### Assigning Permissions
-Finally, we need to tell MySQL that our pelican user should have access to the panel database. To do this, simply
+Finally, we need to tell MariaDB that our pelican user should have access to the panel database. To do this, simply
 run the command below.
 
 ```sql copy
