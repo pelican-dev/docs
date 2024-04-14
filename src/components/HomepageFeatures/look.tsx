@@ -2,45 +2,55 @@ import React from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
+import { useColorMode } from '@docusaurus/theme-common';
 
 type FeatureItem = {
   title: string;
-  img: string;
+  light: string;
+  dark: string
 };
 
 const FeatureList: FeatureItem[] = [
   {
     title: 'Node Overview',
-    img: 'img/homepage/1.png',  },
+    light: 'img/homepage/1l.png',
+    dark: 'img/homepage/1d.png'  },
   {
     title: 'User Overview',
-    img: 'img/homepage/2.png',  },
+    light: 'img/homepage/2l.png',
+    dark: 'img/homepage/2d.png'  },
   {
     title: 'Create Node',
-    img: 'img/homepage/3.png',  },
+    light: 'img/homepage/3l.png',
+    dark: 'img/homepage/3d.png'  },
   {
     title: 'Editing an Egg',
-    img: 'img/homepage/4.png',  },
+    light: 'img/homepage/4l.png',
+    dark: 'img/homepage/4d.png'  },
   {
     title: 'Editing a Server',
-    img: 'img/homepage/5.png',  },
+    light: 'img/homepage/5l.png',
+    dark: 'img/homepage/5d.png'  },
   {
     title: 'Creating an API Key',
-    img: 'img/homepage/6.png',  },
+    light: 'img/homepage/6l.png',
+    dark: 'img/homepage/6d.png'  },
 ];
 
-function Feature({title, img}: FeatureItem) {
-  return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center" style={{paddingBottom: '20px'}}>
-        <Zoom><img src={img}/></Zoom>
-        <Heading as="h3">{title}</Heading>
+function Feature({title, light, dark}: FeatureItem) {
+  const {colorMode} = useColorMode();
+  
+    return (
+      <div className={clsx('col col--4')}>
+        <div className="text--center" style={{paddingBottom: '20px'}}>
+          <Zoom><img src={colorMode == 'dark' ? dark : light}/></Zoom>
+          <Heading as="h3">{title}</Heading>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
 export default function HomepageLook(): JSX.Element {
   return (
@@ -56,7 +66,6 @@ export default function HomepageLook(): JSX.Element {
           <h5 style={{fontWeight: 'normal'}}>
             These are the current prerelease screenshots.
             <br /><br />
-            Just like this website, these also have light mode which looks fantastic!
           </h5>
         </span>
 
@@ -64,3 +73,4 @@ export default function HomepageLook(): JSX.Element {
     </section>
   );
 }
+
