@@ -2,6 +2,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import tailwindPlugin from "./src/plugins/tailwind-config.cjs";
+import remarkgfm from 'remark-gfm';
 
 const config: Config = {
   title: "Pelican",
@@ -24,6 +25,7 @@ const config: Config = {
         docs: {
           sidebarPath: "./sidebars.ts",
           editUrl: "https://github.com/pelican-dev/docs/",
+          remarkPlugins: [remarkgfm]
         },
         blog: {
           showReadingTime: true,
@@ -59,6 +61,7 @@ const config: Config = {
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/donate", label: "Donate", position: "left" },
         { to: "https://news.pelican.dev/", label: "Subscribe", position: "left"},
+        { to: "/faq", label: "FAQ", position: "left"},
         {
           href: "https://github.com/pelican-dev/",
           position: "right",

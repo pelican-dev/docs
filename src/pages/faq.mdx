@@ -1,0 +1,136 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Link from "@docusaurus/Link";
+import Admonition from '@theme/Admonition';
+
+
+# Frequently Asked Questions
+
+Here are some of the most asked questions that were asked in our Q&A stage on 4/12/2024, and our answers.
+
+**Last Updated: 2024-04-13**
+
+<Admonition title="When is the beta?">
+    We plan to have a beta released by May 1st! Stay tuned!  
+    **This date is subject to change, depending on development**
+</Admonition>
+
+<Tabs groupId="faq" queryString>
+    <TabItem label="Panel" value="panel">
+        <details>
+            <summary>Will there be a way to migrate from Pterodactyl to Pelican?</summary>
+
+            Yes! We plan to have a migration that wouldn't cause dataloss, backups are encuraged.
+        </details>
+        <details>
+            <summary>Will we be able to use `blueprint.zip` plugins?</summary>
+
+            We will work with Blueprint and see what we can do.
+        </details>
+        <details>
+            <summary>Will Pterodactyl Eggs be compatible?</summary>
+
+            Yes! We do plan on changing eggs from JSON to YAML in a future release, Meaning they might not be compatible with Pterodactyl if they're exported from Pelican.
+        </details>
+        <details>
+            <summary>Will the API be the same as Pterodactyl?</summary>
+
+            Currently, Yes. The API has not changed, but might as features are added, and things are changed. 
+        </details>
+        <details>
+            <summary> Will the front end match the new admin area? </summary>
+
+            We do plan on making them match, the front end currently just works... We will look at it at a later date.
+        </details>
+        </TabItem>
+    <TabItem label="Wings" value="wings">
+        <details>
+            <summary>Will Wings support plugins?</summary>
+
+            At this time, No. But new features are being built into Wings and are on the way!
+        </details>
+        <details>
+            <summary>Will Pterodactyl Wings be compatible with Pelican Panel?</summary>
+
+            At this time, Yes.  
+            Compatibility could change in the future, as features are added.
+        </details>
+    </TabItem>
+
+    <TabItem label="Licensing" value="licensing">
+
+    <Admonition type="warning" title="What does this mean?!?! Do I have to pay?!?!">
+        This change does not affect 97% of current users...  
+        - "I just use it for servers for my friends" - Does **not** apply to you
+        - "I just use it to host a few servers for my discord community" - Does **not** apply to you
+    </Admonition>
+
+        <details>
+            <summary>I am not a Developer.</summary>
+
+            This does not affect you.
+        </details>
+        <details>
+            <summary>I am not changing any of the sourcecode.</summary>
+
+            This does not affect you.
+        </details>
+        <details>
+            <summary>I do not allow general public to use my panel.</summary>
+
+            This does not affect you.
+        </details>
+        <details>
+            <summary>I do not allow general public to use my panel.</summary>
+
+            This does not affect you.
+        </details>
+        <details>
+            <summary>Does none of the above apply to you?</summary>
+
+            Please reach out to us @ team@pelican.dev to discuss your s
+        </details>
+    </TabItem>
+    <TabItem label="Other" value="other">
+        <details>
+           <summary>Why announce now, without a release?</summary>
+
+            We wanted support and feedback from the community, so our releases in the future can be better.
+        </details>
+        <details>
+            <summary>Will there be "beef" between Pterodactyl & Pelican?</summary>
+
+            Short answer, No. We all left willingly after speaking with Matthew, we have a difference in opinion on where we wanted to take the project. 
+        </details>
+        <details>
+            <summary>Why Move away from Pterodactyl?</summary>
+
+            We moved away from Pterodactyl due to our own visions and directions that we want to pursue. 
+        </details>
+        <details>
+            <summary>Why can't these changes be part of Pterodactyl?</summary>
+
+            We moved away from Pterodactyl due to our own visions and directions that we want to pursue. 
+        </details>
+        <details>
+            <summary>Where can I submit issues, feature requests, ideas, etc?</summary>
+
+            They can be posted on our [Github Discussions](https://github.com/pelican-dev/panel/discussions)
+        </details>
+        <details>
+            <summary>Are automatic updates planned?</summary>
+
+            Yes. They would still require a button click.
+        </details>
+        <details>
+            <summary> Will WHMCS / Other billing solutions work? </summary>
+
+            Currently nothing breaking has been changed, locations have been moved to tags. But they should work without little to no change.
+        </details>
+        <details>
+            <summary> Will Podman / Kubernetes be supported? </summary>
+
+            We plan on supporting them, @parker
+        </details>
+    </TabItem>
+</Tabs>
