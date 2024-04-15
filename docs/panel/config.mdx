@@ -11,7 +11,7 @@ When changing Pelican's backup storage method, users may still download or delet
 By default, Pelican uses local storage via Wings for backups. That said, this method of backup storage can be explicitly set with the following configuration in the `.env` file:
 
 ```sh
-APP_BACKUP_DRIVER=daemons
+APP_BACKUP_DRIVER=daemon
 ```
 
 Please note that, when using local storage via Wings, the destination for backups is set in the Wings config file with the following setting key:
