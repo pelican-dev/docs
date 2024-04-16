@@ -60,7 +60,7 @@ const config: Config = {
         },  */
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/donate", label: "Donate", position: "left" },
-        { to: "https://news.pelican.dev/", label: "Subscribe", position: "left"},
+        { to: "https://news.pelican.dev/", label: "Newsletter", position: "left"},
         { to: "/faq", label: "FAQ", position: "left"},
         {
           href: "https://github.com/pelican-dev/",
