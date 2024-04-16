@@ -8,7 +8,7 @@ import Admonition from '@theme/Admonition';
 
 Here are some of the most asked questions that were asked in our Q&A stage on 4/12/2024, and our answers.
 
-**Last Updated: 2024-04-13**
+**Last Updated: 2024-04-15**
 
 <Admonition title="When is the beta?">
     We plan to have a beta released by May 1st! Stay tuned!  
@@ -18,56 +18,82 @@ Here are some of the most asked questions that were asked in our Q&A stage on 4/
 <Tabs groupId="faq" queryString>
     <TabItem label="Panel" value="panel">
         <details>
-            <summary>Will there be a way to migrate from Pterodactyl to Pelican?</summary>
+            <summary>Will my Eggs still be compatible?</summary>
 
-            Yes! We plan to have a migration that wouldn't cause dataloss, backups are encouraged.
+            Yes! We have a newer version of them planned, but the original ones will **always** work.
+        </details>
+        <details>
+            <summary>How can I migrate to Pelican?</summary>
+
+            You'll receive an easy guide to migrate from Pterodactyl to Pelican.
+            It will be at least as easy as upgrading was originally.
+        </details>
+        <details>
+            <summary>Are automatic updates planned?</summary>
+
+            Yes. And easier manual updates too.
+        </details>
+        <details>
+            <summary>Can I use the original API?</summary>
+
+            Yes, it'll be backwards compatible. Any new changes for the API will be put in a new and separated version.
+        </details>
+        <details>
+            <summary>Where can I submit bugs and pull requests?</summary>
+
+            They can be posted on our [Github](https://github.com/pelican-dev/panel)!
         </details>
         <details>
             <summary>Will Blueprint extensions work on Pelican?</summary>
 
-            [Blueprint](https://blueprint.zip) is **not** planning on adding compatibility for extensions to Pelican and will stick with Pterodactyl.
-
-            "My vision with Blueprint does not align with Pelican's. Blueprint also currently does not have the manpower to maintain compatibility towards multiple forks of Pterodactyl at the same time, especially with the namespace changes."
-
-            "Blueprint is meant to be an open-source standardization for Pterodactyl modifications that lives under the MIT license. Blueprint extensions work by utilizing handpicked extension APIs, which can't all make it into Pelican, nor will be easy to maintain for Pelican in the future. The framework is meant to be open towards anyone, and not involve one central provider for extension distribution. We would love to see what Pelican has in store for their community and their project, but it isn't something we can support nor maintain compatibility for."
+            No, you will not be able to use them with Pelican now or in the future.
+            The author of Blueprint unfortunately does not have the time to migrate them to Pelican.
         </details>
         <details>
-            <summary>Will Pterodactyl Eggs be compatible?</summary>
+            <summary>Will the front end match the new admin area?</summary>
 
-            Yes! We do plan on changing eggs from JSON to YAML in a future release, Meaning they might not be compatible with Pterodactyl if they're exported from Pelican.
+            Yes, we will get to it in the near future.
         </details>
         <details>
-            <summary>Will the API be the same as Pterodactyl?</summary>
+            <summary>Will WHMCS and other billing solutions still work?</summary>
 
-            Currently, Yes. The API has not changed, but might as features are added, and things are changed. 
-        </details>
-        <details>
-            <summary> Will the front end match the new admin area? </summary>
-
-            We do plan on making them match, the front end currently just works... We will look at it at a later date.
+            To our knowledge, almost all of these solutions use the Panel's API to function.
+            We will be supporting the same API, so everything should work the same.
         </details>
         </TabItem>
     <TabItem label="Wings" value="wings">
+        <details>
+            <summary>Are automatic updates planned?</summary>
+
+            Yes!
+        </details>
+        <details>
+            <summary>Where can I submit bugs and pull requests?</summary>
+
+            They can be posted on our [Github](https://github.com/pelican-dev/wings)!
+        </details>
         <details>
             <summary>Will Wings support plugins?</summary>
 
             At this time, No. But new features are being built into Wings and are on the way!
         </details>
         <details>
-            <summary>Will Pterodactyl Wings be compatible with Pelican Panel?</summary>
+            <summary>Will the original Wings still be compatible with Pelican?</summary>
 
-            At this time, Yes.  
-            Compatibility could change in the future, as features are added.
+            Yes, the original latest version of Wings will remain compatible with Pelican.
+            We are working on adding new features and improvements to Wings that will greatly improve your experience.
+        </details>
+        <details>
+            <summary>Will Podman / Kubernetes be supported?</summary>
+
+            Yes, we plan on supporting them in the near future.
         </details>
     </TabItem>
 
     <TabItem label="Licensing" value="licensing">
 
-    <Admonition type="warning" title="What does this mean?!?! Do I have to pay?!?!">
-        This change does not affect 97% of current users...  
-        - "I just use it for servers for my friends" - Does **not** apply to you
-        - "I just use it to host a few servers for my discord community" - Does **not** apply to you  
-        You can find more info about the AGPL 3.0 license [here](https://choosealicense.com/licenses/agpl-3.0/).
+    <Admonition type="warning" title="Does the new AGPL licensing affect me?">
+        Almost certainly not, but choose the first answer below that applies to you to easily find out!
     </Admonition>
 
         <details>
@@ -76,61 +102,56 @@ Here are some of the most asked questions that were asked in our Q&A stage on 4/
             This does not affect you.
         </details>
         <details>
-            <summary>I am not changing any of the sourcecode.</summary>
+            <summary>I am not modifying any of the Panel's sourcecode.</summary>
 
             This does not affect you.
         </details>
         <details>
-            <summary>I do not allow general public to use my panel.</summary>
+            <summary>I do not allow the general public or strangers to use my Panel.</summary>
 
             This does not affect you.
         </details>
         <details>
-            <summary>Does none of the above apply to you?</summary>
+            <summary>I am open sourcing all my modifications to Pelican Panel.</summary>
 
-            If you have a public facing panel with a modified sourcecode that isn't public you need the commercial licence. In that case please reach out to us at team@pelican.dev to discuss your options.
+            This does not affect you.
         </details>
+        <details>
+            <summary>I am creating, modifying, or using plugins (only) for Pelican Panel.</summary>
+
+            This does not affect you.
+        </details>
+        <Admonition type="success" title="None of the above applies to me!">
+            No problem! It's easy acquire a commercial license by becoming a sponsor, simply [click here](/donate)!
+            If you have any questions, please reach out to us: team@pelican.dev
+        </Admonition>
     </TabItem>
-    <TabItem label="Other" value="other">
+    <TabItem label="Project" value="project">
         <details>
-           <summary>Why announce now, without a release?</summary>
-
-            We wanted support and feedback from the community, so our releases in the future can be better.
-        </details>
-        <details>
-            <summary>Will there be "beef" between Pterodactyl & Pelican?</summary>
-
-            Short answer, No. We all left willingly after speaking with Matthew, we have a difference in opinion on where we wanted to take the project. 
-        </details>
-        <details>
-            <summary>Why Move away from Pterodactyl?</summary>
-
-            We moved away from Pterodactyl due to our own visions and directions that we want to pursue. 
-        </details>
-        <details>
-            <summary>Why can't these changes be part of Pterodactyl?</summary>
-
-            We moved away from Pterodactyl due to our own visions and directions that we want to pursue. 
-        </details>
-        <details>
-            <summary>Where can I submit issues, feature requests, ideas, etc?</summary>
+            <summary>Where can I submit feature requests and discuss new ideas?</summary>
 
             They can be posted on our [Github Discussions](https://github.com/pelican-dev/panel/discussions)
         </details>
         <details>
-            <summary>Are automatic updates planned?</summary>
+           <summary>Why announce Pelican without a release?</summary>
 
-            Yes. They would still require a button click.
+            It's not in the open source spirit to build an application in secret!
+            Support and feedback from the community is crucial to OSS, it helps make our releases much better.
         </details>
         <details>
-            <summary> Will WHMCS / Other billing solutions work? </summary>
+            <summary>Are there any hostilities with the previous project?</summary>
 
-            Currently nothing breaking has been changed, locations have been moved to tags. But they should work without little to no change.
+            Not at all. We also gave the previous team 2 months of advance notice.
         </details>
         <details>
-            <summary> Will Podman / Kubernetes be supported? </summary>
+            <summary>Why move away to make your own project?</summary>
 
-            We plan on supporting them, @parker
+            Difference of visions, directions, and opinions.
+        </details>
+        <details>
+            <summary>Couldn't these changes be part of Pterodactyl?</summary>
+
+            If they could, they would. But they can't, so they shan't.
         </details>
     </TabItem>
 </Tabs>
