@@ -15,28 +15,28 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Node Overview',
-    light: 'img/homepage/1l.png',
-    dark: 'img/homepage/1d.png'  },
+    light: 'img/homepage/ss/1l.png',
+    dark: 'img/homepage/ss/1d.png'  },
   {
     title: 'User Overview',
-    light: 'img/homepage/2l.png',
-    dark: 'img/homepage/2d.png'  },
+    light: 'img/homepage/ss/2l.png',
+    dark: 'img/homepage/ss/2d.png'  },
   {
     title: 'Create Node',
-    light: 'img/homepage/3l.png',
-    dark: 'img/homepage/3d.png'  },
+    light: 'img/homepage/ss/3l.png',
+    dark: 'img/homepage/ss/3d.png'  },
   {
     title: 'Editing an Egg',
-    light: 'img/homepage/4l.png',
-    dark: 'img/homepage/4d.png'  },
+    light: 'img/homepage/ss/4l.png',
+    dark: 'img/homepage/ss/4d.png'  },
   {
     title: 'Editing a Server',
-    light: 'img/homepage/5l.png',
-    dark: 'img/homepage/5d.png'  },
+    light: 'img/homepage/ss/5l.png',
+    dark: 'img/homepage/ss/5d.png'  },
   {
     title: 'Creating an API Key',
-    light: 'img/homepage/6l.png',
-    dark: 'img/homepage/6d.png'  },
+    light: 'img/homepage/ss/6l.png',
+    dark: 'img/homepage/ss/6d.png'  },
 ];
 
 function Feature({title, light, dark}: FeatureItem) {

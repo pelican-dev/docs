@@ -13,15 +13,15 @@ type SponsorItem = {
 const SponsorList: SponsorItem[] = [
   {
     sponsor: 'Vultric Hosting',
-    logo: 'https://vultrichosting.com/assets/img/logo.png',
+    logo: '/img/homepage/sponsor/vultric.png',
     url: 'https://vultrichosting.com',
     desc: ''
   },
 ];
 
 function Sponsor({sponsor, logo, url, desc}: SponsorItem) {
-  
-    return (
+
+  return (
       <div className={clsx('col col--12')}>
         <div className="text--center" style={{paddingBottom: '20px'}}>
           <a href={url}><img src={logo}/></a>
