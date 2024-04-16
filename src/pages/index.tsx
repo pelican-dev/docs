@@ -5,11 +5,12 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageWhy from '@site/src/components/HomepageFeatures/why';
 import HomepageWhat from '@site/src/components/HomepageFeatures/what';
+import HomepageLook from '@site/src/components/HomepageFeatures/look';
+import HomepageSponsors from '@site/src/components/HomepageFeatures/sponsors'
 import Heading from '@theme/Heading';
 import { Icon } from '@iconify/react/dist/iconify.js';
 
 import styles from './index.module.css';
-import HomepageLook from '../components/HomepageFeatures/look';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -52,6 +53,7 @@ export default function Home(): JSX.Element {
         <HomepageWhat />
         <HomepageWhy />
         <HomepageLook />
+        <HomepageSponsors />
       </main>
     </Layout>
   );
