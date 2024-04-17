@@ -14,11 +14,11 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Node Overview',
+    title: 'Homepage',
     light: 'img/homepage/ss/1l.png',
     dark: 'img/homepage/ss/1d.png'  },
   {
-    title: 'User Overview',
+    title: 'User List',
     light: 'img/homepage/ss/2l.png',
     dark: 'img/homepage/ss/2d.png'  },
   {
@@ -26,15 +26,15 @@ const FeatureList: FeatureItem[] = [
     light: 'img/homepage/ss/3l.png',
     dark: 'img/homepage/ss/3d.png'  },
   {
-    title: 'Editing an Egg',
+    title: 'Node List',
     light: 'img/homepage/ss/4l.png',
     dark: 'img/homepage/ss/4d.png'  },
   {
-    title: 'Editing a Server',
+    title: 'Create Server',
     light: 'img/homepage/ss/5l.png',
     dark: 'img/homepage/ss/5d.png'  },
   {
-    title: 'Creating an API Key',
+    title: 'Create API Key',
     light: 'img/homepage/ss/6l.png',
     dark: 'img/homepage/ss/6d.png'  },
 ];
