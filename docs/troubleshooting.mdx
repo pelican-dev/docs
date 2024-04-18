@@ -40,8 +40,9 @@ You can set the correct permissions by running `chmod -R 755 /var/www/pelican/st
 
 ### Some common errors
 
-* `ErrorException: file_put_contents: failed to open stream: Permission denied`: wrong file permissions/ ownership for the panel files
-* `Connection timed out after 5001 miliseconds for _____`: your panel can't reach wings - see the wings connections issues steps below
+* `ErrorException: file_put_contents(_____): failed to open stream: Permission denied`: Wrong file permissions/ ownership for the panel files, see above.
+* `Connection timed out after 5001 miliseconds for _______:8080`: Your panel can't reach wings, see the wings connections issues steps below.
+* `Connection refused [tcp://_______:6379]`: Redis isn't running or isn't reachable for some other reason. (start by checking the status of the redis service: `systemctl status redis-server`)
 
 ## Wings connection issues
 
@@ -49,6 +50,13 @@ You can set the correct permissions by running `chmod -R 755 /var/www/pelican/st
 
 First you should make sure that the wings service is running. To do that run `systemctl status wings`.  
 It should say that the service is active and running. If its in a failed state run `sudo wings diagnostics` to check the wings logs for errors.
+
+Some common error in the wings logs are:
+
+* `failed to configure HTTPS server auto_tls=false error=open /etc/letsencrypt/live/_____________/fullchain.pem: no such file or directory`: The SSL certificate for wings is missing, see [this guide](./guides/ssl) for creating a SSL certificate.
+* `TODO: wrong wings token error`: Your wings token is wrong, you need [update the token in your config.yml file](./wings/install#configure)
+* `failed to recieve server configurations: Error response from Panel: _MissingResponseCode: No error response returned from API endpoint. (HTTP/403)`: Your panel is not responding correctly. This usually happens when Cloudflare is blocking the connection. In that case make sure your wings ip is added to the Cloudflare firewall. If you aren't using Cloudflare it might be some other CDN/ DDoS protection service or your provider.
+* `TODO: could not unmarshal response`: This is basically the same error as above: Cloudflare is blocking the connection.
 
 ### Checking the wings port
 
