@@ -53,9 +53,15 @@ dependencies:
   docusaurus-plugin-sass:
     specifier: ^0.2.5
     version: 0.2.5(@docusaurus/core@3.2.1)(sass@1.74.1)(webpack@5.91.0)
+  dotenv:
+    specifier: ^16.4.5
+    version: 16.4.5
   lunr:
     specifier: ^2.3.9
     version: 2.3.9
+  posthog-docusaurus:
+    specifier: ^2.0.0
+    version: 2.0.0
   prism-react-renderer:
     specifier: ^2.3.0
     version: 2.3.1(react@18.2.0)
@@ -5238,6 +5244,11 @@ packages:
       is-obj: 2.0.0
     dev: false
 
+  /dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
+    dev: false
+
   /duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
     dev: false
@@ -8962,6 +8973,11 @@ packages:
       nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.2.0
+
+  /posthog-docusaurus@2.0.0:
+    resolution: {integrity: sha512-nDSTIhmH/Fexv347Gx6wBCE97Z+fZTj0p/gqVYAaolMwSdVuzwyFWcFA+aW9uzA5Y5hjzRwwKJJOrIv8smkYkA==}
+    engines: {node: '>=10.15.1'}
+    dev: false
 
   /pretty-error@4.0.0:
     resolution: {integrity: sha512-AoJ5YMAcXKYxKhuJGdcvse+Voc6v1RgnsR3nWcYU7q4t6z0Q6T86sv5Zq8VIRbOWWFpvdGE83LtdSMNd+6Y0xw==}
