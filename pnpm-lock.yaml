@@ -47,15 +47,9 @@ dependencies:
   docusaurus-lunr-search:
     specifier: ^3.3.2
     version: 3.3.2(@docusaurus/core@3.2.1)(react-dom@18.2.0)(react@18.2.0)
-  docusaurus-plugin-matomo:
-    specifier: ^0.0.8
-    version: 0.0.8(@docusaurus/core@3.2.1)
   docusaurus-plugin-sass:
     specifier: ^0.2.5
     version: 0.2.5(@docusaurus/core@3.2.1)(sass@1.74.1)(webpack@5.91.0)
-  dotenv:
-    specifier: ^16.4.5
-    version: 16.4.5
   lunr:
     specifier: ^2.3.9
     version: 2.3.9
@@ -5138,15 +5132,6 @@ packages:
       unist-util-is: 4.1.0
     dev: false
 
-  /docusaurus-plugin-matomo@0.0.8(@docusaurus/core@3.2.1):
-    resolution: {integrity: sha512-YSaDdjxI7uN1FuNLSGrQy4BmDEXwwyL6vac7GfmS7wFBLck/Ias5jHqENPBHXe36m2cYzyesGPQL1EsS9vanwA==}
-    engines: {node: '>=12.13.0'}
-    peerDependencies:
-      '@docusaurus/core': ^2.0.0-alpha.56 || ^3.0.0
-    dependencies:
-      '@docusaurus/core': 3.2.1(@docusaurus/types@3.2.1)(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
-    dev: false
-
   /docusaurus-plugin-sass@0.2.5(@docusaurus/core@3.2.1)(sass@1.74.1)(webpack@5.91.0):
     resolution: {integrity: sha512-Z+D0fLFUKcFpM+bqSUmqKIU+vO+YF1xoEQh5hoFreg2eMf722+siwXDD+sqtwU8E4MvVpuvsQfaHwODNlxJAEg==}
     peerDependencies:
@@ -5242,11 +5227,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       is-obj: 2.0.0
-    dev: false
-
-  /dotenv@16.4.5:
-    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
-    engines: {node: '>=12'}
     dev: false
 
   /duplexer@0.1.2:

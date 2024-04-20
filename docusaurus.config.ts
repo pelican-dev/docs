@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
@@ -41,12 +40,6 @@ const config: Config = {
     ],
   ],
   themeConfig: {
-    matomo: {
-      matomoUrl: "https://track.areyouscared.dev/",
-      siteId: "1",
-      phpLoader: "matomo.php",
-      jsLoader: "matomo.js",
-    },
     navbar: {
       title: "Pelican",
       logo: {
@@ -146,13 +139,12 @@ const config: Config = {
   plugins: [
     //require.resolve('docusaurus-lunr-search'),
     "docusaurus-plugin-sass",
-    "docusaurus-plugin-matomo",
     [
       "posthog-docusaurus",
       {
-        apiKey: process.env.POSTHOG_API_KEY,
-        appUrl: process.env.POSTHOG_HOST,
-        enableInDevelopment: process.env.POSTHOG_DEV,
+        apiKey: "phc_jFc0yrQBPn7T3u4LMXZbOVytUD3tGMxhbOdrooeuR9g",
+        appUrl: "https://app.posthog.com",
+        enableInDevelopment: "false",
       },
     ],
     tailwindPlugin,
