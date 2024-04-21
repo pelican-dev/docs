@@ -17,6 +17,12 @@ const SponsorList: SponsorItem[] = [
     url: 'https://vultrichosting.com',
     desc: ''
   },
+  {
+    sponsor: 'Surf Hosting',
+    logo: '/img/homepage/sponsor/surfhosting.png',
+    url: 'https://surfhosting.co',
+    desc: '',
+  },
 ];
 
 function Sponsor({sponsor, logo, url, desc}: SponsorItem) {
@@ -35,7 +41,7 @@ export default function HomepageSponsor(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
-      <h1 style={{textAlign: 'center'}}>Pelican Sponsors</h1>
+      <h1 style={{textAlign: 'center', fontSize: '250%'}}>Project Sponsors</h1>
         <div className="row">
           {SponsorList.map((props, idx) => (
             <Sponsor key={idx} {...props} />
