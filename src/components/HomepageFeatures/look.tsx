@@ -41,11 +41,18 @@ const FeatureList: FeatureItem[] = [
 
 function Feature({title, light, dark}: FeatureItem) {
   const {colorMode} = useColorMode();
+  let image: string;
+
+  if (colorMode === 'dark') {
+    image = dark;
+  } else {
+    image = light;
+  }
   
     return (
       <div className={clsx('col col--4')}>
         <div className="text--center" style={{paddingBottom: '20px'}}>
-          <Zoom><img src={colorMode == 'dark' ? dark : light}/></Zoom>
+          <Zoom><img src={image}/></Zoom>
           <Heading as="h3">{title}</Heading>
         </div>
       </div>
