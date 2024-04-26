@@ -20,7 +20,7 @@ const SponsorList: SponsorItem[] = [
   {
     sponsor: 'Surf Hosting',
     logo: '/img/homepage/sponsor/surfhosting.png',
-    url: 'https://surfhosting.co',
+    url: 'https://billing.surfhosting.co/link.php?id=1',
     desc: '',
   },
 ];
