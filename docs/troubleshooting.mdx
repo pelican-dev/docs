@@ -2,13 +2,11 @@
 id: troubleshooting
 ---
 
+import Admonition from '@theme/Admonition';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Troubleshooting
-
-<Admonition type="info">
-    Not sure what a specific error means?  
-    Visit our [Discord](https://discord.gg/pelican-panel) and we will be happy to help you!
-</Admonition>
-
 ## "500 | SERVER ERROR" on Panel
 
 Check your panel logs for errors by running the following command.
@@ -64,22 +62,28 @@ Some common errors in the wings logs are:
 If you confirmed that wings is running without errors you should make sure that the wings port (`8080` by default) isn't blocked by any firewall. The best way to check this is to use online port checkers like [dnschecker.org](https://dnschecker.org/port-scanner.php)  
 It should say "open" if you check for your node FQDN (e.g. `node.example.com` or `123.123.123.123`) and your wings port (e.g. `8080`). If it says "timed-out" you have some firewall blocking the port. This could be an internal firewall (like iptables) or an external firewall (e.g. from your provider).
 
-### Check for NAT loopback
+### Check for NAT loop back
 
-If your panel and wings are on the same machine or same network and you are using domains you should check for NAT loopback issues.  
+If your panel and wings are on the same machine or same network, and you are using domains you should check for NAT loop back issues.
 Edit the `/etc/hosts` file on your panel/ wings machine and add an entry for your ip and domain.
 
 ### Checking the wings connection
 
 If you confirmed the above two points you have to do some advanced troubleshooting.
 
-Check if your panel and your browser can connect to wings.  
-* **For the Panel <-> Wings connection:**  
+Check if your panel and your browser can connect to wings.
+
+#### **Panel \<-> Wings connection:**
 run `curl <protocol><node fqdn>:<node port>` (e.g. `curl https://node.example.com:8080` or `curl http://123.123.123.123:8080`) on your panel machine and see what it outputs.
-* **For the Browser <-> Wings connection:**  
+
+#### **Browser \<-> Wings connection:**
 open `<protocol><node fqdn>:<node port>` (e.g. `https://node.example.com:8080` or `http://123.123.123.123:8080`) in your browser and see what it outputs.
 
-If the connection was successful it should output something like this:
+If the connection was successful it should output:
 ```
-{"error":"The required authorization heads were not present in the request."}
+{"error" : "The required authorization heads were not present in the request."}
 ```
+<Admonition type="info">
+    Not sure what a specific error means?
+    Visit our [Discord](https://discord.gg/pelican-panel) and we will be happy to help you!
+</Admonition>
