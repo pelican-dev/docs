@@ -57,6 +57,10 @@
   text-align: center;
 }
 
+.main-wrapper {
+    min-height: calc(100vh - 60px);
+}
+
 html[data-theme='dark'] .github-link {
   align-items: center;
   display: flex;
