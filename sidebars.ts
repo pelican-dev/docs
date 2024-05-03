@@ -42,6 +42,7 @@ const sidebars: SidebarsConfig = {
       label: 'Guides',
       items: ['guides/mounts', 'guides/ssl'],
     },
+    'troubleshooting',
     'glossary'
   ],
 };
