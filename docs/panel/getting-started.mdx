@@ -41,8 +41,8 @@ Pelican runs on a wide range of operating systems, so pick whichever you are mos
     ```
 </Admonition>
 
-* PHP `8.2` with the following extensions: `gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl` and `fpm`
-* MySQL `8` (`mysql-server`) **or** MariaDB `10.2`+
+* PHP `8.2` with the following extensions: `gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl`, `sqlite3` and `fpm`
+* `sqlite3` **or** MySQL `8` (`mysql-server`)
 * A webserver (Apache, NGINX, Caddy, etc.)
 * `curl`
 * `tar`
@@ -87,44 +87,6 @@ composer install --no-dev --optimize-autoloader
     php artisan key:generate --force
     ```
 </Admonition>
-
-### Database Setup
-
-You will need a database and a user with the correct permissions created for that database before continuing any further. 
-
-#### Logging Into MySQL
-The first step in this process is to login to the MySQL command line where we will be executing statements to get
-things setup. To do so, simply run the command below and provide the Root MySQL account's password that you setup when
-installing MySQL. If you do not remember doing this, chances are you can just hit enter as no password is set.
-
-```sh
-mysql -u root -p
-```
-
-#### Creating MySQL User
-Next, we will create a user called `pelican` and allow logins from localhost which prevents any external connections
-to our database. You can also use `%` as a wildcard or enter a numeric IP. We will also set the account password
-to `somePassword`.
-
-```sql
-CREATE USER 'pelican'@'127.0.0.1' IDENTIFIED BY 'somePassword';
-```
-
-#### Creating Database
-Next, we need to create a database for the panel. In this tutorial we will be naming the database `panel`, but you can
-substitute that for whatever name you wish.
-
-```sql
-CREATE DATABASE panel;
-```
-
-#### Assigning Permissions
-Finally, we need to tell MySQL that our pelican user should have access to the panel database. To do this, simply
-run the command below.
-
-```sql
-GRANT ALL PRIVILEGES ON panel.* TO 'pelican'@'127.0.0.1';
-```
 
 ### Environment Configuration
 
