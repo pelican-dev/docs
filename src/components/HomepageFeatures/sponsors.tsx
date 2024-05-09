@@ -23,12 +23,18 @@ const SponsorList: SponsorItem[] = [
     url: 'https://billing.surfhosting.co/link.php?id=1',
     desc: '',
   },
+  {
+    sponsor: 'Aussie Server Hosts',
+    logo: '/img/homepage/sponsor/ash.png',
+    url: 'https://aussieserverhosts.com/',
+    desc: '',
+  },
 ];
 
 function Sponsor({sponsor, logo, url, desc}: SponsorItem) {
 
   return (
-      <div className={clsx('col col--12')}>
+      <div className={clsx('col col--4')}>
         <div className="text--center" style={{paddingBottom: '20px'}}>
           <a href={url}><img src={logo}/></a>
         </div>
