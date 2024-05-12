@@ -24,7 +24,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/pelican-dev/docs/",
+          editUrl: "https://github.com/pelican-dev/docs/blob/main/",
           remarkPlugins: [remarkgfm],
         },
         blog: {
