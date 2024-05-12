@@ -4,7 +4,7 @@ on:
   workflow_call:
   push:
     branches:
-      - 'dinodoc'
+      - 'main'
 
 jobs:
   deploy:
