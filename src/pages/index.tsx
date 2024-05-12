@@ -23,9 +23,9 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--md disabled"
-            to="/" style={{ fontSize: '26px' }}
-          >Coming Soon!</Link>
+            className="button button--secondary button--md"
+            to="/docs/panel/getting-started" style={{ fontSize: '26px' }}
+          >Install Pelican</Link>
           <Link
             style={{ paddingTop: '10px', margin: '15px' }}
             className="button button--secondary button--sm"
