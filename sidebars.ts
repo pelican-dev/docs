@@ -20,6 +20,14 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'panel/getting-started',
+        {
+          type: 'category',
+          label: 'Dependency',
+          items: [
+              'panel/dependency/debian',
+              'panel/dependency/ubuntu'
+          ]
+        },
         'panel/webserver-config',
         'panel/config',
         'panel/update',
