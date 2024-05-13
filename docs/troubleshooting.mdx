@@ -7,9 +7,9 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Troubleshooting
-## "500 | SERVER ERROR" on Panel
+## Panel errors
 
-Check your panel logs for errors by running the following command.
+If you see a `500 | SERVER ERROR` or `An unexpected error was encountered while processing this request` you have to check your panel logs by running the following command.
 
 ```sh
 tail -n 100 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(date +%Y)"
@@ -42,10 +42,12 @@ You can set the correct permissions by running `chmod -R 755 /var/www/pelican/st
 * `Connection timed out after 5001 miliseconds for _______:8080`: Your panel can't reach wings, see the wings connection issues steps below.
 * `Connection refused [tcp://_______:6379]`: Redis isn't running or isn't reachable for some other reason. (start by checking the status of the redis service: `systemctl status redis-server`)
 * `SSL: no alternative certificate subject name matches target host name '_______'`: The used SSL certificate for your panel isn't valid for your panel domain, see [this guide](./guides/ssl) for creating a new SSL certificate.
+* `General error: 8 attempt to write a readonly database`: Your `database.sqlite` has wrong file permissions and is readonly. Make sure the file is writeable and owned by the correct user.
+* `Class '_____' not found`: This usually means you are missing php extensions. Make sure [all needed extensions](./panel/getting-started#dependencies) are installed and that you are using the correct php version.
 
 ## Wings connection issues
 
-### Checking the wings service
+### Check the wings service
 
 First you should make sure that the wings service is running. To do that run `systemctl status wings`.  
 It should say that the service is active and running. If its in a failed state run `sudo wings diagnostics` to check the wings logs for errors.
@@ -57,7 +59,7 @@ Some common errors in the wings logs are:
 * `Error response from Panel: _MissingResponseCode: No error response returned from API endpoint`: Your panel is not responding correctly. This usually happens when Cloudflare is blocking the connection. In that case make sure your wings ip is added to the Cloudflare firewall. If you aren't using Cloudflare it might be some other CDN/ DDoS protection service or your provider.
 * `remote: could not unmarshal response: invalid character '<' looking for beginning of value`: This is basically the same error as above: Cloudflare is blocking the connection.
 
-### Checking the wings port
+### Check the wings port
 
 If you confirmed that wings is running without errors you should make sure that the wings port (`8080` by default) isn't blocked by any firewall. The best way to check this is to use online port checkers like [dnschecker.org](https://dnschecker.org/port-scanner.php)  
 It should say "open" if you check for your node FQDN (e.g. `node.example.com` or `123.123.123.123`) and your wings port (e.g. `8080`). If it says "timed-out" you have some firewall blocking the port. This could be an internal firewall (like iptables) or an external firewall (e.g. from your provider).
@@ -67,19 +69,27 @@ It should say "open" if you check for your node FQDN (e.g. `node.example.com` or
 If your panel and wings are on the same machine or same network, and you are using domains you should check for NAT loop back issues.
 Edit the `/etc/hosts` file on your panel/ wings machine and add an entry for your ip and domain.
 
-### Checking the wings connection
+Example:
 
-If you confirmed the above two points you have to do some advanced troubleshooting.
+```txt title="/etc/hosts"
+123.123.123.123 panel.example.com node.example.com
+```
+
+### Check the wings connection
+
+If you confirmed the above points you have to do some advanced troubleshooting.
 
 Check if your panel and your browser can connect to wings.
 
-#### **Panel \<-> Wings connection:**
-run `curl <protocol><node fqdn>:<node port>` (e.g. `curl https://node.example.com:8080` or `curl http://123.123.123.123:8080`) on your panel machine and see what it outputs.
+#### Panel \<-> Wings connection
 
-#### **Browser \<-> Wings connection:**
-open `<protocol><node fqdn>:<node port>` (e.g. `https://node.example.com:8080` or `http://123.123.123.123:8080`) in your browser and see what it outputs.
+Run `curl <protocol><node fqdn>:<node port>` (e.g. `curl https://node.example.com:8080` or `curl http://123.123.123.123:8080`) on your panel machine and see what it outputs.
 
-If the connection was successful it should output:
+#### Browser \<-> Wings connection
+
+Open `<protocol><node fqdn>:<node port>` (e.g. `https://node.example.com:8080` or `http://123.123.123.123:8080`) in your browser and see what it outputs.
+
+In both cases it should output this when wings is reachable:
 ```
 {"error" : "The required authorization heads were not present in the request."}
 ```
