@@ -41,7 +41,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Guides',
-      items: ['guides/mounts', 'guides/ssl'],
+      items: ['guides/mounts', 'guides/ssl', 'guides/php-upgrade'],
     },
     'troubleshooting',
     'glossary'
