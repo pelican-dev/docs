@@ -97,6 +97,10 @@ will cover setting up things such as sessions, caching, database credentials, an
 
 Running `php artisan p:environment:setup` will, if it does not exist, auto create the required `.env` file and generate a `APP_KEY`.
 
+<Admonition type="info">
+    Make sure to read the [MySQL guide](./advanced/mysql) first if you want to use MySQL instead of SQLite!
+</Admonition>
+
 ```sh
 php artisan p:environment:setup
 php artisan p:environment:database
