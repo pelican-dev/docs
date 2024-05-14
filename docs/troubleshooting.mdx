@@ -9,8 +9,9 @@ import TabItem from '@theme/TabItem';
 # Troubleshooting
 ## Panel errors
 
-If you see a `500 | SERVER ERROR` or `An unexpected error was encountered while processing this request` you have to check your panel logs by running the following command.
-
+* `502 Bad Gateway Error` or some code in plain text you either didn't install php-fpm or set the wrong version in your webserver vhost.
+* `500 | SERVER ERROR` or `An unexpected error was encountered while processing this request` you have to check your panel logs by running the following command.
+* `CSRF token mismatch` you are most likely using HTTP instead of HTTPS in `APP_URL` or you didn't force `SESSION_SECURE_COOKIE` to false while using HTTP.
 ```sh
 tail -n 100 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(date +%Y)"
 ```
@@ -18,20 +19,20 @@ tail -n 100 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(da
 If the command above doesn't return anything you most likely have wrong permissions for your `storage` folder. So you first need to fix that.  
 You can set the correct permissions by running `chmod -R 755 /var/www/pelican/storage/* /var/www/pelican/bootstrap/cache/`. Also make sure that your panel files are owned by the correct user.
 
-<Tabs>
+<Tabs groupId="webserver">
     <TabItem value='NGINX/Apache'>
         ```sh
-        chown -R www-data:www-data /var/www/pelican/* 
+        chown -R www-data:www-data /var/www/pelican 
         ```
     </TabItem>
     <TabItem value='Rocky Linux NGINX'>
         ```sh 
-        chown -R nginx:nginx /var/www/pelican/* 
+        chown -R nginx:nginx /var/www/pelican 
         ```
     </TabItem>
     <TabItem value='Rocky Linux Apache'>
         ```sh 
-        chown -R apache:apache /var/www/pelican/* 
+        chown -R apache:apache /var/www/pelican 
         ```
     </TabItem>
 </Tabs>
@@ -55,6 +56,7 @@ It should say that the service is active and running. If its in a failed state r
 Some common errors in the wings logs are:
 
 * `open /etc/letsencrypt/live/_____________/fullchain.pem: no such file or directory`: The SSL certificate for wings is missing, see [this guide](./guides/ssl) for creating a SSL certificate.
+* `response from daemon: Pool overlaps with other one on this address space` : You already have a docker network using the 172.18.0.0/16 subnet please edit your config file or remove it.
 * `Error response from Panel: AccessDeniedHttpException: You are not authorized to access this resource. (HTTP/403)`: Your wings token is wrong, you need [update the token in your config.yml file](./wings/install#configure)
 * `Error response from Panel: _MissingResponseCode: No error response returned from API endpoint`: Your panel is not responding correctly. This usually happens when Cloudflare is blocking the connection. In that case make sure your wings ip is added to the Cloudflare firewall. If you aren't using Cloudflare it might be some other CDN/ DDoS protection service or your provider.
 * `remote: could not unmarshal response: invalid character '<' looking for beginning of value`: This is basically the same error as above: Cloudflare is blocking the connection.
