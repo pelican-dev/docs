@@ -16,6 +16,8 @@ import TabItem from '@theme/TabItem';
 tail -n 100 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(date +%Y)"
 ```
 
+If it returns `The MAC is invalid` make sure that your `APP_KEY` matchs your database, if its a clean install just clear it then re run `php artisan p:environment:setup`
+
 If the command above doesn't return anything you most likely have wrong permissions for your `storage` folder. So you first need to fix that.  
 You can set the correct permissions by running `chmod -R 755 /var/www/pelican/storage/* /var/www/pelican/bootstrap/cache/`. Also make sure that your panel files are owned by the correct user.
 
