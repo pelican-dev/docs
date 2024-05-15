@@ -58,7 +58,7 @@ It should say that the service is active and running. If its in a failed state r
 Some common errors in the wings logs are:
 
 * `open /etc/letsencrypt/live/_____________/fullchain.pem: no such file or directory`: The SSL certificate for wings is missing, see [this guide](./guides/ssl) for creating a SSL certificate.
-* `response from daemon: Pool overlaps with other one on this address space` : You already have a docker network using the 172.18.0.0/16 subnet please edit your config file or remove it.
+* `Pool overlaps with other one on this address space`: You already have a docker network using the default subnet. (`172.18.0.0/16`) Change the subnet in your wings config file and use `systemctl stop wings && docker network rm pelican_nw && systemctl start wings` to apply the change.
 * `Error response from Panel: AccessDeniedHttpException: You are not authorized to access this resource. (HTTP/403)`: Your wings token is wrong, you need [update the token in your config.yml file](./wings/install#configure)
 * `Error response from Panel: _MissingResponseCode: No error response returned from API endpoint`: Your panel is not responding correctly. This usually happens when Cloudflare is blocking the connection. In that case make sure your wings ip is added to the Cloudflare firewall. If you aren't using Cloudflare it might be some other CDN/ DDoS protection service or your provider.
 * `remote: could not unmarshal response: invalid character '<' looking for beginning of value`: This is basically the same error as above: Cloudflare is blocking the connection.
