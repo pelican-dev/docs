@@ -33,6 +33,9 @@ Run the following commands and choose `redis` for the drivers you want. For all 
 ```sh
 cd /var/www/pelican
 php artisan p:environment:setup
+
+# Clear config cache
+php artisan config:clear
 ```
 
 ### Update Queue Listener
