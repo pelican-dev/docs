@@ -4,14 +4,25 @@ import Admonition from '@theme/Admonition';
 
 ## Install Redis
 
+To install Redis you first need add their repository.
+
 ```sh
 # Add Redis official APT repository
 curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+```
 
+Now you can install Redis by simply running the following commands.
+
+```sh
 apt update -y
-
 apt install -y redis-server
+```
+
+Also make sure to enable that redis will start on boot. You can do that by running the following command:
+
+```sh
+sudo systemctl enable --now redis-server
 ```
 
 ## Setup Pelican for Redis
@@ -27,7 +38,9 @@ php artisan p:environment:setup
 
 ### Update Queue Listener
 
-Edit the queue worker file `pelican.service` in `/etc/systemd/system` and uncomment the `After=` line.
+Next, you need to edit the queue worker file `pelican.service` in `/etc/systemd/system` to make sure the queue worker starts after redis.
+
+The line you need to add is highlighted below.
 
 ```ini {6} title="/etc/systemd/system/pelican.service"
 # Pelican Queue File
@@ -43,7 +56,7 @@ After=redis-server.service
 User=www-data
 Group=www-data
 Restart=always
-ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --sleep=1 --tries=3
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
 StartLimitInterval=180
 StartLimitBurst=30
 RestartSec=5s
@@ -60,12 +73,4 @@ Restart the queue worker service after editing the file.
 
 ```sh
 sudo systemctl restart pelican
-```
-
-## Enable Redis on boot
-
-Finally, make sure to enable that redis will start on boot. You can do that by running the following command:
-
-```sh
-sudo systemctl enable --now redis-server
 ```
