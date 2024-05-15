@@ -153,14 +153,12 @@ for sending emails and handling many other background tasks.
 
 Create a file called `pelican.service` in `/etc/systemd/system` with the contents below.
 
-```ini {12,13} title="/etc/systemd/system/pelican.service"
+```ini {10,11} title="/etc/systemd/system/pelican.service"
 # Pelican Queue File
 # ----------------------------------
 
 [Unit]
 Description=Pelican Queue Service
-# Uncomment this line if you are using redis
-#After=redis-server.service
 
 [Service]
 # On some systems the user and group might be different.
@@ -168,7 +166,7 @@ Description=Pelican Queue Service
 User=www-data
 Group=www-data
 Restart=always
-ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --sleep=1 --tries=3
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
 StartLimitInterval=180
 StartLimitBurst=30
 RestartSec=5s
