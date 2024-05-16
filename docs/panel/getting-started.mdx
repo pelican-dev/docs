@@ -140,7 +140,27 @@ php artisan p:user:make
 ### Crontab Configuration
 
 We need to create a new cronjob that runs every minute to process specific tasks, such as session cleanup and scheduled tasks.
-You'll want to open your crontab using `sudo crontab -e` and then paste the line below.
+You'll want to open your crontab.
+
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache'>
+        ```sh
+        sudo crontab -e -u www-data
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```sh 
+        sudo crontab -e -u nginx
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```sh 
+        sudo crontab -e -u apache
+        ```
+    </TabItem>
+</Tabs>
+
+And then paste the line below.
 
 ```sh
 * * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
@@ -151,20 +171,20 @@ You'll want to open your crontab using `sudo crontab -e` and then paste the line
 The last step in the installation process is to set the correct permissions on the Panel files so that the webserver can
 use them correctly.
 
-<Tabs>
+<Tabs groupId="webserver">
     <TabItem value='NGINX/Apache'>
         ```sh
-        chown -R www-data:www-data /var/www/pelican/* 
+        chown -R www-data:www-data /var/www/pelican 
         ```
     </TabItem>
     <TabItem value='Rocky Linux NGINX'>
         ```sh 
-        chown -R nginx:nginx /var/www/pelican/* 
+        chown -R nginx:nginx /var/www/pelican 
         ```
     </TabItem>
     <TabItem value='Rocky Linux Apache'>
         ```sh 
-        chown -R apache:apache /var/www/pelican/* 
+        chown -R apache:apache /var/www/pelican 
         ```
     </TabItem>
 </Tabs>
