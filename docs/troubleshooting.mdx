@@ -9,8 +9,6 @@ import TabItem from '@theme/TabItem';
 # Troubleshooting
 ## Panel errors
 
-If you see a `500 | SERVER ERROR` or `An unexpected error was encountered while processing this request` you have to check your panel logs by running the following command.
-
 ```sh
 tail -n 100 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(date +%Y)"
 ```
@@ -18,26 +16,30 @@ tail -n 100 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(da
 If the command above doesn't return anything you most likely have wrong permissions for your `storage` folder. So you first need to fix that.  
 You can set the correct permissions by running `chmod -R 755 /var/www/pelican/storage/* /var/www/pelican/bootstrap/cache/`. Also make sure that your panel files are owned by the correct user.
 
-<Tabs>
+<Tabs groupId="webserver">
     <TabItem value='NGINX/Apache'>
         ```sh
-        chown -R www-data:www-data /var/www/pelican/* 
+        chown -R www-data:www-data /var/www/pelican 
         ```
     </TabItem>
     <TabItem value='Rocky Linux NGINX'>
         ```sh 
-        chown -R nginx:nginx /var/www/pelican/* 
+        chown -R nginx:nginx /var/www/pelican 
         ```
     </TabItem>
     <TabItem value='Rocky Linux Apache'>
         ```sh 
-        chown -R apache:apache /var/www/pelican/* 
+        chown -R apache:apache /var/www/pelican 
         ```
     </TabItem>
 </Tabs>
 
 ### Some common errors
 
+* `500 | SERVER ERROR` or `An unexpected error was encountered while processing this request` you have to check your panel logs by running the following command.
+* `502 Bad Gateway Error` or some code in plain text you either didn't install php-fpm or set the wrong version in your webserver vhost.
+* `CSRF token mismatch` you are most likely using HTTP instead of HTTPS in `APP_URL` or you didn't force `SESSION_SECURE_COOKIE` to false while using HTTP.
+* `The MAC is invalid` make sure that your `APP_KEY` matchs your database, if its a clean install just clear it then re run `php artisan p:environment:setup`
 * `ErrorException: file_put_contents(_____): failed to open stream: Permission denied`: Wrong file permissions/ ownership for the panel files, see above.
 * `Connection timed out after 5001 miliseconds for _______:8080`: Your panel can't reach wings, see the wings connection issues steps below.
 * `Connection refused [tcp://_______:6379]`: Redis isn't running or isn't reachable for some other reason. (start by checking the status of the redis service: `systemctl status redis-server`)
@@ -55,6 +57,7 @@ It should say that the service is active and running. If its in a failed state r
 Some common errors in the wings logs are:
 
 * `open /etc/letsencrypt/live/_____________/fullchain.pem: no such file or directory`: The SSL certificate for wings is missing, see [this guide](./guides/ssl) for creating a SSL certificate.
+* `Pool overlaps with other one on this address space`: You already have a docker network using the default subnet. (`172.18.0.0/16`) Change the subnet in your wings config file and use `systemctl stop wings && docker network rm pelican_nw && systemctl start wings` to apply the change.
 * `Error response from Panel: AccessDeniedHttpException: You are not authorized to access this resource. (HTTP/403)`: Your wings token is wrong, you need [update the token in your config.yml file](./wings/install#configure)
 * `Error response from Panel: _MissingResponseCode: No error response returned from API endpoint`: Your panel is not responding correctly. This usually happens when Cloudflare is blocking the connection. In that case make sure your wings ip is added to the Cloudflare firewall. If you aren't using Cloudflare it might be some other CDN/ DDoS protection service or your provider.
 * `remote: could not unmarshal response: invalid character '<' looking for beginning of value`: This is basically the same error as above: Cloudflare is blocking the connection.
