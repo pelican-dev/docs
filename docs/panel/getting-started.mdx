@@ -16,10 +16,10 @@ so please take some time to read through them before asking for help on the foru
 
 ### Picking an Operating System (OS)
 
-Pelican runs on a wide range of operating systems, so pick whichever you are most comfortable using. Note: Other OS's, not listed below, might still work. 
+Pelican runs on a wide range of operating systems, so pick whichever you are most comfortable using. Note: Other OS's, not listed below, might still work.
 
 <Admonition type="warning">
-    OpenVZ, **unless specifically configured**, will **not** work with Pelican.  
+    OpenVZ, **unless specifically configured**, will **not** work with Pelican.
 </Admonition>
 
 | Operating System | Version | Supported | Notes                                                                 |
@@ -117,7 +117,7 @@ php artisan p:environment:mail
     Store it somewhere safe - not just on your server. If you lose it all encrypted data is irrecoverable -- **even if you have database backups.**
 </Admonition>
 
-### Database Initialization 
+### Database Initialization
 
 Now we need to set up database for the Panel that you created before.
 **The command below may take some time to run depending on your machine.
@@ -149,12 +149,12 @@ You'll want to open your crontab.
         ```
     </TabItem>
     <TabItem value='Rocky Linux NGINX'>
-        ```sh 
+        ```sh
         sudo crontab -e -u nginx
         ```
     </TabItem>
     <TabItem value='Rocky Linux Apache'>
-        ```sh 
+        ```sh
         sudo crontab -e -u apache
         ```
     </TabItem>
@@ -166,41 +166,6 @@ And then paste the line below.
 * * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
 ```
 
-### Creating Queue Worker
-
-Next you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible
-for sending emails and handling many other background tasks.
-
-Create a file called `pelican.service` in `/etc/systemd/system` with the contents below.
-
-```ini {10,11} title="/etc/systemd/system/pelican.service"
-# Pelican Queue File
-# ----------------------------------
-
-[Unit]
-Description=Pelican Queue Service
-
-[Service]
-# On some systems the user and group might be different.
-# Some systems use `apache` or `nginx` as the user and group.
-User=www-data
-Group=www-data
-Restart=always
-ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
-StartLimitInterval=180
-StartLimitBurst=30
-RestartSec=5s
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Finally, enable the service and set it to boot on machine start.
-
-```sh
-sudo systemctl enable --now pelican.service
-```
-
 ### Setting Permissions
 
 The last step in the installation process is to set the correct permissions on the Panel files so that the webserver can
@@ -209,17 +174,17 @@ use them correctly.
 <Tabs groupId="webserver">
     <TabItem value='NGINX/Apache'>
         ```sh
-        chown -R www-data:www-data /var/www/pelican 
+        chown -R www-data:www-data /var/www/pelican
         ```
     </TabItem>
     <TabItem value='Rocky Linux NGINX'>
-        ```sh 
-        chown -R nginx:nginx /var/www/pelican 
+        ```sh
+        chown -R nginx:nginx /var/www/pelican
         ```
     </TabItem>
     <TabItem value='Rocky Linux Apache'>
-        ```sh 
-        chown -R apache:apache /var/www/pelican 
+        ```sh
+        chown -R apache:apache /var/www/pelican
         ```
     </TabItem>
 </Tabs>
