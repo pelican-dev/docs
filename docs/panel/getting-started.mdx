@@ -166,6 +166,41 @@ And then paste the line below.
 * * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
 ```
 
+### Creating Queue Worker
+
+Next you need to create a new systemd worker to keep our queue process running in the background. This queue is responsible
+for sending emails and handling many other background tasks.
+
+Create a file called `pelican.service` in `/etc/systemd/system` with the contents below.
+
+```ini {10,11} title="/etc/systemd/system/pelican.service"
+# Pelican Queue File
+# ----------------------------------
+
+[Unit]
+Description=Pelican Queue Service
+
+[Service]
+# On some systems the user and group might be different.
+# Some systems use `apache` or `nginx` as the user and group.
+User=www-data
+Group=www-data
+Restart=always
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Finally, enable the service and set it to boot on machine start.
+
+```sh
+sudo systemctl enable --now pelican.service
+```
+
 ### Setting Permissions
 
 The last step in the installation process is to set the correct permissions on the Panel files so that the webserver can
