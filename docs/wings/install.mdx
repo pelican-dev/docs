@@ -149,6 +149,7 @@ User=root
 WorkingDirectory=/etc/pelican
 LimitNOFILE=4096
 PIDFile=/var/run/wings/daemon.pid
+ExecPreStart=mkdir /var/run/wings
 ExecStart=/usr/local/bin/wings
 Restart=on-failure
 StartLimitInterval=180
