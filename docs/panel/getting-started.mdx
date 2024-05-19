@@ -173,7 +173,9 @@ for sending emails and handling many other background tasks.
 
 Create a file called `pelican.service` in `/etc/systemd/system` with the contents below.
 
-```ini {10,11} title="/etc/systemd/system/pelican.service"
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache'>
+        ```ini {10,11} title="/etc/systemd/system/pelican.service"
 # Pelican Queue File
 # ----------------------------------
 
@@ -194,6 +196,54 @@ RestartSec=5s
 [Install]
 WantedBy=multi-user.target
 ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```ini {10,11} title="/etc/systemd/system/pelican.service"
+# Pelican Queue File
+# ----------------------------------
+
+[Unit]
+Description=Pelican Queue Service
+
+[Service]
+# On some systems the user and group might be different.
+# Some systems use `apache` or `nginx` as the user and group.
+User=nginx
+Group=nginx
+Restart=always
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```ini {10,11} title="/etc/systemd/system/pelican.service"
+# Pelican Queue File
+# ----------------------------------
+
+[Unit]
+Description=Pelican Queue Service
+
+[Service]
+# On some systems the user and group might be different.
+# Some systems use `apache` or `nginx` as the user and group.
+User=apache
+Group=apache
+Restart=always
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+    </TabItem>
+</Tabs>
 
 Finally, enable the service and set it to boot on machine start.
 
