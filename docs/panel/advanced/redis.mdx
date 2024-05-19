@@ -44,7 +44,9 @@ Next, you need to edit the queue worker file `pelican.service` in `/etc/systemd/
 
 The line you need to add is highlighted below.
 
-```ini {6} title="/etc/systemd/system/pelican.service"
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache'>
+        ```ini {6} title="/etc/systemd/system/pelican.service"
 # Pelican Queue File
 # ----------------------------------
 
@@ -65,11 +67,57 @@ RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target
-```
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```ini {6} title="/etc/systemd/system/pelican.service"
+# Pelican Queue File
+# ----------------------------------
 
-<Admonition type="info" title="Redis on Rocky Linux">
-    If you are using Rocky Linux, you will need to replace `redis-server.service` with `redis.service` at the `After=` line in order to ensure `redis` starts before the queue worker.
-</Admonition>
+[Unit]
+Description=Pelican Queue Service
+After=redis.service
+
+[Service]
+# On some systems the user and group might be different.
+# Some systems use `apache` or `nginx` as the user and group.
+User=nginx
+Group=nginx
+Restart=always
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```ini {6} title="/etc/systemd/system/pelican.service"
+# Pelican Queue File
+# ----------------------------------
+
+[Unit]
+Description=Pelican Queue Service
+After=redis.service
+
+[Service]
+# On some systems the user and group might be different.
+# Some systems use `apache` or `nginx` as the user and group.
+User=apache
+Group=apache
+Restart=always
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+        ```
+    </TabItem>
+</Tabs>
 
 Restart the queue worker service after editing the file.
 
