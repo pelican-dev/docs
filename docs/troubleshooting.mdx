@@ -38,7 +38,7 @@ You can set the correct permissions by running `chmod -R 755 /var/www/pelican/st
 
 * `500 | SERVER ERROR` or `An unexpected error was encountered while processing this request` you have to check your panel logs by running the following command.
 * `502 Bad Gateway Error` or some code in plain text you either didn't install php-fpm or set the wrong version in your webserver vhost.
-* `sh: 1: mysql: not found`: If you are using MariaDB 11.4 or higher you'll have to restore the mysql alias by running `cd /usr/bin; ln -s mariadb mysql`.
+* `sh: 1: mysql: not found`: If you are using MariaDB 11.4 or higher you'll have to restore the mysql alias by running `ln -s /usr/bin/mariadb /usr/binmysql`.
 * `CSRF token mismatch` you are most likely using HTTP instead of HTTPS in `APP_URL` or you didn't force `SESSION_SECURE_COOKIE` to false while using HTTP.
 * `The MAC is invalid` make sure that your `APP_KEY` matchs your database, if its a clean install just clear it then re run `php artisan p:environment:setup`
 * `ErrorException: file_put_contents(_____): failed to open stream: Permission denied`: Wrong file permissions/ ownership for the panel files, see above.
