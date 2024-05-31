@@ -94,7 +94,7 @@ The first step for installing Wings is to ensure we have the required directory 
 run the commands below, which will create the base directory and download the wings executable.
 
 ```sh
-sudo mkdir -p /etc/pelican
+sudo mkdir -p /etc/pelican /var/run/wings
 curl -L -o /usr/local/bin/wings "https://github.com/pelican-dev/wings/releases/latest/download/wings_linux_$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")"
 sudo chmod u+x /usr/local/bin/wings
 ```
