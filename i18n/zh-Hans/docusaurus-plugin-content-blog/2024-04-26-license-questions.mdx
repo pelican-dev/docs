@@ -1,0 +1,68 @@
+---
+slug: commercial-license-faq
+title: Commercial License FAQ
+authors: [parker, lance]
+tags: [panel, license]
+hide_table_of_contents: true
+---
+
+As some of you know, people have been asking us questions about when you need a commercial license or not.
+
+I asked people for questions they wanted clarifications on. Here are the questions as asked, and their answers. 
+
+## modification questions
+
+1.  Q: What are the plans for the theming part of Pelican Panel and what will the front end look like?
+
+    A: Using [Filament themes](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) placed in `/resources/css/filament` will work and don't need a license, 
+    and so long as no files that are included with the panel are modified in the process, you do not need a commercial license.
+
+:::info
+    A native theme selector is currently planned.
+:::
+:::warning
+    Themes are unable to heavily change the layout of the panel because they are limited to CSS. However plugins can completely and more easily rearrange components and add new ones and pages.
+:::
+:::info definitions
+    Theme: The color and style of the panel. (Ex. button colors or fonts)  
+    Layout: The way the panel is organized. (Ex. where the cpu usage shows up.)
+    Panel Code: The files that belong to the pelican-dev/panel repository
+:::
+
+2.  Q: Will only styling be a thing, or is there also some sort of support for custom layouts and functionalities?
+
+    A: Custom layouts can be made with either plugins or by writing a custom frontend that uses the API to interact with the panel.
+
+3.  Q: Some users will probably use "public" themes for the panel (maybe smth like unix or so), if they are a public host, since they aren't the ones making the theme, do they need to pay the commercial license?
+
+    A: The answer for question 1 should answer this, but if a theme is open sourced OR does not modify the Panel's file it is fine.
+
+:::warning
+    If your Pelican Panel modifications are not open sourced, you are required to obtain a commercial license.
+:::
+
+
+## not license related
+    Still good questions
+
+1.  Q: What kind of SLA are you guys proposing for any commercial support plans?
+
+    A: Currently this depends on what level of support a customer would want. We are discussing options internally right now. Please contact us at team@pelican.dev with further inquiries.
+
+2.  Q: Would it be possible for you guys to add a real data panel like splint or grafana or netdata for the server metrics?
+
+    A: Currently exporting server metrics to a service like Grafana is not planned but may be considered.
+:::info
+    As discussed on the discord server this may be better served by a monitoring service such as a host level netdata install.
+:::
+
+3.  Q: When Pelican goes public, will conversions be considered?
+
+    A: You can use your existing Pterodactyl configuration and drop in Pelican, it will update the database when installed.  
+:::warning
+    We do not support reverting back to Pterodactyl. It isn't challenging, but we strongly recommend that you backup your files and database in case you want to.
+:::
+:::info
+    Wings is not a one way conversion, at this time, as it has far fewer changes that impact things.
+:::
+import { faPlaneLock } from "@fortawesome/free-solid-svg-icons"

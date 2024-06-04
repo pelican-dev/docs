@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.Sidebar.category.Panel": {
+    "message": "面板",
+    "description": "The label for category Panel in sidebar Sidebar"
+  },
+  "sidebar.Sidebar.category.Advanced": {
+    "message": "高级",
+    "description": "The label for category Advanced in sidebar Sidebar"
+  },
+  "sidebar.Sidebar.category.Wings": {
+    "message": "Wings",
+    "description": "The label for category Wings in sidebar Sidebar"
+  },
+  "sidebar.Sidebar.category.Guides": {
+    "message": "指南",
+    "description": "The label for category Guides in sidebar Sidebar"
+  }
+}

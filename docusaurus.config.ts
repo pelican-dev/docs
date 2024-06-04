@@ -18,6 +18,10 @@ const config: Config = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   themes: ["@docusaurus/theme-mermaid"],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh-Hans'],
+  },
   presets: [
     [
       "classic",
@@ -59,6 +63,10 @@ const config: Config = {
           position: "left",
         },
         { to: "/faq", label: "FAQ", position: "left" },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
         {
           href: "https://github.com/pelican-dev/",
           position: "right",

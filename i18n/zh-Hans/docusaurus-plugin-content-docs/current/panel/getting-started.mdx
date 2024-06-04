@@ -1,0 +1,216 @@
+import Admonition from '@theme/Admonition';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 开始入门
+
+鹈鹕面板运行在您自己的 Web 服务器上。
+
+您需要了解如何阅读文档以使用此面板。我们花了很多时间为社区整理这些来帮助你解决疑难问题，因此在社区上寻求帮助之前，请花一些时间阅读它们！
+
+<Admonition type="danger">
+    **在继续之前，您应该对 Linux 有了一些基本的了解！**
+</Admonition>
+
+### 选择操作系统 (OS)
+
+鹈鹕可在多种操作系统上运行，因此请选择最适合您使用的操作系统。
+
+<Admonition type="warning">
+    **除非有专门配置**否则鹈鹕**无法**在基于 OpenVZ 的系统上运行。
+</Admonition>
+
+| 操作系统 | 版本 |     支持状况      | 注意事项                                                                      |
+|:----------------:|:-------:|:---------:|:---------------------------------------------------------------------:|
+| **Ubuntu**       | 20.04   |     ⚠️︎    | 不支持 SQLite，Ubuntu 20.04 将在 2025 年 4 月停止支持，不推荐|
+|                  | 22.04   |     ✅︎  |                                                                       |
+|                  |**24.04**|     ✅︎  | 文档以 Ubuntu 24.04 操作系统为基本所编写的。           |
+| **Rocky Linux**  | 9       |     ✅︎  |                                                                       |
+| **Debian**       | 11      |     ⚠️    | **不支持 SQLite**                                                 |
+|                  | 12      |     ✅︎  |                                                                       |
+
+SQLite 依赖于系统上的 [libsqlite3-0_3.35+](https://pkgs.org/download/libsqlite3-0)。
+Ubuntu 20.04 和 Debian 11 不满足此要求。
+
+### 依赖项
+<Admonition type="warning">
+    需要 `ondrej/php` 存储库来安装最新版本的 PHP 及其所需的扩展。
+
+    可以使用以下命令添加它。
+    ```sh
+    sudo add-apt-repository ppa:ondrej/php
+    ```
+</Admonition>
+
+* PHP `8.3`（推荐）或 `8.2`，带有以下扩展名： `gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl`, `sqlite3` and `fpm`
+* MySQL `8` (`mysql-server`) **或** MariaDB `10.3`+
+* 一个 Web 服务器（Apache, NGINX, Caddy, etc。）
+* `curl`
+* `tar`
+* `composer` v2
+
+### 安装 Composer
+
+Composer 是 PHP 的依赖管理器，在继续阅读本指南之前，您需要安装 Composer。
+
+``` bash
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+```
+
+
+### 创建目录并下载文件
+
+此过程的第一步是创建面板所在的文件夹，然后进入新创建的文件夹中。
+
+```sh
+mkdir -p /var/www/pelican
+cd /var/www/pelican
+```
+
+在为面板创建好它的工作目录后，我们将使用 `curl` 命令，从 Github 下载面板文件。
+```sh
+curl -Lo panel.tar.gz https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz
+```
+下载完成后，我们需要对压缩包进行解压操作，并赋予 `storage/` 与 `bootstrap/cache/` 目录 755 权限。这两个目录作用是缓存动态资源以加速访问。
+
+```sh
+tar -xzvf panel.tar.gz
+chmod -R 755 storage/* bootstrap/cache/
+```
+
+### 安装
+
+接下来我们将配置默认环境设置文件、依赖项，然后生成新的应用程序加密密钥。
+
+```sh
+sudo composer install --no-dev --optimize-autoloader
+```
+
+### 环境配置
+
+可以使用应用程序中内置的几个不同的 CLI 命令进行更轻松的配置。此步骤将涵盖设置诸如会话、缓存、数据库凭证和电子邮件发送之类的内容。
+
+运行 `php artisan p:environment:setup` ，如果 `.env` 文件没有将自动创建并生成 `APP_KEY`。
+
+<Admonition type="info">
+    如果您想使用 MySQL 而不是 SQLite，请务必先阅读 [MySQL 指南](./advanced/mysql)！
+</Admonition>
+
+```sh
+php artisan p:environment:setup
+php artisan p:environment:database
+```
+### 设置邮件 - 可选
+
+如果您想要设置面板​​向用户发送有关新创建的服务器和密码重置的电子邮件。请使用此命令。
+
+```sh
+php artisan p:environment:mail
+```
+<Admonition type="warning">
+    请**备份**您的加密密钥（`.env` 文件中的 `APP_KEY`）！ 它用作所有需要安全存储的数据的加密密钥（例如 api 密钥）。 请将其存储在安全的地方！ 如果您丢失它，所有加密数据都将无法恢复！即使您有数据库备份也无济于事！！！
+</Admonition>
+
+### 数据库初始化
+
+现在我们要将面板所有的核心数据写入我们之前为面板准备的数据库内。  
+**此步骤可能花费较长时间来进行执行，花费的时间取决于您的主机性能，主机与数据库主机的网络连接状态等因素。请耐心等待数据导入完成，切勿中途使用 CTRL+C 强制中断执行！**
+
+```sh
+php artisan migrate --seed --force
+```
+
+### 创建用户
+
+数据库配置完成后，您需要为面板创建一个管理用户，以便您可以登录面板。
+
+账户密码**必须**满足以下要求：8 个字符，大小写混合，至少一个数字。
+
+```sh
+php artisan p:user:make
+```
+
+### 定时任务配置
+
+我们需要做的是创建一个新的定时任务，它每分钟运行一次以处理特定的任务，例如会话清理和将计划任务发送到守护进程。
+您需要打开您的 crontab。
+
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache'>
+        ```sh
+        sudo crontab -e -u www-data
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```sh 
+        sudo crontab -e -u nginx
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```sh 
+        sudo crontab -e -u apache
+        ```
+    </TabItem>
+</Tabs>
+
+然后粘贴下面的一行内容
+
+```sh
+* * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
+```
+
+### 创建队列监听服务
+
+接下来，您需要创建一个新的 systemd 工作线程来保持我们的队列进程在后台运行。该队列负责发送电子邮件和处理许多其他后台任务。
+
+在 `/etc/systemd/system` 文件夹中创建一个名为 `pelican.service` 的文件，其内容如下。
+
+```ini {10,11} title="/etc/systemd/system/pelican.service"
+# 鹈鹕工作队列文件
+# ----------------------------------
+
+[Unit]
+Description=Pelican Queue Service
+
+[Service]
+# 在某些系统上用户和组可能不同。
+# 有些系统使用 `apache` 或 `nginx` 作为用户和组。
+User=www-data
+Group=www-data
+Restart=always
+ExecStart=/usr/bin/php /var/www/pelican/artisan queue:work --queue=high,standard,low --tries=3
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+
+最后，启用该服务并将其设置为在计算机启动时启动。
+
+```sh
+sudo systemctl enable --now pelican.service
+```
+
+### 权限设置
+
+安装过程的最后一步是设置面板文件的正确权限，以便网络服务器可以正确使用它们。
+
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache'>
+        ```sh
+        chown -R www-data:www-data /var/www/pelican 
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```sh 
+        chown -R nginx:nginx /var/www/pelican 
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```sh 
+        chown -R apache:apache /var/www/pelican 
+        ```
+    </TabItem>
+</Tabs>

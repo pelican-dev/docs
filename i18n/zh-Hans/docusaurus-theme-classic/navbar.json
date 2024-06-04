@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "Pelican",
+    "description": "The title in the navbar"
+  },
+  "item.label.Install": {
+    "message": "安装",
+    "description": "Navbar item with label Install"
+  },
+  "item.label.Blog": {
+    "message": "博客",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Donate": {
+    "message": "捐助",
+    "description": "Navbar item with label Donate"
+  },
+  "item.label.Newsletter": {
+    "message": "订阅",
+    "description": "Navbar item with label Newsletter"
+  },
+  "item.label.FAQ": {
+    "message": "常见问题",
+    "description": "Navbar item with label FAQ"
+  }
+}
