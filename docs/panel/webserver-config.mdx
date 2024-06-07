@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
     <TabItem value="nginx" label="Nginx">
         <Admonition type="warning" title="php & fpm">
-            If you're **not** using php8.2, you will need to edit the config file to point to the proper php fpm socket.
+            If you're **not** using php8.3, you will need to edit the config file to point to the proper php fpm socket.
 
             The line is highlighted below.
         </Admonition>
@@ -75,7 +75,7 @@ import TabItem from '@theme/TabItem';
 
                     location ~ \.php$ {
                         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-                        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+                        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
                         fastcgi_index index.php;
                         include fastcgi_params;
                         fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";
@@ -125,7 +125,7 @@ import TabItem from '@theme/TabItem';
 
                     location ~ \.php$ {
                         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-                        fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+                        fastcgi_pass unix:/run/php/php8.3-fpm.sock;
                         fastcgi_index index.php;
                         include fastcgi_params;
                         fastcgi_param PHP_VALUE "upload_max_filesize = 100M \n post_max_size=100M";
@@ -243,7 +243,7 @@ import TabItem from '@theme/TabItem';
     </TabItem>
     <TabItem value="caddy" label="Caddy">
         <Admonition type="warning" title="php & fpm">
-            If you're **not** using php8.2, you will need to edit the config file to point to the proper php fpm socket.
+            If you're **not** using php8.3, you will need to edit the config file to point to the proper php fpm socket.
 
             The line is highlighted below.
         </Admonition>
@@ -274,7 +274,7 @@ import TabItem from '@theme/TabItem';
 
                     file_server
 
-                    php_fastcgi unix//run/php/php8.2-fpm.sock {
+                    php_fastcgi unix//run/php/php8.3-fpm.sock {
                         root /var/www/pelican/public
                         index index.php
 
@@ -327,7 +327,7 @@ import TabItem from '@theme/TabItem';
 
                     file_server
 
-                    php_fastcgi unix//run/php/php8.2-fpm.sock {
+                    php_fastcgi unix//run/php/php8.3-fpm.sock {
                         root /var/www/pelican/public
                         index index.php
 
