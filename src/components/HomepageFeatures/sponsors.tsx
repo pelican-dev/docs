@@ -48,7 +48,7 @@ export default function HomepageSponsor(): JSX.Element {
     <section className={styles.features}>
       <div className="container">
       <h1 style={{textAlign: 'center', fontSize: '250%'}}>Project Sponsors</h1>
-        <div className="row">
+        <div className="row items-center py-2">
           {SponsorList.map((props, idx) => (
             <Sponsor key={idx} {...props} />
           ))}
