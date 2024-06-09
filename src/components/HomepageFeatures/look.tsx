@@ -44,9 +44,9 @@ function Feature({title, light, dark}: FeatureItem) {
   let image: string;
 
   if (colorMode === 'dark') {
-    image = dark;
-  } else {
     image = light;
+  } else {
+    image = dark;
   }
   
     return (
