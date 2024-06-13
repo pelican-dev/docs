@@ -1,5 +1,5 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Updating the Panel
 
@@ -8,41 +8,14 @@ This documentation covers the process for updating the panel portion of Pelican.
 ## Version Requirements
 
 Each version of Pelican Panel also has a corresponding minimum version of Wings that
-is required for it to run.
+is required for it to run.  
 
 Please see the chart below for how these versions line up. In
 most cases your base Wings version should match that of your Panel.
 
-| Panel Version | Wings Version | Supported | PHP Version |
-| :-----------: | :-----------: | :-------: | :---------: |
-|      3.x      |      3.x      |    ✅︎    |  8.2/ 8.3   |
-
-<Tabs>
-  <TabItem value="auto" label="Automatic Update">
-    ### Automatic Update
-
-    To automatically update the Pelican Panel, run the following command in your terminal:
-
-    ```sh
-    cd /var/www/pelican
-    php artisan p:upgrade
-    ```
-
-    ### Automatic Update with Backup
-
-    This command will guide you through the upgrade process with interactive prompts.
-
-    If you want to make a backup before you update the panel, use the following command:
-
-    ```sh
-    cd /var/www/pelican
-    php artisan p:upgrade --backup
-    ```
-
-    This command will create a backup of your files and database before proceeding with the upgrade.
-
-  </TabItem>
-  <TabItem value="manual" label="Manual Update">
+| Panel Version | Wings Version  | Supported | PHP Version  |
+| :-----------: | :------------: | :-------: | :----------: |
+| 3.x           | 3.x            | ✅︎        | 8.2/ 8.3     |
 
 ### Enter Maintenance Mode
 
@@ -73,6 +46,7 @@ chmod -R 755 storage/* bootstrap/cache
 
 ### Update Dependencies
 
+
 ```sh
 composer install --no-dev --optimize-autoloader
 ```
@@ -88,7 +62,6 @@ php artisan config:clear
 ```
 
 ### Update Database
-
 You'll also need to update your database schema. Running the command below
 will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
 remember, _never edit core eggs we ship_! They will be overwritten by this update process.
@@ -103,15 +76,21 @@ The last step is to set proper ownership of the files. In most cases this
 is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
 
 <Tabs className="unique-tabs">
-  <TabItem value="NGINX/Apache">
-    ```sh chown -R www-data:www-data /var/www/pelican/* ```
-  </TabItem>
-  <TabItem value="Rocky Linux NGINX">
-    ```sh chown -R nginx:nginx /var/www/pelican/* ```
-  </TabItem>
-  <TabItem value="Rocky Linux Apache">
-    ```sh chown -R apache:apache /var/www/pelican/* ```
-  </TabItem>
+    <TabItem value="NGINX/Apache">
+        ```sh
+        chown -R www-data:www-data /var/www/pelican/* 
+        ```
+    </TabItem>
+    <TabItem value="Rocky Linux NGINX">
+        ```sh 
+        chown -R nginx:nginx /var/www/pelican/* 
+        ```
+    </TabItem>
+    <TabItem value="Rocky Linux Apache">
+        ```sh 
+        chown -R apache:apache /var/www/pelican/* 
+        ```
+    </TabItem>
 </Tabs>
 ### Restart Queue Workers
 
@@ -128,7 +107,3 @@ Now that everything has been updated you need to exit maintenance mode.
 ```sh
 php artisan up
 ```
-
-    </TabItem>
-
-</Tabs>
