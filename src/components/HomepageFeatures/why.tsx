@@ -77,13 +77,13 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, icon, description}: FeatureItem) {
+function Feature({ title, icon, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Icon icon={icon} height="188px" width="188px"/>
+    <div className={clsx("bg-white/10 w-[400px] p-5 rounded-xl")}>
+      <div className="text--center text-white/50">
+        <Icon icon={icon} height="188px" width="188px" />
       </div>
-      <div className="text--center padding-horiz--md">
+      <div className="text--center m-5 padding-horiz--md text-white/80">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
       </div>
@@ -94,14 +94,17 @@ function Feature({title, icon, description}: FeatureItem) {
 export default function HomepageWhy(): JSX.Element {
   return (
     <section className={styles.features}>
-      <div className="container">
-      <h1 style={{textAlign: 'center'}}>Why use Pelican?</h1>
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
+      <div className={clsx("hero hero--primary w-full", styles.heroBanner)}>
+        <div className="container w-full">
+          <h1 style={{ textAlign: "center" }}>Why use Pelican?</h1>
+          <div className="row mt-12 flex flex-wrap justify-center align-center gap-10">
+            {FeatureList.map((props, idx) => (
+              <Feature key={idx} {...props} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
