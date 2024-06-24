@@ -13,7 +13,7 @@ const config: Config = {
   },
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'nl'],
+    locales: ['en'],
   },
   url: "https://pelican.dev",
   baseUrl: "/",
