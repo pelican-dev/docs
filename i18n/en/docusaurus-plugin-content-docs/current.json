@@ -1,0 +1,22 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.Sidebar.category.Panel": {
+    "message": "Panel",
+    "description": "The label for category Panel in sidebar Sidebar"
+  },
+  "sidebar.Sidebar.category.Advanced": {
+    "message": "Advanced",
+    "description": "The label for category Advanced in sidebar Sidebar"
+  },
+  "sidebar.Sidebar.category.Wings": {
+    "message": "Wings",
+    "description": "The label for category Wings in sidebar Sidebar"
+  },
+  "sidebar.Sidebar.category.Guides": {
+    "message": "Guides",
+    "description": "The label for category Guides in sidebar Sidebar"
+  }
+}
