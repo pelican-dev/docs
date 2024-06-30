@@ -11,6 +11,10 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
   url: "https://pelican.dev",
   baseUrl: "/",
   organizationName: "pelican-dev",
@@ -50,6 +54,10 @@ const config: Config = {
           to: '/docs/panel/getting-started',
           label: 'Install',
           position: 'left'
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/donate", label: "Donate", position: "left" },
