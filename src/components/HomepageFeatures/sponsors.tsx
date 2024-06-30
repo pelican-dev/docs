@@ -18,12 +18,6 @@ const SponsorList: SponsorItem[] = [
     desc: ''
   },
   {
-    sponsor: 'Surf Hosting',
-    logo: '/img/homepage/sponsor/surfhosting.png',
-    url: 'https://billing.surfhosting.co/link.php?id=1',
-    desc: '',
-  },
-  {
     sponsor: 'Aussie Server Hosts',
     logo: '/img/homepage/sponsor/ash.png',
     url: 'https://aussieserverhosts.com/',
