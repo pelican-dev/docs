@@ -77,7 +77,7 @@ cd /var/www/pelican
 Once you have created a new directory to use and moved into it you'll need to download the Panel files. This
 is as simple as using `curl` to download the latest release.
 ```sh
-curl -Lo panel.tar.gz https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv
+curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv
 ```
 Once the archive gets downloaded and unpacked you'll need to set the correct permissions on the `storage/` and `bootstrap/cache/` directories.
 
