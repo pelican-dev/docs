@@ -100,3 +100,20 @@ In both cases it should output this when wings is reachable:
     Not sure what a specific error means?
     Visit our [Discord](https://discord.gg/pelican-panel) and we will be happy to help you!
 </Admonition>
+
+## Schedules not running
+
+If your Schedules are stuck on `Processing` or don't execute the tasks check the following:
+
+* Is your Schedule set to run `ONLY WHEN SERVER IS ONLINE` and the server is currently offline?
+* Is your queue worker service running? (`systemctl status pelican-queue`)
+* Is your queue worker service using the correct PHP version? (`php -v`)
+* Is your [cronjob setup](./panel/getting-started#crontab-configuration) correctly?
+
+If your queue worker service is not running you can also check the panel logs for errors.
+
+```sh
+tail -n 100 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(date +%Y)"
+```
+
+To recreate the queue worker service you can run `cd /var/www/pelican && php artisan p:environment:queue-service --overwrite`.
