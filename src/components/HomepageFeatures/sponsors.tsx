@@ -12,12 +12,6 @@ type SponsorItem = {
 
 const SponsorList: SponsorItem[] = [
   {
-    sponsor: 'Vultric Hosting',
-    logo: '/img/homepage/sponsor/vultric.png',
-    url: 'https://vultrichosting.com',
-    desc: ''
-  },
-  {
     sponsor: 'Aussie Server Hosts',
     logo: '/img/homepage/sponsor/ash.png',
     url: 'https://aussieserverhosts.com/',
