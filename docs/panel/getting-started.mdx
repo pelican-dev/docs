@@ -42,9 +42,10 @@ Ubuntu 20.04 & Debian 11 do not meet this requirement.
 <Admonition type="warning">
     The `ondrej/php` repository is required to install the latest versions of PHP and its required extensions.
 
-    It can be added with the following command.
+    It can be added with the following command alongside PHP and the extensions.
     ```sh
     sudo add-apt-repository ppa:ondrej/php
+    sudo apt -y install php8.3-fpm php8.3-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3}
     ```
 </Admonition>
 
