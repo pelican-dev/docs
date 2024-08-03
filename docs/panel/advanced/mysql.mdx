@@ -6,7 +6,7 @@ MariaDB is a MySQL fork and the preferred MySQL software. Run the following comm
 
 ```sh
 curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
-sudo apt install -y mariadb-server 
+sudo apt install -y mariadb-server
 ```
 
 ## Create User & Database
@@ -51,7 +51,8 @@ GRANT ALL PRIVILEGES ON panel.* TO 'pelican'@'127.0.0.1';
 
 ## Setup Pelican for MySQL
 
-After you created the user and database you can run the database setup command to use MySQL for Pelican.
+If you are switching to MySQL after installing the Panel you have to run the database setup command below.
+You do not have to run this if this is the first time you are installing the Panel. You will provide the database data via the Web Installer.
 
 ```sh
 cd /var/www/pelican

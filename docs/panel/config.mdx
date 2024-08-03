@@ -10,11 +10,8 @@ Make sure to clear the config cache (`cd /var/www/pelican && php artisan config:
 
 ### Using Local Backups
 
-By default, Pelican uses local storage via Wings for backups. That said, this method of backup storage can be explicitly set with the following configuration in the `.env` file:
+By default, Pelican uses local storage via Wings for backups. That said, this method of backup storage can be explicitly set within the Settings Page on the Admin side of the panel.
 
-```sh
-APP_BACKUP_DRIVER=daemon
-```
 
 Please note that, when using local storage via Wings, the destination for backups is set in the Wings config file with the following setting key:
 
@@ -25,19 +22,7 @@ system:
 
 ### Using S3 Backups
 
-AWS S3 (or compatible storage) can be used to store remote or cloud-based backups. The following configuration options have to be set in the `.env` file or as environment variables in order to enable it:
-
-```sh
-# Sets your panel to use s3 for backups
-APP_BACKUP_DRIVER=s3
-
-# Info to connect to AWS S3
-AWS_DEFAULT_REGION=
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
-AWS_BACKUPS_BUCKET=
-AWS_ENDPOINT=
-```
+AWS S3 (or compatible storage) can be used to store remote or cloud-based backups. This can be configured in the Settings Page on the Admin side of the panel.
 
 For some configurations, you might have to change your S3 URL from `bucket.domain.com` to `domain.com/bucket`. To accomplish this, add `AWS_USE_PATH_STYLE_ENDPOINT=true` to your `.env` file.
 
@@ -69,9 +54,9 @@ or NGINX/Apache/Caddy, etc., you will need to make a quick modification to the P
 your Panel will not correctly handle requests. You'll most likely be unable to login or see security warnings in your browser console as it attempts to load insecure assets.
 This is because the internal logic the Panel uses to determine how links should be generated thinks it is running over HTTP and not over HTTPS.
 
-You will need to edit the `.env` file in the Panel's root directory to contain `TRUSTED_PROXIES=*` at minimum. We highly suggest providing a specific IP address
+You will need to edit trusted proxies, on the Settings page. We highly suggest providing a specific IP address
 (or comma-separated list of IPs) rather than allowing `*`. For example, if your proxy is running on the same machine as the server,
-the chances are that something like `TRUSTED_PROXIES=127.0.0.1` will work for you.
+the chances are that using `127.0.0.1` would work for you.
 
 ### NGINX Specific Configuration
 
@@ -90,20 +75,26 @@ proxy_request_buffering off;
 ### Cloudflare Specific Configuration
 
 If you're using Cloudflare's Flexible SSL you should set `TRUSTED_PROXIES` to contain [their IP addresses](https://www.cloudflare.com/ips/).
-Below is an example of how to set this.
 
-```text
-TRUSTED_PROXIES=173.245.48.0/20,103.21.244.0/22,103.22.200.0/22,103.31.4.0/22,141.101.64.0/18,108.162.192.0/18,190.93.240.0/20,188.114.96.0/20,197.234.240.0/22,198.41.128.0/17,162.158.0.0/15,104.16.0.0/13,104.24.0.0/14,172.64.0.0/13,131.0.72.0/22
-```
+You can easily do this on the Settings page in the Panel.
+
+## reCAPTCHA
+
+The Panel uses invisible reCAPTCHA to secure the login page from brute-force attacks. If the login attempt is considered suspicious, users may be required to perform a reCAPTCHA challenge.
+
+### Configuring reCAPTCHA
+
+While we provide a global Site Key and Secret Key by default, we highly recommend changing it for your own setup.
+
+You can generate your own keys in the [reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin).
+
+The keys can then be applied using the Settings in the Panel.
 
 #### Disabling recaptcha
 
 If you cannot access your panel, you can modify the database directly using the following commands.
 
-```sql
-mysql -u root -p
-UPDATE panel.settings SET value = 'false' WHERE `key` = 'settings::recaptcha:enabled';
-```
+Edit the `.env` in the panels root directory `/var/www/pelican/` and change `RECAPTCHA_ENABLED=true` to `RECAPTCHA_ENABLED=false`
 
 ## 2FA
 
@@ -111,10 +102,7 @@ If possible you should use the panel to update your 2FA settings. If you can't a
 
 ### Disable 2FA requirement
 
-```sql
-mysql -u root -p
-UPDATE panel.settings SET value = 0 WHERE `key` = 'settings::pelican:auth:2fa_required';
-```
+Edit the `.env` in the panels root directory `/var/www/pelican/` and change `APP_2FA_REQUIRED=1`/ `APP_2FA_REQUIRED=2` to `APP_2FA_REQUIRED=0`
 
 ### Disable 2FA for a specific user
 
