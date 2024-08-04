@@ -1,0 +1,62 @@
+import Admonition from '@theme/Admonition';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Panel Setup
+
+The core environment is easily configured using a single CLI command & the web installer built into the app.
+
+This step will cover setting up things such as sessions, caching, database credentials, and email sending.
+
+Running `php artisan p:environment:setup` will, if it does not exist, auto create the required `.env` file and generate a `APP_KEY`.
+
+<Admonition type="info" title="Want to use MySQL/ MariaDB?">
+    Make sure to read the [MySQL guide](./advanced/mysql) first if you want to use MySQL/ MariaDB instead of SQLite!
+</Admonition>
+
+```sh
+php artisan p:environment:setup
+```
+
+<Admonition type="warning" title="BACK UP APP_KEY!">
+    **Back up** your encryption key (APP_KEY in the `.env` file). This is used as an encryption key for all data that needs to be stored securely (e.g. api keys).
+    Store it somewhere safe - not just on your server. If you lose it all encrypted data is irrecoverable -- **even if you have database backups.**
+</Admonition>
+
+### Crontab Configuration
+
+We need to create a new cronjob that runs every minute to process specific tasks, such as session cleanup and scheduled tasks.
+You'll want to open your crontab.
+
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache'>
+        ```sh
+        sudo crontab -e -u www-data
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```sh
+        sudo crontab -e -u nginx
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```sh
+        sudo crontab -e -u apache
+        ```
+    </TabItem>
+</Tabs>
+
+And then paste the line below.
+
+```sh
+* * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
+```
+
+## Setting up Queue Service
+
+Once you install the panel and set up the cron-tab the last step to take is to set up the queue service. This can be
+done with the command below.
+
+```sh
+sudo php artisan p:environment:queue-service
+```
