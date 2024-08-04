@@ -44,6 +44,7 @@ const sidebars: SidebarsConfig = {
       items: ['guides/mounts', 'guides/ssl', 'guides/php-upgrade', 'guides/database-hosts'],
     },
     'troubleshooting',
+    'comparison',
     'glossary'
   ],
 };
