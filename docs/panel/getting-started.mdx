@@ -82,30 +82,3 @@ curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/loca
 ```sh
 sudo composer install --no-dev --optimize-autoloader
 ```
-
-### Setting Permissions
-
-The next stop in the installation process is to set the correct permissions on the Panel files so that the webserver can
-use them correctly.
-
-```sh
-chmod -R 755 storage/* bootstrap/cache/
-```
-
-<Tabs groupId="webserver">
-    <TabItem value='NGINX/Apache'>
-        ```sh
-        chown -R www-data:www-data /var/www/pelican/*
-        ```
-    </TabItem>
-    <TabItem value='Rocky Linux NGINX'>
-        ```sh
-        chown -R nginx:nginx /var/www/pelican/*
-        ```
-    </TabItem>
-    <TabItem value='Rocky Linux Apache'>
-        ```sh
-        chown -R apache:apache /var/www/pelican/*
-        ```
-    </TabItem>
-</Tabs>

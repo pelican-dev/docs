@@ -23,6 +23,33 @@ php artisan p:environment:setup
     Store it somewhere safe - not just on your server. If you lose it all encrypted data is irrecoverable -- **even if you have database backups.**
 </Admonition>
 
+### Setting Permissions
+
+The next stop in the installation process is to set the correct permissions on the Panel files so that the webserver can
+use them correctly.
+
+```sh
+chmod -R 755 storage/* bootstrap/cache/
+```
+
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache'>
+        ```sh
+        chown -R www-data:www-data /var/www/pelican
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```sh
+        chown -R nginx:nginx /var/www/pelican
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```sh
+        chown -R apache:apache /var/www/pelican
+        ```
+    </TabItem>
+</Tabs>
+
 ### Crontab Configuration
 
 We need to create a new cronjob that runs every minute to process specific tasks, such as session cleanup and scheduled tasks.
@@ -52,7 +79,7 @@ And then paste the line below.
 * * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
 ```
 
-## Setting up Queue Service
+### Setting up Queue Service
 
 Once you install the panel and set up the cron-tab the last step to take is to set up the queue service. This can be
 done with the command below.
@@ -60,3 +87,10 @@ done with the command below.
 ```sh
 sudo php artisan p:environment:queue-service
 ```
+
+### Web-Installer
+
+Once you've set the proper permissions & created the Cron & Queue worker, continue the Panel install on the web interface.
+
+Located at `<domain>/installer` or `<ip>/installer`
+
