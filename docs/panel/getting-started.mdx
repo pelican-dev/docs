@@ -55,15 +55,6 @@ Ubuntu 20.04 & Debian 11 do not meet this requirement.
 * `tar`
 * `composer` v2
 
-### Installing Composer
-
-Composer is a dependency manager for PHP, You'll need composer installed before continuing in this guide.
-
-``` bash
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-```
-
-
 ### Create Directories & Downloading Files
 
 The first step in this process is to create the folder where the panel will live and then move ourselves into that
@@ -79,115 +70,15 @@ is as simple as using `curl` to download the latest release.
 ```sh
 curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv
 ```
-Once the archive gets downloaded and unpacked you'll need to set the correct permissions on the `storage/` and `bootstrap/cache/` directories.
 
-```sh
-chmod -R 755 storage/* bootstrap/cache/
+### Install Composer
+
+Next we will set up Composer along with the required dependencies.
+
+``` bash
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 ```
-
-### Installation
-
-Next we will set up the default environment settings file, dependencies, and then generate a new application encryption key.
 
 ```sh
 sudo composer install --no-dev --optimize-autoloader
 ```
-
-### Environment Configuration
-
-The core environment is easily configured using a few different CLI commands built into the app. This step
-will cover setting up things such as sessions, caching, database credentials, and email sending.
-
-Running `php artisan p:environment:setup` will, if it does not exist, auto create the required `.env` file and generate a `APP_KEY`.
-
-<Admonition type="info">
-    Make sure to read the [MySQL guide](./advanced/mysql) first if you want to use MySQL instead of SQLite!
-</Admonition>
-
-```sh
-php artisan p:environment:setup
-php artisan p:environment:database
-```
-### Setting up Mail - Optional
-
-If you'd like to set up the panel to send emails for newly created servers to users & password resets. Use this command.
-
-```sh
-php artisan p:environment:mail
-```
-<Admonition type="warning">
-    **Back up** your encryption key (APP_KEY in the `.env` file). This is used as an encryption key for all data that needs to be stored securely (e.g. api keys).
-    Store it somewhere safe - not just on your server. If you lose it all encrypted data is irrecoverable -- **even if you have database backups.**
-</Admonition>
-
-### Database Initialization
-
-Now we need to set up database for the Panel that you created before.
-**The command below may take some time to run depending on your machine.
-Please _DO NOT_ exit the process until it is completed!**
-
-```sh
-php artisan migrate --seed --force
-```
-
-### Creating User
-
-You'll then need to create an administrative user so that you can log into the panel. To do so, run the command below.
-
-Passwords **must** meet the following requirements: 8 characters, mixed case, at least one number.
-
-```sh
-php artisan p:user:make
-```
-
-### Crontab Configuration
-
-We need to create a new cronjob that runs every minute to process specific tasks, such as session cleanup and scheduled tasks.
-You'll want to open your crontab.
-
-<Tabs groupId="webserver">
-    <TabItem value='NGINX/Apache'>
-        ```sh
-        sudo crontab -e -u www-data
-        ```
-    </TabItem>
-    <TabItem value='Rocky Linux NGINX'>
-        ```sh
-        sudo crontab -e -u nginx
-        ```
-    </TabItem>
-    <TabItem value='Rocky Linux Apache'>
-        ```sh
-        sudo crontab -e -u apache
-        ```
-    </TabItem>
-</Tabs>
-
-And then paste the line below.
-
-```sh
-* * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
-```
-
-### Setting Permissions
-
-The last step in the installation process is to set the correct permissions on the Panel files so that the webserver can
-use them correctly.
-
-<Tabs groupId="webserver">
-    <TabItem value='NGINX/Apache'>
-        ```sh
-        chown -R www-data:www-data /var/www/pelican
-        ```
-    </TabItem>
-    <TabItem value='Rocky Linux NGINX'>
-        ```sh
-        chown -R nginx:nginx /var/www/pelican
-        ```
-    </TabItem>
-    <TabItem value='Rocky Linux Apache'>
-        ```sh
-        chown -R apache:apache /var/www/pelican
-        ```
-    </TabItem>
-</Tabs>
