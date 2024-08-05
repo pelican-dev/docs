@@ -2,7 +2,7 @@
 
 ## Backups
 
-Pelican allows users to create backups of their servers. In order to create backups, a backup storage method has to be configured.
+Pelican allows users to create backups of their servers. To create backups, a backup storage method has to be configured.
 
 When changing Pelican's backup storage method, users may still download or delete existing backups from the prior storage driver. In the instance of migrating from S3 to local backups, S3 credentials must remain configured after switching to the local backup storage method.
 
@@ -41,7 +41,7 @@ BACKUP_PRESIGNED_URL_LIFESPAN=120
 
 #### Storage Class
 
-Should you need to specify a storage class, use the `AWS_BACKUPS_STORAGE_CLASS` environment variable. Default option is `STANDARD` (S3 Standard).
+Should you need to specify a storage class, use the `AWS_BACKUPS_STORAGE_CLASS` environment variable. The default option is `STANDARD` (S3 Standard).
 
 ```sh
 AWS_BACKUPS_STORAGE_CLASS=
@@ -90,19 +90,19 @@ You can generate your own keys in the [reCAPTCHA Admin Console](https://www.goog
 
 The keys can then be applied using the Settings in the Panel.
 
-#### Disabling recaptcha
+#### Disabling Recaptcha
 
-If you cannot access your panel, you can modify the database directly using the following commands.
+If you cannot access your panel, you can modify the `.env` directly to disable it.
 
-Edit the `.env` in the panels root directory `/var/www/pelican/` and change `RECAPTCHA_ENABLED=true` to `RECAPTCHA_ENABLED=false`
+Edit the `.env` in the panel's root directory `/var/www/pelican/` and change the value of `RECAPTCHA_ENABLED` to `false`.
 
 ## 2FA
 
-If possible you should use the panel to update your 2FA settings. If you can't access your panel for what ever reason you can use the following steps.
+If possible you should use the panel to update your 2FA settings. If you can't access your panel for whatever reason you can use the following steps.
 
 ### Disable 2FA requirement
 
-Edit the `.env` in the panels root directory `/var/www/pelican/` and change `APP_2FA_REQUIRED=1`/ `APP_2FA_REQUIRED=2` to `APP_2FA_REQUIRED=0`
+Edit the `.env` in the panel's root directory `/var/www/pelican/` and change the value of `APP_2FA_REQUIRED` to `0`.
 
 ### Disable 2FA for a specific user
 
