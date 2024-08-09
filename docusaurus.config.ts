@@ -59,6 +59,10 @@ const config: Config = {
           position: "left",
         },
         { to: "/faq", label: "FAQ", position: "left" },
+        { to: "https://hub.pelican.dev",
+          label: "The Hub",
+          position: "left"
+        },
         {
           href: "https://github.com/pelican-dev/",
           position: "right",
