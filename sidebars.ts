@@ -29,7 +29,8 @@ const sidebars: SidebarsConfig = {
           label: 'Advanced',
           items: [
               'panel/advanced/redis',
-              'panel/advanced/mysql'
+              'panel/advanced/mysql',
+              'panel/advanced/artisan',
           ]
         }
       ],
