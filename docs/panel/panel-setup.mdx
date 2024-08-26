@@ -88,6 +88,14 @@ done with the command below.
 sudo php artisan p:environment:queue-service
 ```
 
+### Database Setup
+
+Now we need to setup all of the base data for the Panel in the database you created earlier. The command below may take some time to run depending on your machine. Please DO NOT exit the process until it is completed! This command will setup the database tables and then add all of the Nests & Eggs that power Pelican.
+
+```sh
+php artisan migrate --seed --force
+```
+
 ### Web-Installer
 
 Once you've set the proper permissions & created the Cron & Queue worker, continue the Panel install on the web interface.
