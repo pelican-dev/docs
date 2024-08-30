@@ -26,11 +26,14 @@ sudo systemctl enable --now redis-server
 
 ### Use Redis as driver
 
-Run the following commands and choose `redis` for the drivers you want. For all other options you can simply hit Enter to use the current selected values.
+You can use the following commands to use Redis as Cache, Queue and Session driver.
 
-When asked if you want to overwrite the queue worker file answer with `yes`.
+When asked choose `redis` for the driver and enter your redis data. For all other options you can simply hit Enter to use the default values.
 
 ```sh
 cd /var/www/pelican
-php artisan p:environment:setup
+
+php artisan p:environment:cache
+php artisan p:environment:queue
+php artisan p:environment:session
 ```
