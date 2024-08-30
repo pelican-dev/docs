@@ -7,15 +7,20 @@ import Admonition from '@theme/Admonition';
 
 Here are some of the most asked questions that were asked in our Q&A stage on 4/12/2024, and our answers.
 
-**Last Updated: 2024-04-26**
+**Last Updated: 2024-08-30**
 
 <Admonition type="info" title="When is the beta?">
-    We plan to have a beta released by May 13th! Stay tuned!
-    **This date is subject to change, depending on development**
+    The Beta is now available!
+    **Head over to the Install docs and try out Pelican yourself.**
 </Admonition>
 
 <Tabs groupId="faq" queryString>
     <TabItem label="Panel" value="panel">
+        <details>
+            <summary>What makes Pelican different to Pterodactyl?</summary>
+
+            We have a dedicated [Comparison page](https://pelican.dev/docs/comparison) where you can see differences and planned features.
+        </details>
         <details>
             <summary>Will my Eggs still be compatible?</summary>
 
@@ -48,9 +53,9 @@ Here are some of the most asked questions that were asked in our Q&A stage on 4/
             No, Blueprint extensions will not work with Pelican.
         </details>
         <details>
-            <summary>Will the front end match the new admin area?</summary>
+            <summary>Will the client area match the new admin area?</summary>
 
-            Yes, we will get to it in the near future.
+            Yes, we are currently working on that.
         </details>
         <details>
             <summary>Will WHMCS and other billing solutions still work?</summary>
@@ -73,7 +78,7 @@ Here are some of the most asked questions that were asked in our Q&A stage on 4/
         <details>
             <summary>Will Wings support plugins?</summary>
 
-            At this time, No. But new features are being built into Wings and are on the way!
+            Currently it's not planned. But new features are being built into Wings and are on the way!
         </details>
         <details>
             <summary>Will the original Wings still be compatible with Pelican?</summary>
@@ -84,34 +89,27 @@ Here are some of the most asked questions that were asked in our Q&A stage on 4/
         <details>
             <summary>Will Podman / Kubernetes be supported?</summary>
 
-            Yes, we plan on supporting them in the near future.
+            Yes, we plan on supporting them in the future.
         </details>
     </TabItem>
-
     <TabItem label="Licensing" value="licensing">
-    <Admonition type="warning" title="The license applies to you if you meet all of the following requirements">
-        1. Have modified any Pelican Panel files.
+        The Pelican Panel has been relicensed to **AGPLv3**. Wings still uses **MIT**.
 
-        2. Have not made the modifications open source.
+        This license change does only affect you if you meet _all_ of the following requirements:
+        1. You modified the Pelican panel source files.
+        2. These modifications are not open source.
+        3. Your modified panel is publicly available. (Note: People who are family, friends, and acquaintances are not the public)
 
-        3. Allowed public access to your panel.     
-        *People who are family, friends, and acquaintances are not the public.*
-    </Admonition>
-    <Admonition type="tip" title="If you don't meet those combined requirements">
-        You are free to use the panel as you want.
-    </Admonition>
+        If you meet _all_ of the above requirements you need a commercial license.
+        Please note that the usage or development of plugins/ themes does not require a commercial license.
+
+        You can find more detailed information about the new license in [this blog post](https://pelican.dev/blog/relicensing-pelican-to-agpl).
     </TabItem>
     <TabItem label="Project" value="project">
         <details>
             <summary>Where can I submit feature requests and discuss new ideas?</summary>
 
             They can be posted on our [Github Discussions](https://github.com/pelican-dev/panel/discussions)
-        </details>
-        <details>
-           <summary>Why announce Pelican without a release?</summary>
-
-            It's not in the open source spirit to build an application in secret!
-            Support and feedback from the community is crucial to OSS, it helps make our releases much better.
         </details>
         <details>
             <summary>Are there any hostilities with the previous project?</summary>
@@ -127,6 +125,11 @@ Here are some of the most asked questions that were asked in our Q&A stage on 4/
             <summary>Couldn't these changes be part of Pterodactyl?</summary>
 
             If they could, they would. But they can't, so they shan't.
+        </details>
+        <details>
+            <summary>What will happen with Pterodactyl? Is it EOL now?</summary>
+
+            We can't say that. That's up to the Maintainer of Pterodactyl. Pelican and Pterodactyl are separate projects.
         </details>
     </TabItem>
 </Tabs>
