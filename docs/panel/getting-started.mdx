@@ -39,21 +39,19 @@ SQLite support depends on [libsqlite3-0_3.35+](https://pkgs.org/download/libsqli
 Ubuntu 20.04 & Debian 11 do not meet this requirement.
 
 ### Dependencies
+
+For the Panel you need to install **PHP `8.3` (recommended) or `8.2`**, with the following **extensions**:
+`gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl`, `sqlite3` and `fpm`.
+
+You will also need a Webserver. Currently, **Apache, NGINX or Caddy** are supported.
+
+If you want to use MySQL or MariaDB for the panel database make sure to install either **MySQL 8+ or MariaDB 10.3+**. (both client and server!)
+
+Finally, for some commands during the installation you need `curl`, `tar` and `unzip`.
+
 <Admonition type="warning">
-    The `ondrej/php` repository is required to install the latest versions of PHP and its required extensions.
-
-    It can be added with the following command.
-    ```sh
-    sudo add-apt-repository ppa:ondrej/php
-    ```
+    Please make sure you installed **all** needed dependencies before continuing!
 </Admonition>
-
-* PHP `8.3` (recommended) or `8.2` with the following extensions: `gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl`, `sqlite3` and `fpm`
-* MySQL `8` (`mysql-server`) **or** MariaDB `10.3`+
-* A webserver (Apache, NGINX, Caddy, etc.)
-* `curl`
-* `tar`
-* `composer` v2
 
 ### Create Directories & Downloading Files
 
@@ -65,8 +63,9 @@ mkdir -p /var/www/pelican
 cd /var/www/pelican
 ```
 
-Once you have created a new directory to use and moved into it you'll need to download the Panel files. This
-is as simple as using `curl` to download the latest release.
+Once you have created a new directory to use and moved into it, you'll need to download the Panel files.
+This is as simple as using `curl` to download the latest release.
+
 ```sh
 curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv
 ```
