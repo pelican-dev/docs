@@ -25,7 +25,7 @@ sudo rm -rf /var/www/pelican
 Next, remove the Pelican webserver config.
 
 <Tabs>
-    <TabItem value="t1cb" label="NGINX">
+    <TabItem value="nginx" label="NGINX">
     ```sh
     sudo rm /etc/nginx/sites-enabled/pelican.conf
     sudo rm /etc/nginx/sites-available/pelican.conf
@@ -33,7 +33,7 @@ Next, remove the Pelican webserver config.
     systemctl restart nginx
     ```
     </TabItem>
-    <TabItem value="t1ap" label="Apache">
+    <TabItem value="apache" label="Apache">
     ```sh
     sudo rm /etc/apache2/sites-enabled/pelican.conf
     sudo rm /etc/apache2/sites-available/pelican.conf
@@ -41,7 +41,7 @@ Next, remove the Pelican webserver config.
     systemctl restart apache2
     ```
     </TabItem>
-    <TabItem value="t1cd" label="Caddy">
+    <TabItem value="caddy" label="Caddy">
     ```sh
     sudo rm /etc/caddy/Caddyfile
 
