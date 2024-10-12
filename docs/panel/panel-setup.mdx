@@ -50,44 +50,6 @@ chmod -R 755 storage/* bootstrap/cache/
     </TabItem>
 </Tabs>
 
-### Crontab Configuration
-
-We need to create a new cronjob that runs every minute to process specific tasks, such as session cleanup and scheduled tasks.
-You'll want to open your crontab.
-
-<Tabs groupId="webserver">
-    <TabItem value='NGINX/Apache'>
-        ```sh
-        sudo crontab -e -u www-data
-        ```
-    </TabItem>
-    <TabItem value='Rocky Linux NGINX'>
-        ```sh
-        sudo crontab -e -u nginx
-        ```
-    </TabItem>
-    <TabItem value='Rocky Linux Apache'>
-        ```sh
-        sudo crontab -e -u apache
-        ```
-    </TabItem>
-</Tabs>
-
-And then paste the line below.
-
-```sh
-* * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1
-```
-
-### Setting up Queue Service
-
-Once you install the panel and set up the cron-tab the last step to take is to set up the queue service. This can be
-done with the command below.
-
-```sh
-sudo php artisan p:environment:queue-service
-```
-
 ### Web-Installer
 
 Once you've set the proper permissions & created the Cron & Queue worker, continue the Panel install on the web interface.
