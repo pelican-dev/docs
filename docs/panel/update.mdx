@@ -9,7 +9,7 @@ This documentation covers the process for updating the panel portion of Pelican.
 ## Version Requirements
 
 Each version of Pelican Panel also has a corresponding minimum version of Wings that
-is required for it to run.  
+is required for it to run.
 
 Please see the chart below for how these versions line up. In
 most cases your base Wings version should match that of your Panel.
@@ -65,6 +65,14 @@ php artisan view:clear
 php artisan config:clear
 ```
 
+## Cache components
+
+To make sure your panel loads faster you'll want to cache filament components.
+
+```sh
+php artisan filament:optimize
+```
+
 ### Update Database
 
 You'll also need to update your database schema. Running the command below
@@ -87,12 +95,12 @@ is `www-data` but can vary from system to system &mdash; sometimes being `nginx`
         ```
     </TabItem>
     <TabItem value="Rocky Linux NGINX">
-        ```sh 
+        ```sh
         chown -R nginx:nginx /var/www/pelican
         ```
     </TabItem>
     <TabItem value="Rocky Linux Apache">
-        ```sh 
+        ```sh
         chown -R apache:apache /var/www/pelican
         ```
     </TabItem>
