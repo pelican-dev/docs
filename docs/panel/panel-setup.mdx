@@ -4,15 +4,10 @@ import TabItem from '@theme/TabItem';
 
 # Panel Setup
 
-The core environment is easily configured using a single CLI command & the web installer built into the app.
-
-This step will cover setting up things such as sessions, caching, database credentials, and email sending.
+The core environment is easily configured using a single CLI command & the web installer built into the app.  
+These steps will cover setting up things such as sessions, caching, database credentials, and email sending.
 
 Running `php artisan p:environment:setup` will, if it does not exist, auto create the required `.env` file and generate a `APP_KEY`.
-
-<Admonition type="info" title="Want to use MySQL/ MariaDB?">
-    Make sure to read the [MySQL guide](./advanced/mysql) first if you want to use MySQL/ MariaDB instead of SQLite!
-</Admonition>
 
 ```sh
 php artisan p:environment:setup
@@ -52,7 +47,10 @@ chmod -R 755 storage/* bootstrap/cache/
 
 ### Web-Installer
 
-Once you've set the proper permissions & created the Cron & Queue worker, continue the Panel install on the web interface.
+Once you've set the proper permissions, continue the Panel install on the web interface.  
+The web installer is located at `<domain>/installer` or `<ip>/installer`.
 
-Located at `<domain>/installer` or `<ip>/installer`
-
+<Admonition type="info" title="Want something advanced?">
+    Make sure to read the [MySQL guide](./advanced/mysql) first if you want to use MySQL/ MariaDB instead of SQLite!
+    If you want to use Redis make sure to read the [Redis guide](./advanced/redis) first.
+</Admonition>
