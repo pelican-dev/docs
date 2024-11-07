@@ -25,7 +25,11 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--md"
             to="/docs/panel/getting-started" style={{ fontSize: '26px' }}
-          >Install Pelican</Link>
+          >Install</Link>
+          <Link
+            className="button button--secondary button--md"
+            to="/docs/comparison#pterodactyl" style={{ fontSize: '26px' }}
+          >Demo</Link>
           <Link
             style={{ paddingTop: '10px', margin: '15px' }}
             className="button button--secondary button--sm"
