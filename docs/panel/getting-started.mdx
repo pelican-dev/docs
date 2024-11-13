@@ -49,14 +49,37 @@ If you want to use MySQL or MariaDB for the panel database make sure to install 
 
 Finally, for some commands during the installation you need `curl`, `tar` and `unzip`.
 
+### Example Dependency Installation for Ubuntu
+
+To install the required dependencies on the latest version of Ubuntu, use the following commands:
+
+```bash
+# Update package list
+sudo apt update
+
+# Install PHP 8.3 and required extensions for the Panel
+sudo apt install -y php8.3-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm}
+
+# Install your preferred web server, such as NGINX (or replace with apache2 or caddy if desired)
+sudo apt install -y nginx
+
+# Install MySQL or MariaDB (choose one)
+# MySQL
+sudo apt install -y mysql-server mysql-client
+
+# MariaDB
+sudo apt install -y mariadb-server mariadb-client
+
+# Install additional tools required for installation
+sudo apt install -y curl tar unzip
+```
+
 <Admonition type="warning">
-    Please make sure you installed **all** needed dependencies before continuing!
+    Please make sure you installed **all** required dependencies before continuing!
 </Admonition>
 
 ### Create Directories & Downloading Files
-
-The first step in this process is to create the folder where the panel will live and then move ourselves into that
-newly created folder.
+The first step in this process is to create the folder where the panel will live and then move ourselves into that newly created folder.
 
 ```sh
 mkdir -p /var/www/pelican
