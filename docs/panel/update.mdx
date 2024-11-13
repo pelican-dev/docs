@@ -28,6 +28,17 @@ cd /var/www/pelican
 php artisan down
 ```
 
+<Admonition type="warning">
+   If you are updating from < 1.0.0-beta13. Please use the below script! This will ensure all the recently deleted files are removed.
+
+Note: this script is experimental... IT WILL NOT CREATE A MYSQL DUMP FOR YOUR DATABASE! 
+
+```sh
+bash <(curl -s https://gist.githubusercontent.com/notAreYouScared/fa2b0839f001e9d765b96fdd91a56a04/raw/78feb24f393acb03a391e57f1b88361a9714bcc6/PelicanUpdate)
+```
+
+</Admonition>
+
 ### Download Update
 
 The first step in the update process is to download the new panel files from GitHub. The command below will download
