@@ -31,7 +31,15 @@ php artisan down
 <Admonition type="warning">
    If you are updating from < 1.0.0-beta13. Please use the below script! This will ensure all the recently deleted files are removed.
 
-Note: this script is experimental... IT WILL NOT CREATE A MYSQL DUMP FOR YOUR DATABASE! 
+Note: this script is experimental... IT WILL NOT CREATE A MYSQL DUMP FOR YOUR DATABASE!
+Note Note: This script runs all the below commands for you. 
+
+What the script does, is looks for `.env`, and if it exists pulls `DB_CONNECTION` to see if you are using mysql/mariadb/sqlite, if sqlite it will copy the database.sqlite to a backup folder
+along with the env. Once they're copied to the backup folder it will delete everything except the backup folder in the specified install directory. 
+
+Proceeds to download the latest release, extracts to install directory, Sets some permissions, runs composer install, restores old sqlite database and .env. Runs Filament Optimize, Updates migrations, asks you to input the webserver for file owner (www-data/apache/nginx), restarts the queue, and Voilà! If you have any issues please reach out on discord!
+
+If you do not wish to use the script and wish to do it manually, You can delete everything except the `.env` and the sqlite database file, if using sqlite. then follow the standard update process below. 
 
 ```sh
 bash <(curl -s https://gist.githubusercontent.com/notAreYouScared/fa2b0839f001e9d765b96fdd91a56a04/raw/78feb24f393acb03a391e57f1b88361a9714bcc6/PelicanUpdate)
