@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 If you see a `500 | SERVER ERROR` or `An unexpected error was encountered while processing this request` you have to check your panel logs by running the following command.
 
 ```sh
-tail -n 100 /var/www/pelican/storage/logs/laravel-$(date +%F).log"
+tail -n 1000 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(date +%Y)"
 ```
 
 If the command above doesn't return anything you most likely have wrong permissions for your `storage` folder. So you first need to fix that.  
