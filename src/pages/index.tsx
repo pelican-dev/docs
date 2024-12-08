@@ -23,9 +23,15 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
+            style={{ fontSize: '26px' }}
             className="button button--secondary button--md"
-            to="/docs/panel/getting-started" style={{ fontSize: '26px' }}
-          >Install Pelican</Link>
+            to="/docs/panel/getting-started"
+          >Install</Link>
+          <Link
+            style={{ fontSize: '26px', margin: '15px' }}
+            className="button button--secondary button--md"
+            to="/docs/comparison#pterodactyl"
+          >Demo</Link>
           <Link
             style={{ paddingTop: '10px', margin: '15px' }}
             className="button button--secondary button--sm"
