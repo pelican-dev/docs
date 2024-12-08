@@ -23,13 +23,14 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
+            style={{ fontSize: '26px' }}
             className="button button--secondary button--md"
-            to="/docs/panel/getting-started" style={{ fontSize: '26px' }}
+            to="/docs/panel/getting-started"
           >Install</Link>
           <Link
-            style={{ margin: '15px' }}
+            style={{ fontSize: '26px', margin: '15px' }}
             className="button button--secondary button--md"
-            to="/docs/comparison#pterodactyl" style={{ fontSize: '26px' }}
+            to="/docs/comparison#pterodactyl"
           >Demo</Link>
           <Link
             style={{ paddingTop: '10px', margin: '15px' }}
