@@ -27,6 +27,7 @@ function HomepageHeader() {
             to="/docs/panel/getting-started" style={{ fontSize: '26px' }}
           >Install</Link>
           <Link
+            style={{ margin: '15px' }}
             className="button button--secondary button--md"
             to="/docs/comparison#pterodactyl" style={{ fontSize: '26px' }}
           >Demo</Link>
