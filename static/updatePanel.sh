@@ -60,16 +60,15 @@ else
       echo "DB_DATABASE is set to: $db_database"
       cp "$install_dir/database/$db_database" "$backup_dir/$db_database.backup"
     fi
-
-  elif [ "$db_connection" = "mysql" ]; then
+  else
     read -p "NOTE: THIS WILL NOT BACKUP MySQL/MariaDB DATABASES!!! You should pause now and make your own backup!! You've been warned! Continue? (y/n) [y]: " continue_confirm
 continue_confirm=${continue_confirm:-y}
-  if [ "$continue_confirm" != "y" ]; then
-    echo "Update Canceled."
-    php artisan up
-    echo "Panel is out of maintenance mode."
-    exit 0
-  fi
+    if [ "$continue_confirm" != "y" ]; then
+      echo "Update Canceled."
+      php artisan up
+      echo "Panel is out of maintenance mode."
+      exit 0
+    fi
   fi
 
   cp "$env_file" "$backup_dir/.env.backup"
