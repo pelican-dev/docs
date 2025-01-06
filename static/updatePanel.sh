@@ -113,7 +113,8 @@ if [ "$db_connection" = "sqlite" ]; then
   mv "$backup_dir/$db_database.backup" "$install_dir/database/$db_database"
 fi
 
-echo "Optimizing Filament"
+echo "Optimizing"
+php artisan optimize:clear
 php artisan filament:optimize
 
 echo "Updating database"
