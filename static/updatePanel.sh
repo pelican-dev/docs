@@ -90,7 +90,16 @@ echo "Deleted all files and folders in $install_dir except the backup folder."
 
 echo "Downloading Files..."
 curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz -o panel.tar.gz
-tar -xzv panel.tar.gz -C "$install_dir"
+expected_checksum=$(curl -L https://github.com/pelican-dev/panel/releases/latest/download/checksum.txt)
+calculated_checksum=$(sha256sum panel.tar.gz | awk '{ print $1 }')
+
+if [[ -n "$expected_checksum" && -n "$calculated_checksum" && "$expected_checksum" == "$calculated_checksum" ]]; then
+  echo "Checksum verified. Proceeding to extract the tarball."
+  tar -xzv panel.tar.gz -C "$install_dir"
+else
+  echo "Checksum mismatch! The file may be corrupted."
+  exit 1
+fi
 
 echo "Installing Composer"
 composer install --no-dev --optimize-autoloader --no-interaction
