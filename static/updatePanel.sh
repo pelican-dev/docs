@@ -122,6 +122,8 @@ php artisan migrate --seed --force
 read -p "Enter the owner of the files (www-data, apache, nginx) [www-data]: " file_owner
 file_owner=${file_owner:-www-data}
 
+echo "Setting Permissions"
+chmod -R 755 storage/* bootstrap/cache
 chown -R "$file_owner":"$file_owner" "$install_dir"
 
 php artisan queue:restart
