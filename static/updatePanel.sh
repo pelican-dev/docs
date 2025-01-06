@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root or with sudo." >&2
+   exit 1
+fi
+
 read -p "Enter the directory for the panel location [/var/www/pelican]: " install_dir
 install_dir=${install_dir:-/var/www/pelican}
 
@@ -85,11 +90,8 @@ find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' -exec rm -rf {} +
 echo "Deleted all files and folders in $install_dir except the backup folder."
 
 echo "Downloading Files..."
-curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv -C "$install_dir"
-
-echo "Setting Permissions"
-cd "$install_dir"
-chmod -R 755 storage/* bootstrap/cache
+curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz -o panel.tar.gz
+tar -xzv panel.tar.gz -C "$install_dir"
 
 echo "Installing Composer"
 composer install --no-dev --optimize-autoloader --no-interaction
