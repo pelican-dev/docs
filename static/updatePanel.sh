@@ -102,7 +102,7 @@ else
 fi
 
 echo "Installing Composer"
-composer install --no-dev --optimize-autoloader --no-interaction
+COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
 
 php artisan down
 
