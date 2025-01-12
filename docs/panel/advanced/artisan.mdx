@@ -1,7 +1,7 @@
 # Artisan Commands
 This is very much a WIP! Many Many commands, Layout might change.
 
-Updated: 8/18/2024 ~notCharles
+Updated: 01/11/2025
 ## User Commands
 ### Create a User
 
@@ -126,6 +126,21 @@ Options:
       --ansi|--no-ansi       Force (or disable --no-ansi) ANSI output
   -n, --no-interaction       Do not ask any interactive question
 ```
+### Editing Queue Service
+```sh
+php artisan p:environment:queue-service [options]
+```
+
+```sh
+Options:
+      --service-name[=SERVICE-NAME]  Name of the queue worker service.
+      --user[=USER]  The user that PHP runs under.
+      --group[=GROUP]  The group that PHP runs under.
+      --overwrite   Force overwrite if the service file already exists.
+  -q, --quiet                Do not output any message
+      --ansi|--no-ansi       Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction       Do not ask any interactive question
+```
 ### Editing Session
 ```sh
 php artisan p:environment:session [options]
@@ -142,6 +157,21 @@ Options:
       --ansi|--no-ansi       Force (or disable --no-ansi) ANSI output
   -n, --no-interaction       Do not ask any interactive question
 ```
+### Setting cache, queue & session driver at once
+```sh
+php artisan p:redis:setup [options]
+```
+
+```sh
+Options:
+      --redis-host[=REDIS-HOST]  Redis host to use for connections.
+      --redis-user[=REDIS-USER]  User used to connect to redis.
+      --redis-pass[=REDIS-PASS]  Password used to connect to redis.
+      --redis-port[=REDIS-PORT]  Port to connect to redis over.
+  -q, --quiet                Do not output any message
+      --ansi|--no-ansi       Force (or disable --no-ansi) ANSI output
+  -n, --no-interaction       Do not ask any interactive question
+```
 ### Editing Setup
 ```sh
 php artisan p:environment:setup [options]
@@ -149,7 +179,6 @@ php artisan p:environment:setup [options]
 
 ```sh
 Options:
-      --url[=URL]       The URL that this Panel is running on.
   -q, --quiet                Do not output any message
       --ansi|--no-ansi       Force (or disable --no-ansi) ANSI output
   -n, --no-interaction       Do not ask any interactive question
