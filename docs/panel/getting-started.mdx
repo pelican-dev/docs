@@ -43,11 +43,18 @@ Ubuntu 20.04 & Debian 11 do not meet this requirement.
 For the Panel you need to install **PHP `8.3` (recommended) or `8.2`**, with the following **extensions**:  
 `gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl`, `sqlite3` and `fpm`.
 
+```sh
+apt install php8.3 php-fpm php8.3-gd php8.3-mysql php8.3-mbstring php8.3-bcmath php8.3-xml php8.3-curl php8.3-zip php8.3-intl php8.3-sqlite3
+```
+
 You will also need a Webserver. Currently, **Apache, NGINX or Caddy** are supported.
 
 If you want to use MySQL or MariaDB for the panel database make sure to install either **MySQL 8+ or MariaDB 10.6+**. (both client and server!)
 
 Finally, for some commands during the installation you need `curl`, `tar` and `unzip`.
+```sh
+apt install curl tar unzip
+```
 
 <Admonition type="warning">
     Please make sure you installed **all** needed dependencies before continuing!
