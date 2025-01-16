@@ -46,29 +46,14 @@ const config: Config = {
         src: "img/logo.png",
       },
       items: [
-        { to: '/docs', label: 'Docs', position: 'left' },
+        { to: "/docs", label: "Docs", position: "left" },
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/donate", label: "Donate", position: "left" },
-        {
-          to: "https://news.pelican.dev/",
-          label: "Newsletter",
-          position: "left",
-        },
         { to: "/faq", label: "FAQ", position: "left" },
-        { to: "https://hub.pelican.dev",
-          label: "The Hub",
-          position: "left"
-        },
-        {
-          href: "https://github.com/pelican-dev/",
-          position: "right",
-          className: "github-link",
-        },
-        {
-          href: "https://discord.gg/pelican-panel",
-          position: "right",
-          className: "discord-link",
-        },
+        { to: "/hub", label: "The Hub", position: "left", target: "_blank", },
+        { to: "/eggs-nest", label: "Eggs Nest", position: "left", target: "_blank", },
+        { to: "/github", position: "right", className: "github-link", target: "_blank", },
+        { to: "/discord", position: "right", className: "discord-link", target: "_blank", },
       ],
     },
     colorMode: {
@@ -104,18 +89,9 @@ const config: Config = {
         {
           title: "Community",
           items: [
-            {
-              label: "Discord",
-              href: "https://discord.gg/pelican-panel",
-            },
-            {
-              label: "Blog",
-              to: "/blog",
-            },
-            {
-              label: "GitHub",
-              href: "https://github.com/pelican-dev",
-            },
+            { label: "Discord", to: "/discord", target: "_blank", },
+            { label: "Blog", to: "/blog", target: "_blank", },
+            { label: "GitHub", to: "/github", target: "_blank", },
           ],
         },
       ],
@@ -135,6 +111,17 @@ const config: Config = {
     },
   } satisfies Preset.ThemeConfig,
   plugins: [
+    [
+      require.resolve('@docusaurus/plugin-client-redirects'),
+      {
+        redirects: [
+          { from: '/discord', to: 'https://discord.gg/pelican-panel' },
+          { from: '/eggs-nest', to: 'https://pelican-eggs.github.io/pelican' },
+          { from: '/github', to: 'https://github.com/pelican-dev' },
+          { from: '/hub', to: 'https://hub.pelican.dev' },
+        ],
+      },
+    ],
     require.resolve('docusaurus-lunr-search'),
     "docusaurus-plugin-sass",
     [
