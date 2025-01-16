@@ -51,7 +51,7 @@ const config: Config = {
         { to: "/donate", label: "Donate", position: "left" },
         { to: "/faq", label: "FAQ", position: "left" },
         { to: "/hub", label: "The Hub", position: "left", target: "_blank", },
-        { to: "/eggsNest", label: "Eggs Nest", position: "left", target: "_blank", },
+        { to: "/eggs-nest", label: "Eggs Nest", position: "left", target: "_blank", },
         { to: "/github", position: "right", className: "github-link", target: "_blank", },
         { to: "/discord", position: "right", className: "discord-link", target: "_blank", },
       ],
@@ -116,7 +116,7 @@ const config: Config = {
       {
         redirects: [
           { from: '/discord', to: 'https://discord.gg/pelican-panel' },
-          { from: '/eggsNest', to: 'https://pelican-eggs.github.io/pelican' },
+          { from: '/eggs-nest', to: 'https://pelican-eggs.github.io/pelican' },
           { from: '/github', to: 'https://github.com/pelican-dev' },
           { from: '/hub', to: 'https://hub.pelican.dev' },
         ],
