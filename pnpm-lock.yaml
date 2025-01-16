@@ -17,9 +17,6 @@ importers:
       '@docusaurus/plugin-client-redirects':
         specifier: ^3.7.0
         version: 3.7.0(@mdx-js/react@3.1.0(@types/react@19.0.7)(react@19.0.0))(acorn@8.14.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
-      '@docusaurus/plugin-content-docs':
-        specifier: ^3.7.0
-        version: 3.7.0(@mdx-js/react@3.1.0(@types/react@19.0.7)(react@19.0.0))(acorn@8.14.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
       '@docusaurus/preset-classic':
         specifier: ^3.7.0
         version: 3.7.0(@algolia/client-search@5.19.0)(@mdx-js/react@3.1.0(@types/react@19.0.7)(react@19.0.0))(@types/react@19.0.7)(acorn@8.14.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(search-insights@2.17.3)(typescript@5.7.3)
@@ -53,12 +50,6 @@ importers:
       '@mdx-js/react':
         specifier: ^3.1.0
         version: 3.1.0(@types/react@19.0.7)(react@19.0.0)
-      '@types/react':
-        specifier: ^19.0.7
-        version: 19.0.7
-      acorn:
-        specifier: ^8.14.0
-        version: 8.14.0
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -83,9 +74,6 @@ importers:
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
-      react-loadable:
-        specifier: ^5.5.0
-        version: 5.5.0(react@19.0.0)
       react-medium-image-zoom:
         specifier: ^5.2.13
         version: 5.2.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -95,9 +83,6 @@ importers:
       sass:
         specifier: ^1.74.1
         version: 1.83.4
-      search-insights:
-        specifier: ^2.17.3
-        version: 2.17.3
     devDependencies:
       '@docusaurus/module-type-aliases':
         specifier: ^3.7.0
@@ -4969,11 +4954,6 @@ packages:
     peerDependencies:
       react-loadable: '*'
       webpack: '>=4.41.1 || 5.x'
-
-  react-loadable@5.5.0:
-    resolution: {integrity: sha512-C8Aui0ZpMd4KokxRdVAm2bQtI03k2RMRNzOB+IipV3yxFTSVICv7WoUr5L9ALB5BmKO1iHgZtWM8EvYG83otdg==}
-    peerDependencies:
-      react: '*'
 
   react-medium-image-zoom@5.2.13:
     resolution: {integrity: sha512-KcBL4OsoUQJgIFh6vQgt/6sRGqDy6bQBcsbhGD2tsy4B5Pw3dWrboocVOyIm76RRALEZ6Qwp3EDvIvfEv0m5sg==}
@@ -12277,11 +12257,6 @@ snapshots:
       '@babel/runtime': 7.26.0
       react-loadable: '@docusaurus/react-loadable@6.0.0(react@19.0.0)'
       webpack: 5.97.1
-
-  react-loadable@5.5.0(react@19.0.0):
-    dependencies:
-      prop-types: 15.8.1
-      react: 19.0.0
 
   react-medium-image-zoom@5.2.13(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:

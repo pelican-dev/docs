@@ -18,7 +18,6 @@
     "@algolia/client-search": "^5.19.0",
     "@docusaurus/core": "^3.7.0",
     "@docusaurus/plugin-client-redirects": "^3.7.0",
-    "@docusaurus/plugin-content-docs": "^3.7.0",
     "@docusaurus/preset-classic": "^3.7.0",
     "@docusaurus/theme-common": "^3.7.0",
     "@docusaurus/theme-mermaid": "^3.7.0",
@@ -30,8 +29,6 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@iconify/react": "^5.2.0",
     "@mdx-js/react": "^3.1.0",
-    "@types/react": "^19.0.7",
-    "acorn": "^8.14.0",
     "clsx": "^2.1.1",
     "docusaurus-lunr-search": "^3.6.0",
     "docusaurus-plugin-sass": "^0.2.6",
@@ -40,11 +37,9 @@
     "prism-react-renderer": "^2.4.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-loadable": "^5.5.0",
     "react-medium-image-zoom": "^5.2.13",
     "remark-gfm": "^4.0.0",
-    "sass": "^1.74.1",
-    "search-insights": "^2.17.3"
+    "sass": "^1.74.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.7.0",
