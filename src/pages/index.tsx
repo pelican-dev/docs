@@ -32,16 +32,6 @@ function HomepageHeader() {
             className="button button--secondary button--md"
             to="/docs/comparison#pterodactyl"
           >Demo</Link>
-          <Link
-            style={{ paddingTop: '10px', margin: '15px' }}
-            className="button button--secondary button--sm"
-            to="https://github.com/pelican-dev/panel"
-          ><Icon icon="logos:github-icon" height='36px' /></Link>
-          <Link
-            style={{paddingTop: '10px'}}
-            className="button button--secondary button--sm"
-            to="https://discord.gg/pelican-panel"
-          ><Icon icon="logos:discord-icon" height='36px' /></Link>
         </div>
       </div>
     </header>
