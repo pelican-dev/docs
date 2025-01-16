@@ -119,7 +119,6 @@ const config: Config = {
           { from: '/eggsNest', to: 'https://pelican-eggs.github.io/pelican' },
           { from: '/github', to: 'https://github.com/pelican-dev' },
           { from: '/hub', to: 'https://hub.pelican.dev' },
-          { from: '/discord', to: 'https://discord.gg/pelican-panel' },
         ],
       },
     ],
