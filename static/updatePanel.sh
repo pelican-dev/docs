@@ -90,7 +90,7 @@ echo "Deleted all files and folders in $install_dir except the backup folder."
 
 echo "Downloading Files..."
 curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz -o panel.tar.gz
-expected_checksum=$(curl -L https://github.com/pelican-dev/panel/releases/latest/download/checksum.txt)
+expected_checksum=$(curl -L https://github.com/pelican-dev/panel/releases/latest/download/checksum.txt | awk '{ print $1 }')
 calculated_checksum=$(sha256sum panel.tar.gz | awk '{ print $1 }')
 
 if [[ -n "$expected_checksum" && -n "$calculated_checksum" && "$expected_checksum" == "$calculated_checksum" ]]; then
