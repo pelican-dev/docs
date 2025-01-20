@@ -5,6 +5,13 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+function exitInstall {
+  cd "$install_dir"
+  php artisan up
+  echo "Panel is out of maintenance mode."
+  exit $1
+}
+
 read -p "Enter the directory for the panel location [/var/www/pelican]: " install_dir
 install_dir=${install_dir:-/var/www/pelican}
 
@@ -32,7 +39,7 @@ db_connection=$(grep "^DB_CONNECTION=" "$env_file" | cut -d '=' -f 2)
 
 if [ -z "$db_connection" ]; then
   echo "DB_CONNECTION not found in $env_file."
-  exit 0
+  exitInstall 0
 else
   echo "DB_CONNECTION is set to: $db_connection"
 
@@ -40,9 +47,7 @@ else
   backup_confirm=${backup_confirm:-y}
   if [ "$backup_confirm" != "y" ]; then
     echo "Backup canceled."
-    php artisan up
-    echo "Panel is out of maintenance mode."
-    exit 0
+    exitInstall 0
   fi
 
   backup_dir="$install_dir/backup"
@@ -53,21 +58,17 @@ else
 
     if [ -z "$db_database" ]; then
       echo "DB_DATABASE not found in $env_file."
-      php artisan up
-      echo "Panel is out of maintenance mode."
-      exit 1
+      exitInstall 1
     else
       echo "DB_DATABASE is set to: $db_database"
       cp "$install_dir/database/$db_database" "$backup_dir/$db_database.backup"
     fi
   else
-    read -p "NOTE: THIS WILL NOT BACKUP MySQL/MariaDB DATABASES!!! You should pause now and make your own backup!! You've been warned! Continue? (y/n) [y]: " continue_confirm
-continue_confirm=${continue_confirm:-y}
-    if [ "$continue_confirm" != "y" ]; then
+    read -p "NOTE: THIS WILL NOT BACKUP MySQL/MariaDB DATABASES!!! You should pause now and make your own backup!! You've been warned! Continue? (y/n) [y]: " database_confirm
+database_confirm=${database_confirm:-y}
+    if [ "$database_confirm" != "y" ]; then
       echo "Update Canceled."
-      php artisan up
-      echo "Panel is out of maintenance mode."
-      exit 0
+      exitInstall 0
     fi
   fi
 
@@ -79,9 +80,7 @@ read -p "Do you want to delete all files and folders in $install_dir except the 
 delete_confirm=${delete_confirm:-y}
 if [ "$delete_confirm" != "y" ]; then
   echo "Deletion canceled."
-  php artisan up
-  echo "Panel is out of maintenance mode."
-  exit 0
+  exitInstall 0
 fi
 
 find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' -exec rm -rf {} +
@@ -95,10 +94,14 @@ calculated_checksum=$(sha256sum panel.tar.gz | awk '{ print $1 }')
 
 if [[ -n "$expected_checksum" && -n "$calculated_checksum" && "$expected_checksum" == "$calculated_checksum" ]]; then
   echo "Checksum verified. Proceeding to extract the tarball."
-  tar -xzv panel.tar.gz -C "$install_dir"
 else
-  echo "Checksum mismatch! The file may be corrupted."
-  exit 1
+  read -p "NOTE: Checksum mismatch, the file may be corrupted!!! You've been warned! Continue? (y/n) [y]: " checksum_confirm
+  checksum_confirm=${checksum_confirm:-y}
+    if [ "$checksum_confirm" != "y" ]; then
+      echo "Update Canceled."
+      exitInstall 1
+    fi
+  tar -xzv panel.tar.gz -C "$install_dir"
 fi
 
 echo "Installing Composer"
