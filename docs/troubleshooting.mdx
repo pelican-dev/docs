@@ -17,22 +17,22 @@ tail -n 1000 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(d
 ```
 
 If the command above doesn't return anything you most likely have wrong permissions for your `storage` folder. So you first need to fix that.  
-You can set the correct permissions by running `chmod -R 755 /var/www/pelican/storage/* /var/www/pelican/bootstrap/cache/`. Also make sure that your panel files are owned by the correct user.
+You can set the correct permissions by running `sudo chmod -R 755 /var/www/pelican/storage/* /var/www/pelican/bootstrap/cache/`. Also make sure that your panel files are owned by the correct user.
 
 <Tabs groupId="webserver">
     <TabItem value='NGINX/Apache'>
         ```sh
-        chown -R www-data:www-data /var/www/pelican 
+        sudo chown -R www-data:www-data /var/www/pelican
         ```
     </TabItem>
     <TabItem value='Rocky Linux NGINX'>
         ```sh 
-        chown -R nginx:nginx /var/www/pelican 
+        sudo chown -R nginx:nginx /var/www/pelican
         ```
     </TabItem>
     <TabItem value='Rocky Linux Apache'>
         ```sh 
-        chown -R apache:apache /var/www/pelican 
+        sudo chown -R apache:apache /var/www/pelican
         ```
     </TabItem>
 </Tabs>
