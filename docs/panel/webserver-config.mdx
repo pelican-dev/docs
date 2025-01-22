@@ -228,16 +228,23 @@ import TabItem from '@theme/TabItem';
         ### Enabling Configuration
 
         Once you've created the file above, simply run the commands below.
+
+        <Admonition type="warning" title="php & fpm">
+            If you're **not** using php8.3, you will need to edit the command to point to enable the correct mod.
+
+            The line is highlighted below.
+        </Admonition>
         
-        ```sh
-        sudo ln -s /etc/apache2/sites-available/pelican.conf /etc/apache2/sites-enabled/pelican.conf
+        ```sh {3}
+        sudo a2ensite pelican.conf
         sudo a2enmod rewrite
+        sudo a2enmod php8.3
         ```
 
         #### You need to restart apache to load the new config file.
 
         ```sh
-        sudo systemctl restart apache2
+        sudo systemctl reload apache2
         ```
         
     </TabItem>
@@ -365,6 +372,7 @@ import TabItem from '@theme/TabItem';
                 ```
             </TabItem>
         </Tabs>
+        ### Enabling Configuration
         The final step is to restart Caddy.
 
         ```sh
