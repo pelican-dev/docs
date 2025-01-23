@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
         </Admonition>
         First, remove the default NGINX configuration.
         ```sh
-        rm /etc/nginx/sites-enabled/default
+        sudo rm /etc/nginx/sites-enabled/default
         ```
         Now, you should paste the contents of the file below, replacing `<domain>` with your domain or IP being used in a file called
         `pelican.conf` and place the file in `/etc/nginx/sites-available/`.
@@ -228,10 +228,17 @@ import TabItem from '@theme/TabItem';
         ### Enabling Configuration
 
         Once you've created the file above, simply run the commands below.
+
+        <Admonition type="warning" title="php & fpm">
+            If you're **not** using php8.3, you will need to edit the command to point to enable the correct mod.
+
+            The line is highlighted below.
+        </Admonition>
         
-        ```sh
-        sudo ln -s /etc/apache2/sites-available/pelican.conf /etc/apache2/sites-enabled/pelican.conf
+        ```sh {3}
+        sudo a2ensite pelican.conf
         sudo a2enmod rewrite
+        sudo a2enmod php8.3
         ```
 
         #### You need to restart apache to load the new config file.
@@ -250,7 +257,7 @@ import TabItem from '@theme/TabItem';
         First, remove the default Caddy configuration.
 
         ```sh
-        rm /etc/caddy/Caddyfile
+        sudo rm /etc/caddy/Caddyfile
         ```
 
         The config file path is `/etc/caddy/`.
@@ -365,10 +372,11 @@ import TabItem from '@theme/TabItem';
                 ```
             </TabItem>
         </Tabs>
+        ### Enabling Configuration
         The final step is to restart Caddy.
 
         ```sh
-        systemctl restart caddy
+        sudo systemctl restart caddy
         ```
     </TabItem>
 </Tabs>

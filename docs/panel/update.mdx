@@ -42,7 +42,7 @@ Proceeds to download the latest release, extracts to install directory, Sets som
 If you do not wish to use the script and wish to do it manually, You can delete everything except the `.env` and the sqlite database file, if using sqlite. then follow the standard update process below. 
 
 ```sh
-bash <(curl -s https://pelican.dev/updatePanel.sh)
+sudo bash <(curl -s https://pelican.dev/updatePanel.sh)
 ```
 
 </Admonition>
@@ -61,7 +61,7 @@ Once the archive is downloaded and extracted we need to set the correct permissi
 any webserver related errors.
 
 ```sh
-chmod -R 755 storage/* bootstrap/cache
+sudo chmod -R 755 storage/* bootstrap/cache
 ```
 
 ### Update Dependencies
@@ -110,17 +110,17 @@ is `www-data` but can vary from system to system &mdash; sometimes being `nginx`
 <Tabs className="unique-tabs">
     <TabItem value="NGINX/Apache">
         ```sh
-        chown -R www-data:www-data /var/www/pelican
+        sudo chown -R www-data:www-data /var/www/pelican
         ```
     </TabItem>
     <TabItem value="Rocky Linux NGINX">
         ```sh
-        chown -R nginx:nginx /var/www/pelican
+        sudo chown -R nginx:nginx /var/www/pelican
         ```
     </TabItem>
     <TabItem value="Rocky Linux Apache">
         ```sh
-        chown -R apache:apache /var/www/pelican
+        sudo chown -R apache:apache /var/www/pelican
         ```
     </TabItem>
 </Tabs>

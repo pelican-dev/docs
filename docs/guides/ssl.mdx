@@ -239,10 +239,10 @@ These tutorials briefly cover creating a new SSL certificates for your panel and
 
         ```sh
         # Set ownership of the `.secrets.env` file to `caddy` system user
-        chown caddy:caddy /etc/caddy/.secrets.env
+        sudo chown caddy:caddy /etc/caddy/.secrets.env
 
         # Set read-write permissions only to owner - the `caddy` system user
-        chmod 0600 /etc/caddy/.secrets.env
+        sudo chmod 0600 /etc/caddy/.secrets.env
         ```
 
         Modify the systemd unit file, to load environment variables from file (add `--envfile /etc/caddy/.secrets.env` flag to `ExecStart`), the default systemd unit file location is `/etc/systemd/system/caddy.service`:

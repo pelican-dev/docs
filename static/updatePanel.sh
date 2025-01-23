@@ -176,13 +176,13 @@ chmod_command="chmod -R 755 storage/* bootstrap/cache"
 eval $chmod_command
 if [ $? -ne 0 ]; then
   echo "Failed to run chmod, Please run the following commands manually:"
-  echo "$chmod_command"
+  echo "sudo $chmod_command"
 fi
 chown_command="chown -R $owner:$group $install_dir"
 eval $chown_command
 if [ $? -ne 0 ]; then
   echo "Failed to run chown, Please run the following commands manually:"
-  echo "$chown_command"
+  echo "sudo $chown_command"
 fi
 
 php artisan queue:restart
