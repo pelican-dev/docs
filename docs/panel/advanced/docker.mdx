@@ -47,14 +47,14 @@ By default, these environment variables are all set by the installer and saved t
 ### Other
 These settings are not configured by the installer but can be set in the admin settings area, or using these environment variables.
 
-- `MAIL_MAILER`: The driver to use for sending email. `[log, smtp, mailgun, sendmail]` Default: log
+- `MAIL_MAILER`: The driver to use for sending email. `[log, sendmail, smtp, mailgun, postmark, mandrill]` Default: log
 - `MAIL_FROM_ADDRESS`: The email address from which to send email. Default: no-reply@example.com
 - `MAIL_FROM_NAME`: The name from which to send email. Default: Pelican Admin
 
 ##### If using SMTP
 - `MAIL_HOST`: The hostname of your SMTP server. 
 - `MAIL_PORT`: The port of your SMTP server.
-- `MAIL_ENCRYPTION`: What transport security type to use for the SMTP server. `[log, sendmail, smtp, mailgun, postmark, mandrill]`
+- `MAIL_ENCRYPTION`: What transport security type to use for the SMTP server. `[ssl, tls, none]`
 - `MAIL_USERNAME`: The username with which to log into your SMTP server.
 - `MAIL_PASSWORD`: The password with which to log into your SMTP server.
 
