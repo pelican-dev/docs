@@ -47,7 +47,21 @@ By default, these environment variables are all set by the installer and saved t
 ### Configured in Settings
 These options are not configured by the installer but can be set in the admin settings area, or using these environment variables.
 
-#### Email
+#### General
+- `APP_FAVICON`: A path relative to the public directory to use as the favicon. Default: `/pelican.ico`
+- `FILAMENT_TOP_NAVIGATION`: Set to `false` to use the sidebar for navigation. Set to `true` to use a top menu. `[true, false]` Default: false
+- `PANEL_USE_BINARY_PREFIX`: Whether the panel should use the binary prefix to display units (MiB/GiB) or not (MB/GB). `[true, false]` Default: true
+- `APP_2FA_REQUIRED`: Set to `0` to disable 2FA requirement. Set to `1` to enable for admins only. Set to `2` to enable for everyone. `[0, 1, 2]` Default: 0
+- `TRUSTED_PROXIES`: A comma-separated list of trusted proxies. `*` can be used to trust any proxy that connects directly to your server, a requirement when you cannot know the address of your proxy (e.g. if using Rackspace balancers). `**` can be used to trust not just any proxy that connects directly to your server, but also proxies that connect to those proxies, and all the way back until you reach the original source IP. Default: null
+- `FILAMENT_WIDTH`: The max display width. Default: `screen-2xl`
+
+#### Captcha
+- `TURNSTILE_ENABLED`: `[true, false]` Default: false
+- `TURNSTILE_SITE_KEY`: Your Turnstile public sitekey. See https://developers.cloudflare.com/turnstile/get-started/
+- `TURNSTILE_SECRET_KEY`: Your Turnstile secret key. See https://developers.cloudflare.com/turnstile/get-started/
+- `TURNSTILE_VERIFY_DOMAIN`: Skips checking that the hostname from the request matches the hostname configured in Cloudflare Turnstile. `[true, false]` Default: true
+
+#### Mail
 - `MAIL_MAILER`: The driver to use for sending email. `[log, sendmail, smtp, mailgun]` Default: log
 - `MAIL_FROM_ADDRESS`: The email address from which to send email. Default: no-reply@example.com
 - `MAIL_FROM_NAME`: The name from which to send email. Default: Pelican Admin
@@ -64,8 +78,8 @@ These options are not configured by the installer but can be set in the admin se
 - `MAILGUN_SECRET`: Your Mailgun API key.
 - `MAILGUN_ENDPOINT`: The domain from your Mailgun API base URL. See https://documentation.mailgun.com/docs/mailgun/api-reference/#base-url `[api.mailgun.net, api.eu.mailgun.net]`
 
-#### Cloudflare Turnstile
-- `TURNSTILE_ENABLED`: `[true, false]`
-- `TURNSTILE_SITE_KEY`: Your Turnstile public sitekey. See https://developers.cloudflare.com/turnstile/get-started/
-- `TURNSTILE_SECRET_KEY`:Your Turnstile secret key. See https://developers.cloudflare.com/turnstile/get-started/
-- `TURNSTILE_VERIFY_DOMAIN`: Skips checking that the hostname from the request matches the hostname configured in Cloudflare Turnstile. Default: true `[true, false]`
+#### Backup 
+
+#### OAuth
+
+#### Misc 
