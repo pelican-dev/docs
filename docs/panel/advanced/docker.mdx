@@ -1,0 +1,43 @@
+# Panel in Docker
+
+## Volumes
+
+## Environment Variables
+These environment variables are required before using the installer.
+
+- `APP_URL`: This will be the URL you access your Panel from, including https:// or http://. Can be set to 'http://localhost' on port 80 only.
+- `ADMIN_EMAIL`: Used by Caddy for generating SSL certificates.
+- `APP_DEBUG`: Set to `false` for production deployments. `[true, false]`
+- `APP_ENV`: Set to `production` for production deployments. `[production, local, testing]`
+
+### Configured By Installer
+By default, these environment variables are all set by the installer and saved to a .env file which is persisted in `/pelican-data/`. You can use this information to configure them when creating the container instead.
+
+- `APP_INSTALLED`: If you are manually configuring the panel via environment variables, set it to `true` to disable the installer.
+- `APP_KEY`: A 32-character-long randomly-generated string used as an encryption key.
+- `APP_TIMEZONE`: The timezone for your panel. See https://www.php.net/manual/en/timezones.php for a list of options.
+- `APP_NAME`: This will be the Name of your Panel. Default: Pelican
+- `DB_CONNECTION`: The type of database to use for the panel. `[sqlite, mariadb, mysql]`
+- `CACHE_STORE`: The driver used for caching. We recommend "Filesystem." `[file, redis]`
+- `SESSION_DRIVER`: The driver used for storing sessions. We recommend "Filesystem" or "Database." `[file, database, cookie, redis]`
+- `QUEUE_CONNECTION`: The driver used for handling queues. We recommend "Database." `[database, redis, sync]`
+
+:::warning
+    If you are using `redis` for your `SESSION_DRIVER` or `QUEUE_CONNECTION`, you must set `CACHE_STORE` to `redis`.
+:::
+
+#### If using SQLite:
+- `DB_DATABASE`: The path of your .sqlite file relative to the database folder.
+
+#### If using MySQL or MariaDB
+- `DB_HOST`: The host of your database.
+- `DB_PORT`: The port of your database.
+- `DB_DATABASE`: The name of the panel database.
+- `DB_USER`: The name of your database user.
+- `DB_PASSWORD`: The password of your database user.
+
+#### If using Redis
+- `REDIS_HOST`: The host of your redis server. Make sure it is reachable.
+- `REDIS_PORT`: The port of your redis server.
+- `REDIS_USERNAME`: **Optional** The name of your redis user.
+- `REDIS_PASSWORD`: **Optional** The password for your redis user.

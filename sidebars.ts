@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
               'panel/advanced/redis',
               'panel/advanced/mysql',
               'panel/advanced/artisan',
+              'panel/advanced/docker',
           ]
         }
       ],
