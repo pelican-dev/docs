@@ -1,9 +1,11 @@
 # Panel in Docker
 
 ## Volumes
+- `/pelican-data`
+- `/var/www/html/storage/logs`
 
 ## Environment Variables
-These environment variables are required before using the installer.
+These environment variables need to be set manually before using the installer.
 
 - `APP_URL`: This will be the URL you access your Panel from, including https:// or http://. Can be set to 'http://localhost' on port 80 only.
 - `ADMIN_EMAIL`: Used by Caddy for generating SSL certificates.
@@ -41,3 +43,22 @@ By default, these environment variables are all set by the installer and saved t
 - `REDIS_PORT`: The port of your redis server.
 - `REDIS_USERNAME`: **Optional** The name of your redis user.
 - `REDIS_PASSWORD`: **Optional** The password for your redis user.
+
+### Other
+These settings are not configured by the installer but can be set in the admin settings area, or using these environment variables.
+
+- `MAIL_MAILER`: The driver to use for sending email. `[log, smtp, mailgun, sendmail]` Default: log
+- `MAIL_FROM_ADDRESS`: The email address from which to send email. Default: no-reply@example.com
+- `MAIL_FROM_NAME`: The name from which to send email. Default: Pelican Admin
+
+##### If using SMTP
+- `MAIL_HOST`: The hostname of your SMTP server. 
+- `MAIL_PORT`: The port of your SMTP server.
+- `MAIL_ENCRYPTION`: What transport security type to use for the SMTP server. `[log, sendmail, smtp, mailgun, postmark, mandrill]`
+- `MAIL_USERNAME`: The username with which to log into your SMTP server.
+- `MAIL_PASSWORD`: The password with which to log into your SMTP server.
+
+##### If using Mailgun
+- `MAILGUN_DOMAIN`: Domain name used to send the message.
+- `MAILGUN_SECRET`: Your Mailgun API key.
+- `MAILGUN_ENDPOINT`: The domain from your Mailgun API base URL. See https://documentation.mailgun.com/docs/mailgun/api-reference/#base-url `[api.mailgun.net, api.eu.mailgun.net]
