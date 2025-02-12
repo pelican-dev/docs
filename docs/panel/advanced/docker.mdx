@@ -44,9 +44,10 @@ By default, these environment variables are all set by the installer and saved t
 - `REDIS_USERNAME`: **Optional** The name of your redis user.
 - `REDIS_PASSWORD`: **Optional** The password for your redis user.
 
-### Other
-These settings are not configured by the installer but can be set in the admin settings area, or using these environment variables.
+### Configured in Settings
+These options are not configured by the installer but can be set in the admin settings area, or using these environment variables.
 
+#### Email
 - `MAIL_MAILER`: The driver to use for sending email. `[log, sendmail, smtp, mailgun, postmark, mandrill]` Default: log
 - `MAIL_FROM_ADDRESS`: The email address from which to send email. Default: no-reply@example.com
 - `MAIL_FROM_NAME`: The name from which to send email. Default: Pelican Admin
@@ -61,4 +62,10 @@ These settings are not configured by the installer but can be set in the admin s
 ##### If using Mailgun
 - `MAILGUN_DOMAIN`: Domain name used to send the message.
 - `MAILGUN_SECRET`: Your Mailgun API key.
-- `MAILGUN_ENDPOINT`: The domain from your Mailgun API base URL. See https://documentation.mailgun.com/docs/mailgun/api-reference/#base-url `[api.mailgun.net, api.eu.mailgun.net]
+- `MAILGUN_ENDPOINT`: The domain from your Mailgun API base URL. See https://documentation.mailgun.com/docs/mailgun/api-reference/#base-url `[api.mailgun.net, api.eu.mailgun.net]`
+
+#### Cloudflare Turnstile
+- `TURNSTILE_ENABLED`: `[true, false]`
+- `TURNSTILE_SITE_KEY`: Your Turnstile public sitekey. See https://developers.cloudflare.com/turnstile/get-started/
+- `TURNSTILE_SECRET_KEY`:Your Turnstile secret key. See https://developers.cloudflare.com/turnstile/get-started/
+- `TURNSTILE_VERIFY_DOMAIN`: Skips checking that the hostname from the request matches the hostname configured in Cloudflare Turnstile. Default: true `[true, false]`
