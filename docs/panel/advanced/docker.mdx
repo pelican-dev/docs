@@ -78,7 +78,18 @@ These options are not configured by the installer but can be set in the admin se
 - `MAILGUN_SECRET`: Your Mailgun API key.
 - `MAILGUN_ENDPOINT`: The domain from your Mailgun API base URL. See https://documentation.mailgun.com/docs/mailgun/api-reference/#base-url `[api.mailgun.net, api.eu.mailgun.net]`
 
-#### Backup 
+#### Backup
+- `APP_BACKUP_DRIVER`: The backup driver to use for this Panel instance. All client generated server backups will be stored in this location by default. It is possible to change this once backups have been made, without losing data.`[wings ,s3]`
+- `BACKUP_THROTTLE_LIMIT`: The number of backups a user can create in BACKUP_THROTTLE_PERIOD seconds. Default: 2
+- `BACKUP_THROTTLE_PERIOD`: The interval in which the BACKUP_THROTTLE_LIMIT applies, in seconds. Default: 600
+
+##### If using S3
+- `AWS_DEFAULT_REGION`: Your AWS bucket region. 
+- `AWS_ACCESS_KEY_ID`: Your AWS key ID.
+- `AWS_SECRET_ACCESS_KEY`: Your AWS secret key.
+- `AWS_BACKUPS_BUCKET`: The name of the bucket in which to store backups. 
+- `AWS_ENDPOINT`: Your AWS API endbpoint.
+- `AWS_USE_PATH_STYLE_ENDPOINT`: Whether or not to use path-style requests to access the bucket. `[true, false]`
 
 #### OAuth
 
