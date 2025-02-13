@@ -1,96 +1,110 @@
 # Panel in Docker
+Pelican provides pre-built Docker images via GitHub Packages. `ghcr.io/pelican-dev/panel:latest` is the current latest release, and `ghcr.io/pelican-dev/panel:main` is built automatically from the current `main` branch. Deploying the panel in Docker is still a work in progress. While the plan is to make Docker the preferred installation method, we currently recommend the [standard deployment instructions](/docs/panel/getting-started)
 
-## Volumes
-- `/pelican-data`
-- `/var/www/html/storage/logs`
+This guide requires the Docker Engine and Docker CLI. (Docker Compose has been included in the Docker CLI since v2. Docker Compose v1 is unsupported.) If you need to install them, follow the [official install instructions](https://docs.docker.com/compose/install/).
 
-## Environment Variables
-These environment variables need to be set manually before using the installer.
+## Basics
+The easiest deployment method is using the standard compose.yml file.
 
-- `APP_URL`: This will be the URL you access your Panel from, including https:// or http://. Can be set to 'http://localhost' on port 80 only.
-- `ADMIN_EMAIL`: Used by Caddy for generating SSL certificates.
-- `APP_DEBUG`: Set to `false` for production deployments. `[true, false]`
-- `APP_ENV`: Set to `production` for production deployments. `[production, local, testing]`
+This configuration includes an integrated web server that will automatically obtain SSL certificates if you are serving over HTTPS. For the database, it assumes you want to use SQLite (or you have an external database server to configure using the  installer.) It also assumes you intend to use the Filesystem driver for cache, session and queue (or you have an external Redis server to configure using the installer.) If you want to use other options built into Docker, see [Advanced Options](#advanced-options).
 
-### Configured By Installer
-By default, these environment variables are all set by the installer and saved to a .env file which is persisted in `/pelican-data/`. You can use this information to configure them when creating the container instead.
+### Create compose.yml
+```sh
+mkdir -p pelican/panel
+cd pelican/panel
+nano compose.yml
+```
 
-- `APP_INSTALLED`: If you are manually configuring the panel via environment variables, set it to `true` to disable the installer.
-- `APP_KEY`: A 32-character-long randomly-generated string used as an encryption key.
-- `APP_TIMEZONE`: The timezone for your panel. See https://www.php.net/manual/en/timezones.php for a list of options.
-- `APP_NAME`: This will be the Name of your Panel. Default: Pelican
-- `DB_CONNECTION`: The type of database to use for the panel. `[sqlite, mariadb, mysql]`
-- `CACHE_STORE`: The driver used for caching. We recommend "Filesystem." `[file, redis]`
-- `SESSION_DRIVER`: The driver used for storing sessions. We recommend "Filesystem" or "Database." `[file, database, cookie, redis]`
-- `QUEUE_CONNECTION`: The driver used for handling queues. We recommend "Database." `[database, redis, sync]`
+Now, paste the following into the compose.yml file:
 
-:::warning
-    If you are using `redis` for your `SESSION_DRIVER` or `QUEUE_CONNECTION`, you must set `CACHE_STORE` to `redis`.
+```yml
+services:
+  panel:
+    image: ghcr.io/pelican-dev/panel:latest
+    build: .
+    restart: always
+    networks:
+      - default
+    ports:
+      - "80:80"
+      - "443:443"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - pelican-data:/pelican-data
+      - pelican-logs:/var/www/html/storage/logs
+    environment:
+        XDG_DATA_HOME: /pelican-data
+        APP_URL: "http://localhost"
+        ADMIN_EMAIL: "USEYOUROWNEMAILHERE@example.com"
+
+volumes:
+  pelican-data:
+  pelican-logs:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+```
+
+### Set Required Environment Variables
+1. Set `APP_URL` to the base URL your server will be reachable on, including the protocol (https:// or http://) and port. 
+    - Note that Caddy, the integrated webserver, will serve a 308 redirect to any requests on port 80 if the `APP_URL` begins with https://. If your final site will be reachable over HTTPS but SSL will be handled and terminated by an upstream server, such as a reverse proxy, you will need to use an [external webserver](#external-webserver) or a [custom caddyfile](#custom-caddyfile).
+2. Set the `ADMIN_EMAIL` to your email address. Caddy will use this email address to generate a LetsEncrypt SSL certificate if you are serving using HTTPS.
+
+Now, close and save changes to `compose.yml` by pressing `ctrl`+`x` then `enter`. 
+
+### Start The Panel
+From the directory in which the Caddyfile is located, run:
+
+```sh
+docker compose up
+```
+
+The panel will automatically restart if the container crashes or the host restarts. 
+
+### Back Up Your Encryption Key
+
+
+### Install
+Now, head to the installer at `APP_URL/installer` to finish setting up the panel.
+
+If you don't have an external database or redis server you want to use, select SQLite with the default location for your database, and Filesystem for cache, session and queue drivers. 
+
+For other configuration, such as UI options, CAPTCHA, email, backups and OAuth, head to the settings menu in the admin panel.
+
+### Stopping the Panel
+If you need to non-destructively stop the panel for any reason, navigate back to the directory containing `compose.yml` and run:
+
+```sh
+docker compose down
+```
+
+### Uninstalling
+:::danger
+    **This will permanently delete the panel and all associated data** including the SQLite database and your encryption key.
 :::
+To uninstall the panel, navigate to the directory containing `compose.yml` and run:
 
-#### If using SQLite:
-- `DB_DATABASE`: The path of your .sqlite file relative to the database folder.
+```sh
+docker compose rm -sv
+```
 
-#### If using MySQL or MariaDB
-- `DB_HOST`: The host of your database.
-- `DB_PORT`: The port of your database.
-- `DB_DATABASE`: The name of the panel database.
-- `DB_USER`: The name of your database user.
-- `DB_PASSWORD`: The password of your database user.
+## Advanced Options
 
-#### If using Redis
-- `REDIS_HOST`: The host of your redis server. Make sure it is reachable.
-- `REDIS_PORT`: The port of your redis server.
-- `REDIS_USERNAME`: **Optional** The name of your redis user.
-- `REDIS_PASSWORD`: **Optional** The password for your redis user.
+### External Web Server
 
-### Configured in Settings
-These options are not configured by the installer but can be set in the admin settings area, or using these environment variables.
+### Custom Caddyfile
 
-#### General
-- `APP_FAVICON`: A path relative to the public directory to use as the favicon. Default: `/pelican.ico`
-- `FILAMENT_TOP_NAVIGATION`: Set to `false` to use the sidebar for navigation. Set to `true` to use a top menu. `[true, false]` Default: false
-- `PANEL_USE_BINARY_PREFIX`: Whether the panel should use the binary prefix to display units (MiB/GiB) or not (MB/GB). `[true, false]` Default: true
-- `APP_2FA_REQUIRED`: Set to `0` to disable 2FA requirement. Set to `1` to enable for admins only. Set to `2` to enable for everyone. `[0, 1, 2]` Default: 0
-- `TRUSTED_PROXIES`: A comma-separated list of trusted proxies. `*` can be used to trust any proxy that connects directly to your server, a requirement when you cannot know the address of your proxy (e.g. if using Rackspace balancers). `**` can be used to trust not just any proxy that connects directly to your server, but also proxies that connect to those proxies, and all the way back until you reach the original source IP. Default: null
-- `FILAMENT_WIDTH`: The max display width. Default: `screen-2xl`
+### MySQL
 
-#### Captcha
-- `TURNSTILE_ENABLED`: `[true, false]` Default: false
-- `TURNSTILE_SITE_KEY`: Your Turnstile public sitekey. See https://developers.cloudflare.com/turnstile/get-started/
-- `TURNSTILE_SECRET_KEY`: Your Turnstile secret key. See https://developers.cloudflare.com/turnstile/get-started/
-- `TURNSTILE_VERIFY_DOMAIN`: Skips checking that the hostname from the request matches the hostname configured in Cloudflare Turnstile. `[true, false]` Default: true
+### Redis
 
-#### Mail
-- `MAIL_MAILER`: The driver to use for sending email. `[log, sendmail, smtp, mailgun]` Default: log
-- `MAIL_FROM_ADDRESS`: The email address from which to send email. Default: no-reply@example.com
-- `MAIL_FROM_NAME`: The name from which to send email. Default: Pelican Admin
+### Bind Mounts instead of Named Volumes
 
-##### If using SMTP
-- `MAIL_HOST`: The hostname of your SMTP server. 
-- `MAIL_PORT`: The port of your SMTP server.
-- `MAIL_ENCRYPTION`: What transport security type to use for the SMTP server. `[ssl, tls, none]`
-- `MAIL_USERNAME`: The username with which to log into your SMTP server.
-- `MAIL_PASSWORD`: The password with which to log into your SMTP server.
+### Configuring with Environment Variables
+Every setting from the installer and settings menu can be set with environment variables instead. This may be useful if you are automatically setting up your panel or setting up a staging environment. See [Environment Configuration](/docs/panel/advanced/environment) for a list of options. 
 
-##### If using Mailgun
-- `MAILGUN_DOMAIN`: Domain name used to send the message.
-- `MAILGUN_SECRET`: Your Mailgun API key.
-- `MAILGUN_ENDPOINT`: The domain from your Mailgun API base URL. See https://documentation.mailgun.com/docs/mailgun/api-reference/#base-url `[api.mailgun.net, api.eu.mailgun.net]`
-
-#### Backup
-- `APP_BACKUP_DRIVER`: The backup driver to use for this Panel instance. All client generated server backups will be stored in this location by default. It is possible to change this once backups have been made, without losing data.`[wings ,s3]`
-- `BACKUP_THROTTLE_LIMIT`: The number of backups a user can create in BACKUP_THROTTLE_PERIOD seconds. Default: 2
-- `BACKUP_THROTTLE_PERIOD`: The interval in which the BACKUP_THROTTLE_LIMIT applies, in seconds. Default: 600
-
-##### If using S3
-- `AWS_DEFAULT_REGION`: Your AWS bucket region. 
-- `AWS_ACCESS_KEY_ID`: Your AWS key ID.
-- `AWS_SECRET_ACCESS_KEY`: Your AWS secret key.
-- `AWS_BACKUPS_BUCKET`: The name of the bucket in which to store backups. 
-- `AWS_ENDPOINT`: Your AWS API endbpoint.
-- `AWS_USE_PATH_STYLE_ENDPOINT`: Whether or not to use path-style requests to access the bucket. `[true, false]`
-
-#### OAuth
-
-#### Misc 
+## Troubleshooting
