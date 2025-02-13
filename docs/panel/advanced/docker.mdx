@@ -6,7 +6,7 @@ This guide requires the Docker Engine and Docker CLI. (Docker Compose has been i
 ## Basics
 The easiest deployment method is using the standard compose.yml file.
 
-This configuration includes an integrated web server that will automatically obtain SSL certificates if you are serving over HTTPS. For the database, it assumes you want to use SQLite (or you have an external database server to configure using the  installer.) It also assumes you intend to use the Filesystem driver for cache, session and queue (or you have an external Redis server to configure using the installer.) If you want to use other options built into Docker, see [Advanced Options](#advanced-options).
+This configuration includes an integrated web server that will automatically obtain SSL certificates if you are serving over HTTPS. For the database, it assumes you want to use SQLite (or you have an external database server to configure using the  installer.) It also assumes you intend to use the Filesystem driver for cache, filesystem or database driver for session, and database driver for queue (or you have an external Redis server to configure using the installer.) If you want to use other options built into Docker, see [Advanced Options](#advanced-options).
 
 ### Create compose.yml
 ```sh
@@ -63,34 +63,43 @@ From the directory in which the Caddyfile is located, run:
 docker compose up
 ```
 
-The panel will automatically restart if the container crashes or the host restarts. 
-
 ### Back Up Your Encryption Key
+The first time the container starts, it will generate an `APP_KEY` which is used as an encryption key. This will be saved automatically, but you should save a copy in a secure place in case you need it later.
 
+Run:
+
+```sh
+docker compose logs panel | grep 'Generated app key:'
+```
 
 ### Install
-Now, head to the installer at `APP_URL/installer` to finish setting up the panel.
+Open the installer in your browser at `APP_URL/installer` to finish setting up the panel.
 
-If you don't have an external database or redis server you want to use, select SQLite with the default location for your database, and Filesystem for cache, session and queue drivers. 
+:::note
+The first time the container starts after installing or updating, it will apply database migrations. This process may take several minutes. This process may take several minutes, during which the panel will not be accessible.
+:::
+
+If you don't have an external database you want to use, select SQLite with the default location for your database. If you don't have an external redis server, select Filesystem for Cache Drvier, Filesystem or Database for Session Driver, and Database for Queue Driver. 
 
 For other configuration, such as UI options, CAPTCHA, email, backups and OAuth, head to the settings menu in the admin panel.
 
 ### Stopping the Panel
-If you need to non-destructively stop the panel for any reason, navigate back to the directory containing `compose.yml` and run:
+The panel will automatically restart if the container crashes or the host restarts.  If you need to non-destructively stop the panel for any reason, navigate back to the directory containing `compose.yml` and run:
 
 ```sh
 docker compose down
 ```
 
 ### Uninstalling
-:::danger
-    **This will permanently delete the panel and all associated data** including the SQLite database and your encryption key.
-:::
 To uninstall the panel, navigate to the directory containing `compose.yml` and run:
 
 ```sh
 docker compose rm -sv
 ```
+
+:::danger
+    **This will permanently delete the panel and all associated data** including the SQLite database and your encryption key.
+:::
 
 ## Advanced Options
 
