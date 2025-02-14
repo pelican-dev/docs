@@ -1,5 +1,5 @@
 # Environment Configuration
-Panel settings are stored in environment variables. In standard installations, you do not need to manually set any environment variables; they will be set by artisan, the web installer, and the settings menu. For automated installations, it may be useful to set the environment variables directly rather than through a menu.
+Panel settings are stored in environment variables within your `.env` file. In standard installations, you do not need to manually modify the `.env` file; these options will be set by artisan, the web installer, and the settings menu. For automated installations, it may be useful to set them programmatically. 
 
 ## Configured by Artisan
 By default, these environment variables are set when you run `php artisan p:environment:setup` and saved to your .env file. Environment variables that are not required for operation and that can be configured using the installer or settings menus are excluded from this list.
