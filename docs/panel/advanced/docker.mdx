@@ -75,7 +75,7 @@ docker compose logs panel | grep 'Generated app key:'
 Open the installer in your browser at `APP_URL/installer` to finish setting up the panel.
 
 :::note
-The first time the container starts after installing or updating, it will apply database migrations. This process may take several minutes. This process may take several minutes, during which the panel will not be accessible.
+The first time the container starts after installing or updating, it will apply database migrations. This process may take several minutes, during which the panel will not be accessible.
 :::
 
 If you don't have an external database you want to use, select SQLite with the default location for your database. If you don't have an external redis server, select Filesystem for Cache Drvier, Filesystem or Database for Session Driver, and Database for Queue Driver. 
