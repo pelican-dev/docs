@@ -24,7 +24,11 @@ You have to restart Wings to apply new changes to your Wings config.
 You have to configure mounts in admin Panel in order to use them with your servers. They consist of a source pad on the node and a target path where it will be mounted in the container.
 
 <Admonition type="warning">
-    Mounts cannot be mounted to or inside of `/home/container` or any subdirectory of it, nor can you cross-mount servers such as Server A's directory into Server B.
+    Mounts cannot be mounted to or inside of `/home/container` or any subdirectory of it by default, you can allow it by setting `BlockBaseDirMount` to false in the Wings configuration.
+</Admonition>
+
+<Admonition type="warning">
+    You cannot cross-mount servers such as Server A's directory into Server B.
 </Admonition>
 
 ### Creating a Mount
