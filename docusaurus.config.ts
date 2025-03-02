@@ -3,6 +3,7 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import tailwindPlugin from "./src/plugins/tailwind-config.cjs";
 import remarkgfm from "remark-gfm";
+import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 
 const config: Config = {
   title: "Pelican",
@@ -17,13 +18,14 @@ const config: Config = {
   projectName: "docs",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  themes: ["@docusaurus/theme-mermaid"],
+  themes: ["docusaurus-theme-openapi-docs"],
   presets: [
     [
       "classic",
       {
         docs: {
           sidebarPath: "./sidebars.ts",
+          docItemComponent: "@theme/ApiItem",
           editUrl: "https://github.com/pelican-dev/docs/blob/main/",
           remarkPlugins: [remarkgfm],
         },
@@ -47,6 +49,7 @@ const config: Config = {
       },
       items: [
         { to: "/docs", label: "Docs", position: "left" },
+        { to: "/docs/references/client-api", label: "API References", position: "left" },
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/donate", label: "Donate", position: "left" },
         { to: "/faq", label: "FAQ", position: "left" },
@@ -115,6 +118,7 @@ const config: Config = {
       require.resolve('@docusaurus/plugin-client-redirects'),
       {
         redirects: [
+          { from: '/docs/references', to: '/docs/references/client-api' },
           { from: '/discord', to: 'https://discord.gg/pelican-panel' },
           { from: '/eggs', to: 'https://pelican-eggs.github.io/pelican' },
           { from: '/github', to: 'https://github.com/pelican-dev/panel' },
@@ -133,6 +137,29 @@ const config: Config = {
       },
     ],
     tailwindPlugin,
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "api",
+        docsPluginId: "classic",
+        config: {
+          client: {
+            specPath: "static/client.json",
+            outputDir: "docs/references/client",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+          application: {
+            specPath: "static/application.json",
+            outputDir: "docs/references/application",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          } satisfies OpenApiPlugin.Options,
+        }
+      },
+    ]
   ],
 };
 

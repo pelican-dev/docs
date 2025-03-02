@@ -1,0 +1,63 @@
+---
+id: application-roles
+title: "List roles"
+description: "Return all the roles currently registered on the Panel."
+sidebar_label: "List roles"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVD2P2zAM/SsCZyFO007eOlyLAh0O148l8MDYTKyrIukoOm1q+L8XlHNp7i5d2qWTPkiKfO+RGiEmYhQXw4cOasCUvGvLecHRUwYLHeWWXdI7qOGOZOBg0HsjPZniZNqBmYL4o2HauSzE1JkYisctBvILsCC4y1Cv4S56gsYCU04xZMpQj7BaLnV5mgsstDEIBVHbRW3VfVaHEXLb0x51J8dEUEMWdmEH0zRNFt4sX7989O0gfWT3szxkiDnyX+SJm3tqBSwkVgbFzTD2lDPu6GVBz2m80bwmHogPjr4vQMtlehgcU6ckPT7UnJCsVi+RfEXvuv8ARr7EYaHUkq8leSaE6UjQeerMhcHErSFse7N15DsjPYrZzl6HM15tJ+w6p3v0t09qPyVFZjyCBSe0z39qkGuMnwEU6icLe5I+6nDsqDCF0kMN1eN4ZOIDKd71CAN7qKEXSbmuqkQqQFgIZakwuepCEpgaDW0HdnIssRoF9bq5NHxSvWZYs/kMoxztLKieN4RM2gHz5l3kPYqOkCJwYRtLrBOvzrdzYWBBK5/VeLVYqngpZtljaZaA5eWPLou5+heMv9vtX76FGZDQD6mSRxe0jELkeOJ6DXP6xkIfs+jFOG4w0xf206TXDwOxsthYOCA73CjMdTNZ6Ak74kLwNzpq17UtJdXxgH6gp1/ePCcqwFnz9zefYZp+Ad/Gy5k=
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List roles"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/roles"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return all the roles currently registered on the Panel.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

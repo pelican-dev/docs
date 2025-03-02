@@ -1,0 +1,71 @@
+---
+id: schedule-task-update
+title: "Update task"
+description: "Updates a given task for a server."
+sidebar_label: "Update task"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVk2T2zYM/SscnNoZ1XK2uVS3pE1ncml3kt1ePB4PLEIWsxSpkJR3XY3+ewekbMsfm3a3l9YX0SSBB+CBAHqwLTkMypqPEgrwZU2y03SH/mHWtRIDQQaSfOlUy7eggPu47QWKjdqSEQH9g6isEyg8uS25GWQQcOOhWMDniUJYZtCiw4YCOT7twWBDDBvlIAPFAC2GGjJw9LVTjiQUwXV0bsVdTSOcuL//+Atk0fYGoegh7NqoNThlNjAM2RFoNOflUKOguA6lTKANuRMsjsuLcWIw/w5jmTSRD++t3PGV0ppAJvAS21arMlKaf/GsuL/UZddfqAyQQes4AYIiH2XLZMp5CDMg0zXMZ2mbBo1kSfsYKVtj+dC1MUs0BVpVSpOH5cBc77RFeVS3OOozndbxUlANrWxVeQoTXNM166i9UUY1DD3PoMGntP5pPh8y8BwCU9JKyW9KvhmyGB9lOlpZs6pQ6c7RRGZtrSY0zN6EosU+HKdGngJfV70chqTLt9b4FNub+Zw/p5SP8i+h7pDVjPB2/uOl0nddqK1Tf0ZFgpyz7hU4z6RIQ97jhq7lyKkVHxhX2C25raLH2UVw94qWe0/eXnrymw2isp2R/wP7b24u7f8DtZL/ARr81I8Moi3+GshZIglJAZUmKSYHwlaCsKxFpUhLEWoMokq3tgd/uQeglIrXqG9PbB9B0TnccYEM1PjnEvxaxA8OxNAPGTQUasvtq7U+hoqrbQF56g8+79NiyPdVnLfG5ZBzyfV5z58hvu4oFNtT5zQUUIfQ+iLPW2K6zCyQDzm2Ki+1Yiq5HnsqO6fCLoqxABSL5fSAG2GT/E/HB3/j37Hex2pE6FJljYtfrWswcK1gVzlPPh1r/4cnbFpN09o9KdEntXV+VjHnz1RF7kwDt63KRiNVYP1wm5yHDDg6CenNbM7pxFFvMKbv2PrSiCDGDniSVJNe9Q8niRSlQE8hbzUqw5CRmH4kenHgLIPiMEocuI67x74f6ea9MI4kNSdNsYC+X6One6eHgbe/duSYzmUGW3QK1xyGRQ9SeV5LKCrU/ryJT9377tOYvN+Ly2nlqlv7l2H4XWxRd5R6xAPtjlMSjxivN+JkjnmNEftI/iszjmPOK0yIxA08PNSEklykJR39nAB/uGMFR9GLSsvGJ4l3ZUlt+Obd5aTC3P7++Y6f5jh3NVayjMNHnu7wMZlpYwDiW497PWg0my7Wa0g6+fcX5NH3KQ==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update task"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/schedules/{schedule}/tasks/{task}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates a given task for a server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"schedule","in":"path","required":true,"description":"The schedule ID","schema":{"type":"integer"}},{"name":"task","in":"path","required":true,"description":"The task ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"action":{"type":"string","enum":["command","power","backup","delete_files"]},"payload":{"type":["string","null"]},"time_offset":{"type":"number","minimum":0,"maximum":900},"sequence_id":{"type":"number","minimum":1},"continue_on_failure":{"type":"boolean"}},"required":["action","time_offset","sequence_id","continue_on_failure"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: backup-store
+title: "Create backup"
+description: "Starts the backup process for a server."
+sidebar_label: "Create backup"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVUuP20YM/isDnlpAsbabnHRL0hTIJVlkd3sxhICWaGuyI82EQ3njCv7vBWf8WntTIDmlumg0fH4k9XECH4hRrB/et1DBApuHMcyieCYooKXYsA0qhgpuBVmikY5M1jOBfUMxmqVngyYSr4lnUIDgKkI1hzdJDeoCAjL2JMR6P8GAPUEF2QIKsOo/oHRQANPX0TK1UAmPdJ7EXUe7QOb+/v2fUEBsOuoRqglkE5JXYTusYLutszOK8sa3G9Vo/CA0iB4xBGebBL38EtX3dOnKL75QI1BAYC2UWIoqzenvteb7iAUMo3NQbwuw8bPzzYOiOKotvHeEwxO91eD5qda5s/Qokhj8EHMC11dX+npaGih+GN+hVBrh1dXLS6evR+k823+SI0PMnn8iznfq2FOMuKLLhM67/k7jGr8mXlt6nEEuyH5O5gdH9R7Jq0skH7yYpR+H9n+Q//X1Zf5/o7PtL9CGeIqjgJRLfC7I2SCZlgSto9acCIxfGsKmM0tLrjXSoZhl1lof8CqlYNtaPaO7eZL7Ligy40aJRKiP3xvw5yp+AFDv/rOepPPKhcHHVCplpQrKTDqxnPJhW2YOjMpAWZSYbWQHFXQiIVZlGUibMsyEopQYbNk4qw1TaorUjGxlk8zUAKp5fSq41fZllFl8QJU+d8yn3wtCTjyaD3957lGUERSQTsOnIw2++4Z9cNpspZ9h6ZNfK3oFNzlfKEAB5cb9MbvSPms5ehyO9AdvmVD2u+C83ydc+yOLI+MT+iZlcGgHjZxKOu0aMT9Uu4DqsD/2vagL6LRt1RymaYGR7tltt3r9dSTWUtcFrJEtLhTvfILWRj23UC3RxfN1c4rit0+78fndXC6hZxPfz+agk7lGN1Jm6QfaHJffVtdAR9gSp4Sy8G0O++JOXRyNL/7ybbG3eN00FOQ/deuT6b75eHunhdstxt63asP4qBsYH3OiPpUhTWC6m8DhsBoTV0D2qc+/YqzeaQ==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create backup"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/backups"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Starts the backup process for a server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":["string","null"]},"is_locked":{"type":["boolean","null"]},"ignored":{"type":["string","null"]}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

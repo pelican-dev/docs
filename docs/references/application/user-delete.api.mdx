@@ -1,0 +1,71 @@
+---
+id: user-delete
+title: "Delete user"
+description: "Handle a request to delete a user from the Panel. Returns a HTTP/204 response on successful deletion."
+sidebar_label: "Delete user"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU2P00AM/Ssjn0CKmlL2lBvSFu1KCFVLl0vVg5s4zSzJTNbjFEqU/46cpN1+LBcOCE6ZxB77PX+8tOBrYhTr3X0GCTSBeJJRSUIQQUYhZVurFRK4Q5eVZNAwPTcUxIg3g6tBoxdNzr4yUpBZoKNyYh5IGnbBoLlbLhfxbHpjmELtXSDjnQlNmlIIeVMOcax3E4hAcBsgWcFjIIZ1BDUyViTE+rUFhxWNSCECq8hqlAIiUFyWKYNEuKFL+MuCBpT3txBBSAuqEJIWZF9rPOuEtsTQdWuNNKAM6jCbTvVxHg0iSL0TcqI2rOvSpn0Z46egDu11hiBs3Ra6rusiuJm+vw76oZHCs/3ZBzLE7PkP8vjNE6UCEdSszRU70KgoBNzSNaDLQs01r/E74p2l7xNQuC+lXR0DrQ9Mbq6ZfPZict+47D/AP5td4/+Kpc3+gTaEUx4R9FjCa0kuBslkJGhLysyJwfjcEKaFyS2VmZECxeSD1+7IVzcQs8zqGcvFGfYxKTLjXndPqAq/G/DXKn4k0Je+i6AiKbzqzlFy+lVOINZNDXGrj07XlXh3EICGS0igEKlDEsc1aSvcRChIjLWNT5oDusuB0oat7Pu7eguS1frU8EU7NxAczEdC/euoFfq+IeRedYbDR88VioqBcrEu9/1dK6U6LwZgEIEiH/rybjLVNtY+SIX92Ixqdjvo6ChqZ81sXybv70nwwF/oh8R1idYp6r7u7dihVS/AASJImlGnCx9EDW27wUCPXHadfn5uiLX46wh2yBY3Wp1VC5kNes4gybEMl3J9yvrNwzhLb825iL8K8zCkTkd0h2VDg1x/o/3ht9GtuwgKwoy4hzKYPqQp1XJy6WrNdWqOI3s7/zRfzqHrfgGzq4MG
+sidebar_class_name: "delete api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete user"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/users/{user}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Handle a request to delete a user from the Panel. Returns a HTTP/204 response on successful deletion.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user","in":"path","required":true,"description":"The user ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

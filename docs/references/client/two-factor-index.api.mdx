@@ -1,0 +1,65 @@
+---
+id: two-factor-index
+title: "Setup 2fa"
+description: "Returns two-factor token credentials that allow a user to configure"
+sidebar_label: "Setup 2fa"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVUr1y2zAMfhUeZtZyc520dWh62XpNOjkaYAq2mNAkA0J2fDq9ew+UG6ftE0SLSOED9P1ggpSJUXyKdz20IKd0i04Sr3zs6RUs9FQc+6wIaOEnycixGDmlT7sKNJKeKRrH1FMUj6EYGVAMhpBOBs1YSDHGpbjz+5HpMXoxKRoZyLNB59IYZWXudu+H+mIwMGF/NhRxG6g3MvhiKPY5+SiP8eRDMFzpGDRf1mtDzIlXYEFwX6DdwMMfMdBZYCo5xUIF2glu1mt9/a0NLLgUhaJoDXMO3lVnmqeigAmKG+iAepJzJmghbZ/ICVjIrD6KX8b3KO9RRdjHPcyzsngZPVOv9Cqqm/WxcCAZkiawpzoPZYAWmos9zdUasFCIj8QqcYKRA7QwiOTSNk0m5RxXQkUazL5xwaueudMuN7KXc23TBmg33fvCvapbBCzlNwH1ahf5et8SMimT5XCb+ICiDqoSH3ep9noJCv6xcAILSnqx+vNqDbOFnIocsFobsU6+Jxmzudnhv5s3XbP5IEu4WCf0Kk0O6KMKrmlNl3Q3cPmvoq/5dhaGVETr07TFQr84zLN+fhmJNb7OwhHZK6OaoYWBsCeuyT7TGVr46hxlHXzEMCqP/9ZZk39buu/fHmCefwP/t2nV
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Setup 2fa"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/account/two-factor"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns two-factor token credentials that allow a user to configure
+it on their account. If two-factor is already enabled this endpoint
+will return a 400 error.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"string"}},"required":["data"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: application-servers-databases
+title: "List databases"
+description: "Return a listing of all databases currently available to a single"
+sidebar_label: "List databases"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zAM/SsCTxsgxFnXk28F2g0FhqHoul2yHFibidXJkirR2TLD/32g7Tpu0l2GHbZTJFMk3+PHSws+UEQ23l2XkAOGYE3R3xeJ4o5iWpTIeI+JEmgoKRXRBLFDDrfETXQKlTWJjdsqv1ForZo8VNHESI7tXuEOjcV7S4q9QpWM21r66oYkC9DAuE2Qr+BydIa1hoARa2KKYmnBYU2Qw+ADGoyACMgVaIj02JhIJeQcGzpGeleRGtzU9SVoSEVFNULeAu+DxDSOaUsRum4tsVLwThjnLZwtl/LzPB5oKLxjciy2WdWyhyQP2tMMiaNxW+i6rtNwvnx7GvSi4cpH87MPpChGH/8gj79/oIJBQ4jSWzYDjZpSwi2dAjou1ZXkVX5HcWfo+wIE7qG4qynQ+onJ+SmTj57Vxjeu/A/wn52d4v+C1pT/QBvSnIeGHkt6KcnRIKmSGI2lUs0Msp2ERaU2hmypuEJWm+HVbuIrm4hlaeSM9uYZ9jEpxoh72T6mOv1uwF+q+ESgL32noSauvMjOlvpKySbnkI3Ck7XDocvmCjQaez1oooUcKuaQ8iwLJF1xC6bEGQaTzfoEstaJiiYa3ve+4gX5aj03fJImDlwH88Stv46yIfd7wthL0HB452ONLLogtIzb+N7XsJXHNwMw0CDIhxa9WSylo8EnrrGfoFHcPpjE6reS2x7m8C+r78CT6QdnwaJxgq6vbzv2ZTWVXkM+SfAB6VpD5RPLw7aVT5+j7Tr5/NhQlKKvNewwGoHRt6A0Sc4l5Bu06Viz51Rf3Y7j9FodK/mLwJ8m1cmc7tA2NGj2N9of/j+6daehIiwp9nAG40VRUOCZ28m2y8RMk/v+6g667heU7omr
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List databases"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}/databases"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return a listing of all databases currently available to a single
+server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

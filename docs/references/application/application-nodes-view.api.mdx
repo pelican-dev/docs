@@ -1,0 +1,71 @@
+---
+id: application-nodes-view
+title: "View node"
+description: "Return data for a single instance of a node."
+sidebar_label: "View node"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVE1v2zAM/SsCTxsgxFnXk28F1g29FEXX9RLkwFhMrM6WVIlOlxn+7wNtJ3WS7rCdtpMlkyLf48drwQeKyNa7GwM5YAiVLfr7zHlDaba19AIaDKUi2iAGyOGeuIlOGWRUax8VqmTdpiJlXWJ0BSm/Vqgkwgw0MG4S5Au49YZgqSFgxJqYovxtwWFNkIN4gwYrCQJyCRoiPTc2koGcY0OnKB5K6lOom0+gIRUl1Qh5C7wLEs86pg1F6LqlRErBu0RJHC7mc/kcRwMNhXdMjsU2KUT2lMShPc+QOFq3ga7rOg2X84/nQa8aLn20P/tAimL08S/y+NUTFQwaQpR2sR1o1JQSbugc0GmhriWv8luK0s0ZCNzX0i4OgZZ7JpfnTG49q7VvnPkP8F9cnON/xMqaf6ANacpDQ48lvZXkZJCUIUZbkVETg6wZYVGqtaXKKC6R1Xrw2h74ygaiMVbOWN0dYR+TYoy4k91jqtPvBvytih8I9KXvNNTEpRcl2VBfKdnjHLJeS7JWPp3sKsXtfvubWEEOJXNIeZYFkj64GVPiDIPNJp0BWeRERRMt7/q38gryxXJq+CptG9gN5gOb/joKhdxXhJFkEIbDZx9rZFECIWLd2vdvLVfifDcAAw2CfGjKh9lcehh84hr7mRml7NHSixr17KiP7evQ/bGIDiSYfnAWKrROUvfFa8cyL3oJTaAhd6PSlj6xGNp2hYm+xarr5PdzQ1EquNSwxWhxJRQXLRib5GwgX2OVTgV3Cv7d/TgN79WxDL8Jcz9mToZsi1VDg+B+p91e+Ltlp6EkNBR7KIPpqigo8OTR2aJK6w9D9+X6AbruF58xW6w=
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View node"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/nodes/{node}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return data for a single instance of a node.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"node","in":"path","required":true,"description":"The node ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

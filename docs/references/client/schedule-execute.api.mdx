@@ -1,0 +1,72 @@
+---
+id: schedule-execute
+title: "Run schedule"
+description: "Executes a given schedule immediately rather than waiting on it's normally scheduled time"
+sidebar_label: "Run schedule"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVktz2zYQ/iuYvbSdYUXXzYm3tElncmk9jt2LqsOKWIlISQABlrJVDv97ZwGSki03M/Ep1UUQsK9vH99qAOcpIBtnP2ioINYN6b6lFT1S3TNBAZpiHYwXEajgfb6PCtXeHMiqWUOZriNtkKk9qoDcUFDcoFUPaNjYvXJWGf4uKutCh217XDS1YtPRX5ad8hjjSt01JirtSGRZ1RhI4db1rLihk7/IyLSCAhj3Eao1fJxeYFOAx4AdMQV5GcBiR4KOwoECFGAEikduoIBAn3sTSEPFoafneO/EZVJT9/cf3kGRUtQhVAPw0SerHIzdwzgWJ0dzKF/takb3sitjmfYUYBw32RpF/sXpo4jUzjJZliN635o6VbX8FMX4cGnLbT9RzTCO4yi2onc2UhSB66sr+XoaHRRf7WFJjHh4c/XzpdG3PTcumH+SIUUhuPAKPxOSAnyQbmaTYXQUI+7pMqCLnha/yh0oHAw9rCAnZC7VejG0mZG8uUTyu2O1c73V/4P4r68v4/8TW6O/gTLEcxwFpFjiS06eNZLSxGiETM4elNspwrpRO0OtFjpitctShwWvUAhqbeSM7c2T2CenGAIeZZaZuvhfDf5SxhcAKfVjAR1x44RovYspVUIMFZSZYmI55MNYzkQgV9NxLE+kPMkncutDCxU0zD5WZelJKmVXTJFL9KasWyNVFMaIVPfB8DGpiQJU6835g1Bol6Hn5wVq+jkxkvzeEoZEpfnwm5A6C00ISmmR2xM7vX/EzrfSAaPw4c4lu4blCm5yvFCAAMrV/Gl1JcWXHHWYmm3i1dv+tHCe98AZA36TWyrnkemRS9+isYIwlW6YumC9VLWAallVSyOk2xP2uRc2BTTSS9UahmGLke5DO45y/bmnIKXeFHDAYHAr+V4PoE2Us4Zqh218vobO0/j97dTTP6jLPfgioHlgrIzLAdue8ur4m46n/SuL8vVBPNmQrwlizuG4GQtoCDWFlJf8/Gt2/OOdGDmpXzCggMgab+uaPH9RdnM2+Td/fLyTuZnWdue06AR8kD8I+JBDdSkRaRDT3QAt2n2feBSyTfn8Cy/aZU8=
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Run schedule"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/schedules/{schedule}/execute"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Executes a given schedule immediately rather than waiting on it's normally scheduled time
+to pass. This does not care about the schedule state.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"schedule","in":"path","required":true,"description":"The schedule ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

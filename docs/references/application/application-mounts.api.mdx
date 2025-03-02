@@ -1,0 +1,63 @@
+---
+id: application-mounts
+title: "List mounts"
+description: "Return all the mounts currently available on the Panel."
+sidebar_label: "List mounts"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVDuP2zAM/isCZyFOr528dbgWB7TAoa8lyMDYTKyrLOko2m1q+L8XlNM09+jSLp30ICny+z5SE8REjOJiuGmhBkzJu6acV30cgmSw0FJu2CW9hBo+kAwcDHpvpCOzeJlmYKYg/mhwROdx58nEUDxuMZBfgQXBQ4Z6A+81BLYWmHKKIVOGeoKr9VqXh8nAQhODUBC1XVRX3WV1mCA3HfWoOzkmghqysAsHmOd5tvBq/fLpo68H6SK7H+UhQ8yR/yJP3N1RI2AhsXIoboHRU854oKcFPebxWvOaOBKPjr6tQMtluh8cU6ss/Xpoe0JydfUUyRf0rv0PYORLHBZKLfm5JI+EMC0JOk+tuTCYuDeETWf2jnxrpEMx+8VrPOPVfsK2dbpHf/ug9lNSZMYjWHBCff5TgzzH+BlAoX620JN0UcfjQIUplA5qqM4DkolHUsCbCQb2UEMnknJdVYlUgbASylJhctWFJjBvNbQZ2MmxxGoU1JvtpeGjCrbgWsxnHOVoF0X1vCNk0hZYNm8i9yg6QwrBhX0ssU68Ot8uhYEFrXyR48VqreqlmKXH0i0By8vvXBbz/Hcw/W64f/kZFkRC36VKHl3QOgqT04ntDZzyby10MYveTNMOM31mP896fT8QK49bCyOy00SFTAsdYUtcKP5KR228pqGkUo7oB3r47y2johKcZX97/Qnm+SezEs4G
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List mounts"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/mounts"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return all the mounts currently available on the Panel.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

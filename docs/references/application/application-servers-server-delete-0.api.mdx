@@ -1,0 +1,71 @@
+---
+id: application-servers-server-delete-0
+title: "Delete server"
+description: "Deletes a server."
+sidebar_label: "Delete server"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVE2L3DAM/StGZ5NMp3vKpRS2hb2UhS29DEPxxsrESxK7sjJlGvzfi5x0yM5st9BTe/KHZL33JEsT+IBk2PnhzkIFJoTO1flcRKQjUlzWwmKHjF83oMFirMkF8YIKbrMhKqMWT9DA5hCh2sFDvoG9hmDI9MhIcj/BYHqECuYXoMFJpGC4BQ2E30ZHaKFiGvES7nOLC5C6uwUNsW6xN1BNwKcgMd3AeECClPQZp/FU4x9grgJFJjccIKW9OMfgh4hR7NvNRpbnvEBD7QfGgcW2SmT5FMVhegUgJQ03m7fXQd+P3HpyP3IghUSe/gLHPz5hzaAhkJSb3SyjxxjNAa8JXab8g+Aqf0Q6OvxeSGZX2dudA+1/Kbm5VvLJs2r8ONj/gP92e83/i+mc/QfKENc6NGQu8SWQi4+kLLJxHVq1MijfKDR1qxqHnVXcGlbN7HU865V+NtY62Zvu/hn3BdQQmZO0F2Mff/fBX8r4WUBOfdLQI7deJtE8biRZ0q0VlMs4Kqd5k8opN/W7JDNgtuXJMlIHFbTMIVZlGVDqMhSMkUsTXLmqFEhjR6xHcnzKb+UVVLv92vAgZZzVzuazunxc5oacH9FQHmbz5qOn3rBMBhHmhsbnt447cb6fiYEGYT4X6U2xgZR+Aom58kU=
+sidebar_class_name: "delete api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete server"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/servers/{server}/{force?}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes a server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server ID","schema":{"type":"integer"}},{"name":"force","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: allocation-store
+title: "Create allocation"
+description: "Store new allocations for a given node."
+sidebar_label: "Create allocation"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU2P2zYQ/SvEnFKAsbbbnHTbpCmQS7vIbnIxdJiVxhZTimTIkTeOoP8ejGjZWntTJD21uojifL6Z0ZsBfKCIbLx710AJaK2vp89VYh8JNDSU6miC3EEJd3KrHD2qk2pSGx8Vqq3ZkVPON7QCDYzbBOUabo56UGkIGLEjpiiyARx2BCWIDWgwEiEgt6Ah0ufeRGqg5NjTeRr3LU2B1LvfQUOqW+oQygF4H8SfcUxbijCOVfZEiV/7Zi8qtXdMjuWIIViTcys+JXE8XPryD5+oZtAQotSKDSWRmrDQSRyN28KoAa3BdJKsZ5EG11sL1agh+MgLFcAYcS/ombr0jNNxXFZjLZFnJ9V4kKbgXcqJXV9dyetpvUD/NO5T+FHDq6vfLp3e9Nz6aL5OjhTF6OO/iPOd+naUEm7pMqHzUXgrcZXfUdwZelzBeblmR9WM5NUlkj89q43vXfM/yP/6+jL/j2hN8x9oQ1ri0DDlkp4LcjZIqiFGY6lRC4HyG0VYt2pjyDaKW2S1yVq7I15hGmwaI2e0t09y/+H/6zsVPwKYSj9q6IhbLzQZfJpKJVRVQiFMlIpBXmOx4EWhJoq7mez6aKGEljmksigCSVPciilxgcEUizaB8Faiuo+G95OtWEG5rpaCO+lhhprFR2jT54EX5fuBMJJMRT784WOHLLQgqGQk3p848u0X7IKlmeNO/T7w1pHShMuM2/gprmExgdsMCjQI6tzdX1dXMNFe4g6n4Tuw/ptIyLRYJOeDsSDrn1k8uQZMX7gIFo2T6FPth0PH1tPCkfaUh82zbFqloZX+lmsYhgdM9CHacZTrzz1FaUelYYfR4INgXg/QmCTnBsoN2nS+rJYoXrw/zNkv6ukKezbpeYCdjO8ObU+Zyv+m/bw0R+lCS9hQnFLJojc54Mt7cXAyvSCCUc8WN3VNgf9Rt1r8ALd/3d3LOB12aieplBDxUTY3PuY0fcgFLYd8N4BFt+0nOoHsU55vHD3ylw==
+sidebar_class_name: "post api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create allocation"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/nodes/{node}/allocations"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Store new allocations for a given node.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"node","in":"path","required":true,"description":"The node ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"ip":{"type":"string"},"alias":{"type":["string","null"]},"ports":{"type":"array","items":{"type":"string"}}},"required":["ip","ports"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: schedule-update
+title: "Update schedule"
+description: "Updates a given schedule with the new data provided."
+sidebar_label: "Update schedule"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVlGP2zYM/isCnzbAS263Pvmt3TqgL9uhvdtLEAQ8i4nV2pIr0Ukzw/99oGQnTpwb0Hva8hJZpEh+JPVRHbiGPLJx9oOGHEJRkm4rWrSNRibIQFMovGlEA3J4ittBodqZPVk16quD4VJxScrSQWlkVI13e6NJLyADxl2AfAWfBnVYZ9Cgx5qYvEg6sFiTBEB+Tx4yMOKuQS4hA09fW+NJQ86+peuYHktS6Zh6evrwG2QRRY2Qd8DHJlplb+wO+j47OxpD+W5XI+Tbroxl2pGHvl8naxT4ndNHUSmcZbIsS2yayhQx8cvPQYx3c1vu+TMVDBk0XsrEhoJIE4IZuAxM2GDBZj+VPjtXEVoRO1sdN4eS7MbZytgXtGpjW75tv3StvynQeNy47aZ2lsubCi9LhqMHoi83CzapyCohP4U4BHTlfnR2aXrd98lYaJwNKY/3d3fyd1liyL67TKdgxcObu1/mRt+2XDpv/o6GFHnv/Cv8vNAONYWAuxsVu+7e9+JXuT35vaHDYpbd0dB6RPJmjuQPx2rrWqv/B/Hf38/j/wsro/8DZQhTHBnEWMItJ1eNpDQxmoq0mgiU2yrColRbQ5VWXCKrbdLan/AKD6PWRtZYPVzEPjhF7/EohMhUh5ca/FbGTwBi6uW+E5dOBkrjQkyVsGsOy8TTYdmlRb8c2VS2hmUvtJr04mRofQU5lMxNyJfLhqRCdsEUeImNWRaVkeoJ3QYqWm/4GI/JAchX66lA5k+dICfxCWL8HOg8EiKhj3MoLX53vkYWehB00hofz9T+/hvWTUVnaj5XfsLIaZ7MOTjtj6x7PprIdtJEFxx73p9tXDDqdDrYrYuIDUuw8JAyCRlIqlN//by4E1WpWo12gigNfjWZmheNOZltr34jpEIwfeNlU6GJwyjWvhvaZ3Vqiwzy00Ph1EFxd/LAKKX18hV03TMGevJV38v215a8dMg6gz16g8+SjFUH2gRZa8i3WIXr0T8F+MPH4Qr8qOZvj5swxvtl5XbtsWopTZovdDy/eeRx8vogLl4lrwlizFy/lklPqMnHvCTxr8nxT49i5Hx8RpgCIp14WxTU8L/qridE8fDnp0e5bsNTqXZazng8yKMMDylUFxMR72/c66BCu2sj7UKyKb9/AA9KwdE=
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update schedule"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/schedules/{schedule}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates a given schedule with the new data provided.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"schedule","in":"path","required":true,"description":"The schedule ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"},"is_active":{"type":"boolean"},"only_when_online":{"type":"boolean"},"minute":{"type":"string"},"hour":{"type":"string"},"day_of_month":{"type":"string"},"month":{"type":"string"},"day_of_week":{"type":"string"}},"required":["name","minute","hour","day_of_month","month","day_of_week"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

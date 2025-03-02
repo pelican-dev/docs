@@ -1,0 +1,71 @@
+---
+id: user-remove-roles
+title: "Unassign role from user"
+description: "Removes roles from a user."
+sidebar_label: "Unassign role from user"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVUtz0zAQ/iuaPcGMqUPpybdSytAL0wktl4wPG2sTq9iWu5JTgif/nVnJSZ0HdOAEvlj2Pr/d1bc92JYYvbHNjYYMOkd8xlTbFU1tRQ4S0OQKNq2oQAbTIHOKRaoWbGuFKlhBAh6XDrIZ3DtiyBNokbEmTyx/e2iwpiEGJGDEXYu+hASYHjvDpCHz3NFhzLuSQgh18wEScEVJNULWg1+34s80npbEsNnk0RM5/97qtagUtvHUeDli21amCFDTByeO+2Nfdv5AhYcEWpbCeENOpAHtSA2ZcS0YPNXuZCrhkXRcaxsXjc8nE3ntg4Pkj5N0nk2zhBjhYvLu2Oll50vL5kdwpIjZ8l/E+UUxanIOl3Sc0GHfriWusivilaGnM4gF2XZ6tnOUb5FcHCP5bL1a2K7R/0H+5+fH+X/Fyuh/oA1ujCOBkIs7FeRgkJQmj6YirUYCZReKsCjVwlCllS/Rq0XUWu3wCiGg1kbOWN3u5f7CNdob8FMV3wHIh3tWky+tjoRSCKMEYskgFd5waS+vTRqucRrpTZiEeLXlpo4ryKD0vnVZmrYkbWnOPDmfYmvSUaNAaMZR0bHx62ArVpDN8rHgi3Qxgo3iHbjwOdCYfM8JORBiPHy0XKMXYhBcMhTTZ0q7/o51W9GIkmaTfCNcurAhhPEihduYPyQgAGMr355NpPOtdb7GMGkDH9836JxZNoHTI6UPFL03CyMyfWELRJyevvu0rdA0EjbUtx/aMgs7QJZLNkTiYdkMvckTKK3zotn3c3R0z9VmI78fO2Kpep7ACtngXPDOetDGyVlDtsDKHa6Qce6vpsNAvVb7i+Vk3ttJbWROV1h1FDn7G623q2wjHSgJNXFIJYquYsA3d+Lg2fToxm+SrcVlUVDrf6ubjyb99vLu6pOMzbDqaqvFiPFJ6ohPMU8bKhCXmPzrocJm2QXigOhUnp+ukshX
+sidebar_class_name: "patch api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Unassign role from user"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/users/{user}/roles/remove"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Removes roles from a user.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user","in":"path","required":true,"description":"The user ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"roles":{"type":"array","items":{"type":"integer"}}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

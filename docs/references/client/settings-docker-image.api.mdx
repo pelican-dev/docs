@@ -1,0 +1,71 @@
+---
+id: settings-docker-image
+title: "Change docker image"
+description: "Changes the Docker image in use by the server.⚠️Cannot generate request documentation: Call to a member function parameter() on null"
+sidebar_label: "Change docker image"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVbFu2zAQ/RXipgRgLTfNpC1IWiBLETRJF8MDLZ4tJhSpkCe3rqBv6N6pn9Hv6Q/0F4qjZMWx0w6d0smU70i+d+/usQVfY1BkvLvUkENEIuNWcaJ9cY/hslIrBAkaYxFMzWmQw3mp3AqjoBLFRcoThhOFcaKJKBabFIoY1hgmP799//Xj67lyzpNYoePrUAR8aDCS0L5oKnSUIOTiXFkryAslKqwWGMSycQWHRK2CqpAwHB0L74RrrAUJpFYR8hlcD7hhLmHM5EgLTlWYmDEakGCYQq2oBAmMwgTUkFNocJ/nzUhC3N5eXoCEWJRYKchboE2dTqVg3Aq6bs6Hxdq7iJHjJ9Mp/zw9ECQU3hE64piqa2uKRDy7i5zQ/uWCrpNwOn1zeOhZQ6UP5ks6SGAIPvzDPX5xhwWBhDpwR5DpaVQYI7fAAaD9Wr3le4VfY1gb/DQBhvtY3dl40HzL5PSQyXtPYukbp/8D/Ccnh/g/Kmv0C5Ah7vKQkLDE5y7ZayShkZSxqMVOQPilQFWUYmnQakGlIrHss9Yj3wlIUFobXit79QT7cKkKQW14/Air+KcGf67iI4FU+k5ChVR6Nqu6SZXiUc4h6yc1Zm2/6LKtl2W9l70yg5kNickcmmAhh5KojnmW1cgKuQlhpEzVJiusYfV4uiMWTTC0Sdt4A+Sz+W7gmrXsKffhkWL6HMyDvxeoQrKifvHOh0oR2wOzM27p015DlpOvekwggUH3Sr2eTFnY2keqVGqkweR6ZxZ6x5T3ZW4fe/JFGXlfKsLPlNVWGccEkzrtoPBsFE5CPrr5VmSmuSvzXELpI/G2tl2oiLfBdh3//dBgYBXnEtYqGLXgMs9a0CbyWkO+VDbuPwa7ZTv6MLTpsTh8Ip4lsp0BxxOwVrbB/jW4x83j09TNOwklKo0hAeqDZ0WBNe1sO/ARbsJxJq5ub6DrfgMBzsCX
+sidebar_class_name: "put api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Change docker image"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/servers/{server}/settings/docker-image"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Changes the Docker image in use by the server.⚠️Cannot generate request documentation: Call to a member function parameter() on null
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

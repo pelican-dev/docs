@@ -1,0 +1,72 @@
+---
+id: node-store
+title: "Create node"
+description: "Create a new node on the Panel. Returns the created node and an HTTP/201"
+sidebar_label: "Create node"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVk2P2zYQ/SvEnBVbu8lJt7RI0F4aI9nk4hrGWBpbTCiSS1LedQz992JIySvb2g22h6I+WIJmOJ9v3vAIxpLDII3+s4ICtKlo5oNxBBlU5EsnLQuhgN8dYSCBQtODYD1htAg1iQVqUjPxmULrtI+fyqhbJTXUlUAt/ri7W8xv85u/tQ8YWi8ceWu0j3Z8W5bk/QwyCLjzUCzhL1MRrDJwdN+SD7+Z6gDFEUqjA+nAr2itkmUMfv7dc5BH8GVNDfJbOFiCAszmO5UBMrCOUw2SPEs1NjTS8sFJvYPuIulBvhwUMtCtUrDqMrDtRslyZGNjjCLUbGR7X+lJ6zG8CccZkG4bdlSHYCGLDx/9bKiWulpbZx4P094aaowby3TbbMhBBo3UsmG7+UltbfbkUClTYqAXz7y54XJI/+OXllnplXZL2/7SbGnb10aL1Bi93qB/prlJ7rfBXhs7l69RSfQvQ6BXV9IH0pMGG5QMV9QlrRsG9GQDW6sMVmsvf44V+OSOzXRpCKSjiuOI0O0xdkLUCQXTfe4bOdWq1IuJap+X87x4l7mvui6FmUY61u02z/lxziLs6JUTPLQveniXv702+r4NtXHyZzQkyDnj/oWfZ5iiIe9xNzmz51F8YL+CS7iX9DC76ttgqK/Vu9vb60y+oZLV/yANP84jgxiLn3Jy0QhRUUCpqBIjgTBbQVjWYitJVSLUGMQ2ae1P+TL1Y1VJfke1OIu9d4rOIQNcBmr8cwCZqvgpgVj6SIWhNrzvrPGxVBhqKGDO+8rzUJHbEye8PELrFBSJj4v53BJ3QM8C+TBHK+ejnkC34qNl62Q4xLORzIvlaiz4Egc2xp/Epzx66h92BGwIXSS59PLRuAYDzxCnwP3//LQaPzxiYxU9rban9g6LKriWhtX0JD15672fr5t0Zlgw+TNLJB/2RD65C/Ke7vMpSs8vWHsEyzFZ51dsm0+xa4r3jE95k0i9NbHQMnCNYJG6CBlwmxN2b2Y5Q50R0aAeFbK/+DA2LgE/uo78d/ejBJZAj2FuFcq0QRikxx7HS0g4XmVQM76LJRyPXN2vTnUdf75vifu5XGWwRydxw1VZ8kqrCStyEbw/6MBppQTf3LFbVldtnMVLKuqy4cT7siQbXtRdjUZw8enLHeOuv9+lPoLDB8jif9wZJhY8Dk38dgSFetdGQoNkk3//AC/Rv3k=
+sidebar_class_name: "post api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create node"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/nodes"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new node on the Panel. Returns the created node and an HTTP/201
+status response on success.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":["string","null"]},"public":{"type":"boolean"},"fqdn":{"type":"string"},"scheme":{"type":"string","enum":["http","https"]},"behind_proxy":{"type":"boolean"},"memory":{"type":"number","minimum":0},"memory_overallocate":{"type":"number","minimum":-1},"disk":{"type":"number","minimum":0},"disk_overallocate":{"type":"number","minimum":-1},"cpu":{"type":"number","minimum":0},"cpu_overallocate":{"type":"number","minimum":-1},"daemon_base":{"type":"string"},"daemon_sftp":{"type":"number"},"daemon_sftp_alias":{"type":["string","null"]},"daemon_listen":{"type":"number"},"maintenance_mode":{"type":"boolean"},"upload_size":{"type":"integer"}},"required":["name","fqdn","scheme","memory","memory_overallocate","disk","disk_overallocate","cpu","cpu_overallocate","daemon_base","daemon_sftp","daemon_listen"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

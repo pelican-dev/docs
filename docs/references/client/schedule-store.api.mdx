@@ -1,0 +1,71 @@
+---
+id: schedule-store
+title: "Create schedule"
+description: "Store a new schedule for a server."
+sidebar_label: "Create schedule"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVktv2zgQ/ivEnHYB1UrTnnTrE+ilDZqkF0MwJtI4YiuRKjmy6wr674shZVu2nKK7p20uoTmvbx78Rj3YlhyytuZDCRn4oqKyq2nh2TqCBEryhdOtKEAGt3KrUBnaqr2qWlunUHlyG3ILSIDx0UO2hNtRAfIEWnTYEJMTSQ8GG5JowQYS0OK8Ra4gAUffO+2ohIxdR+cI7ioaQ6n7+w9vIQmQG4SsB961wSs7bR5hGPLojDy/tuVONAprmAzLEdu21kXIPP3qxXc/d2UfvlLBkEDrpE6syYs0wp8FTED7FRasN1Ppg7U1oRGxNfVuta3IrKyptXlCq9Gm48v+K9u5i4ISdyu7XjXWcHVR4WnJaLol+napiNOGLGPmB4gjoLPw+2CnrvNhiM58a42Pdby+upJ/px2G5F+36QBWIry8ejF3+qrjyjr9MzhS5Jx1/yHOE+PQkPf4eKFj58P7TuIquyG30bRdzKq7d5TvM3k5z+SjZbW2nSn/APzX13P8X7DW5f+gDX6aRwIBi78U5GyQVEmMuqZSTQTKrhVhUam1prpUXCGrddTaHPIVbsSy1HLG+uYE+xgUncOd8CFT458a8EsVPyQQSi/vnbiywuit9aFUQq4ZpJE7fdrHw5DuadwLlUZhoOjO1ZBBxdz6LE1bkraYBZPnFFudFrWWlgnHeio6p3kXzMQAsmU+FcgiaGKeUXzIK/wcKTywIKELCyEe3lvXIAsnSEoyD5+PfP7uBzZtTUc+PrZ7QsNxh8yJN97vqfZoGhl2MjknxHq8n12c0Oh0JZi1DRlrFrBwEysJCUip41A9X1yJqrSqQTPJ6I0jZDqs2vNpnCy031zNsexMPzhta9Rh34RO9+OELA9DkEB22M/HIcmlRJ5Fse8f0NO9q4dBrr935GQG8gQ26DQ+SLrLHkrt5VxCtsbany/0aQp/fR4n+281X/MXoe+fjZFHs8G6o7hAvtHu+Hkx5LI5CUtyAVAUvolhn92Ji6PxjICGZG/xqiio5V/q5pOHd/Pp9k4mefz0aGwpNg638o2D2wjUhjKEpxHueqjRPHaBxiD6lL9/ALwkWdw=
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create schedule"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/schedules"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Store a new schedule for a server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"},"is_active":{"type":"boolean"},"only_when_online":{"type":"boolean"},"minute":{"type":"string"},"hour":{"type":"string"},"day_of_month":{"type":"string"},"month":{"type":"string"},"day_of_week":{"type":"string"}},"required":["name","minute","hour","day_of_month","month","day_of_week"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

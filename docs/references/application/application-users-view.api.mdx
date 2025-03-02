@@ -1,0 +1,72 @@
+---
+id: application-users-view
+title: "View user"
+description: "Handle a request to view a single user. Includes any relations that"
+sidebar_label: "View user"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1z0zAQ/SuaPcGMJg6lJ9+YoUAvTAfaXkIOG2sTq8iSK61Tgsf/nVk5SfNRLhwYOFnSSrvv7cdzD6GliGyDvzZQArats1XeT7pEMU3Wlp5Ag6FURduKAUr4hN44UqgiPXaUWHFQclGhStavHCl5PFHXvnKdoaTQb1Qklx0nxTXyN/9EkZShpfVklPWKa9r5m4AGxlWCcgZ3iSLMNbQYsSGmKKc9eGwISpA4oMEKqha5Bg3iw0YyUHLs6BT6bT2CU9fvQUOqamoQyh5404o/65lWFGEY5uIptcEnSnLhYjqVz7E30FAFz+RZbAfZKx6SXOjPIySO1q9gGIZBw+X07bnTdx3XIdqf2ZGiGEP8gzhh8UAVg4Y2So3ZjjQaSglXdA7oNFFXEleFNUWp7AQE7nNqZ3tH8x2Ty3MmnwOrZei8+Q/wX1yc479HZ80/UIZ0yENDxpJeCnLSSMoQo3Vk1IFBhaUirGq1tORMHka1HG+t93xlAtEYK2t0N0fYt0ExRtzI7DE16XcN/lLG9wRy6gcNDXEdRH5WlDMlc1xCkQWo6OUzyKxSXO+mv4sOSqiZ21QWRUtSBz9hSlxga4uDyoAMcqKqi5Y3+a28gnI2PzR8lbKN7Ebznk3eboVC9gvCmCVnXHwIsUEWJRAi1i9DfmvZyeWbERhoEORjUd5MplLDNiRuMPfMVsruRUC3enZUx/656f6O8o7MmX5w0Tq0XvDmjPfb2syy7ibQUHZbea5DYjH0/QIT3UU3DHL82FGUtM81rDFaXEheZj0Ym2RtoFyiS6cqfcj41ZdtC71Wx9r9Isxdb3rpzDW6jkaV/k6b3d9imA8aakJDMUMZTe+qilo+eHQ23dIv+079eHULw/ALlQ+EuQ==
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View user"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/users/{user}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Handle a request to view a single user. Includes any relations that
+were defined in the request.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user","in":"path","required":true,"description":"The user ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

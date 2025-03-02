@@ -1,0 +1,72 @@
+---
+id: api-client-server-view
+title: "View server"
+description: "Transform an individual server into a response that can be consumed by a"
+sidebar_label: "View server"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVT1v2zAQ/SvETS1AWG6aSVuApkWWImg+FtfDWTxbTCWSIU9OXUH/vTjRUZw47dChaCdRPPLuvft47MEHisjWuwsDJWCwZdVYclwmiluKs62lB9BgKFXRBjkIJVxHdGntY6vQKeuM3VrTYaPyHWUde4UqUgreJVJcI6sKnVqRqrxLXUtGrXYKv7ocTHXJuo3imtTZ5cUMNDBuEpQLuBo9wlJDwIgtMUXZ78FhS1BCjggarOAKyDVoiHTf2UgGSo4dHYGv6RHozc3FB9CQqppahLIH3oXRK0frNjAMS3GWWSSxn8zn8nnuEDRU3jE5FhuG0NhqTGlxl+RA/5sAw6DhdP7+2OlZx7WP9sfoSFGMPv5BHL+6o4pBQ4hSaLaZRksp4YaOAb3M1bnEVX5LUfpgBgL3KbuLydHykcnpMZPPntXad878B/hPTo7x32JjzT9QhnTIQ8OIJb0W5EUjKUOMtiGjDgzKrxVhVau1pcbkCV3nU9uJrwwiGmNljc3lM+z7oBgj7mT8mNr0qwZ/LeMTgTH1g4aWuPaiQRsaMyWjXEKRJzUVfV4MMq55a5SBLjZQQs0cUlkUgaQWbsaUuMBgiywvIHOcqOqi5d14TS5AuVgeGq6kaplcNk9kxt+9TMj/ijCOopMXH31skUUIhId1az/etdzI4cuMCTQI6FyTd7O5lDD4xC2OLbOXs1tLD2rStGeF7J+67m/ob2bO9J2L0KB1gndMdr8vzWKqg4b9YyEyXfvEYuz7FSa6ic0wyPZ9R1FSv9SwxWhxJblZ9GBskrWBco1NeqnVh5zffNl30Vt1rOCvwn1sUScNusWmoyzW32j39HIMy0FDTWgojoCy8ayqKPDBtaMxl86ZWvbT+TUMw0+Xt4oD
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View server"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Transform an individual server into a response that can be consumed by a
+client using the API.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

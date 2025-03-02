@@ -1,0 +1,71 @@
+---
+id: application-servers-build
+title: "Update build"
+description: "Update the build details for a specific server.⚠️Cannot generate request documentation: Call to a member function parameter() on null"
+sidebar_label: "Update build"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVb1u2zAQfhXipgQgLDfNpC1IWjRLETRJF8PDWTpZTCWSIU9uXUHP0L1TH6PP0xfoKxQnKYpjp0undDLpO9593/18asF5CsjG2cscUkDvK5P191mksKEQZ6vGVDloyClmwXixQQq3PkcmxSWp3kHlxGiqqAoXFKroKTOFydQQZfbr+4/fP7+do7WO1ZqsJCUV6L6hyCp3WVOT5T5xqs6xqhQ7haqmekVBFY3NxKQ8BqyJKRwdK2eVbaoKNDCuI6QLuO5zXQxAYKlhchdzCxZrghQGSKDBCBGPXIIGgWIC5ZByaGif7U1JIxN1eQEaYlZSjZC2wFsvMY1lWlOArltKrOidjRTF4WQ+l5+n8UBD5iyTZbHtVD25i+LQHmaIHIxdQ9d1nYbT+evDoGcNly6Yr30gRSG48A953OqOMgYNPshssBlo1BQjrukQ0H6p3khe5TYUNoY+z0DgPhZ3MQVaPjA5PWTy3rEqXGPz/wD/yckh/o9YmfwFtCHu8tDQY4nPJdkbpHGZSbZ6MihXKMKsVIWhKldcIqti8NpMfGegAfPcyBmrqyfYx6QYAm5l+5jq+LcBf67iE4G+9J2Gmrh0+bDDmSxxv8spJKN0Je1w6JIHDRsNvRo0oYIUSmYf0yTxJD2xM6bICXqT7HQJZKkjZU0wvO3fyitIF8tdw7W0cGA6mCdm/XUUDbmvCEMvQMPhrQs1sqiCkDK2cP1bw5U4Xw3AQIMgHxr0ajaXfnoXucZ+fkZpG1X5WcluH2fwZan3UCSmL5z4Co0Van1z2rGhi6lvGtJJvQeSSw2liyxObbvCSLeh6jr5+76hIN1aathgMLiSci5ayE2Ucw5pgVXcl/rdKh19GKfwWO1/AJ4F/TDgVsZ7g1VDg9R/ou3jZ6dbdhpKwpxCD2cwnmUZed55diASMmrTwF+d3Zy/g677A8N0uWA=
+sidebar_class_name: "patch api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update build"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/servers/{server}/build"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update the build details for a specific server.⚠️Cannot generate request documentation: Call to a member function parameter() on null
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

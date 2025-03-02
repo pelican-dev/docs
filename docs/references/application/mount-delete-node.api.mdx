@@ -1,0 +1,71 @@
+---
+id: mount-delete-node
+title: "Unassign node from mount"
+description: "Deletes a node from the mount's many-to-many relation."
+sidebar_label: "Unassign node from mount"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVE2P0zAQ/SvRXADJ2xS0p9yQtkgrwQrB7qmKkJtMGy+J7R1PClXk/47GSUq3RSAtJzuerzfvzWQA55E0G2dvayigc73lRY0tMt65GkFBjaEi48UFCrhJppDpzLoasy25LuMGsxT4KmSdtocrdldyZoRtSr0ABax3AYo1fBJHKBV4TbpDRpLnAazucAYACowU85obUED41BvCGgqmHs8R3c/Vs9sbUBCqBjsNxQB88JLRWMYdEsSojlUE+zdT/6POX1KV4h28swGDOLxbLuV4jgwUVM4yWhab9r41VeIjfwziMFxWCEzG7iDGGBVcL68vk945zraut/ULsrvNI1bCrieRnc0IvsMQ9A4vYZxTvSJylLk90t7gj4VQekLa+piojGMDHXLjZKzGgZLCwnQBeRIs5EM6Yy56hHyYZIkiI9J+Ho2eWiigYfahyHOP0qhdMAbOtTf5SesgwgSsejJ8SLESBcW6PDV8FV7G1kfzse/0OQkv3xvUhARqunxw1GkWZaU7Y7cuxRpuxfnzCAwUCPKRsbeLJUQF3gXudBJlmsAHq0MwO3uyRvPoP+N8+C3yf+ze2B3jT859q40VTInVYVJkPS5eAAXFjCOJIg/ztpQKGhdYvIdhowM+UBujPD/1SMJ3qWCvyeiNELIeoDZB7jUUW92G89U97e31l2mO3mRnC/1H8NOjtgehW7c9jvv2HQ/Hn4js+4sAvKzozFIso4IGdY2UOBit76sKPZ/EXSysTOhxYW5WH1f3K4jxFw/37Xg=
+sidebar_class_name: "delete api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Unassign node from mount"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/mounts/{mount}/nodes/{node_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes a node from the mount's many-to-many relation.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"mount","in":"path","required":true,"description":"The mount ID","schema":{"type":"integer"}},{"name":"node_id","in":"path","required":true,"schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

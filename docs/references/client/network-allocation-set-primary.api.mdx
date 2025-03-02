@@ -1,0 +1,71 @@
+---
+id: network-allocation-set-primary
+title: "Set primar<"
+description: "Set the primary allocation for a server."
+sidebar_label: "Set primar<"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zAM/SsCTxvgxVnXk7FLt3VAL13Qj12CHBibidXalirRSTPD/32g5Thpkg1oT1svlSV+vUfmsQFjySFrU11lkEBFvDbu8aIoTNrdjjzxxOkS3QYiyMinTlt5gARuiRXnpGx4Vzh4qYVxCpUntyI3gggYlx6SKVwfxodZBBYdlsTkxKSBCkuCBIIzRKAll0XOIQJHT7V2lEHCrqbDgu5y6nOq+/urbxCBT3MqEZIGeGO7qOx0tYS2jYZEu7JfnWwP8el0umJakoO2nYV45PmLyTZikpqKqWI5orWFDoHiBy/hm+NYZv5AKUPbtq3E8tZUnrwYnI3H8u9lfRC9OsNAjmQ4H386DnpRc26c/hUwk3PGvSFPjyQC62T8WAcYJXmPSzou6JD6S8mrzIrcStN6BIGQbbOmQ6DZFsn5MZJrw2ph6ir7D+o/Ozuu/ycWOvsH2uD3cUTQ1eJPJTkYJJURoy4oU3sPyiwUYZqrhaYiU5wjq0WwWg14RU8wy7ScsZi8qL1Pis6h6JVmKv2fBvwU4wOAjvo2gpI4N6KM1viOKpGGBOIgMz5uwqGNe+WMd5Lg42b30cZ2UNHetxO72hWQQM5sfRLHlqRr1YjJc4xWx2mhpaOiHp7S2mnedG7iAMl0tv9wK/0NNITnAXb32auTfM8JXSet4fDduBJZJEMQy7jc7JTq8hlLW8g0tKKOC9PF1SxXMAn1QgQCKHT242gsgyB8ldgNXq+zsi4CCZ8Px2FPDF+1VQI8pmeObYG6ksQdo03fqOlAdgTJsFH6Xskc7bolFi9WwbZhswhyaX4yhaaZo6d7V7StXD/V5KQfswhW6DTOhZRpA5n2cs4gWWDhDzfHPth3N/0QvlfHy+skvO2EVzJJKyxqClr/SJvd0pTt9uYiDpfaG8rY47GdtRHkhBm5jptg8DUk/3AnYXYBjmRLgASPizQly3+1ne39XCc/bu9kwPtdW5pMfByuZa/jOhRrbOh80oS7BgqslnUnfhBiyt9vmA0uKA==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Set primar&lt;"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/network/allocations/{allocation}/primary"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Set the primary allocation for a server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"allocation","in":"path","required":true,"description":"The allocation ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

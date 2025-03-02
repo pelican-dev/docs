@@ -1,0 +1,71 @@
+---
+id: application-servers-external
+title: "View server (external id)"
+description: "Retrieve a specific server from the database using its external ID."
+sidebar_label: "View server (external id)"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVMFu2zAM/RWBpxUQ4qzbybcC64beinbrJTAGxmJidbalSnTazPC/D7Qd103aHoYddrJkkuJ75CNbcJ4CsnX1lYEU0PvS5v19ESnsKMQFPTGFGkvQYCjmwXoxQwo3xMHSjhSq6Cm3G5urIUhtgqsUF6QMMq4xkmqirbfKclSH99TVlwVoYNxGSFdwOf6+7V+ATIPHgBUxBbG3UGNFkMIh/Kc1oMEKEI9cgIZAD40NZCDl0JCGmBdUIaQt8N5LaORg6y10XSbO0bs6UhT7+XIpn5f0QEPuaqaaxTarTHIfxaF9J0HXafi8/HT66EXDhQv2d/+QohBc+Is8bn1POYMGH6R/bAcaFcWIWzoFdNy5S8mr3I7CztLjAgTuc/VW00PZyOT8/JTJHZbW/Ac04pyHhh5LfC3JUSOUIUZbklEzg3IbRZgXamOpNIoLZLUZvHYTX1EtGmPljOX1C+xjUgwB9yJPpiq+JZDXKj4R6EvfaaiICyejuaW+UiL1FJJxOJPDNCTtbC460DA69JPThBJSKJh9TJPEk3SmXjBFTtDbZNYrkNGIlDfB8r6PlShIV9nccCuNHPgO5olffx0nT+5rwkAijeHw1YUKWWZLqNl64/pYy6U4Xw/AQIMgH9r0cbGUrnoXucJeReMauLP0eNg2H6aVYs3ZcafbZ1n+q401cGV64sSXaGtB2Ne4HfuzmsqvYbY+0/nuyjQULrI4t60k/BHKrpPfDw0FKX6mYYfB4lqqs2rB2ChnA+kGy0jv8PxwM0rrTL2F9yDUWmS6w7KhYeX9ov3Rku2yTkNBaCj0MAaPizwnz7PYk4kXxUzq/Xb5HbruD4RnPpI=
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View server (external id)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/external/{external_id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Retrieve a specific server from the database using its external ID.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"external_id","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

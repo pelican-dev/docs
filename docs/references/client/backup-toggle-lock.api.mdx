@@ -1,0 +1,71 @@
+---
+id: backup-toggle-lock
+title: "Toggle lock"
+description: "Toggles the lock status of a given backup for a server."
+sidebar_label: "Toggle lock"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVU1v2zAM/SsCTxugxdnWk2/t1gEFhq3oxynwQbGZWI1tqRKdNjP03wdKbprWxYZ2l+USRR8k3yPfywDGolOkTXdWQQ5LVW56OyOzXjf43ZQbkFChL522fAdyuIpHXlCNojHlRnhS1HthVkKJtd5iJ1IQsTJOKOHRbdHNQAKptYd8ASfxGAoJVjnVIqHj/QE61SLkkF6ABM35rKIaJDi87bXDCnJyPU6KqnFMJK6vz76CBF/W2CrIB6CdjVHJ6W4NIch9olTnqxON8P6aqEjB0NOJqXZ8ozQdYUe8VNY2uozEZzeeYw/TUGZ5gyVBCCFwLG9N59HzhU/zOX89LQ7kqzPsi+UMR/PP06DHPdXG6V8xkEDnjHtDnhGJBOt44EgnGC16r9Y4Leg576ecV5gtuq3GuxkkQh46tdgHKh6QHE2R/DAkVqbvqv+9/iChRaoNC9IaH9PycOaQpSH32ZAWIUvD6LMhLULWJNGOF6OuetdADjWR9XmWWWS43YzQU6aszspGMxU8rx7L3mnaxWf8APJFcXhwycQk7Ol4Dzz+HOUQxYXKRRWnxTfjWkU8pAyPeb541MbpvWptwzQGFuPKxLiaeAvOU70ggQElOj/O5hBkJKdVsWOjpJM7ieYF5zqQ37+YWEJLeE+ZbZTuuI5I8DA2abHnXkK+97KxT7y3t51YZSGh5h7nCxiGpfJ47ZoQePu2R8edKCRsldNqyXQsBqi053UF+Uo1/rlFHcJ8dzGO2HsxdcgXkYybqtsx36rpMfnKBnePzswW+uYinrrnG4oY6QtFkFCjqtBFVtLhl5T2wxWHeHw80ThDSC+OyxIt/fFucaDH85+XV9zO0dFbU/Ebp+74r0PdpUJNpCGqJO4N0Khu3UengBSTP78Bu3aTRQ==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Toggle lock"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/backups/{backup}/lock"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Toggles the lock status of a given backup for a server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"backup","in":"path","required":true,"description":"The backup UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

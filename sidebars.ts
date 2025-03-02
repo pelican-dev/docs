@@ -1,4 +1,6 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import applicationSidebar from './docs/references/application/sidebar';
+import clientSidebar from './docs/references/client/sidebar';
 
 /**
  * Creating a sidebar enables you to:
@@ -11,7 +13,6 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
  Create as many sidebars as you want.
  */
 const sidebars: SidebarsConfig = {
-
   Sidebar: [
     'welcome',
     {
@@ -47,7 +48,34 @@ const sidebars: SidebarsConfig = {
     },
     'troubleshooting',
     'comparison',
-    'glossary'
+    'glossary',
+  ],
+
+  API: [
+    {
+      type: "category",
+      label: "Client API",
+      link: {
+        type: "generated-index",
+        title: "Client API",
+        description:
+          "This is a sample server Petstore server. You can find out more about Swagger at http://swagger.io or on irc.freenode.net, #swagger. For this sample, you can use the api key special-key to test the authorization filters.",
+        slug: "references/client-api",
+      },
+      items: clientSidebar,
+    },
+    {
+      type: "category",
+      label: "Application API",
+      link: {
+        type: "generated-index",
+        title: "Application API",
+        description:
+          "This is a sample server Petstore server. You can find out more about Swagger at http://swagger.io or on irc.freenode.net, #swagger. For this sample, you can use the api key special-key to test the authorization filters.",
+        slug: "references/application-api",
+      },
+      items: applicationSidebar,
+    },
   ],
 };
 

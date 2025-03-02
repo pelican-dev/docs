@@ -1,0 +1,71 @@
+---
+id: startup-index
+title: "List startup variables"
+description: "Returns the startup information for the server including all the variables."
+sidebar_label: "List startup variables"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1vEzEQ/SvWnEBaZUPpaW+VKKgSQlU/uEQ5OOtJ1sVru/ZsaFjtf0djbzdpUjggDnCKk2fPvDcfLz04j0GSdvZKQQWRZKDOz7RV+AQFKIx10J5xqOAGqQs2CmpQjDeFtmsX2hRBrF3IGIYtBqFtbTql7UZIYxKwlUHLlcE4gwJIbiJUC7jNkWBZgJdBtkgYGOjByhaZVAoHBWgm4SU1UEDAx04HVFBR6PCY6d2exf391QcoINYNthKqHmjnU1QK2m5gGJYcLHpnI0bGz+Zz/ngZEAqonSW0xJj03ug6iS4fIl/of5NgGAo4n78/DXrRUeOC/pGrhyG48Ad53OoBa4ICfOBmks4yWoxRbvCU0HGtLjmvcFsMW43fZ8B099VdTIGWz0rOT5V8cSTWrrPqP+B/dnbK/6s0Wv0DbYiHOgpIXOJrSY4GSSgkqQ0qcQAItxYo60asNRolqJEk1vnWdtLLmyiV0nyW5voF9zGpDEHueP0I2/irAX+t4pOAVPqhgBapcewzG0yV4lWuoMybGss+H4ZyNBde2wwlO+iCgQoaIh+rsvTIPbEzwkil9LqsjeZ+8T5HrLugaZee8QOoFstD4Ja7l0VmeBKVvo52wd9XKEMyn3z4mMyODYH1sPmlt5oMX77OnKAAJp17824251Z6F6mVaXRGW/usI002OjnjcW/7/SD+bf/NggmfqPRGass0U437sTOLqfwFVJMLx71fNy4SX+v7lYx4H8ww8M+PHQau/bKA54ypE0pHPiuo1tLEY9M+VPrmZhynt+LUyl8l/jyrlid1K02H2bW/4W7/FzIshwIalApDIpTBi7pGTwfPTvadR2ea3U+XdzAMPwGb7IW4
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List startup variables"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}/startup"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the startup information for the server including all the variables.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

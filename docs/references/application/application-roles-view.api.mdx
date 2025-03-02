@@ -1,0 +1,71 @@
+---
+id: application-roles-view
+title: "View role"
+description: "Return a single role."
+sidebar_label: "View role"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVLFu20AM/ZUDpxY4WG6aSVuApkWWIkjTLIYHWqKtSyXdhUc5dQX9e0FJdmQ7WTK1k+5EHvnIR74WfCBGcb6+ySEFDKF0WX+fsS8pzraOnsFCTjFjF9QAKdyRNFwbNNHVm5KMus7AguAmQrqAO18SLC0EZKxIiPVvCzVWBCmoN1hwGimgFGCB6alxTDmkwg2dprsvhhTm5gtYiFlBFULaguyCxnO10IYYum6pkWLwdaSoDhfzuX6Oo4GFzNdCtahtUnHyGNWhPc8QhV29ga7rOguX88/nQa8aKTy7P30gQ8ye35HHrx4pE7AQWHkRN5RRUYy4oXNAp4261rzGb4mVthko3JfWLg6BlvtKLs8r+e7FrH1T5/8B/ouLc/wPWLr8H6AhTuuw0GOJryU5GSSTk6ArKTcTg/FrQ5gVZu2ozI0UKGY9eG0P9eoGYp47PWN5e4R9TIrMuNPdE6riWwP+WscPBfSt7yxUJIVXydhQ3ynd4xSSXjSSVj+d7irxdr/9DZeQQiESYpokgZSHeiYUJcHgkgkzoIscKWvYya5/q68gXSynhh9K21DdYD5U019HodD7ipBJB2E4fPVcoagSaCGuXvv+rZNSnW8HYGBBkQ+kfJrNlcPgo1TYz8woZQ+Ons2oZ0c8ti9D97ZaDmiFfksSSnS15ui71I79XPRaGcFCyqOkFj6KGtp2hZF+ctl1+vupIdZWLS1skR2utJZFC7mLes4hXWMZT5V1ivLD3Uj7R3Ost6/C3M9TrdO0xbKhQVl/0W6v8N2ys1AQ5sQ9lMF0lWUUZPLobCOV48N0fbu+h677CyYjTDA=
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View role"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/roles/{role}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return a single role.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role","in":"path","required":true,"description":"The role ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

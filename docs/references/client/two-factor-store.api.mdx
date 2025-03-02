@@ -1,0 +1,71 @@
+---
+id: two-factor-store
+title: "Enable 2fa"
+description: "Updates a user's account to have two-factor enabled."
+sidebar_label: "Enable 2fa"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVEtv2zAM/isCL7uocRfs5Fs3pMBOK9Z2l8AYGJuJ1dqWKtFJA8P/faCUd4seivlgyxSf30dyAOvIIxvb/awgB97YWyzZ+klg6wk0VBRKb5xoQA6PrkKmoFD1gfyXoLAsbd+xYqtqXJPijb1aRg+KOlw0VE1AA+MqQD6Hh717KDR4eukp8HdbbSEfoLQdU8dyROcaU8assqcggQcIZU0tyom3jiAHu3iikmEcx1F8BWe7QEEUptfX8jnPHPRnI2hwXlBik9zvxEe9wN50K9BAr9i6RkSeSrsmv/3L9pm6AKMGZPZm0XNy8nGIndWbEKnUl954qgTPnV5xKT+4PQlaJKS+TadvwfmDjakiGoq8t/7/gdVSCLii99A6T2EmcYMS1NaGNhOBLObyLlzntjeqIkbTUKVOLpRdKsKyVktDTaW4RlbLpLU+1CvdiVVl5IzN3TkLKSh6j1vQYJjadzm5RH9f86GACP2ooSWurYyZsyFChVxDDtluiLLj8ICGQH5NUv18gN43kEPN7EKeZY6Ejm7CFDhDZ7KyMULVWIhV2XvD22gmBpDPi9OLeyEu1ZeuD/XEX52Ylf8FoSfJJB1urW+RZZKkFOmD38cBnu07fxg1mG5po1/DcRjuUr6gQQpKlH2dXAvDAkSLsaM6jFFncWuo6RIvaT5ZEZ/eQ6lSplfOXIOmkxwiuMOOjDnsPIn2kY5CQy2c5XMYhgUGevTNOIr4pScvaBca1uiNhIqQa6gJK/KRiGfaQg4/UvpXD5KFqDd97K/L8Rr13uKmLMnxh7rFSVvd/bp/EL52G7W1VdxFuAEd33EL2ghnbIAoG6DBbtXHIYXkU55/ieAflA==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Enable 2fa"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/account/two-factor"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates a user's account to have two-factor enabled.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"object":{"type":"string","example":"recovery_tokens"},"attributes":{"type":"object","properties":{"tokens":{"type":"string"}},"required":["tokens"]}},"required":["object","attributes"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

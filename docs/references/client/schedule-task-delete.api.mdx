@@ -1,0 +1,72 @@
+---
+id: schedule-task-delete
+title: "Delete task"
+description: "Delete a given task for a schedule. If there are subsequent tasks stored in the database"
+sidebar_label: "Delete task"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v20YQ/SuLOTUAIbpuTrwFsAMYKIIgsXNRdRhxR+LG5C49O1SjEvzvxSwpSrKcFnEv6YnLnc83M/umh9ASo7jg7ywUEMuKbFfTPcbHhaWahCADS7Fk16oWFHCTrg2arduRN4Lx0WwCGzQH64W52xipiMkgk4ndOtJTR16ScjRRApM1zquSsSi4xkh/ePUilYuzI5U7NqN1SebuJiaPlkqmhryQNS0rhHq/gAwEtxGKJXw+gQGrDFpkbEiIVdqDx4YULPGOGDJwCqtFqSADpqfOMVkohDt6jv2+IjOamYeHuxvIUsUahKIH2bfJq7DzWxiG7BhoSufHQx3q8HIo54W2xGextMI/HCf18N9irNRTbIOPFFXh+upKP+feIIMyeCEvKsO2rV2Zxiv/GlWh/4eCDUMGb69+u3T6rpMqsPsrOTLEHPgVccL6K5UCGYwTI26E0VCMuKXLhJ4X6lbjmrAj3jn6c6FVPyntcna0OiB5e4nkQxCzCZ23/4P8r68v8/+CtbM/QRviKY4MUi7xpSDPBslYEnQ1WXMiMGFjCMvKbBzV1kiFYjaj1m7Gq/SC1jo9Y/3xLPcpKDLjXt+eUBO/N+AvVXwGkEo/ZNCQVEH5eKbg9JQLyEfyiXk/Hob8QBF6NR2HPNFs3utn0Ec9GiXu67iGAiqRNhZ53pI2zC+EouTYurysnTZTH3uksmMn+2SmBlAsV6cCZdlmrMAonhGn34lM9H9NyIlpx8P7wA2KsoWCdX4Tkq2TWpU/jjlBBpr02LhfF1fa5zZEaTDN1UR30zKaWO+s2/1xNH/qnTWWTOib5G2NzivQ1KV+6vpybmAGxby05san2+OGSenqnUzLrwpR1Enfa8YPXA+DXj91xNrbVQY7ZIdrLf6yB+uini0UG6zj83VxWtRfPk2z/MZc7sUXYR0eitdnssO6o3FlPNL+uI91mb0+ibON+ZokDpX8T2kcF+orUkiNG1ZDBhWhJU5tGUXvypJaOTG6oFx9oDN93Nz+fnt/C8PwN9K0bl8=
+sidebar_class_name: "delete api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete task"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/servers/{server}/schedules/{schedule}/tasks/{task}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a given task for a schedule. If there are subsequent tasks stored in the database
+for this schedule their sequence IDs are decremented properly.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"schedule","in":"path","required":true,"description":"The schedule ID","schema":{"type":"integer"}},{"name":"task","in":"path","required":true,"description":"The task ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

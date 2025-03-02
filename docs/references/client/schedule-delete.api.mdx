@@ -1,0 +1,71 @@
+---
+id: schedule-delete
+title: "Delete schedule"
+description: "Deletes a schedule and it's associated tasks."
+sidebar_label: "Delete schedule"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zAM/SsCL9sAIc66nnwr0AwoMAzF1u4S5MBYTKzWtlyJzpYZ/u8D5cR1PjqgPW0nyyIlvsePpxZcTR7ZuurGQAohy8k0BU0MFcQEGgyFzNtaPCCF67gdFKq9p8LKKMvvgsIQXGaRySjG8BgmoIFxHSCdw/edNyw01OixJCYvlhYqLEkik9+QBw1W4tTIOWjw9NRYTwZS9g0dg7nLSfXH1P39zTXoCL9ESFvgbR1vZW+rNXSdfg60h/LqUHvG50PZimlNHrpuIbeF2lWBgjhcTKfyObwRNGSuYqpYbFjXhc1iHZKHIA7tX8h0nYbL6afTS68azp23v+NFirx3/g1x3PKBMgYNtZfuYNvTKCkEXNMpoONkzSSuchvyG0s/J5L9UXrnw0WLPZPLUyZfHauVayrzH+C/uDjF/wMLa/6BMoQxDw0RSzgX5KiRlCFGW5BRI4NyK0WY5WplqTCKc2S16r02A18ZezTGyhqL2wPsu6DoPW5l/pjK8FKDn8v4QCCmvtNQEudOhGvQqzjOKSS9MISk7Rddsh9f2dotO5nj3i9KUeMLSCFnrkOaJDVJjaoJU+AEa5tkhZX6yXwHyhpveRuPyQFI54uxQQSv7En35oFk/N3ph/wvCX0Uvn7x2fkSWQRC+Nlq5eJZy4U43/aYQIOA7mv1cTKV0tYucImxlXZK14u1GgneQZHb5458va73XJh+cVIXaCtBENPX7iowHzKrIR3EfShC3B09CrkLLIfadomB7n3RdbL91JCXJC80bNBbXEoW5i0YG2RtIF1hEY7leszs/bddH31Qp+/FWRr7Jq2kRTdYNNTL9SNtn98peVDeDuLgJXkLiH3mukWnISc05GNeevNVllHNo4MneiOtOszO9ezL7G4GXfcHCBjIsQ==
+sidebar_class_name: "delete api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete schedule"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/servers/{server}/schedules/{schedule}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes a schedule and it's associated tasks.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"schedule","in":"path","required":true,"description":"The schedule ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

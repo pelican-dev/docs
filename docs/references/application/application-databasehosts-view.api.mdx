@@ -1,0 +1,71 @@
+---
+id: application-databasehosts-view
+title: "View database host"
+description: "Return a single database host."
+sidebar_label: "View database host"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zAM/SsCTxugxVnXk28D2m29DEXX9RLkwFhMrM62VIlO1xn67wPtJHWcFhh22k6RTFJ8jx8vHThPAdm65spADuh9ZYv+PjPIuMJIpYscZ1tLj6DBUCyC9eIAOdwQt6FRqKJtNhWpfYiSmBloYNxEyBdwsTN8cZFhqcFjwJqYglg7aLAmyMGMvTRYSeGRS9AQ6KG1gQzkHFqa4rgtJ7nV1QVoiEVJNULeAT95SWAbpg0FSGkpT0bvmkhRHM7mc/k5fhY0FK5halhso9pk91EcutMMkYNtNpBSShrO5x9OH/3YcumC/dU/pCgEF/4ij1vdUyFF8kE6yHagUVOMuKFTQNOKXUpe5bYUpLEzELjPNV4cHlrumZyfMvnqWK1d25j/AP/Z2Sn+O6ys+QfaEMc8NPRY4ktJJoOkDDHaiowaGZRbK8KiVGtLlVFcIqv14LU98JXVRGOsnLG6PsK+S4oh4JMsIVMdXxvwlyp+INCXPmmoiUsn4rKhvlKy0Dlk+3191+tL1o2XP8nyUtju9aENFeRQMvuYZ5knaUwzY4qcobfZqFUgmx2paIPlpz5WoiBfLMeGb9LHge5gPtDrrzvlkPuKMJBMxnD45EKNLNIgzGyzdn2s5UqcrwdgoEGQD116P5tLU72LXGM/RDuxu7P0eCxa0w53z+P4B0o74Gf6yZmv0DaSta9btyv5Ao5LDhpyM9HlHka+gK6Tr99DlZJ8fmgpSDWXGrYYLK6E7qIDY6OcDeRrrOJUlsf439zsRuWtekWsXySwH8ZGRnGLVUuDLP+gp+n/RVomDSWhodBjG1w+FgV5HgWfrLXMxWFEP1/eQkq/AeIIdtc=
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View database host"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/database-hosts/{databaseHost}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return a single database host.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"databaseHost","in":"path","required":true,"description":"The database host ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

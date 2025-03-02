@@ -1,0 +1,63 @@
+---
+id: api-client-account-update-email
+title: "Update email"
+description: "Update the authenticated user's email address."
+sidebar_label: "Update email"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVEtuFDEQvYpVIBEkM85v1btRlAgWSFEgbCazqOmuTDu4bceuHgijPgN7VhyD83ABroDKPQn5sYENC1bjnvq9V/Wq1hAiJWQb/KsGKsBoq9pZ8jzBug6950kfG2R6QR1aBxoaynWyUSKggtNiVNySwp5b8mxrZGpUnyk9y6pEKWyaRDlPvn/5+uPb5wP0PrBakpfKpBJd9pRZNaHuO/Jc0FRqGuPZ2evQkMtnZ6eZUlUtiU96R/kopLHw1vNKTdOyhKknO2rraScBz1XXZ1YLUuFc8VWkh8m08r1zamlX5LWq0TlqlPXKiDGbXKM1B6UR2URytkZvInpyBmM0L5mjORlxZzON175mOjbNjPAOhf3GbRLbqIJXznpSe/uggXGZoZrBJgbmGhLlGHymDNUadre35eduw0FDHTyTZ7FhjAJNbOYii8Mact1Sh/IS5lBB5mT9EoZhGDTsb+89TDrtuQ3JfiqJFKUU0h/UCYsLqhk0xCSiYjvS6ChnXNJDQPe1dCh1VVhRWln6MAGBK9qwiRrp03Wi+YbJ7u5DJu/Q2eYfoJFv89BQsOTHitwbhGqI0YoWbxlExYR1q84tuUZxi6zOR6/VDd8JaMCmsfJGd3wH+6YopoRXoMEydfl3Anms4zcESusHDR1xG+RexL50CrmFCszmZJjrW5EprUh4z9bQJwcVtMwxV+Z6pSZMmQ1Ga8ajA8Ncouo+Wb4qYRIA1Wx+2/BGRjYyG803TMqnHmcq3wvCRCKC8XEUUocsWyQkrD8PJdayE+fjERNoENDjQHYm2zK/GDJ3WPTisWTeHL5Hr+L6l+b+H8i/OZDjUJk+sokOrZdRFB2tN5KbwUZyItEyirmGNmQW03q9wEynyQ2D/H3ZUxJNzTWsMFlcyNBn80FDS9hQKnJ7T1eyhnVNUXKu0PVlc+4fDpHjzRIcn76FYfgJYbyVkA==
+sidebar_class_name: "put api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update email"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/account/email"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update the authenticated user's email address.⚠️Cannot generate request documentation: App\Models\User::getRulesForUpdate(): Argument #1 ($model) must be of type App\Models\User, null given, called in /Users/scai/Clients/pelican/panel/app/Http/Requests/Api/Client/Account/UpdateEmailRequest.php on line 34
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: file-chmod
+title: "Update file permissions"
+description: "Updates file permissions for file(s) in the given root directory."
+sidebar_label: "Update file permissions"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVkuP0zAQ/ivWnEAyTVk45cZT4gIr2OVS5eDG08aQ2GbsdClR/jsau49sW0AgDtBLXc/7m/E3HcB5JBWNs280lLAyLc7qpnMaJGgMNRnPQijh1msVMQhWER6pMyEYZ4NYOUqXD8JDYayIDYq12aAV5FwU2hDW0dF2BhKiWgcoF/DatAiVBK9IdRiR+HYAqzqEEgLSBgkkGI7rVWxAAuGX3hBqKCP1eJrcTYMim4nb2zcvQUKoG+wUlAPErU9eIxm7hnGssjMM8bnTW9aonY1oIx+V962pEyDFp8C+h3NXbvkJ6wgSPDF80WBgKdd71FrsI0qwfdtCNcoEb5g4UkRqy4VG7MKvA7D5hYokdE5PBbbvlkgwjlPYFtl8p1yNp9KU/T5FFid58M6GHP1qPuev+8CD/G30Do3gCE/nT86dPutj48h8S44EEjn6gzg/ALHDENT6Ao6nM/WK4wq3QdoYvJudwbl3VO0reXpeyVsXxcr1Vv8H+V9dnef/UbVG/wNtCNM6JKRcLj6Yk0ESGqMyLWoxEQi3EqjqRqwMtlrERkWxylqbQ71MV0prw2fVXt/L/Rev996AX0L8UECCnt8vxsYx/3oXElTMeSUUmdJCMeTDWKTXWewJeidO3NlTCyU0MfpQFoVHboydRQyxUN4UdWu4aUx+AeueTNwmMzaAclFNBR+4hbnSLD5Uln7uuJV/L1FRYup8eO2oU5FZgYviiXh/JNpXX1XnM3/taHCxZ7Rj6zORzUcmS2NXLsU2MSld55pAAhedG/x4Nud5YNg6leZvt0PytjpbVqcTMuH+v7PgMk4Rv8bCt8pYzi61Ztg1dXHomoTysOkyIhJyZysJDQ9CuYBhWKqAt9SOI19/6ZG4cZWEjSKjlozMYgBtAp81lCvVhtP1OK3ywfvdQD4U50vzYvr7abc86xvV9ph5/zNuj8s6daxBpZFSQln4Iod9dMMujsZnvDHKvcWzukYff6pbTd7L9bsPNzx+u0WexwdI3fE/BnWXE3UJhryi+W6AVtl1n9gHsk/+fAeMWyI9
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update file permissions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/files/chmod"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates file permissions for file(s) in the given root directory.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"root":{"type":["string","null"]},"files":{"type":"array","items":{"type":"object","properties":{"file":{"type":"string"},"mode":{"type":"number"}},"required":["file","mode"]}}},"required":["root","files"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

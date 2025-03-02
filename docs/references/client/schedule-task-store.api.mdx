@@ -1,0 +1,71 @@
+---
+id: schedule-task-store
+title: "Create task"
+description: "Create a new task for a given schedule and store it in the database."
+sidebar_label: "Create task"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVk2P2zYQ/SvEnFpAtZxtLtUtTVMgl3aR7PZiGMZYHFnMUqRCUva6gv57MaRsyx8bIIse2r0sLXLezLwZvmEPtiWHQVnzUUIBvqxJdpoe0D/NfLCOIANJvnSq5UNQwHtHGEigMLQTAf2TqKwTKDZqS0YcAAQaKSKAUEEoI0JNQmLANXqaQQYBNx6KBXyeeIRlBi06bCiQ490eDDbEcZHbkoMMFIfQYqghA0dfO+VIQhFcR5dxPtQkkpl4fPz4G2QxuQah6CHs24ganDIbGIbs5GgM5/tdHRK/7UqZQBtyMAzLhEY+/Grlno+U1gQygZfYtlqVsR75F8/g/TWWXX+hMkAGrePqBUU+2pYpnMv0MiDTNcx1aZsGjWRLu4t0rrF86tpYY02BVpXS5GE5cB322qI8wS1OeKbTOh4KqqGVrSpPYeLXdM06ojfKqIZdzzNo8Dmtf5nPhww8U2BKWin5Tcs3Qxb5UaajlTWrCpXuHE1s1tZqQsNVnJRpcaDjPMhzx7ehl8OQsHxrjU/c3s3n/O+87KP995Tu2HHs4e3852vQd12orVN/RyBBzln3Cj8vtEhD3uOGbvXIeRQf2K+wW3JbRbvZFbkHoOUhk7fXmfxhg6hsZ+T/IP67u+v4/0Kt5H+gDH6aRwYxFn/LyUUjCUkBlSYpJhvCVoKwrEWlSEsRagyiSqe2x3xZn1FKxWvU92exj07ROdyzSAZq/EsNfovxYwKR+iGDhkJtefa01keqWHELyJN2+7xPiyE/KCx/GpdDzgPIx2sdT8eZ0TkNBdQhtL7I85a4TmYWyIccW5WXWnENWYg9lZ1TYR/N2ACKxXK6wdOpSYmn7WOi8eco9FGGCF2S1Lj43boGA4sE58gN8ukk+h+esWk1TUV7os1nojq/kMr5C3LIY2ngmVXZGKQKjA/3KXnIgNlJnt7M5txHTHeDsW/H2TdOdqb0spsmQ+pfewAkHgM9h7zVqAwHFUvXjz2wOFY1g+L4Aji2Qfx6GtepE5YZ1NxHxQL6nl09Oj0M/PlrR44Lvcxgi07hmgla9CCV57WEokLtL2f7NPEfPo39/KO4flzcTOdwWQxflS3qjtLYeKL96VHDr4/XB3H27HhNEAcGBx7oNaEkF3lJ2++T458eGORkfqV+nESyeFeW1IZvnl1Obv39n58f+NaMb6HGSrZxuONXF+5SqDYSEa9h/NaDRrPpooZCwuS/fwA4Qr5O
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create task"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/schedules/{schedule}/tasks"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new task for a given schedule and store it in the database.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"schedule","in":"path","required":true,"description":"The schedule ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"action":{"type":"string","enum":["command","power","backup","delete_files"]},"payload":{"type":["string","null"]},"time_offset":{"type":"number","minimum":0,"maximum":900},"sequence_id":{"type":"number","minimum":1},"continue_on_failure":{"type":"boolean"}},"required":["action","time_offset","sequence_id","continue_on_failure"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: startup-update
+title: "Update startup variable"
+description: "Updates a single variable for a server.⚠️Cannot generate request documentation: Undefined variable $variable"
+sidebar_label: "Update startup variable"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVc2O0zAQfhVrxAEkqynLnnJb8SPtBa3YLZeqB288aQyJ7bUnhRLlGbhz4jF4Hl6AV0DjpG22XThwAU5xMvbM9803/tKB8xgUGWcvNeQQSQVq/az1WhGCBI2xCMbzBshhkT5HoUQ0dl2j2Khg1G2NonSBv2LYYJh9//L1x7fPz5W1jsQaLVdAEfCuxUhCu6Jt0FKqmouF1Vgai/qQ7NFuBRJIrSPkS7gekMFKgldBNUgYONCBVQ0y9FQbJBhG6hVVIIFrmoAacgotHtO5qXCELBaLyxcgIRYVNgryDmjrU1YKxq6h71ecLHpnI0aOn83n/LifECQUzhJa4pjyvjZFopm9i7yh+02BvpdwPn92mvSipcoF8yklEhiCC39Qx92+w4JAgg8sOZmBRoMxqjWeAjru1UuuK9wGw8bghxkw3EN3l/tEqx2T81Mmrx2J0rVW/wf4z85O8b9VtdH/gAxxykNCwhIfKnI0SEIjKVOjFpOAcKVAVVSiNFhrQZUiUQ67Nnu+M5CgtDa8VvXVPexjURWC2vL1I2zirwb8oY7vCaTW9xIapMqxG/k2dYqvcg7ZcFNj1g2LPhvNKpu4xbgn+UIbasihIvIxzzKPLI6dEUbKlDdZURsWji92xKINhrbpGB+AfLmaBq5ZxoHtEN6zS6+jb/D7LaqQXGhYvHKhUcTOwMSMLV06a6jmzVcDJpDAoAeRns7mrKl3kRqVZmj0t8F7xUhaTEjfU7k7jORfseuhLYQfKfO1MpbJJCW6UcjlXiQJ+d60R1rcil2ylYTKReITXXerIi5C3ff8+a7FwGKtJrtZOm0irzXkparjsd1PO/P4zTiIT8TpT+BBDrspt9uEsW5x8Pv3uD38fPpVL6FCpTEkQEPwoijQ0+TYiVPwrO2n/mpxA33/Ezs3rNY=
+sidebar_class_name: "put api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update startup variable"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/servers/{server}/startup/variable"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Updates a single variable for a server.⚠️Cannot generate request documentation: Undefined variable $variable
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

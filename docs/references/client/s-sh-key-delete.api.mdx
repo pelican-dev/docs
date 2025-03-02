@@ -1,0 +1,71 @@
+---
+id: s-sh-key-delete
+title: "Delete ssh keys"
+description: "Deletes an SSH key from the user's account."
+sidebar_label: "Delete ssh keys"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVLFy2zAM/RUeli6M5aaZtKVteul1aK5Ou/g0wBJsMZFEhaCcqDr9ew+k4jh20rt0qhdTBAjgvQdgANuSQ29s87WAFHhx+Y36WUEVeQINBXHuTCt2SOFzuGaFjVosLtUt9WrtbK18Sapjcu9YYZ7brvEz0OBxw5AuYRFiQqbB0V1H7D/aood0gNw2nhovR2zbyuShjuSGJdkAnJdUo5x83xKkYFc3lHvQ0Dqp2htisa5NsyHXOhNDTc7snWk2MI4xrXFUSDH7ztk4RjO3tuEY7HQ+l7/nuEG/udZdeslwNv9wHPS886V15ncIpMg56/4hzyuc1MSMGzou6FDSC8mr7Jbc1tD97Iivx0ATV2enp8dIfmFliv8ABu/j0BBq4ZeSHAihCvJoKirUnkHZtSLMS7U2VBXKl+jVOnptd3ilzbEojJyxunpW+5QUncMeNBhPNb/WIC8xvgMQqB811ORLK0PaWg5UoS8hhWQauYS5PLmlnhNHtd1KACa3JaFgOUDnKkih9L7lNElaEk2amSf2CbYmySsjeo2ZvMo7Z3wfnskDSJfZvmEh6kWQ0bwDFT51lFe+V4SOpB/i4Yt1NXoZKMEjzfDjaSNcPGDdVnQ00TumNJhmbUM248URriIK0CAwo5rvZ3NxFY5qDM3WYKglLi/FXMri4sM22FtHb91zEbunB5+0FZpG8ge6h0mjJUzuws2kEojqQadMQymKpksYhhUy/XTVOMr1XUdOZMg0bNEZXAnqZTZqKAkLckGhW+ohhU+x+JNrKUbcqy503+HwjfrxxXmeU+v/6pvtNd3V98W1CDnt7toW8sbhvQDB+7glbSAzdEa4G6DCZtOFEYYYU35/ANnqPw8=
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete ssh keys"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/account/ssh-keys/remove"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes an SSH key from the user's account.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"fingerprint":{"type":"string"}},"required":["fingerprint"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

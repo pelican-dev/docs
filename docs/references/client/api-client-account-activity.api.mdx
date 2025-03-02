@@ -1,0 +1,71 @@
+---
+id: api-client-account-activity
+title: "List activity logs"
+description: "Returns a paginated set of the user's activity logs."
+sidebar_label: "List activity logs"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVD1v2zAQ/SvELV0Iy3XbRVuGtiiQIejXEhjFWTpbTCmROZ7cpoL+e3GU7NpxsmTqJFL3+d674wAhEqO40H2qoQSMrqy8o04WWFWhz19xeycPYKGmVLGL6g0lfCbpuUsGTcSd61CoNonEhK2RhkyfiF8lcwg3PuzSAiwI7hKUt3A1G67DDtYWIjK2JMRqHKDDlqCESPwj4o7AgtOa9z2xdpKqhlqEcgB5iOqYhF23g1Gb3GLvBUpYvYNxbYEpxdAlSuq+Wi71c44ELFShE+pEbRijd1XmpLhL6jA8X28cRwtvl28uk1710gR2f3IiQ8yBX1AnbO6oErAQWZUSN8FoKSWl5aKhxyK917om7In3jn4tQNtluu8dU60qHBKtZySr1SWS7+hd/R/ASKc4LORe0lNFHglhahJ0nmpzYtAxJawas3XkayMNitlOXvsjXp1XrGunZ/Q3Z73PRZEZdSKdUJueG5CnGD8CyNSPFlqSJugS7igzhdJACcW8h8XJHibi/WFRevZQQiMSU1kUkVSLbiGUpMDoimmZ8x4kqnrWBBqmAVDerk8NX1S1CdxkPoLJ13nr9L4hZNI5mA4fAreoG5fHy3XbkGOdeHW+mXoCC9r0pMnrxVIljCFJi3lk5oW/dknO34zHeg7/hu/FT9CESui3FNGj67SXTOQw034LM+06AAfi1xaakEStw7DBRN/Yj6P+np4l5bV2CTdeld6iT2ThJz2cv2N79D1lrtZ6Yaf+WQoLDWFNnBNNcVdVRVFOoi62TbMcJ+fj+68wjn8BB4wGYw==
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List activity logs"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/account/activity"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns a paginated set of the user's activity logs.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"per_page","in":"query","schema":{"type":"string"},"default":"25"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

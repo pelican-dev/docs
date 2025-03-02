@@ -1,0 +1,71 @@
+---
+id: database-host-delete
+title: "Delete database host"
+description: "Delete a database host from the Panel."
+sidebar_label: "Delete database host"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU2P0zAQ/SvWnEAKTVn2lNtKLWIlhFawcKl6mMaTxksSe+1JoUT572ictpumuwc4wamOZzzz3ny8dmAdeWRjm1sNGWhk3GCgDzbwTFNFTJCAppB748QLMljEa4Xq6KxKG1gV3taKS1J32FA1gwQYtwGyFSxGQWGdgEOPNTF5sXbQYE2T1JCAkVQOuYQEPD22xpOGjH1LUzz3JU2g3C4ggZCXVCNkHfDeSQLTMG3JQ9+vJWRwtgkUxOFqPpef87CQQG4bpobFhs5VJo+FSh+COHSXGQJ702yh7/s+gev5u8ugNy2X1ptfMZAi763/izx280C5FMl5aR+bgUZNIeCWLgFNK7aUvMruyO8M/ZiBwH2q8eoUaH1kcn3J5JNlVdi20f8B/qurS/zfsDL6H2hDGPNIIGIJzyWZDJLSxGgq0mpkULZQhHmpCkOVVlwiq2Lw2p34ymqi1kbOWN2dYT8kRe9xL0vIVIeXBvy5ip8IxNL3CdTEpY3KchSTuNMZpMeVfSMrG9JuvP+97C/53VEiWl9BBiWzC1maOpLeNDOmwCk6k466BbLcgfLWG97Ht/IKstV6bPgirRwYD+YTw/h5EA/53hB6kuEYDu+tr5FFHYScaQob3xquxPluAAYJCPKhUW9nc+mrs4FrjHN00LuDjJ4p17TN3dNM/oHsDkyYfnLqKjSN5I8V7A7FX8F58SGBTE9EOsLJVtB1cvvVV30v148teanrOoEdeoMbIb7qQJsgZw1ZgVWYavSYx6vPh7l5rV5Q7mcJHCezkbncYdXSoNHfaT/98+jXfQIloSYfsQ0uN3lOjkePL3ZcJuQ0r4vlx+X9Evr+N3tmeeQ=
+sidebar_class_name: "delete api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete database host"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/database-hosts/{databaseHost}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a database host from the Panel.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"databaseHost","in":"path","required":true,"description":"The database host ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
