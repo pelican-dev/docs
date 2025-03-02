@@ -1,6 +1,6 @@
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
-import applicationSidebar from './docs/references/application/sidebar';
-import clientSidebar from './docs/references/client/sidebar';
+import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
+import applicationSidebar from "./docs/references/application/sidebar";
+import clientSidebar from "./docs/references/client/sidebar";
 
 /**
  * Creating a sidebar enables you to:
@@ -14,41 +14,47 @@ import clientSidebar from './docs/references/client/sidebar';
  */
 const sidebars: SidebarsConfig = {
   Sidebar: [
-    'welcome',
+    "welcome",
     {
-      type: 'category',
-      label: 'Panel',
+      type: "category",
+      label: "Panel",
       collapsed: false,
       items: [
-        'panel/getting-started',
-        'panel/webserver-config',
-        'panel/panel-setup',
-        'panel/optional-config',
-        'panel/update',
+        "panel/getting-started",
+        "panel/webserver-config",
+        "panel/panel-setup",
+        "panel/optional-config",
+        "panel/update",
         {
-          type: 'category',
-          label: 'Advanced',
+          type: "category",
+          label: "Advanced",
           items: [
-              'panel/advanced/redis',
-              'panel/advanced/mysql',
-              'panel/advanced/artisan',
-          ]
-        }
+            "panel/advanced/redis",
+            "panel/advanced/mysql",
+            "panel/advanced/artisan",
+          ],
+        },
       ],
     },
     {
-      type: 'category',
-      label: 'Wings',
-      items: ['wings/install','wings/optional-config', 'wings/update'],
+      type: "category",
+      label: "Wings",
+      items: ["wings/install", "wings/optional-config", "wings/update"],
     },
     {
-      type: 'category',
-      label: 'Guides',
-      items: ['guides/mounts', 'guides/ssl', 'guides/php-upgrade', 'guides/database-hosts', 'guides/uninstalling'],
+      type: "category",
+      label: "Guides",
+      items: [
+        "guides/mounts",
+        "guides/ssl",
+        "guides/php-upgrade",
+        "guides/database-hosts",
+        "guides/uninstalling",
+      ],
     },
-    'troubleshooting',
-    'comparison',
-    'glossary',
+    "troubleshooting",
+    "comparison",
+    "glossary",
   ],
 
   API: [
@@ -59,7 +65,7 @@ const sidebars: SidebarsConfig = {
         type: "generated-index",
         title: "Client API",
         description:
-          "This is a sample server Petstore server. You can find out more about Swagger at http://swagger.io or on irc.freenode.net, #swagger. For this sample, you can use the api key special-key to test the authorization filters.",
+          "This is the Client API reference for Pelican. You can use this API to integrate Pelican into your applications, automate server management, and extend functionality with custom plugins. For more details, visit our documentation or join our discord. Authentication is required for most endpoints, and you can use your API key to test authorization features.",
         slug: "references/client-api",
       },
       items: clientSidebar,
@@ -71,7 +77,7 @@ const sidebars: SidebarsConfig = {
         type: "generated-index",
         title: "Application API",
         description:
-          "This is a sample server Petstore server. You can find out more about Swagger at http://swagger.io or on irc.freenode.net, #swagger. For this sample, you can use the api key special-key to test the authorization filters.",
+          "This is the Application API reference for Pelican. You can use this API to integrate Pelican into your applications, automate server management, and extend functionality with custom plugins. For more details, visit our documentation or join our discord. Authentication is required for most endpoints, and you can use your API key to test authorization features.",
         slug: "references/application-api",
       },
       items: applicationSidebar,
