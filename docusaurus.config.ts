@@ -49,7 +49,7 @@ const config: Config = {
       },
       items: [
         { to: "/docs", label: "Docs", position: "left" },
-        { to: "/docs/references/client-api", label: "API References", position: "left" },
+        { to: "/docs/references/client-api", label: "API", position: "left" },
         { to: "/blog", label: "Blog", position: "left" },
         { to: "/donate", label: "Donate", position: "left" },
         { to: "/faq", label: "FAQ", position: "left" },
