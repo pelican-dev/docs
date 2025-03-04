@@ -1,0 +1,71 @@
+---
+id: application-servers-transfer-cancel
+title: "Cancel transfer"
+description: "Cancels a transfer of a server to a new node."
+sidebar_label: "Cancel transfer"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1z0zAQ/SuaPcGMiUvpybdSykwPQKctXDI+bKxNrGJLqiQnDR7/d2YlJ3WTwgycIJfI0n68t7t66sFYchiU0VcSCkBrG1XF75kntybnZ8Gh9ktyswp1RQ1kIMlXTlm2ggIu4rYXKHaWwiwFiuQvghEoNG2ENpJmkEHAlYdiDrfx/BNqXFFLOkCZgUWHLQVybNGDxpaggBQJMlCcz2KoIQNHD51yJKEIrqNDUHc17QBcfYAMfFVTi1D0ELaWYyodaEUOhqFMsciH90Zu2aQyOjCgop8WJL/3HLo/jmUW91QFGIZh4FjeGu3Js8HpyQn/PccG2R9n8MEpvRoznJ28Ow563oXaOPUjBhLknHF/kWdkkoF1PBhBJRoteY8rOgZ0WPZLzivMmtxa0WYGqSC7Rs33gcodk7NjJp9NEEvTafkf4D89Pcb/DRsl/4E2+CmPDCIW/1KSg0ESkgKqhqSYHPCVJqxqsVTUSBFqDGKZrNZ7vny7UUrFa2yun2Efk6JzuOWbHKj1vxrwlyq+JxBLP2TQUqgNa5Y1PpaKZaGAfJStvE+LId+pUr7Xr9EkSkznGiigDsH6Is8tcXP0LJAPOVqVT9oFrBSeqs6psI2+7AXFvJwe3HIvE+V0vKcYP0cl4u8FoYuqlhYfjWsxsDwwOx6NmydVunzE1jbc+YFVcGliXBV4C64TaMiAWaUuvp2dcNO5Ni3GIRu1NKn1XqoP2z8Rvz8X9sQz0GPIbYNKM4JY337sznxf+gyKvapPsIwtKjOouavFHPp+gZ6+umYYePuhI8fFLzNYo1O44ArMe5DK81pCscTGHz4HU1avbsbpei0OH4kXCewGV/PYrrHpKEn4d9o+PU1DOWRQE0pyEU46vEhJ39xxiCfnIwkYsp3HeVWRDb+1LSejf/3l9o4HaHy3WiPZx+GG30fcJKAmFiFOZNzroUG96qKQQIrJv5/Ywsu3
+sidebar_class_name: "post api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Cancel transfer"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/transfer/cancel"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Cancels a transfer of a server to a new node.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

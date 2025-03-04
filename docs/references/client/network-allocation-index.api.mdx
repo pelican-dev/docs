@@ -1,0 +1,72 @@
+---
+id: network-allocation-index
+title: "List allocations"
+description: "Lists all the allocations available to a server and whether"
+sidebar_label: "List allocations"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1P3DAQ/SvWnFop2lDKKTek0gqpQqiFXugehmR2Y3BsM54sbKP892qSsOwH7aGXtqc4sWf83ryZlw5CJEaxwZ9XUIAneQx8f+pcKIevM+sreoIMKkol26jfoIDPNkky6JyRmvQ5HU8GV2gd3joyEgyaRLwiNugr81iT1MTfvdS0NshkypaZvLi1wZTs0lNlMA0ZI9sGeW0WgY3UNk15ZpCB4DJBcQMX+1BhnkFExoaEWI904LEhKGAMhgysYo8oNWTA9NBapgoK4Zb2CV7V9Iz9+vr8A2SQypoahKIDWcchq7D1S+j7uSZLMfhESfePj470sZsQMiiDF/KiexijsyPs/C7pge43F/R9BidH7w+TnrZSB7Y/hkSGmAP/wT3h9o5KgQwiazeIHWk0lBIu6RDQfq3O9F4TVsQrS48zULgv1b3ZJJo/Mzk5ZHIRxCxC66v/AP/x8SH+b+hs9Q/IkLZ5ZDBgSa9dstdIpiJB66gyWxsmLAxhWZuFJVcZqVHMYjy12vDVmcSqsrpGd7mDfboUmXGt4yfUpF81+GsV3xAYSt9n0JDUQY1qSUOldJQLyMdJTXk3Lvp88rF8y5l0hMdjgzW07KCAWiSmIs8jqT5+JpQkx2jz0lnVTmc7UdmylfUQpgFQ3My3N76qkiPhcXtDcHidrEPfbwl5MKJx8TFwg6LmoNysX4Qh1orTw5cjJshAQY86vZsdqawxJGlwaKPJ4tSQzS7bHYW7l3b8q+Y91kXoSfLo0HplM0jRTWLebFTKoNgY96SnttoWx3kGdUiiQV13i4mu2fW9fn5oiVWweQYrZKuUBvkqm3RdQbFAl/Zdf7tIb75M/fjWHP4LXqXx3OxeW32FrqXR9u9p/fIP6ud9BjVhRTwAGjdPy5KibIUdGIb226b5P51dQd//BCZ9tfg=
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List allocations"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}/network/allocations"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Lists all the allocations available to a server and whether
+they are currently assigned as the primary for this server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

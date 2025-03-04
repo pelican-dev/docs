@@ -1,0 +1,71 @@
+---
+id: settings-rename
+title: "Rename"
+description: "Renames a server."
+sidebar_label: "Rename"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVcFu2zAM/RWDpw3Q4q7rybdu64BetiJtdwl8YCwmVmdbqiSnzQz/+0DJTtwkHbCdtlyiSOQjH8k8dqANWfRKN9cSMnDkvWrWbmapwZpAgCRXWGXYAjKYh2uXYOLIbsjOQIDHtYNsAbeDL+QCDFqsyZPllw4CFqOzDwhQjGXQlyDA0mOrLEnIvG3pMOBdSUOo5P7++jMIcEVJNULWgd+agOqtatbQ93kEI+c/arlli0I3nhrPRzSmUkVgmj44xu6OofTygQoPAozlunhFjl9j+kcBD3Id3xejgYCmrSrI+37KchHh8r6P987oxsU452dn/PWyAiD+mMauIhzh4uzDMehl60tt1c8AlJC12v5FnFfKVZNzuD5RscPmXnHcRG/IbhQ9zeCwUCNQPjK5OGbyVftkpdtG/gf5n58f5/8dKyX/gTa4KQ8BIRd3KsjBICWSPKqKZDJ5SPQqISzKZKWokokv0SeraLXZ8WXtQCkVn7G6eZH7EBStxS3rhafavTbgpyq+IxBK3wuoyZeaFc5oF0rF4pNBGrXFpV089OmogOlOAQeTIGStrSCD0nvjsjQ1xM1pZp6cT9GotKgUN46VyFHRWuW3wY0dIFvk04dbbmNkG5937MLPQej495LQBtmMhy/a1uhZGZgYT8V8r3pXz1ibivaqNVEr1ax0CKM8W8BNTB8EML/Yz/ezMzblKtXYTGDmJxfCRGJP74bIyNOzT02FqmHwUMRuaMFiV18B2W5BjF0I+yHqpYCSW5ctoOuW6OjeVn3P148tWS5zLmCDVuGSyS06kMrxWUK2wsodbpZp5m/mwwi9TY73zUkK43w2PJ0brFqKSv2Dtvs91+e9gJJQkg0JxcdPMey7O4bYOx/903sxelwWBRn/W9t8MuE3327veFiGHVhryT4Wn7iY+BQT1aEMYfrCXQcVNus26AVETP78AnB40TY=
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Rename"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/settings/rename"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Renames a server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"},"description":{"type":["string","null"]}},"required":["name"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

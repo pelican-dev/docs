@@ -1,0 +1,71 @@
+---
+id: subuser-delete
+title: "Delete subuser"
+description: "Removes a subusers from a server's assignment."
+sidebar_label: "Delete subuser"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zAM/SsCL9sAIc66nnwrkAwoMAxFP3YJcmBsOlZnW6pEZ8sM//eBcuKmSbdhOW0nSyZFPj5STx1YRx7Z2OY6hxRCu2oD+UlOFTGBhpxC5o0TB0jhlmq7oaBQ7RyDKrytZU9+Q/5NUBiCWTc1NTwBDYzrAOkC7gZ3WGpw6LEmJi+GDhqsSRLH86DBSB6HXIIGT0+t8ZRDyr6lYzD3Je3SqoeH6xloCFlJNULaAW9djMreNGvoez0mijD+No0c+nOSpYQKzjaBgtgvplP5vAwHGjLbMDUsNnSuMlnkP3kM4tD9JkHfa7icfjgNetVyab35EQMp8t76M/LY1SNlDBqcl6lgM5RRUwi4plNAx0zNJa+yG/IbQ98mQvsBt4sx0HJfyeVpJZ8tq8K2Tf4f4L+4OMX/BSuT/wNtCId1aIhYwmtJjgZJ5cRoKsrVgUHZQhFmpSoMVbniElkVg9dmrFeuO+a5kTVWNy+w75Ki97iVy8dUh18N+GuMjwVE6nsNNXFpRbBGoYp3OYVkUISQdMOiT6JMJZ18erm+gz1qT+srSKFkdiFNEkfSm2bCFDhBZ5KsMtI3udeBstYb3sZjcgDSxfLQcCddHIodzGNxcbuTDdmvCH2UoGHx0foaWYRB6jJNYeNZw5U43wyYQIOAHnr0fjKVljobuMY4Qjtpm0Uu9tJ83NvueRDP0PGhFqbvnLgKTSMIIn3djvnFyKyGdFTzGFv+7NW/tIHFuetWGOjBV30vv59a8kLuUsMGvcGVVL/oIDdB1jmkBVbhWJsPS3p7u5ubd+r0YXgV/n4oGxnJDVYtDfL8lbbPD5K8HGeDOHw2zoAQOeuXvYaSMCcfGRlMV1lGjg8OnSiLDOd4S2bzT/P7OfT9T70vviQ=
+sidebar_class_name: "delete api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete subuser"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/servers/{server}/users/{user}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Removes a subusers from a server's assignment.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"user","in":"path","required":true,"description":"The user UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

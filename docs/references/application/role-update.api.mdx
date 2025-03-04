@@ -1,0 +1,71 @@
+---
+id: role-update
+title: "Update role"
+description: "Update a role on the Panel and return the updated record to the user."
+sidebar_label: "Update role"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zAM/SsCTxvgJV3Xk29d12G9DEHX7RLkwFhMrM62VIlOmxn+7wMlJ3WbdMCGHTZfLJMU+fjhxw6sI49sbHOlIQdvK5q0TiMTZKApFN440UIOX6NYoRIjZRvFJakZNlQpbLTyxK1PwuRARIX1WrFN0kB+AhkwrgPkc7i2FcEiA4cea2LyIu2gwZoGJJCBkcgOuYQMPN21xpOGnH1Lz+HdlJSQXX2ADEJRUo2Qd8BbJ/5Mw7QmD32/SJ4o8Hurt2JS2IapYTmic5UpYkGmt0Ecd4e+7PKWCoYMnJfysaEg2oR8bxXYm2YNfT9GPk9Wi75P8uBsE9L105MTeT3NCrLfRrePKxHOTt4dOj1vubTe/IiOFHlv/R/EeaEKNYWA6yOFeN6wS4mr7Ib8xtD95KBQO0eLXSZnh5l8tqxWtm30f4D/9PQQ/zesjP4H2hDGeWQQsYRjQZ4NktLEaCrSaqRQdqUIi1KtDFVacYmsVslqs89XmAC1NnLGavYE+xAUvcetcABTHV4a8GMV3ycQS99nUBOXVicmKYRKIqPkMBXCCNNOXr2wBvnNjodaX0EOJbML+XTqSDrRTJgCT9GZ6ag3IJQSqGi94W28K7cgny/Gii/SuJRfUu/ziZ8DZcn3ktCTjEI6fLS+RhYukFRkDq4f6evyAWtX0SP97Ksj3LmyMYxhsYBZygEykCRTB99OTsTU2cA1NiM3A9sPNPyk7SPC/HtLIZWC6YGnrkLTCKrYgm5o1jyuhAAZ5H7YHKUNLIquW2Kgr77qexHfteSlD4sMNugNLiX7eQfaBDlryFdYhecLZJzVq+thql6rp2vlKMzduDYyrBusWkrE/Z22u0XWL/oMSkJNPkJJqosU8M2NOHi8evDb99nuxnlRkONf2i5G4z47v7n4JIM0LLra6rhb8V7WKd4nnDZWIE5mlHVQYbNuI3tAcirPT4JF06w=
+sidebar_class_name: "patch api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update role"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/roles/{role}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update a role on the Panel and return the updated record to the user.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role","in":"path","required":true,"description":"The role ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
