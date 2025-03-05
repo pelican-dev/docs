@@ -8,8 +8,6 @@ import TabItem from '@theme/TabItem';
 
 # Comparison
 
-## Pterodactyl
-
 Pelican is a fork of [Pterodactyl](https://pterodactyl.io). But over time Pelican made many Changes & Additions - and we plan to do even more.
 
 <Admonition type="info">
@@ -29,9 +27,9 @@ Pelican is a fork of [Pterodactyl](https://pterodactyl.io). But over time Pelica
         * ![Done](https://img.shields.io/badge/Done-green) Improved Settings page
     </TabItem>
     <TabItem value="2" label="Frontend">
-        * ![Planned](https://img.shields.io/badge/Planned-blue) Localized Frontend
-        * ![In Progress](https://img.shields.io/badge/In_Progress-orange) Rewrite of Client Area in Filament
-        * ![In Progress](https://img.shields.io/badge/In_Progress-orange) Switch from Webpack to Vite
+        * ![In Progress](https://img.shields.io/badge/In_Progress-orange) Localized Frontend
+        * ![Done](https://img.shields.io/badge/Done-green) Rewrite of Client Area in Filament
+        * ![Done](https://img.shields.io/badge/Done-green) Switch from Webpack to Vite
         * ![Done](https://img.shields.io/badge/Done-green) Rewrite of Admin Area in Filament
         * ![Done](https://img.shields.io/badge/Done-green) Timezone configurable per User
     </TabItem>
@@ -83,3 +81,28 @@ Pelican is a fork of [Pterodactyl](https://pterodactyl.io). But over time Pelica
         * ![Done](https://img.shields.io/badge/Done-green) Support Tickets
     </TabItem>
 </Tabs>
+
+## Comparison with our competitors.
+|                          | Pelican   | Pterodactyl | PufferPanel | Crafty Controller     | Multicraft     | TCAdmin | AMP            |
+|--------------------------|-----------|-------------|-------------|-----------------------|----------------|---------|----------------|
+| File manager             | ✅         | ✅           | ✅           | ✅                     | ✅              | ✅       | ✅              |
+| Scheduled Tasks          | ✅         | ✅           | ❌           | ✅                     | ✅              | ✅       | ✅              |
+| Free and Open Source     | ✅         | ✅           | ✅           | ✅                     | ❌              | ❌       | ❌              |
+| Multi-language           | ✅         | ✅           | ✅           | ✅                     | ✅              | ✅       | ✅              |
+| Database Management      | ✅         | ✅           | ❌           | ❌                     | ✅              | ✅       | ✅              |
+| OAuth                    | ✅         | ❌           | ✅           | ✅                     | ❌              | ❌       | ❌              |
+| Webhooks                 | ✅         | ❌           | ❌           | ✅                     | ❌              | ❌       | ❌              |
+| User roles & permissions | ✅         | ❌           | ❌           | ❌                     | ✅              | ✅       | ✅              |
+| Ticket System            | ❌         | ❌           | ❌           | ❌                     | ❌              | ✅       | ❌              |
+| Announcements            | ❌         | ❌           | ❌           | ❌                     | ❌              | ✅       | ❌              |
+| Plugins and Themes       | 📅        | ❌           | Themes      | ❌                     | Themes         | ✅       | ❌              |
+| Self update              | Backend   | ❌           | ❌           | ❌                     | ❌              | ✅       | ❌              |
+| Captcha                  | Turnstile | reCAPTCHA   | ❌           | ❌                     | ❌              | ❌       | ❌              |
+| Backups system           | Local, S3 | Local       | Local       | Local                 | Local          | ❌       | Local          |
+| FTP file access          | SFTP      | SFTP        | SFTP        | SFTP                  | FTP            | FTP     | SFTP           |
+| Operating System         | Linux     | Linux       | Linux       | Windows, Linux, MacOS | Linux, Windows | Windows | Linux, Windows |
+
+### Features information.
+- All features with 📅 are planned.
+- Plugins can add any features that Pelican doesn't have by default.
+- These values are not constantly updated, and competitors may have implemented some of the features marked with a cross in their latest version.
