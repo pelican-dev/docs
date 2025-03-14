@@ -67,7 +67,7 @@ sudo chmod -R 755 storage/* bootstrap/cache
 ### Update Dependencies
 
 ```sh
-composer install --no-dev --optimize-autoloader
+sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 ```
 
 <Admonition type="info">
