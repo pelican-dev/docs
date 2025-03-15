@@ -55,7 +55,7 @@ Next, remove the Pelican webserver config.
 Finally, remove the queue worker service.
 
 ```sh
-systemctl stop pelican-queue
+systemctl disable --now pelican-queue
 sudo rm /etc/systemd/system/pelican-queue.service
 ```
 
@@ -77,7 +77,7 @@ DROP USER 'pelican'@'127.0.0.1';
 To uninstall Wings you just have to remove the wings service, delete the wings binary and delete the wings config file.
 
 ```sh
-systemctl stop wings
+systemctl disable --now wings
 sudo rm /etc/systemd/system/wings.service
 
 sudo rm /usr/local/bin/wings
