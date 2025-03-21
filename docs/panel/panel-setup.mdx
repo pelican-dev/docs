@@ -4,20 +4,6 @@ import TabItem from '@theme/TabItem';
 
 # Panel Setup
 
-The core environment is easily configured using a single CLI command & the web installer built into the app.
-These steps will cover setting up things such as sessions, caching, database credentials, and email sending.
-
-Running `php artisan p:environment:setup` will, if it does not exist, auto create the required `.env` file and generate a `APP_KEY`.
-
-```sh
-php artisan p:environment:setup
-```
-
-<Admonition type="warning" title="BACK UP APP_KEY!">
-    **Back up** your encryption key (APP_KEY in the `.env` file). This is used as an encryption key for all data that needs to be stored securely (e.g. api keys).
-    Store it somewhere safe - not just on your server. If you lose it all encrypted data is irrecoverable -- **even if you have database backups.**
-</Admonition>
-
 ### Setting Permissions
 
 The next step in the installation process is to set the correct permissions on the Panel files so that the webserver can
