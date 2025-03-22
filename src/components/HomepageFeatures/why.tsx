@@ -42,7 +42,7 @@ const FeatureList: FeatureItem[] = [
           <Link to={'https://www.valheimgame.com'}>Valheim</Link><>, </>
           <Link to={'https://enshrouded.com'}>Enshrouded</Link><>, </>
           <Link to={'https://factorio.com'}>Factorio</Link><>, </>
-          <Link to={'/eggs-nest'} target={'_blank'}>and so much more</Link>.
+          <Link to={'/eggs'} target={'_blank'}>and so much more</Link>.
         Check our eggs out, we like them scrambled!
       </>
     ),
