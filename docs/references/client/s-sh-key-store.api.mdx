@@ -1,0 +1,71 @@
+---
+id: s-sh-key-store
+title: "Create ssh keys"
+description: "Stores a new SSH key for the authenticated user's account."
+sidebar_label: "Create ssh keys"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVE1v00AQ/SuruXDZxqH05BtURUUcqEjhElloYk/ibW3vdnec1lj+72jWaeq0KRJwIQdn7Z2v997M9GAdeWRjm08FpBAWl5+pmwW2nkBDQSH3xsk1pLCQr0GhauheLRaX6pY6tbZecUkKWy6pYZMjU6HaQP5NUJjntm14BhoYNwHSJSxiBsg0eLprKfAHW3SQ9pDbhqlhOaJzlQQytkluguTuIeQl1Sgn7hxBCnZ1QzmDBucFAxsKcttgTROrwN40Gxg0uHZVmfzHLXVHroexHOOpkCJjkAOXbBhGo+BsE8ZUp/O5/B2SBPqPkeyLkAxn83cvg75vubTe/IyBFHlv/V/keYWxmkLAzRHSnut/IXmV3ZLfGrqfvWDtMdCOq7PT05dIvmNliv8ARpji0BBrCceSPBNCFcRoKirU5ELZtSLMS7U2VBWKS2S1Hq22e7wyBFgURs5YXR3UvkuK3mMHGgxTHV5rkGOM7wFE6gcNNXFpZaCdDZEq5BJSSHYDmYRQntxSF0BDIL8lwb7sofUVpFAyu5AmiSMRo5kxBU7QmSSvjAg1ZOKVt95wF93EAdJlNr1YiGwjuvF6jya+6lFXeV8RepJGGA8fra+RZZIEiHTB16dFcfGAtavoadCfRJ7O92TsTbO2Mblh8YOrERRoENSjqm9n87ghbOAam0nwc0/IpEIo1Y6tg3aYLK1/XI4jM0wPnLgKTSPlRDH6nXRL2JkLc4/iZRpK0TddQt+vMNA3Xw2DfL5ryYs2mYYteoMrwb7MBg0lYUE+yjZSdT5COLmWGsS8amMvPh/FQT96vM9zcvxb22zSgldfFtei7m7P17YQH4/3oOMz7kwbKY3tEr/1UGGzaeNAwxhTfr8AOKJSuQ==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create ssh keys"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/account/ssh-keys"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Stores a new SSH key for the authenticated user's account.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"},"public_key":{"type":"string"}},"required":["name","public_key"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

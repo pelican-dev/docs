@@ -1,0 +1,3315 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Pelican",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://pelican.test/api/application"
+    }
+  ],
+  "security": [
+    {
+      "http": []
+    }
+  ],
+  "paths": {
+    "/nodes/{node}/allocations": {
+      "get": {
+        "operationId": "application.allocations",
+        "description": "Return all the allocations that exist for a given node.",
+        "summary": "List allocations",
+        "tags": ["Allocation"],
+        "parameters": [
+          {
+            "name": "node",
+            "in": "path",
+            "required": true,
+            "description": "The node ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "post": {
+        "operationId": "allocation.store",
+        "description": "Store new allocations for a given node.",
+        "summary": "Create allocation",
+        "tags": ["Allocation"],
+        "parameters": [
+          {
+            "name": "node",
+            "in": "path",
+            "required": true,
+            "description": "The node ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ip": {
+                    "type": "string"
+                  },
+                  "alias": {
+                    "type": ["string", "null"]
+                  },
+                  "ports": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": ["ip", "ports"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/nodes/{node}/allocations/{allocation}": {
+      "delete": {
+        "operationId": "application.allocations.view",
+        "description": "Delete a specific allocation from the Panel.",
+        "summary": "Delete allocation",
+        "tags": ["Allocation"],
+        "parameters": [
+          {
+            "name": "node",
+            "in": "path",
+            "required": true,
+            "description": "The node ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "allocation",
+            "in": "path",
+            "required": true,
+            "description": "The allocation ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/databases": {
+      "get": {
+        "operationId": "application.servers.databases",
+        "description": "Return a listing of all databases currently available to a single\nserver.",
+        "summary": "List databases",
+        "tags": ["Database"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "post": {
+        "operationId": "database.store",
+        "description": "Create a new database on the Panel for a given server.\u26a0\ufe0fCannot generate request documentation: Call to a member function parameter() on null",
+        "summary": "Create database",
+        "tags": ["Database"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/databases/{database}": {
+      "get": {
+        "operationId": "application.servers.databases.view",
+        "description": "Return a single server database.",
+        "summary": "View database",
+        "tags": ["Database"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "database",
+            "in": "path",
+            "required": true,
+            "description": "The database ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "database.delete",
+        "description": "Handle a request to delete a specific server database from the Panel.",
+        "summary": "Delete database",
+        "tags": ["Database"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "database",
+            "in": "path",
+            "required": true,
+            "description": "The database ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/databases/{database}/reset-password": {
+      "post": {
+        "operationId": "database.resetPassword",
+        "description": "Reset the password for a specific server database.",
+        "summary": "Reset password",
+        "tags": ["Database"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "database",
+            "in": "path",
+            "required": true,
+            "description": "The database ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/database-hosts": {
+      "get": {
+        "operationId": "application.databasehosts",
+        "description": "Return all the database hosts currently registered on the Panel.",
+        "summary": "List database hosts",
+        "tags": ["DatabaseHost"],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "post": {
+        "operationId": "databaseHost.store",
+        "description": "Store a new database host on the Panel and return an HTTP/201 response code with the\nnew database host attached.",
+        "summary": "Create database host",
+        "tags": ["DatabaseHost"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "host": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "number"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": ["string", "null"]
+                  },
+                  "node_ids": {
+                    "type": ["array", "null"],
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "required": ["name", "host", "port", "username"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/database-hosts/{databaseHost}": {
+      "get": {
+        "operationId": "application.databasehosts.view",
+        "description": "Return a single database host.",
+        "summary": "View database host",
+        "tags": ["DatabaseHost"],
+        "parameters": [
+          {
+            "name": "databaseHost",
+            "in": "path",
+            "required": true,
+            "description": "The database host ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "databaseHost.update",
+        "description": "Update a database host on the Panel and return the updated record to the user.\u26a0\ufe0fCannot generate request documentation: Call to a member function parameter() on null",
+        "summary": "Update database host",
+        "tags": ["DatabaseHost"],
+        "parameters": [
+          {
+            "name": "databaseHost",
+            "in": "path",
+            "required": true,
+            "description": "The database host ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "databaseHost.delete",
+        "description": "Delete a database host from the Panel.",
+        "summary": "Delete database host",
+        "tags": ["DatabaseHost"],
+        "parameters": [
+          {
+            "name": "databaseHost",
+            "in": "path",
+            "required": true,
+            "description": "The database host ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/eggs": {
+      "get": {
+        "operationId": "application.eggs.eggs",
+        "description": "Return all eggs",
+        "summary": "List eggs",
+        "tags": ["Egg"],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/eggs/{egg}": {
+      "get": {
+        "operationId": "application.eggs.eggs.view",
+        "description": "Return a single egg that exists",
+        "summary": "View egg",
+        "tags": ["Egg"],
+        "parameters": [
+          {
+            "name": "egg",
+            "in": "path",
+            "required": true,
+            "description": "The egg ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/external/{external_id}": {
+      "get": {
+        "operationId": "application.servers.external",
+        "description": "Retrieve a specific server from the database using its external ID.",
+        "summary": "View server (external id)",
+        "tags": ["ExternalServer"],
+        "parameters": [
+          {
+            "name": "external_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/users/external/{external_id}": {
+      "get": {
+        "operationId": "application.users.external",
+        "description": "Retrieve a specific user from the database using their external ID.",
+        "summary": "View user (external id)",
+        "tags": ["ExternalUser"],
+        "parameters": [
+          {
+            "name": "external_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/mounts": {
+      "get": {
+        "operationId": "application.mounts",
+        "description": "Return all the mounts currently available on the Panel.",
+        "summary": "List mounts",
+        "tags": ["Mount"],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "post": {
+        "operationId": "mount.store",
+        "description": "Create a new mount on the Panel. Returns the created mount and an HTTP/201\nstatus response on success.",
+        "summary": "Create mount",
+        "tags": ["Mount"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/mounts/{mount}": {
+      "get": {
+        "operationId": "application.mounts.view",
+        "description": "Return data for a single instance of a mount.",
+        "summary": "View mount",
+        "tags": ["Mount"],
+        "parameters": [
+          {
+            "name": "mount",
+            "in": "path",
+            "required": true,
+            "description": "The mount ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "mount.update",
+        "description": "Update an existing mount on the Panel.\u26a0\ufe0fCannot generate request documentation: Call to a member function parameter() on null",
+        "summary": "Update mount",
+        "tags": ["Mount"],
+        "parameters": [
+          {
+            "name": "mount",
+            "in": "path",
+            "required": true,
+            "description": "The mount ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "mount.delete",
+        "description": "Deletes a given mount from the Panel as long as there are no servers\ncurrently attached to it.",
+        "summary": "Delete mount",
+        "tags": ["Mount"],
+        "parameters": [
+          {
+            "name": "mount",
+            "in": "path",
+            "required": true,
+            "description": "The mount ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/mounts/{mount}/eggs": {
+      "post": {
+        "operationId": "application.mounts.eggs",
+        "description": "Adds eggs to the mount's many-to-many relation.",
+        "summary": "Assign eggs to mount",
+        "tags": ["Mount"],
+        "parameters": [
+          {
+            "name": "mount",
+            "in": "path",
+            "required": true,
+            "description": "The mount ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "eggs": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["eggs"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          }
+        }
+      }
+    },
+    "/mounts/{mount}/nodes": {
+      "post": {
+        "operationId": "application.mounts.nodes",
+        "description": "Adds nodes to the mount's many-to-many relation.",
+        "summary": "Assign mounts to mount",
+        "tags": ["Mount"],
+        "parameters": [
+          {
+            "name": "mount",
+            "in": "path",
+            "required": true,
+            "description": "The mount ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nodes": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["nodes"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          }
+        }
+      }
+    },
+    "/mounts/{mount}/eggs/{egg_id}": {
+      "delete": {
+        "operationId": "mount.deleteEgg",
+        "description": "Deletes an egg from the mount's many-to-many relation.",
+        "summary": "Unassign egg from mount",
+        "tags": ["Mount"],
+        "parameters": [
+          {
+            "name": "mount",
+            "in": "path",
+            "required": true,
+            "description": "The mount ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "egg_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          }
+        }
+      }
+    },
+    "/mounts/{mount}/nodes/{node_id}": {
+      "delete": {
+        "operationId": "mount.deleteNode",
+        "description": "Deletes a node from the mount's many-to-many relation.",
+        "summary": "Unassign node from mount",
+        "tags": ["Mount"],
+        "parameters": [
+          {
+            "name": "mount",
+            "in": "path",
+            "required": true,
+            "description": "The mount ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "node_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          }
+        }
+      }
+    },
+    "/nodes": {
+      "get": {
+        "operationId": "application.nodes",
+        "description": "Return all the nodes currently available on the Panel.",
+        "summary": "List nodes",
+        "tags": ["Node"],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "post": {
+        "operationId": "node.store",
+        "description": "Create a new node on the Panel. Returns the created node and an HTTP/201\nstatus response on success.",
+        "summary": "Create node",
+        "tags": ["Node"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": ["string", "null"]
+                  },
+                  "public": {
+                    "type": "boolean"
+                  },
+                  "fqdn": {
+                    "type": "string"
+                  },
+                  "scheme": {
+                    "type": "string",
+                    "enum": ["http", "https"]
+                  },
+                  "behind_proxy": {
+                    "type": "boolean"
+                  },
+                  "memory": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "memory_overallocate": {
+                    "type": "number",
+                    "minimum": -1
+                  },
+                  "disk": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "disk_overallocate": {
+                    "type": "number",
+                    "minimum": -1
+                  },
+                  "cpu": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "cpu_overallocate": {
+                    "type": "number",
+                    "minimum": -1
+                  },
+                  "daemon_base": {
+                    "type": "string"
+                  },
+                  "daemon_sftp": {
+                    "type": "number"
+                  },
+                  "daemon_sftp_alias": {
+                    "type": ["string", "null"]
+                  },
+                  "daemon_listen": {
+                    "type": "number"
+                  },
+                  "maintenance_mode": {
+                    "type": "boolean"
+                  },
+                  "upload_size": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "fqdn",
+                  "scheme",
+                  "memory",
+                  "memory_overallocate",
+                  "disk",
+                  "disk_overallocate",
+                  "cpu",
+                  "cpu_overallocate",
+                  "daemon_base",
+                  "daemon_sftp",
+                  "daemon_listen"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/nodes/{node}": {
+      "get": {
+        "operationId": "application.nodes.view",
+        "description": "Return data for a single instance of a node.",
+        "summary": "View node",
+        "tags": ["Node"],
+        "parameters": [
+          {
+            "name": "node",
+            "in": "path",
+            "required": true,
+            "description": "The node ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "node.update",
+        "description": "Update an existing node on the Panel.\u26a0\ufe0fCannot generate request documentation: Call to a member function parameter() on null",
+        "summary": "Update node",
+        "tags": ["Node"],
+        "parameters": [
+          {
+            "name": "node",
+            "in": "path",
+            "required": true,
+            "description": "The node ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "node.delete",
+        "description": "Deletes a given node from the Panel as long as there are no servers\ncurrently attached to it.",
+        "summary": "Delete node",
+        "tags": ["Node"],
+        "parameters": [
+          {
+            "name": "node",
+            "in": "path",
+            "required": true,
+            "description": "The node ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/nodes/{node}/configuration": {
+      "get": {
+        "operationId": "nodes.nodeConfiguration",
+        "description": "Returns the configuration information for a node. This allows for automated deployments\nto remote machines so long as an API key is provided to the machine to make the request\nwith, and the node is known.",
+        "summary": "Get node configuration",
+        "tags": ["NodeConfiguration"],
+        "parameters": [
+          {
+            "name": "node",
+            "in": "path",
+            "required": true,
+            "description": "The node ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/nodes/deployable": {
+      "get": {
+        "operationId": "nodes.nodeDeployment",
+        "description": "Finds any nodes that are available using the given deployment criteria. This works\nsimilarly to the server creation process, but allows you to pass the deployment object\nto this endpoint and get back a list of all Nodes satisfying the requirements.",
+        "summary": "Get deployable nodes",
+        "tags": ["NodeDeployment"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "memory",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "disk",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "cpu",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "location_ids",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/roles": {
+      "get": {
+        "operationId": "application.roles",
+        "description": "Return all the roles currently registered on the Panel.",
+        "summary": "List roles",
+        "tags": ["Role"],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "post": {
+        "operationId": "role.store",
+        "description": "Store a new role on the Panel and return an HTTP/201 response code with the\nnew role attached.",
+        "summary": "Create role",
+        "tags": ["Role"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/roles/{role}": {
+      "get": {
+        "operationId": "application.roles.view",
+        "description": "Return a single role.",
+        "summary": "View role",
+        "tags": ["Role"],
+        "parameters": [
+          {
+            "name": "role",
+            "in": "path",
+            "required": true,
+            "description": "The role ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "role.update",
+        "description": "Update a role on the Panel and return the updated record to the user.",
+        "summary": "Update role",
+        "tags": ["Role"],
+        "parameters": [
+          {
+            "name": "role",
+            "in": "path",
+            "required": true,
+            "description": "The role ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "role.delete",
+        "description": "Delete a role from the Panel.",
+        "summary": "Delete role",
+        "tags": ["Role"],
+        "parameters": [
+          {
+            "name": "role",
+            "in": "path",
+            "required": true,
+            "description": "The role ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers": {
+      "get": {
+        "operationId": "application.servers",
+        "description": "Return all the servers that currently exist on the Panel.",
+        "summary": "List servers",
+        "tags": ["Server"],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "post": {
+        "operationId": "server.store",
+        "description": "Create a new server on the system.",
+        "summary": "Create server",
+        "tags": ["Server"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "external_id": {
+                    "type": ["string", "null"]
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": ["string", "null"]
+                  },
+                  "user": {
+                    "type": "integer"
+                  },
+                  "egg": {
+                    "type": "integer"
+                  },
+                  "docker_image": {
+                    "type": "string"
+                  },
+                  "startup": {
+                    "type": "string"
+                  },
+                  "environment": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "skip_scripts": {
+                    "type": "boolean"
+                  },
+                  "oom_killer": {
+                    "type": "boolean"
+                  },
+                  "start_on_completion": {
+                    "type": "boolean"
+                  },
+                  "limits": {
+                    "type": "object",
+                    "description": "Resource limitations",
+                    "properties": {
+                      "memory": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "swap": {
+                        "type": "number",
+                        "minimum": -1
+                      },
+                      "disk": {
+                        "type": "number",
+                        "minimum": 0
+                      },
+                      "io": {
+                        "type": "number"
+                      },
+                      "threads": {
+                        "type": ["string", "null"]
+                      },
+                      "cpu": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    },
+                    "required": ["memory", "swap", "disk", "io", "cpu"]
+                  },
+                  "feature_limits": {
+                    "type": "object",
+                    "description": "Application Resource Limits",
+                    "properties": {
+                      "databases": {
+                        "type": ["integer", "null"],
+                        "minimum": 0
+                      },
+                      "allocations": {
+                        "type": ["integer", "null"],
+                        "minimum": 0
+                      },
+                      "backups": {
+                        "type": ["integer", "null"],
+                        "minimum": 0
+                      }
+                    }
+                  },
+                  "allocation": {
+                    "type": "object",
+                    "properties": {
+                      "default": {
+                        "type": "string",
+                        "description": "Placeholders for rules added in withValidator() function."
+                      },
+                      "additional": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "deploy": {
+                    "type": "object",
+                    "description": "Automatic deployment rules",
+                    "properties": {
+                      "locations": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer",
+                          "minimum": 1
+                        }
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "dedicated_ip": {
+                        "type": "boolean"
+                      },
+                      "port_range": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "name",
+                  "user",
+                  "egg",
+                  "limits",
+                  "feature_limits",
+                  "deploy"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}": {
+      "get": {
+        "operationId": "application.servers.view",
+        "description": "Show a single server transformed for the application API.",
+        "summary": "View server",
+        "tags": ["Server"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "application.servers.server.delete_1",
+        "description": "Deletes a server.",
+        "summary": "Delete server",
+        "tags": ["Server"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/{force?}": {
+      "delete": {
+        "operationId": "application.servers.server.delete_0",
+        "description": "Deletes a server.",
+        "summary": "Delete server",
+        "tags": ["Server"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "force",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/details": {
+      "patch": {
+        "operationId": "application.servers.details",
+        "description": "Update the details for a specific server.\u26a0\ufe0fCannot generate request documentation: Call to a member function parameter() on null",
+        "summary": "Update details",
+        "tags": ["ServerDetails"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/build": {
+      "patch": {
+        "operationId": "application.servers.build",
+        "description": "Update the build details for a specific server.\u26a0\ufe0fCannot generate request documentation: Call to a member function parameter() on null",
+        "summary": "Update build",
+        "tags": ["ServerDetails"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/suspend": {
+      "post": {
+        "operationId": "application.servers.suspend",
+        "description": "Suspend a server on the Panel.",
+        "summary": "Suspsend",
+        "tags": ["ServerManagement"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/unsuspend": {
+      "post": {
+        "operationId": "application.servers.unsuspend",
+        "description": "Unsuspend a server on the Panel.",
+        "summary": "Unsuspsend",
+        "tags": ["ServerManagement"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/reinstall": {
+      "post": {
+        "operationId": "application.servers.reinstall",
+        "description": "Mark a server as needing to be reinstalled.",
+        "summary": "Reinstall",
+        "tags": ["ServerManagement"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/transfer": {
+      "post": {
+        "operationId": "application.servers.transfer",
+        "description": "Starts a transfer of a server to a new node.",
+        "summary": "Start transfer",
+        "tags": ["ServerManagement"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "node_id": {
+                    "type": "integer"
+                  },
+                  "allocation_id": {
+                    "type": "integer"
+                  },
+                  "allocation_additional": {
+                    "type": ["string", "null"]
+                  }
+                },
+                "required": ["node_id", "allocation_id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/transfer/cancel": {
+      "post": {
+        "operationId": "application.servers.transfer.cancel",
+        "description": "Cancels a transfer of a server to a new node.",
+        "summary": "Cancel transfer",
+        "tags": ["ServerManagement"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/servers/{server}/startup": {
+      "patch": {
+        "operationId": "application.servers.startup",
+        "description": "Update the startup and environment settings for a specific server.\u26a0\ufe0fCannot generate request documentation: Call to a member function parameter() on null",
+        "summary": "Update startup",
+        "tags": ["Startup"],
+        "parameters": [
+          {
+            "name": "server",
+            "in": "path",
+            "required": true,
+            "description": "The server ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "operationId": "application.users",
+        "description": "Handle request to list all users on the panel. Returns a JSON-API representation\nof a collection of users including any defined relations passed in\nthe request.",
+        "summary": "List users",
+        "tags": ["User"],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "post": {
+        "operationId": "user.store",
+        "description": "Store a new user on the system. Returns the created user and an HTTP/201\nheader on successful creation.",
+        "summary": "Create user",
+        "tags": ["User"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "external_id": {
+                    "type": ["string", "null"]
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": ["string", "null"]
+                  },
+                  "language": {
+                    "type": "string",
+                    "enum": [
+                      "af",
+                      "ak",
+                      "am",
+                      "ar",
+                      "as",
+                      "az",
+                      "be",
+                      "bg",
+                      "bm",
+                      "bn",
+                      "bo",
+                      "br",
+                      "bs",
+                      "ca",
+                      "ce",
+                      "cs",
+                      "cv",
+                      "cy",
+                      "da",
+                      "de",
+                      "dz",
+                      "ee",
+                      "el",
+                      "en",
+                      "eo",
+                      "es",
+                      "et",
+                      "eu",
+                      "fa",
+                      "ff",
+                      "fi",
+                      "fo",
+                      "fr",
+                      "fy",
+                      "ga",
+                      "gd",
+                      "gl",
+                      "gu",
+                      "gv",
+                      "ha",
+                      "he",
+                      "hi",
+                      "hr",
+                      "hu",
+                      "hy",
+                      "ia",
+                      "id",
+                      "ie",
+                      "ig",
+                      "ii",
+                      "is",
+                      "it",
+                      "ja",
+                      "jv",
+                      "ka",
+                      "ki",
+                      "kk",
+                      "kl",
+                      "km",
+                      "kn",
+                      "ko",
+                      "ks",
+                      "ku",
+                      "kw",
+                      "ky",
+                      "lb",
+                      "lg",
+                      "ln",
+                      "lo",
+                      "lt",
+                      "lu",
+                      "lv",
+                      "mg",
+                      "mi",
+                      "mk",
+                      "ml",
+                      "mn",
+                      "mr",
+                      "ms",
+                      "mt",
+                      "my",
+                      "nb",
+                      "nd",
+                      "ne",
+                      "nl",
+                      "nn",
+                      "no",
+                      "oc",
+                      "om",
+                      "or",
+                      "os",
+                      "pa",
+                      "pl",
+                      "ps",
+                      "pt",
+                      "qu",
+                      "rm",
+                      "rn",
+                      "ro",
+                      "ru",
+                      "rw",
+                      "sa",
+                      "sc",
+                      "sd",
+                      "se",
+                      "sg",
+                      "si",
+                      "sk",
+                      "sl",
+                      "sn",
+                      "so",
+                      "sq",
+                      "sr",
+                      "st",
+                      "su",
+                      "sv",
+                      "sw",
+                      "ta",
+                      "te",
+                      "tg",
+                      "th",
+                      "ti",
+                      "tk",
+                      "tn",
+                      "to",
+                      "tr",
+                      "tt",
+                      "ug",
+                      "uk",
+                      "ur",
+                      "uz",
+                      "vi",
+                      "wo",
+                      "xh",
+                      "yi",
+                      "yo",
+                      "za",
+                      "zh",
+                      "zu"
+                    ]
+                  },
+                  "timezone": {
+                    "type": "string",
+                    "enum": [
+                      "Africa/Abidjan",
+                      "Africa/Accra",
+                      "Africa/Addis_Ababa",
+                      "Africa/Algiers",
+                      "Africa/Asmara",
+                      "Africa/Bamako",
+                      "Africa/Bangui",
+                      "Africa/Banjul",
+                      "Africa/Bissau",
+                      "Africa/Blantyre",
+                      "Africa/Brazzaville",
+                      "Africa/Bujumbura",
+                      "Africa/Cairo",
+                      "Africa/Casablanca",
+                      "Africa/Ceuta",
+                      "Africa/Conakry",
+                      "Africa/Dakar",
+                      "Africa/Dar_es_Salaam",
+                      "Africa/Djibouti",
+                      "Africa/Douala",
+                      "Africa/El_Aaiun",
+                      "Africa/Freetown",
+                      "Africa/Gaborone",
+                      "Africa/Harare",
+                      "Africa/Johannesburg",
+                      "Africa/Juba",
+                      "Africa/Kampala",
+                      "Africa/Khartoum",
+                      "Africa/Kigali",
+                      "Africa/Kinshasa",
+                      "Africa/Lagos",
+                      "Africa/Libreville",
+                      "Africa/Lome",
+                      "Africa/Luanda",
+                      "Africa/Lubumbashi",
+                      "Africa/Lusaka",
+                      "Africa/Malabo",
+                      "Africa/Maputo",
+                      "Africa/Maseru",
+                      "Africa/Mbabane",
+                      "Africa/Mogadishu",
+                      "Africa/Monrovia",
+                      "Africa/Nairobi",
+                      "Africa/Ndjamena",
+                      "Africa/Niamey",
+                      "Africa/Nouakchott",
+                      "Africa/Ouagadougou",
+                      "Africa/Porto-Novo",
+                      "Africa/Sao_Tome",
+                      "Africa/Tripoli",
+                      "Africa/Tunis",
+                      "Africa/Windhoek",
+                      "America/Adak",
+                      "America/Anchorage",
+                      "America/Anguilla",
+                      "America/Antigua",
+                      "America/Araguaina",
+                      "America/Argentina/Buenos_Aires",
+                      "America/Argentina/Catamarca",
+                      "America/Argentina/Cordoba",
+                      "America/Argentina/Jujuy",
+                      "America/Argentina/La_Rioja",
+                      "America/Argentina/Mendoza",
+                      "America/Argentina/Rio_Gallegos",
+                      "America/Argentina/Salta",
+                      "America/Argentina/San_Juan",
+                      "America/Argentina/San_Luis",
+                      "America/Argentina/Tucuman",
+                      "America/Argentina/Ushuaia",
+                      "America/Aruba",
+                      "America/Asuncion",
+                      "America/Atikokan",
+                      "America/Bahia",
+                      "America/Bahia_Banderas",
+                      "America/Barbados",
+                      "America/Belem",
+                      "America/Belize",
+                      "America/Blanc-Sablon",
+                      "America/Boa_Vista",
+                      "America/Bogota",
+                      "America/Boise",
+                      "America/Cambridge_Bay",
+                      "America/Campo_Grande",
+                      "America/Cancun",
+                      "America/Caracas",
+                      "America/Cayenne",
+                      "America/Cayman",
+                      "America/Chicago",
+                      "America/Chihuahua",
+                      "America/Ciudad_Juarez",
+                      "America/Costa_Rica",
+                      "America/Creston",
+                      "America/Cuiaba",
+                      "America/Curacao",
+                      "America/Danmarkshavn",
+                      "America/Dawson",
+                      "America/Dawson_Creek",
+                      "America/Denver",
+                      "America/Detroit",
+                      "America/Dominica",
+                      "America/Edmonton",
+                      "America/Eirunepe",
+                      "America/El_Salvador",
+                      "America/Fort_Nelson",
+                      "America/Fortaleza",
+                      "America/Glace_Bay",
+                      "America/Goose_Bay",
+                      "America/Grand_Turk",
+                      "America/Grenada",
+                      "America/Guadeloupe",
+                      "America/Guatemala",
+                      "America/Guayaquil",
+                      "America/Guyana",
+                      "America/Halifax",
+                      "America/Havana",
+                      "America/Hermosillo",
+                      "America/Indiana/Indianapolis",
+                      "America/Indiana/Knox",
+                      "America/Indiana/Marengo",
+                      "America/Indiana/Petersburg",
+                      "America/Indiana/Tell_City",
+                      "America/Indiana/Vevay",
+                      "America/Indiana/Vincennes",
+                      "America/Indiana/Winamac",
+                      "America/Inuvik",
+                      "America/Iqaluit",
+                      "America/Jamaica",
+                      "America/Juneau",
+                      "America/Kentucky/Louisville",
+                      "America/Kentucky/Monticello",
+                      "America/Kralendijk",
+                      "America/La_Paz",
+                      "America/Lima",
+                      "America/Los_Angeles",
+                      "America/Lower_Princes",
+                      "America/Maceio",
+                      "America/Managua",
+                      "America/Manaus",
+                      "America/Marigot",
+                      "America/Martinique",
+                      "America/Matamoros",
+                      "America/Mazatlan",
+                      "America/Menominee",
+                      "America/Merida",
+                      "America/Metlakatla",
+                      "America/Mexico_City",
+                      "America/Miquelon",
+                      "America/Moncton",
+                      "America/Monterrey",
+                      "America/Montevideo",
+                      "America/Montserrat",
+                      "America/Nassau",
+                      "America/New_York",
+                      "America/Nome",
+                      "America/Noronha",
+                      "America/North_Dakota/Beulah",
+                      "America/North_Dakota/Center",
+                      "America/North_Dakota/New_Salem",
+                      "America/Nuuk",
+                      "America/Ojinaga",
+                      "America/Panama",
+                      "America/Paramaribo",
+                      "America/Phoenix",
+                      "America/Port-au-Prince",
+                      "America/Port_of_Spain",
+                      "America/Porto_Velho",
+                      "America/Puerto_Rico",
+                      "America/Punta_Arenas",
+                      "America/Rankin_Inlet",
+                      "America/Recife",
+                      "America/Regina",
+                      "America/Resolute",
+                      "America/Rio_Branco",
+                      "America/Santarem",
+                      "America/Santiago",
+                      "America/Santo_Domingo",
+                      "America/Sao_Paulo",
+                      "America/Scoresbysund",
+                      "America/Sitka",
+                      "America/St_Barthelemy",
+                      "America/St_Johns",
+                      "America/St_Kitts",
+                      "America/St_Lucia",
+                      "America/St_Thomas",
+                      "America/St_Vincent",
+                      "America/Swift_Current",
+                      "America/Tegucigalpa",
+                      "America/Thule",
+                      "America/Tijuana",
+                      "America/Toronto",
+                      "America/Tortola",
+                      "America/Vancouver",
+                      "America/Whitehorse",
+                      "America/Winnipeg",
+                      "America/Yakutat",
+                      "Antarctica/Casey",
+                      "Antarctica/Davis",
+                      "Antarctica/DumontDUrville",
+                      "Antarctica/Macquarie",
+                      "Antarctica/Mawson",
+                      "Antarctica/McMurdo",
+                      "Antarctica/Palmer",
+                      "Antarctica/Rothera",
+                      "Antarctica/Syowa",
+                      "Antarctica/Troll",
+                      "Antarctica/Vostok",
+                      "Arctic/Longyearbyen",
+                      "Asia/Aden",
+                      "Asia/Almaty",
+                      "Asia/Amman",
+                      "Asia/Anadyr",
+                      "Asia/Aqtau",
+                      "Asia/Aqtobe",
+                      "Asia/Ashgabat",
+                      "Asia/Atyrau",
+                      "Asia/Baghdad",
+                      "Asia/Bahrain",
+                      "Asia/Baku",
+                      "Asia/Bangkok",
+                      "Asia/Barnaul",
+                      "Asia/Beirut",
+                      "Asia/Bishkek",
+                      "Asia/Brunei",
+                      "Asia/Chita",
+                      "Asia/Colombo",
+                      "Asia/Damascus",
+                      "Asia/Dhaka",
+                      "Asia/Dili",
+                      "Asia/Dubai",
+                      "Asia/Dushanbe",
+                      "Asia/Famagusta",
+                      "Asia/Gaza",
+                      "Asia/Hebron",
+                      "Asia/Ho_Chi_Minh",
+                      "Asia/Hong_Kong",
+                      "Asia/Hovd",
+                      "Asia/Irkutsk",
+                      "Asia/Jakarta",
+                      "Asia/Jayapura",
+                      "Asia/Jerusalem",
+                      "Asia/Kabul",
+                      "Asia/Kamchatka",
+                      "Asia/Karachi",
+                      "Asia/Kathmandu",
+                      "Asia/Khandyga",
+                      "Asia/Kolkata",
+                      "Asia/Krasnoyarsk",
+                      "Asia/Kuala_Lumpur",
+                      "Asia/Kuching",
+                      "Asia/Kuwait",
+                      "Asia/Macau",
+                      "Asia/Magadan",
+                      "Asia/Makassar",
+                      "Asia/Manila",
+                      "Asia/Muscat",
+                      "Asia/Nicosia",
+                      "Asia/Novokuznetsk",
+                      "Asia/Novosibirsk",
+                      "Asia/Omsk",
+                      "Asia/Oral",
+                      "Asia/Phnom_Penh",
+                      "Asia/Pontianak",
+                      "Asia/Pyongyang",
+                      "Asia/Qatar",
+                      "Asia/Qostanay",
+                      "Asia/Qyzylorda",
+                      "Asia/Riyadh",
+                      "Asia/Sakhalin",
+                      "Asia/Samarkand",
+                      "Asia/Seoul",
+                      "Asia/Shanghai",
+                      "Asia/Singapore",
+                      "Asia/Srednekolymsk",
+                      "Asia/Taipei",
+                      "Asia/Tashkent",
+                      "Asia/Tbilisi",
+                      "Asia/Tehran",
+                      "Asia/Thimphu",
+                      "Asia/Tokyo",
+                      "Asia/Tomsk",
+                      "Asia/Ulaanbaatar",
+                      "Asia/Urumqi",
+                      "Asia/Ust-Nera",
+                      "Asia/Vientiane",
+                      "Asia/Vladivostok",
+                      "Asia/Yakutsk",
+                      "Asia/Yangon",
+                      "Asia/Yekaterinburg",
+                      "Asia/Yerevan",
+                      "Atlantic/Azores",
+                      "Atlantic/Bermuda",
+                      "Atlantic/Canary",
+                      "Atlantic/Cape_Verde",
+                      "Atlantic/Faroe",
+                      "Atlantic/Madeira",
+                      "Atlantic/Reykjavik",
+                      "Atlantic/South_Georgia",
+                      "Atlantic/St_Helena",
+                      "Atlantic/Stanley",
+                      "Australia/Adelaide",
+                      "Australia/Brisbane",
+                      "Australia/Broken_Hill",
+                      "Australia/Darwin",
+                      "Australia/Eucla",
+                      "Australia/Hobart",
+                      "Australia/Lindeman",
+                      "Australia/Lord_Howe",
+                      "Australia/Melbourne",
+                      "Australia/Perth",
+                      "Australia/Sydney",
+                      "Europe/Amsterdam",
+                      "Europe/Andorra",
+                      "Europe/Astrakhan",
+                      "Europe/Athens",
+                      "Europe/Belgrade",
+                      "Europe/Berlin",
+                      "Europe/Bratislava",
+                      "Europe/Brussels",
+                      "Europe/Bucharest",
+                      "Europe/Budapest",
+                      "Europe/Busingen",
+                      "Europe/Chisinau",
+                      "Europe/Copenhagen",
+                      "Europe/Dublin",
+                      "Europe/Gibraltar",
+                      "Europe/Guernsey",
+                      "Europe/Helsinki",
+                      "Europe/Isle_of_Man",
+                      "Europe/Istanbul",
+                      "Europe/Jersey",
+                      "Europe/Kaliningrad",
+                      "Europe/Kirov",
+                      "Europe/Kyiv",
+                      "Europe/Lisbon",
+                      "Europe/Ljubljana",
+                      "Europe/London",
+                      "Europe/Luxembourg",
+                      "Europe/Madrid",
+                      "Europe/Malta",
+                      "Europe/Mariehamn",
+                      "Europe/Minsk",
+                      "Europe/Monaco",
+                      "Europe/Moscow",
+                      "Europe/Oslo",
+                      "Europe/Paris",
+                      "Europe/Podgorica",
+                      "Europe/Prague",
+                      "Europe/Riga",
+                      "Europe/Rome",
+                      "Europe/Samara",
+                      "Europe/San_Marino",
+                      "Europe/Sarajevo",
+                      "Europe/Saratov",
+                      "Europe/Simferopol",
+                      "Europe/Skopje",
+                      "Europe/Sofia",
+                      "Europe/Stockholm",
+                      "Europe/Tallinn",
+                      "Europe/Tirane",
+                      "Europe/Ulyanovsk",
+                      "Europe/Vaduz",
+                      "Europe/Vatican",
+                      "Europe/Vienna",
+                      "Europe/Vilnius",
+                      "Europe/Volgograd",
+                      "Europe/Warsaw",
+                      "Europe/Zagreb",
+                      "Europe/Zurich",
+                      "Indian/Antananarivo",
+                      "Indian/Chagos",
+                      "Indian/Christmas",
+                      "Indian/Cocos",
+                      "Indian/Comoro",
+                      "Indian/Kerguelen",
+                      "Indian/Mahe",
+                      "Indian/Maldives",
+                      "Indian/Mauritius",
+                      "Indian/Mayotte",
+                      "Indian/Reunion",
+                      "Pacific/Apia",
+                      "Pacific/Auckland",
+                      "Pacific/Bougainville",
+                      "Pacific/Chatham",
+                      "Pacific/Chuuk",
+                      "Pacific/Easter",
+                      "Pacific/Efate",
+                      "Pacific/Fakaofo",
+                      "Pacific/Fiji",
+                      "Pacific/Funafuti",
+                      "Pacific/Galapagos",
+                      "Pacific/Gambier",
+                      "Pacific/Guadalcanal",
+                      "Pacific/Guam",
+                      "Pacific/Honolulu",
+                      "Pacific/Kanton",
+                      "Pacific/Kiritimati",
+                      "Pacific/Kosrae",
+                      "Pacific/Kwajalein",
+                      "Pacific/Majuro",
+                      "Pacific/Marquesas",
+                      "Pacific/Midway",
+                      "Pacific/Nauru",
+                      "Pacific/Niue",
+                      "Pacific/Norfolk",
+                      "Pacific/Noumea",
+                      "Pacific/Pago_Pago",
+                      "Pacific/Palau",
+                      "Pacific/Pitcairn",
+                      "Pacific/Pohnpei",
+                      "Pacific/Port_Moresby",
+                      "Pacific/Rarotonga",
+                      "Pacific/Saipan",
+                      "Pacific/Tahiti",
+                      "Pacific/Tarawa",
+                      "Pacific/Tongatapu",
+                      "Pacific/Wake",
+                      "Pacific/Wallis",
+                      "UTC"
+                    ]
+                  }
+                },
+                "required": ["email", "username"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/users/{user}": {
+      "get": {
+        "operationId": "application.users.view",
+        "description": "Handle a request to view a single user. Includes any relations that\nwere defined in the request.",
+        "summary": "View user",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "description": "The user ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "user.update",
+        "description": "Update an existing user on the system and return the response. Returns the\nupdated user model response on success. Supports handling of token revocation\nerrors when switching a user from an admin to a normal user.\n\nRevocation errors are returned under the 'revocation_errors' key in the response\nmeta. If there are no errors this is an empty array.\u26a0\ufe0fCannot generate request documentation: Call to a member function parameter() on null",
+        "summary": "Update user",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "description": "The user ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "user.delete",
+        "description": "Handle a request to delete a user from the Panel. Returns a HTTP/204 response on successful deletion.",
+        "summary": "Delete user",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "description": "The user ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/users/{user}/roles/assign": {
+      "patch": {
+        "operationId": "user.assignRoles",
+        "description": "Assign roles to a user.",
+        "summary": "Assign role to user",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "description": "The user ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    },
+    "/users/{user}/roles/remove": {
+      "patch": {
+        "operationId": "user.removeRoles",
+        "description": "Removes roles from a user.",
+        "summary": "Unassign role from user",
+        "tags": ["User"],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "path",
+            "required": true,
+            "description": "The user ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "roles": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/ModelNotFoundException"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationException"
+          },
+          "403": {
+            "$ref": "#/components/responses/AuthorizationException"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "http": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": ""
+      }
+    },
+    "responses": {
+      "ValidationException": {
+        "description": "Validation error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Errors overview."
+                },
+                "errors": {
+                  "type": "object",
+                  "description": "A detailed description of each field that failed validation.",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": ["message", "errors"]
+            }
+          }
+        }
+      },
+      "AuthorizationException": {
+        "description": "Authorization error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Error overview."
+                }
+              },
+              "required": ["message"]
+            }
+          }
+        }
+      },
+      "ModelNotFoundException": {
+        "description": "Not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Error overview."
+                }
+              },
+              "required": ["message"]
+            }
+          }
+        }
+      }
+    }
+  }
+}

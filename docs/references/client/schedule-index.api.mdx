@@ -1,0 +1,71 @@
+---
+id: schedule-index
+title: "List schedules"
+description: "Returns all the schedules belonging to a given server."
+sidebar_label: "List schedules"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1vEzEQ/SvWnECysqH0tDckCqqEUFVaLlEOk/Uk6+K1t/ZsaFntf0fjTTdpUjjABU5xMl/vzcdLD6GliGyDvzRQQqpqMp2jmfWGHkCDoVRF24oDlHBN3EWfFDqnuCb15J7UilzwG+s3ioNCtbFb8ipR3FKcgQbGTYJyAV92AbDU0GLEhpiiWHrw2JAgyDGgwUrBFrkGDZHuOxvJQMmxo2NUN4Ikh6nb28v3oDONBqHsgR/bnJWj9RsYhqUkS23wiZLYz+Zz+XieEDRUwTN5Fhu2rbNV7lFxl8Sh/02BYdBwPn97mvRdx3WI9kdOpCjGEP+gTljdUcWgoY0yObYjjYZSwg2dAjru1YXUVWFLcWvp+wwE7r67iynR8onJ+SmTz4HVOnTe/Af4z85O8X9FZ80/MIZ0yENDxpJeKnK0SMoQo3Vk1IFBhbUirGq1tuSM4hpZrUev7cRXThGNsfJGd/UM+64oxoiPcn5MTfrVgr/U8YlAbv2goSGug4jKhnKn5JRLKMZLTUU/PoZiEhE53NGYBaGLDkqomdtUFkVLMhU/Y0pcYGuLylmZmFx0oqqLlh9zmARAuVgeGkR2mpHmaJ5o5a87wZDvK8KY5Wd8fAixQRZJEEbWr0OOtezE+WrEBBoE9DidN7O5DLMNiRvMy7MTtk82sTrk+myq/X4F/0JlR05MD1y0Dq0XJLmN/a79i6nDGspJaveolhrqkFgc+36FiW6jGwb5+b6jKA1eathitLiSDix6MDbJ20C5RpeOtfmQ1qvr3da8VqeK/SL0p5X0spBbdB2N4vyNHvf/FMNy0FATGooZ0Gh8V1XU8kHYyVnLfkwr+vHiBobhJ2Rxc44=
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List schedules"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}/schedules"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns all the schedules belonging to a given server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

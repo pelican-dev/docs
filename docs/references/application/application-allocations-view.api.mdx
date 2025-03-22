@@ -1,0 +1,71 @@
+---
+id: application-allocations-view
+title: "Delete allocation"
+description: "Delete a specific allocation from the Panel."
+sidebar_label: "Delete allocation"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zAM/SsCTxsgxFnXk28FmgEFhqHYul2CHBiLjtXZlirR2TLD/32gnThO0mFoT9vJkkWK7/HjqQXnKSBbV98ZSAG9L23W72dYlm5YxtnW0g/QYChmwXr5ByncUklMClX0lNncZuroovLgKsUFqXusqZyBBsZNhHQJN6MRrDR4DFgRU5CzFmqsCFKonSHQYCWMRy5AQ6CnxgYykHJo6BzLQ0FKnNTdLWiIWUEVQtoC77zcZ2umDQXoOj3GOIJ9caQJz7/FW8l90bs6UhSDq/lcPqd3gobM1Uw1y9mkCMljFIP2MkLkYOsNdF3Xabiev7+89KbhwgX7a8BJIbjwijhu/UgZgwYfpFXYDjQqihE3dAnoPF0LiavcloL00EwqMEnwcrxodWByfcnkk2OVu6Y2/wH+q6tL/N+wtOYfKEOc8tDQY4nPBTlrJGWI0ZZk1ORAuVwRZoXKLZVGcYGs8sFqO/KVuUdjrKyxvD/Bvg+KIeBOJpCpin9q8OcyPhLoU99pqIgLJypmemGSZMlAp5CIMsSklU+XTHQtaY+bTuaYwvagRE0oIYWC2cc0STxJjeoZU+QEvU0mVQMZ8khZEyzvel/xgnS5mh58kZIOzIfjkWm/3YuI7NeEgaRJhsUHFypkUQkhaevc9b6WSzG+H4CBBkE+FOzdbC719S5yhX0/7SXvoNhT5TupdXtszBfL+0CG6ScnvkRbC4Q+ie2+Dste1iNoSPf6PimF/MWTl6FwkcWpbdcY6Wsou05+PzUUJMsrDVsMFteShmULxkZZG0hzLOO5bE+Jvfm876a36vTZeJbCoU1radItlg0Ngv2ddoeHSh6VV4c/f0teAWKSt27VaSgIDYU+K4PBTZaR54nrheZIp47zc7v4uHhYQNf9BhlBz1M=
+sidebar_class_name: "delete api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete allocation"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/nodes/{node}/allocations/{allocation}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a specific allocation from the Panel.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"node","in":"path","required":true,"description":"The node ID","schema":{"type":"integer"}},{"name":"allocation","in":"path","required":true,"description":"The allocation ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
