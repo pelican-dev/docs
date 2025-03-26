@@ -102,7 +102,7 @@ docker compose down -v
 ### Redis
 You can deploy a Redis container in the same `compose.yml` file for easy setup. This example starts a Redis container and auto-populates the Redis configuration, cache, session and queue options in the web installer to use it.
 
-Once you use the web installer, changes to the highlighted environment variables will not apply, and those lines can be deleted from the `compose.yml` file. See [Configuring with Environment Variables](#configuring-with-environment-variables).
+Once you use the web installer, changes to the highlighted environment variables will not apply, and those lines can be deleted from the `compose.yml` file.
 
 
 ```yml title="compose.yml"
@@ -190,12 +190,3 @@ networks:
       config:
         - subnet: 172.20.0.0/16
 ```
-
-### Configuring with Environment Variables
-Every setting from the installer and settings menu can be set with environment variables instead. This may be useful if you are automatically setting up your panel or setting up a testing/staging environment. See [Environment Configuration](/docs/panel/advanced/environment) for a list of options.
-
-Note that changes made using artisan, the web installer, or the settings menu are saved to the `.env` file in the `pelican-data` volume, which will override any environment variables set using Docker at runtime. For this reason, configuring using environment variables set by Docker is unsupported.
-
-If you do set environment variables using Docker, you should do so exclusively. In other words, if you set options using environment variables, do not use the settings menu or web installer at all. Be sure to set `APP_INSTALLED` to disable the installer. You may even want to use a [custom Caddyfile](#custom-caddyfile) to disable the `/admin/settings` page. 
-
-## Troubleshooting
