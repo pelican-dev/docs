@@ -46,7 +46,7 @@ networks:
     - Note that Caddy, the integrated webserver, will serve a 308 redirect to any requests on port 80 if the `APP_URL` begins with `https://`. If your final site will be reachable over HTTPS but TLS (SSL) will be handled and terminated by an upstream server, such as a reverse proxy, you will need to use a [custom caddyfile](#custom-caddyfile).
 2. Set the `ADMIN_EMAIL` to your email address. Caddy will use this email address to generate a LetsEncrypt SSL certificate if you are serving via HTTPS.
 
-Now, close and save changes to `compose.yml` by pressing `ctrl`+`x` then `enter`. 
+Now, close and save changes to `compose.yml`. 
 
 ### Starting
 From the directory in which the Caddyfile is located, run:
