@@ -151,9 +151,6 @@ networks:
         - subnet: 172.20.0.0/16
 ```
 
-### MySQL
-Deploying the panel in Docker is still a work in progress, and the default Docker image does not currently support using MySQL databases. Instructions for using MySQL will be added here once it is supported.
-
 ### Custom Caddyfile
 The default Caddyfile will work for standard installations. If you need to edit the configuration of the integrated webserver, such as to place it behind a reverse proxy that terminates TLS, you can do so by bind-mounting a Caddyfile on the host to `/etc/caddy/Caddyfile` inside the container.
 
