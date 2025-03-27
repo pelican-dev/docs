@@ -33,12 +33,14 @@ import TabItem from '@theme/TabItem';
 
                 server {
                     listen 80;
+                    listen [::]:80;
                     server_name <domain>;
                     return 301 https://$server_name$request_uri;
                 }
 
                 server {
                     listen 443 ssl http2;
+                    listen [::]:443 ssl http2;
                     server_name <domain>;
 
                     root /var/www/pelican/public;
@@ -100,6 +102,7 @@ import TabItem from '@theme/TabItem';
                 ```nginx {3,28} title="/etc/nginx/sites-available/pelican.conf"
                 server {
                     listen 80;
+                    listen [::]:80;
                     server_name <domain>;
 
 
@@ -178,7 +181,7 @@ import TabItem from '@theme/TabItem';
                     **Note:** IPs cannot be used with SSL.
                 </Admonition>
                 ```apacheconf {2,10,24-25} title="/etc/apache2/sites-available/pelican.conf"
-                    <VirtualHost *:80>
+                    <VirtualHost *:80 [::]:80>
                         ServerName <domain>
                         
                         RewriteEngine On
@@ -186,7 +189,7 @@ import TabItem from '@theme/TabItem';
                         RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L] 
                         </VirtualHost>
 
-                        <VirtualHost *:443>
+                        <VirtualHost *:443 [::]:443>
                         ServerName <domain>
                         DocumentRoot "/var/www/pelican/public"
 
@@ -208,7 +211,7 @@ import TabItem from '@theme/TabItem';
             </TabItem>
             <TabItem value="dhttp" label="http">
                 ```apacheconf {2} title="/etc/apache2/sites-available/pelican.conf"
-                    <VirtualHost *:80>
+                    <VirtualHost *:80 [::]:80>
                         ServerName <domain>
                         DocumentRoot "/var/www/pelican/public"
                     
