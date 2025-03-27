@@ -1,16 +1,18 @@
 # Docker
+
 Pelican provides pre-built Docker images via GitHub Packages. `ghcr.io/pelican-dev/panel:latest` is the current latest release, and `ghcr.io/pelican-dev/panel:main` is built automatically from the current `main` branch. Deploying the panel in Docker is still a work in progress. While the plan is to make Docker the preferred installation method, we currently recommend the [standard deployment instructions](/docs/panel/getting-started)
 
 This guide requires Docker CE. (Docker Compose has been included in the Docker CLI since v2. Docker Compose v1 is unsupported.) For instructions on installing and configuring Docker, see the [installation guide](/docs/guides/docker).
 
 ## Basics
+
 The easiest deployment method is using the standard `compose.yml` file.
 
 This configuration includes an integrated web server that will automatically obtain SSL certificates if you are serving over HTTPS. For the database, it assumes you want to use SQLite (or you have an external database server to configure using the  installer.) It also assumes you intend to use the Filesystem driver for cache, filesystem or database driver for session, and database driver for queue (or you have an external Redis server to configure using the installer.) If you want to use other options built into Docker, see [Advanced Options](#advanced-options).
 
 ### Create compose.yml
 
-```yml title="compose.yml"
+```yml {17,18} title="compose.yml"
 services:
   panel:
     image: ghcr.io/pelican-dev/panel:latest
@@ -42,29 +44,31 @@ networks:
 ```
 
 ### Set Required Environment Variables
-1. Set `APP_URL` to the base URL your server will be reachable on, including the protocol (https:// or http://) and port. 
+
+1. Set `APP_URL` to the base URL your panel will be reachable on, including the protocol (https:// or http://) and port. 
     - Note that Caddy, the integrated webserver, will serve a 308 redirect to any requests on port 80 if the `APP_URL` begins with `https://`. If your final site will be reachable over HTTPS but TLS (SSL) will be handled and terminated by an upstream server, such as a reverse proxy, you will need to use a [custom caddyfile](#custom-caddyfile).
 2. Set the `ADMIN_EMAIL` to your email address. Caddy will use this email address to generate a LetsEncrypt SSL certificate if you are serving via HTTPS.
 
 Now, close and save changes to `compose.yml`. 
 
 ### Starting
-From the directory in which the Caddyfile is located, run:
+
+From the directory in which the compose file is located, run:
 
 ```sh
 docker compose up -d
 ```
 
 ### Back Up Your Encryption Key
-The first time the container starts, it will generate an `APP_KEY` which is used as an encryption key. This will be saved automatically, but you should save a copy in a secure place in case you need it later.
 
-Run:
+The first time the container starts, it will generate an `APP_KEY` which is used as an encryption key. This will be saved automatically, but you should save a copy in a secure place in case you need it later.
 
 ```sh
 docker compose logs panel | grep 'Generated app key:'
 ```
 
 ### Installing
+
 Open the installer in your browser at `APP_URL/installer` to finish setting up the panel.
 
 :::note
@@ -81,6 +85,7 @@ The first time the container starts after installing or updating, it will apply 
 For other configuration, such as UI options, CAPTCHA, email, backups and OAuth, head to the settings menu in the admin panel.
 
 ### Stopping
+
 The panel will automatically restart if the container crashes or the host restarts.  If you need to non-destructively stop the panel for any reason, navigate back to the directory containing `compose.yml` and run:
 
 ```sh
@@ -88,6 +93,7 @@ docker compose down
 ```
 
 ### Uninstalling
+
 To uninstall the panel, navigate to the directory containing `compose.yml` and run:
 
 ```sh
@@ -99,7 +105,9 @@ docker compose down -v
 :::
 
 ## Advanced Options
+
 ### Redis
+
 You can deploy a Redis container in the same `compose.yml` file for easy setup. This example starts a Redis container and auto-populates the Redis configuration, cache, session and queue options in the web installer to use it.
 
 Once you use the web installer, changes to the highlighted environment variables will not apply, and those lines can be deleted from the `compose.yml` file.
@@ -152,6 +160,7 @@ networks:
 ```
 
 ### Custom Caddyfile
+
 The default Caddyfile will work for standard installations. If you need to edit the configuration of the integrated webserver, such as to place it behind a reverse proxy that terminates TLS, you can do so by bind-mounting a Caddyfile on the host to `/etc/caddy/Caddyfile` inside the container.
 
 This example assumes there is a Caddyfile in the same directory as the `compose.yml` file. 

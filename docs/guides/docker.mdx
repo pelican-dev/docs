@@ -9,8 +9,7 @@ curl -sSL https://get.docker.com/ | CHANNEL=stable sudo sh
 ```
 
 <Admonition type="info" title="Installing Docker CE">
-    If the above command does not work, please reference the official Docker documentation for how to install Docker CE on your server.
-    - [Docker CE Install Overview](https://docs.docker.com/engine/install/)
+    If the above command does not work, please refer to the [official Docker documentation](https://docs.docker.com/engine/install/) on how to install Docker CE on your server.
 </Admonition>
 
 ## Start Docker on Boot
@@ -21,7 +20,7 @@ If you are on an operating system with systemd (Ubuntu 16+, Debian 8+, CentOS 7+
 sudo systemctl enable --now docker
 ```
 
-### Enabling Swap
+## Enabling Swap
 
 On most systems, Docker will be unable to setup swap space by default. You can confirm this by running `docker info` and looking for the output of `WARNING: No swap limit support` near the bottom.
 
