@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
               'panel/advanced/redis',
               'panel/advanced/mysql',
               'panel/advanced/artisan',
+              'panel/advanced/docker',
           ]
         }
       ],
@@ -43,7 +44,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Guides',
-      items: ['guides/mounts', 'guides/ssl', 'guides/php-upgrade', 'guides/database-hosts', 'guides/uninstalling'],
+      items: ['guides/docker', 'guides/mounts', 'guides/ssl', 'guides/php-upgrade', 'guides/database-hosts', 'guides/uninstalling'],
     },
     'troubleshooting',
     'comparison',
