@@ -30,7 +30,7 @@ function HomepageHeader() {
           <Link
             style={{ fontSize: '26px', margin: '15px' }}
             className="button button--secondary button--md"
-            to="/docs/comparison#pterodactyl"
+            to="https://demo.pelican.dev"
           >Demo</Link>
         </div>
       </div>
