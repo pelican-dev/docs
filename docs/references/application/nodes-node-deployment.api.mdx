@@ -1,0 +1,73 @@
+---
+id: nodes-node-deployment
+title: "Get deployable nodes"
+description: "Finds any nodes that are available using the given deployment criteria. This works"
+sidebar_label: "Get deployable nodes"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVU2P2zYQ/SvEnFpAsN1tT7oFaBL0EgRt2svGKMbi2JosRTLkyFvX8H8vhnRk7TqbLooUKNCLLYlv3nw/HiFESigc/E8WWvDBUl7o748UXTgM5AUasJS7xFFh0MIr9jYb9AdT4EZ6FIOJDO6RHW4cmTGz3xnpyex4T97Yic10iYUS48K86zmb+5Du8nufeWCHyR2MhGKXKe0pmS5Ric7EFDrKuTGbUQw6F+6zOYRR4RFzLjYzL2HzgTp57wsbZ0PexsBeDHprdiRmg92dQeM4iwlbZTRvSjYZhfP28Cn+RB9HTqSkeQENCO4ytLfw5mGN1g1ETDiQUNLzI3gcCFqIuCNogLVwH0dKB2ggdz0NCO0R5BAVxF5oRwlOp2YyHGgIBf3A9ByOhVbSSF+gamBgz8M4QLua01rOd1+dtIvjs3N8iqMU9u9IMCUsNREa8ux7lsR+B6c5oQtdGZ3f2X4N4rXWKcfgMxXAzWqlfw9XAxroghediPYIGKPjGsTyQ1bA8drzxcOpgR9W31+TvhilD4n/rItAKYX0D/zUjYAGYtKdF65pDJSzjuhVQI+3/qX6NWFPac90v9BZnQ3O7US0Pmdyc3OdyW/o2P4H0sjzPBooseTPOXnUCGNJkB1ZMztQ+SDserNlcraq4bai9lO+Kh1oLeszurcPYn/2CD5R8SmBUvpTAwNJH1TOd1QqhdJDC8ui1ssqkqrSugdFZatgjclBC71IzO1yGUl74RdCWZYYeTnrDugyZOrGxHIotmoF7e16fvCLtq5mWI+njMrreQn1fUOYijLUh1chDSi6TZoM+20otixOwW9rYNCARl4b891ipX2MIcuAZW7OGvCaxFwSrvfV47YeLzP4P7/aaneE/pBldMhea1qm4nieoVu4VHCaonUDfciip8fjBjP9mtzppJ+r2up8WM6KtdBu0WVq4I4Ol8txj26k0u/mM9Anm/XNz+dl+NY8FX11M12l/7aj8+X6ZTcVWq/M5yDPF+NzoI+uvIvJWl8Sl37pmjbQE1pKpTnV9kXXUZSZ1ZUcK8skLa9fvoPT6S/BFI7J
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get deployable nodes"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/nodes/deployable"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Finds any nodes that are available using the given deployment criteria. This works
+similarly to the server creation process, but allows you to pass the deployment object
+to this endpoint and get back a list of all Nodes satisfying the requirements.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"page","in":"query","schema":{"type":"integer"}},{"name":"memory","in":"query","required":true,"schema":{"type":"integer","minimum":0}},{"name":"disk","in":"query","required":true,"schema":{"type":"integer","minimum":0}},{"name":"cpu","in":"query","schema":{"type":"integer","minimum":0}},{"name":"tags","in":"query","schema":{"type":"array","items":{"type":"string"}}},{"name":"location_ids","in":"query","schema":{"type":"array","items":{"type":"string"}}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,71 @@
+---
+id: application-servers-unsuspend
+title: "Unsuspsend"
+description: "Unsuspend a server on the Panel."
+sidebar_label: "Unsuspsend"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVU1v2zAM/SsCTxugxVnXk2/76IAetgX92CXIgbGZWJ0tqZKcNjP83wdKTuom2bDt1FwimRTJRz49dWAsOQzK6MsSckBra1XE/cST25Dzk1b71lvSJUgoyRdOWbZDDrc7i0CRvIXRIlQkZqipnoCEgGsP+Ryuo/kLalxTQzrAQoJFhw0FcuzRgcaGIIcUCCQoTmExVCDB0X2rHJWQB9fSYR03Fe3yX34CCb6oqEHIOwhbyzGVDrQmB32/SLHIhw+m3LJLYXTggvJujD678xy6O45llndUBOj7vudY3hrtybPD2XTKf89rA/nPGXxwSq+HDOfTd8dB37ehMk79jIEEOWfcf+QZkEiwjlkQVILRkPe4puOCDtt+wXmF2ZDbKHqYQGrIblDzfaDFDsn5MZKvJoiVaSO5Xnr9Z2fH9X/HWpUvYAx+jENCrMWfSnJAJFFSQFVTKUYGYVaCsKjESlFdilBhEKvktdnj5duNZal4jfXsWe1DUnQOt3yTAzX+dwQ/1fE9gNj6XkJDoTIsUNb42CqWhRyyQaOyLi36bCxWgzGKS+tqyKEKwfo8yyzxWPQkkA8ZWpWNBgWsEZ6K1qmwjWf5FOTzxdhwzVNMYJN5Dy5uBw3i/ZLQRT1Li8/GNRhYGBgXk+LqSY8uHrGxNc+8Z/1bmRhXBf4Es1Q0SGBUaX5vJ1MeN3elwUivQUWTNPsTqj1SvL8S8IQq0GPIbI1Kc77YzW6YwnzfaAn5Xr2fBrGQUPHU8jl03RI93bq67/nzfUuOW7yQsEGncMk45x2UyvO6hHyFtT+U+zGAV1cDe16Lw0fgZOE7Ymqm5QbrlpJE/6Dt09PTL3oJFWFJLpaTjB9T0jc3HOLp8NEV7+XuxPuiIBv+6LsYUXv27fqGaTK8S40p+YzDB37/8CEVamITIu/itw5q1Os2CgWkmPz7BSn7uzs=
+sidebar_class_name: "post api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Unsuspsend"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/unsuspend"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Unsuspend a server on the Panel.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

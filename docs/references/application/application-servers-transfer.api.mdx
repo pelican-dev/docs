@@ -1,0 +1,71 @@
+---
+id: application-servers-transfer
+title: "Start transfer"
+description: "Starts a transfer of a server to a new node."
+sidebar_label: "Start transfer"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVcGS2zYM/RUOTu0Ma7nbnHRL23Qmh7Y72W0vHk0GK8IWU4lUSMgbV6N/74CUba2920lyan0xJYDAwwP0MILvKSBb794aKAH7vrV1el5FCnsKccUBXdxSAA2GYh1sL2Yo4Y4xcFSojh7KbxWqfE+xV6gcPSrnDa1AA+MuQrmBu2T/FR3uqCPHUGnoMWBHTEE8RnDYEZSQI4EGK+l65AY0BPo42EAGSg4DXWK6b+gI4O3PoCHWDXUI5Qh86CWmdUw7CjBNVY5FkX/05iAutXcsgMpxSUTxIUro8TqWf/hANYOGPgiNbCmKVQp+b81zSTVg2/oc93Nc0BgrB2zPrhuIHKzbgQY3tC1U07RkZXPKf5msmqbsGnvvYsZ6s17L31MSQX8xFTOknOHV+ofroK8Hbnywf6dAikLw4SvyvEB5RzHijq4BXc7HG8mr/J7C3tLjCi65OwaqjpW8uq7kN89q6wdn/gf4b26u8f+JrTX/gTbEZR0aEpb4XJKLQVKGGG1LRi0Moj2EdaO2llqjuEFW2+y1P9UrMnT+pG6fYJ+TYgh4EMlh6uJLA/4c46cCEvWTho648SKqvY+JKtGvEopZV4sxH6ZiIbCzLYngEFoooWHuY1kUPUlX3IopcoG9LRZ9AtGySPUQLB/SXbkF5aZaGu6kibnWbD7Vlh5nrZTnB8KQ4OTDLz50yKILUpbMxLuzbr75hF3f0hPdW1/J3HoSEd/6lNSy+MNtrgg0SMm5t9+v1jIKwliHafTmVZB2jXppFS2k+4u3UqaA6RMXfYvWSf5E/Th3bHPqiobytJJOUCoNjTS43MA4PmCkP0I7TfL640BB2lFp2GOw+CBlb0YwNsrZQLnFNl6usGUt37ybB+1bdbnYnsV9nGEnE7zHdqCs5n/R4bxOp2rS0BAaCglONv6Uk353LyHOl6/UYNLHG6/rmnr+V99q8RXc/n53LyM179rOG7kT8FF2Oj5moD6RkGY0vRuhRbcbkqZAjim/fwCz7giz
+sidebar_class_name: "post api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Start transfer"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/transfer"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Starts a transfer of a server to a new node.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"node_id":{"type":"integer"},"allocation_id":{"type":"integer"},"allocation_additional":{"type":["string","null"]}},"required":["node_id","allocation_id"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

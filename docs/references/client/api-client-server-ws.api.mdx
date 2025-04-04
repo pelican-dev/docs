@@ -1,0 +1,74 @@
+---
+id: api-client-server-ws
+title: "Get websocket token"
+description: "Generates a one-time token that is sent along in every websocket call to the Daemon."
+sidebar_label: "Get websocket token"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVU1v3EYM/SsEL2kBddd1c9ItQFIjPRRB6zQHew+0xF1NPJpRhtRu1YX+e8GZ9XrtdYAecmiBnjQafgzJRz7uMQ6cSF0M71uskQZXN95x0Fo4bTktdoIVtixNcoOpYY1XHMyGBQhi4B/U9Qwa7zmAdqTgBISDAvkYNuAC8JbTBDu+k9jcs0JD3oNG0I7hLXEfw+I2XHdOzJRA3CZwC798ui7+HtXsGGAUFjPfcnLrKYtH4fRKwLUc1OlUAYX2NpD3cScwZu0mBnVhJO8nSBx4B2ovlrgptEDb6NrsSaAnF5RccGEDwiIuBoFdimHjp+o2kMCOvQcS4CBj4hLoIYoY/AQDp3VMPVCj2Vg7nl4lhhwTt6BxgRUqbQTrG/z0UBtcVThQop6Vk4n2GKhnrLHggRU6w2Ag7bDCxF9Gl7jFWtPIz4G67hiKGXz8+P4tVihNxz1hvUedhuxVkwsbnOeVOZMhBmEx+eXFhX2eOsQKrYwc1GQ0DN41uXmWn8UU9ucPxLvP3ChWOCRrNXXFfUv6D7QyOC9EW+GhWi8kclqUm4OHo/7quTzHsZpnu3998dN5ym9G7WJyf+U0gVOK6dtVoWcR2vB5Gs+RfGfvQtxy2jreLc7SfHB0zOT1eSa/RoV1HEP7H4j/8vI8/j/Iu/ZfAIOc5lFhjkVeeuRZI0HLSs5zCycCiGtgajpYO/ZtoZF10doe8zWmoLZ1dib/4emIlEcpJZqMHJR7eWksvlbxYwK59HOFPWsXbRdsOFfKiKbGZeERWe7LYV4e6dymqwgzXY3JY42d6iD1cjmwoRIWyqJLGtyybBc0vhFuxuR0ymZmgPXN6lTwu+FX0iziY1r590Bn9n/HlDI5lsPPMfWkRliWkQvrmG2delP+UGLCCi3ogs6PiwsDc4iiPeXmOdDuFevJ5nqgkyfQ7h/78P/d+A13Y4Fa+U9dDp5cMIByd+0PXXlzbLwK6+N+3J3u0i6KmuJ+f0fCH5OfZ7v+MnKyvltVuKXk6M4a42aPrRM7t1ivycvzhXoK9He/HYbpezhfsy+G/jCpweZ0S37kslHveXpc7/NqrrBjajnlgIrwTdPwoCdmZ2xnY3Oc3Kt31zjPfwNoSHeT
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get websocket token"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}/websocket"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generates a one-time token that is sent along in every websocket call to the Daemon.
+This is a signed JWT that the Daemon then uses to verify the user's identity, and
+allows us to continually renew this token and avoid users maintaining sessions wrongly,
+as well as ensure that user's only perform actions they're allowed to.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"object","properties":{"token":{"type":"string"},"socket":{"type":"string"}},"required":["token","socket"]}},"required":["data"]}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
