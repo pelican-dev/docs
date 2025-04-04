@@ -106,59 +106,6 @@ docker compose down -v
 
 ## Advanced Options
 
-### Redis
-
-You can deploy a Redis container in the same `compose.yml` file for easy setup. This example starts a Redis container and auto-populates the Redis configuration, cache, session and queue options in the web installer to use it.
-
-Once you use the web installer, changes to the highlighted environment variables will not apply, and those lines can be deleted from the `compose.yml` file.
-
-
-```yml title="compose.yml"
-services:
-  redis:
-    image: redis:latest
-    restart: always
-    networks:
-      - default
-
-  panel:
-    image: ghcr.io/pelican-dev/panel:latest
-    depends_on:
-      - redis
-    restart: always
-    networks:
-      - default
-    ports:
-      - "80:80"
-      - "443:443"
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    volumes:
-      - pelican-data:/pelican-data
-      - pelican-logs:/var/www/html/storage/logs
-    environment:
-      XDG_DATA_HOME: /pelican-data
-      # highlight-start
-      CACHE_STORE: redis
-      SESSION_DRIVER: redis
-      QUEUE_CONNECTION: redis
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      # highlight-end
-      APP_URL: "http://localhost"
-      ADMIN_EMAIL: "USEYOUROWNEMAILHERE@example.com"
-
-volumes:
-  pelican-data:
-  pelican-logs:
-
-networks:
-  default:
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16
-```
-
 ### Custom Caddyfile
 
 The default Caddyfile will work for standard installations. If you need to edit the configuration of the integrated webserver, such as to place it behind a reverse proxy that terminates TLS, you can do so by bind-mounting a Caddyfile on the host to `/etc/caddy/Caddyfile` inside the container.
