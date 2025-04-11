@@ -167,6 +167,7 @@ fi
 echo "Optimizing"
 php artisan optimize:clear
 php artisan filament:optimize
+php artisan storage:link
 
 echo "Updating database"
 php artisan migrate --seed --force

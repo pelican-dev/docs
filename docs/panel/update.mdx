@@ -74,6 +74,12 @@ sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
     Even though composer might tell you that you have outdated dependencies, do **not** run `composer update`!
 </Admonition>
 
+### Link Storage
+
+```sh
+php artisan storage:link
+```
+
 ### Clear Compiled Template Cache
 
 You'll also want to clear the compiled template cache to ensure that new and modified templates show up correctly for
