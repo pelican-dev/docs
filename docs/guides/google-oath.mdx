@@ -1,0 +1,33 @@
+import Admonition from '@theme/Admonition';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Setting up Google OAuth login.
+
+This guide will help you with setting up Google OAuth on your panel.
+
+# Creating OAuth client ID and secret on Google Cloud.
+
+First, you need to generate the authentication for the OAuth.
+
+1. Go to [Google Cloud](https://console.cloud.google.com/) and create a project, pick a name you can remember so if you need to generate credentials again you know where it's at.
+2. Go to **API's and services** and select credentials.
+3. On the top of the window click **Create credentials** and then **OAuth client ID**.
+4. Select the **Application Type** and select **Web Application**.
+5. On the bottom of the page add a redirection URI: https://yourpanel.com/auth/oauth/callback/google
+6. Click on save at the bottom and don't close the popup, it contains your client ID and client Secret.
+7. Go to your Pelican admin panel > Settings > OAuth > Google > Enable.
+8. Put your Client ID we created earlier in Client ID and your Client secret in Client secret.
+9. Save your changes.
+Enjoy!
+
+# Troubleshooting
+
+## Error 400
+Please make sure that you put the redirection URI correctly.
+
+## Other issue's
+If you encounter any other issue, please ask about it in the Pelican Discord!
+
+
+
