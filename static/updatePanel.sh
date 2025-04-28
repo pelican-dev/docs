@@ -168,6 +168,9 @@ echo "Optimizing"
 php artisan optimize:clear
 php artisan filament:optimize
 
+echo "Creating storage symlinks"
+php artisan storage:link
+
 echo "Updating database"
 php artisan migrate --seed --force
 
