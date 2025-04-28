@@ -1,0 +1,140 @@
+# Easypanel
+
+Pelican Panel is available as a pre-built Docker image through GitHub Packages. You can use either `ghcr.io/pelican-dev/panel:latest` for the latest stable release or `ghcr.io/pelican-dev/panel:main` which is automatically built from the main branch. This guide will walk you through deploying Pelican Panel using EasyPanel's custom service templates.
+
+## Basic Setup with SQLite
+
+For a basic setup using SQLite as the database, you can use the following service template:
+
+```json
+{
+  "services": [
+    {
+      "type": "app",
+      "data": {
+        "serviceName": "panel",
+        "source": {
+          "type": "image",
+          "image": "ghcr.io/pelican-dev/panel:latest"
+        },
+        "env": "XDG_DATA_HOME: /pelican-data\nAPP_URL: \"https://$(EASYPANEL_DOMAIN)\"\nCADDY_URL: \"http://$(EASYPANEL_DOMAIN)\"",
+        "domains": [
+          {
+            "host": "$(EASYPANEL_DOMAIN)",
+            "port": 80
+          }
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "name": "pelican-data",
+            "mountPath": "/pelican-data"
+          },
+          {
+            "type": "volume",
+            "name": "pelican-logs",
+            "mountPath": "/var/www/html/storage/logs"
+          },
+          {
+            "type": "file",
+            "content": "{\n    admin off\n    auto_https off\n}\n\n{$CADDY_URL} {\n    root * /var/www/html/public\n    encode gzip\n\n    php_fastcgi 127.0.0.1:9000\n    file_server\n}",
+            "mountPath": "/etc/caddy/Caddyfile"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+## Advanced Setup with MariaDB and Redis
+
+For a more advanced setup using MariaDB and Redis, use this template:
+
+```json
+{
+  "services": [
+    {
+      "type": "app",
+      "data": {
+        "serviceName": "panel",
+        "source": {
+          "type": "image",
+          "image": "ghcr.io/pelican-dev/panel:latest"
+        },
+        "env": "XDG_DATA_HOME: /pelican-data\nAPP_URL: \"https://$(EASYPANEL_DOMAIN)\"\nCADDY_URL: \"http://$(EASYPANEL_DOMAIN)\"",
+        "domains": [
+          {
+            "host": "$(EASYPANEL_DOMAIN)",
+            "port": 80
+          }
+        ],
+        "mounts": [
+          {
+            "type": "volume",
+            "name": "pelican-data",
+            "mountPath": "/pelican-data"
+          },
+          {
+            "type": "volume",
+            "name": "pelican-logs",
+            "mountPath": "/var/www/html/storage/logs"
+          },
+          {
+            "type": "file",
+            "content": "{\n    admin off\n    auto_https off\n}\n\n{$CADDY_URL} {\n    root * /var/www/html/public\n    encode gzip\n\n    php_fastcgi 127.0.0.1:9000\n    file_server\n}",
+            "mountPath": "/etc/caddy/Caddyfile"
+          }
+        ]
+      }
+    },
+    {
+      "type": "mariadb",
+      "data": {
+        "serviceName": "panel-db",
+        "password": "51e2a4d6e98b7c57f9b6"
+      }
+    },
+    {
+      "type": "redis",
+      "data": {
+        "serviceName": "panel-redis",
+        "password": "69cbf211602afa32e194"
+      }
+    }
+  ]
+}
+```
+
+## Installation Steps
+
+1. In EasyPanel, create a new service using the `Create From Schema` option at the bottom of creating a new service
+2. Paste either the basic or advanced template JSON
+3. Click create to deploy panel
+
+## Updating Domain Configuration
+
+If you need to update your domain after initial deployment:
+
+1. Update the domain in EasyPanel's domain settings
+2. Update the environment variables in your service configuration:
+    ```env
+    APP_URL: "https://panel.example.com"
+    CADDY_URL: "http://panel.example.com"
+    ```
+   Note: Keep `CADDY_URL` as `http://` since EasyPanel handles SSL certificates and reverse proxy
+3. Redeploy the service to apply the changes
+
+## Post-Installation
+
+After deployment:
+
+1. Access the installer at `https://panel.example.com/installer`
+2. Complete the installation process
+3. For the advanced setup, configure the following in the panel settings:
+   - Database: Use the MariaDB credentials
+   - Cache and Queue: Use the Redis credentials
+
+:::note
+The first time the container starts after installing or updating, it will apply database migrations, which may take a few minutes. The panel will not be accessible during this process.
+:::
