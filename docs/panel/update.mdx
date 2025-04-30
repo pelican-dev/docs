@@ -42,7 +42,7 @@ Proceeds to download the latest release, extracts to install directory, Sets som
 If you do not wish to use the script and wish to do it manually, You can delete everything except the `.env` and the sqlite database file, if using sqlite. then follow the standard update process below. 
 
 ```sh
-sudo bash <(curl -s https://pelican.dev/updatePanel.sh)
+sudo bash -c "$(curl -fsSL https://pelican.dev/updatePanel.sh)"
 ```
 
 </Admonition>
@@ -73,6 +73,12 @@ sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 <Admonition type="info">
     Even though composer might tell you that you have outdated dependencies, do **not** run `composer update`!
 </Admonition>
+
+### Create storage symlinks
+
+```sh
+php artisan storage:link
+```
 
 ### Clear Compiled Template Cache
 

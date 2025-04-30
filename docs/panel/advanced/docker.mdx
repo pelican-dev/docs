@@ -143,3 +143,44 @@ networks:
       config:
         - subnet: 172.20.0.0/16
 ```
+
+An example Caddyfile for hosting the panel behind a reverse proxy is shown below. It exposes the panel on port 80 regardless of the Host header, and will not attempt to obtain a TLS certificate. `[UPSTREAM IP]` must be replaced with the IP address of the reverse proxy.
+
+```caddyfile title="Caddyfile"
+{
+    admin off
+    servers {
+        trusted_proxies static [UPSTREAM IP]
+    }
+}
+
+:80 {
+    root * /var/www/html/public
+    encode gzip
+
+    php_fastcgi 127.0.0.1:9000
+    file_server
+}
+```
+
+:::info
+    **Note:** If the trusted directive is not set or improperly configured, file uploads will fail. Commonly, when the reverse proxy is running outside of Docker, the IP address will not match `127.0.0.1`, but will instead match a Docker bridge interface or `docker0`.
+:::
+
+#### Raising file upload limits
+
+The default file upload limit is 2MB. To raise this limit, modify the `Caddyfile` file as such:
+
+```caddyfile {6-9} title="Caddyfile"
+<domain> {
+    ...
+
+    encode gzip
+
+    php_fastcgi 127.0.0.1:9000 {
+        env PHP_VALUE "upload_max_filesize = 256M
+                       post_max_size = 256M"
+    }
+    file_server
+}
+```
