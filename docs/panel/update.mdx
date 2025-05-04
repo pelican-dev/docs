@@ -14,9 +14,9 @@ is required for it to run.
 Please see the chart below for how these versions line up. In
 most cases your base Wings version should match that of your Panel.
 
-| Panel Version | Wings Version  | Supported | PHP Version  |
-| :-----------: | :------------: | :-------: | :----------: |
-| 1.x           | 1.x            | ✅︎        | 8.2/ 8.3     |
+| Panel Version | Wings Version | Supported | PHP Version |
+|:-------------:|:-------------:|:---------:|:-----------:|
+|      1.x      |      1.x      |    ✅︎     | 8.2/8.3/8.4 |
 
 ### Enter Maintenance Mode
 
@@ -32,7 +32,7 @@ php artisan down
    If you are updating from < 1.0.0-beta13. Please use the below script! This will ensure all the recently deleted files are removed.
 
 Note: this script is experimental... IT WILL NOT CREATE A MYSQL DUMP FOR YOUR DATABASE!
-Note Note: This script runs all the below commands for you. 
+Note: This script runs all the below commands for you. 
 
 What the script does, is looks for `.env`, and if it exists pulls `DB_CONNECTION` to see if you are using mysql/mariadb/sqlite, if sqlite it will copy the database.sqlite to a backup folder
 along with the env. Once they're copied to the backup folder it will delete everything except the backup folder in the specified install directory. 
@@ -42,7 +42,7 @@ Proceeds to download the latest release, extracts to install directory, Sets som
 If you do not wish to use the script and wish to do it manually, You can delete everything except the `.env` and the sqlite database file, if using sqlite. then follow the standard update process below. 
 
 ```sh
-sudo bash <(curl -s https://pelican.dev/updatePanel.sh)
+sudo bash -c "$(curl -fsSL https://pelican.dev/updatePanel.sh)"
 ```
 
 </Admonition>
@@ -67,12 +67,18 @@ sudo chmod -R 755 storage/* bootstrap/cache
 ### Update Dependencies
 
 ```sh
-composer install --no-dev --optimize-autoloader
+sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 ```
 
 <Admonition type="info">
     Even though composer might tell you that you have outdated dependencies, do **not** run `composer update`!
 </Admonition>
+
+### Create storage symlinks
+
+```sh
+php artisan storage:link
+```
 
 ### Clear Compiled Template Cache
 

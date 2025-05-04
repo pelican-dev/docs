@@ -29,11 +29,12 @@ const sidebars: SidebarsConfig = {
           type: "category",
           label: "Advanced",
           items: [
-            "panel/advanced/redis",
-            "panel/advanced/mysql",
-            "panel/advanced/artisan",
-          ],
-        },
+              'panel/advanced/redis',
+              'panel/advanced/mysql',
+              'panel/advanced/artisan',
+              'panel/advanced/docker',
+          ]
+        }
       ],
     },
     {
@@ -42,15 +43,9 @@ const sidebars: SidebarsConfig = {
       items: ["wings/install", "wings/optional-config", "wings/update"],
     },
     {
-      type: "category",
-      label: "Guides",
-      items: [
-        "guides/mounts",
-        "guides/ssl",
-        "guides/php-upgrade",
-        "guides/database-hosts",
-        "guides/uninstalling",
-      ],
+      type: 'category',
+      label: 'Guides',
+      items: ['guides/docker', 'guides/mounts', 'guides/ssl', 'guides/php-upgrade', 'guides/database-hosts', 'guides/uninstalling', 'guides/easypanel',],
     },
     "troubleshooting",
     "comparison",
