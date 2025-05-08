@@ -1,0 +1,71 @@
+---
+id: api-client-server-activity
+title: "List activity logs"
+description: "Returns the activity logs for a server."
+sidebar_label: "List activity logs"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v00AQ/SurOYG0ikMoF98qUVClClWl5RJFaGJP4i22d7s7DgTL/x3N2jH5aiU4wSl2ZmbnvTezzy1YRx7Z2Po6hxTQmTQrDdWcBvIb8hPM2GwMb0FDTiHzxkkypHBH3Pg6KC5I7ZJUaddBraxXqIZ60MC4DpDO4XLIurFrWGhw6LEiJi/BFmqsCFLoy0CDkSYOuQANnp4a4ymHlH1Dx0juCxq6qYeH6/egIWQFVQhpC7x18VT2pl5D1+mxkSP/1eGadq2eGvLbl2ql7QqbkiGF2TvoFoIrOFsHCpI+m07l5xAbaMhszVSzxNC50mRR7uQxSEL7Atau03AxfXt66GXDhfXmZzxIkffW/0Ufu3ykjEGD87IEbHoaFYUgspwAOpb9SvoquyG/MfR9IuLuDWo+HrTYMbk4ZfLJslrZps7/A/yz2Sn+L1ia/B8YQ9jnoSFiCeeaHC2SyonRlJSrvYCyK0WYFWplqMwVF8hq1WdtRr5ysTHPjTxjeXuAfWiK3qPcKMNUhecW/JziI4EofaehIi6s+NOaolLiCikk/aUPSds/dMmeWQ2xaC2NLyGFgtmFNEkcyVDqCVPgBJ1JesOLFzpQ1ng5QMqkANL5Yj/wWcbXs+zDI6v4OtiHvC8JfTSy/uGD9RWKdcQ9M/XKxlrDpSTf9phAg4Duh/NmMpVZOhu4wrg7g3PdmMCHlns82Pb3Fv6JT/dEmH5w4ko0tbSP2rWD5PNRVg3p6NSj6gsNhQ0seW27xEAPvuw6+bs3VxE1NwGXpcx7hWUgDd9oe+jGGywbikIt5MUbyT9f+yzpV3fDWr1Wp1+Hszx3O1tv9yHs4A1cu0WnoSDMyUdAffAyy8jxXtnJvRcm4w5/vLqHrvsFrmeW4Q==
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List activity logs"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}/activity"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns the activity logs for a server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"per_page","in":"query","schema":{"type":"string"},"default":"25"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

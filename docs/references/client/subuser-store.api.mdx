@@ -1,0 +1,71 @@
+---
+id: subuser-store
+title: "Create subuser"
+description: "Create a new subuser for the given server."
+sidebar_label: "Create subuser"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU2T0zAM/SsenWDGNMvCKSeWrxkusMPucunkoCZqY0hiYytdSib/nZGddrPtwgAn6KVOZEnvScrTANaRRza2e1dBDqFf9YH8IrD1BBoqCqU3TuyQwytPyKRQdXSrpqtqbb3imtTGbKlTgfyW/AI0MG4C5Eu4Sveg0ODQY0tMXgwDdNiS5IwuoMFIDodcgwZPX3vjqYKcfU/HQK5rmjKpm5t3r0FDKGtqEfIBeOdiVPam28A4FikYBX5pq53cKG3H1LEc0bnGlJF/9jlI7OE0lF19ppJBg/NSLTYUxEotmuY0o4a19S0y5NONUYMj35oQjO3CzAG9x53wZmrDQ9DHeR2WU7j70Ypxuhac7UICdn52Jn/3Swb6j3nf4Rg1PD97dhr0oufaevM9BlLkvfV/kecn9W0pBNzQQxW+j+KN5FV2S35r6HYBx3XbByr2TJ6fMnlvWa1t31X/Af7z81P8n7Ax1T/QhjDnoSFiCQ8lORokVRGjaahSM4Oya0VY1mptqKkU18hqnW5tD3xFa7CqjJyxubyH/bc/tJ9U/EAgln7U0BLXVoTS2RBLJWqVQ5bEKGRDOoyZSF4QXUqGqHe9byCHmtmFPMscSUu6BVPgDJ3JysZIu0SwApW9N7yLbuIA+bKYG66keYljMh84xcdJD+V5ReijuqbD2702xSmTWfh4J45vvmHrGpqJGwiPF5TeL0rbHslPvtwXsRhFwNc2QjEsUeAyUQQNUoPU6aeLs6iINnCLcRCnNTAtl2mtHE/ITLX/cA2lsjB948w1aDrJHjsxTN1bHpqkIT8so9TAQkMtnc6XMAwrDHTjm3GU11978tKfQsMWvcGVMF4OUJkg5wryNTbheHPNaTz6OE3cY3W6zx6EvR/nToZ5i01PSdi/0O5uj47SiZqwIh8BJeOrlPbJtYS4cz4RhlHvPS7Kkhz/8m4x+yAuP1xdy5RNO7a1lfh4vJVljrcJqI1liGMb3w3QYLfpo7xAiim/Hwuq+6M=
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create subuser"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/users"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new subuser for the given server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"email":{"type":"string","format":"email"},"permissions":{"type":"array","items":{"type":"string"}}},"required":["email","permissions"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

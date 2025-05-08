@@ -1,0 +1,71 @@
+---
+id: application-mounts-view
+title: "View mount"
+description: "Return data for a single instance of a mount."
+sidebar_label: "View mount"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVT1v2zAQ/SvETS1AWG6aSVuApkWGFkGaZjE8nMWTxVQiGfLk1BX034uTbEe206Gd2kkkj7x77z6eOvCBIrL17sZADhhCbYthP2t86zjNNpaeQYOhVEQbxAI53BG30SmDjKr0UaFK1q1rUtYlRleQ8qVCNbiYgQbGdYJ8AZ/lAJYaAkZsiCnKcQcOG4IchvugwUqMgFyBhkhPrY1kIOfY0imQ+4rGKOrmA2hIRUUNQt4Bb4N4tI5pTRH6fimuUvAuUZILF/O5fI7dgYbCOybHYptkI3tMcqE7j5A4WreGvu97DZfz9+dOr1qufLQ/B0eKYvTxL+L41SMVkpwQpWZsRxoNpYRrOgd0mqlriav8hqJUdAYC9yW3i4Oj5Z7J5TmTL55V6Vtn/gP8Fxfn+B+wtuYfKEOa8tAwYEmvBTlpJGWI0dZk1MQgo0ZYVKq0VBvFFbIqx1ubA18ZQjTGyhrr2yPsu6AYI25l+Jia9LsGfy3jBwJD6nsNDXHlRU7WNGRKBjmHbBSUrBu+vUwrxc1eAdpYQw4Vc0h5lgWSSrgZU+IMg80mtQEZ5URFGy1vh7fyCvLFcmr4KoUb+Y3mA59hu5MK2a8II0krjIuPPjbIogVCxbrSD28t13L5dgQGGgT5WJZ3s7lUMfjEDQ5ds5OzB0vPaq9pR6XsXvruz7V0pMH0g7NQo3USfEhft0v1YhTSBBryZq+4lU8spq5bYaJvse57OX5qKUoWlxo2GC2uhOaiA2OTrA3kJdbpVHen+N/c7XrirTpR41eR7rvNSa9tsG5p1N3vtD38Afplr6EiNBQHMKPtqigo8OTV2cBKAxya79P1PfT9L0TMYtU=
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View mount"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/mounts/{mount}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return data for a single instance of a mount.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"mount","in":"path","required":true,"description":"The mount ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

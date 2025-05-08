@@ -1,0 +1,63 @@
+---
+id: application-eggs-eggs
+title: "List eggs"
+description: "Return all eggs"
+sidebar_label: "List eggs"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVD2TmzAQ/SvM1hrjOKnoUjiZzKS4yVfjoVjDGnQRSLdaSByG/55Z4Tj22dekSgNa9vO9t2ICH4hRrO8/1FAAhuBslewVNU1MDzBQU6zYBv0OBXwiGbjP0Lns5BdsIhQ72DYNlAaYYvB9pAjFBJv1Wl/XJcBA5XuhXtR30TZ/jBowQaxa6lBPcgwEBURh2zcwz/Ns4M369W3Rt4O0nu2vVCgjZs//0MfvH6kSMBBYyRG7wOgoRmzodqDn7Gy1b+ZH4tHSjxXouExPg2WqlaM/hcoTks3mFsk3dLb+D2DESxwG0izxXpNnQmQ1CVpHdXbhyPwhI6za7GDJ1Zm0KNlhiRrPeFdgAOva6hndw9Xsp6bIjEcwYIW6+NKC3GP8DCBRPxvoSFqve99QYgqlhQLy01JH4pEU7m6CgR0U0IqEWOR5IOW/XwlFyTHY/EIRmEtNrQa2cky5mgXFrrx0fFa5FlSL+4wimWbRU+09IZMuwHJ457lD0RukAGx/8CnXitPgh2UwMKCTL2K8Wq1Vu+CjdJh2pcdU+aONkt274NPfZbt315c5hX5KHhzaXqsnfqYTgztIoaWB1kdRe5r2GOkru3nWz08DsXJTGhiRLe51+F05G2gJa+JE23c66ipVFQUVZ0Q30PUvall+pfUs5PvtF5jn3+trrU4=
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List eggs"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/eggs"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return all eggs
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

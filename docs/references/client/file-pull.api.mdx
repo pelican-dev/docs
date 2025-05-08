@@ -1,0 +1,71 @@
+---
+id: file-pull
+title: "Pull remote file"
+description: "Requests that a file be downloaded from a remote location by daemon."
+sidebar_label: "Pull remote file"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVk2P2zYQ/SvEnBqAsbabnHRL2wTIpV1sdnsRjGIsjiymlMglKW9cQf+9GFK2FdsJkCCH+GIuh/P15vnNjmAdeYza9u8VlNBoQys3GAMSFIXaa8c2KOGengYKMYjYYhQo+KXYkFD2uTcWFSnReNsJFJ46G0kYW6e4YrMXCqmz/QokRNwGKCt4pw3BWoJDjx1F8nw7Qo8dQQmB/I48SNCc2mFsQYKnp0F7UlBGP9B5fQ8tiewmHh/f/wESQt1Sh1COEPcuRY1e91uYpnUORiH+ZtWeX9S2j9RHPqJzRufSi4+BY4+XoezmI9URJDjPAEZNga2DN1fySVDaUx2t35+s1cEsoWe815NM6GcEvvZqCPRPS6jIL3JtrDWEPSdrrKett0OvrtmnJZBVqng9Tfk6ONuH3MntzQ1/fY4xyG8G6og5Z3h98+oy6Jshttbr/zJZyHvrvyPPFwbSUQi4pcuCzunzlvMKuyO/0/S8usDpEGh96OT1ZSd/2iiahPvPX//t7WX9f6PR6icYQ1j2ISHVEq4lOSOSUBRRG1JiYRC2EYR1KxpNRmX1avKr3bFfViZUSvMZzd1ntc9J0XvcsyJF6sKXCH4N8WMDCfpJQkextSy2zoYEFctbCUVWr1CM+TAVLAehmNV4tiaVTDIDbYwulEXhiOfSryKFWKDTRW00z4xlLlA9eB33yY0doKzWS8MHnmBuNJuPjaU/ZxVNCkLokybnwzvrO4wsCtwTE+L+JKlvP2HnDB0l8TTupXhlGV/KFd9MrPqNTZXoyEHgLncIEhiCPO1fVzdMDsaww0TGeXfcDcYcdhAjeM6Thdj/sKWWEYv0KRbOoE4yPO+CPN3qOD8J5XG7pQEzA5K0S2iZEGUF47jBQI/eTBNfPw3Em6NaS9ih17hhUKoRlA58VlA2aML5Rlz2+cv9TMwX4nJPXq3+wPqeOb9DM1DW/39pf9rPE6+jwzSrcTb+ntO+fOAQJ+cL/ZjkweNNXZOLX327Xvxu7v768MA8nHd3ZxX7eHzmfxLwORdqEwyJ2OluBIP9dkgqBDkmf/4HLJQgRw==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Pull remote file"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/files/pull"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Requests that a file be downloaded from a remote location by daemon.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"url":{"type":"string"},"directory":{"type":["string","null"]},"filename":{"type":["string","null"]},"use_header":{"type":"boolean"},"foreground":{"type":"boolean"}},"required":["url"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

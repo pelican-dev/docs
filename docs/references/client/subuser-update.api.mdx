@@ -1,0 +1,71 @@
+---
+id: subuser-update
+title: "Update subuser"
+description: "Update a given subuser in the system for the server."
+sidebar_label: "Update subuser"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVsFu2zAM/RWBpw3w4qzrybdu64BetqJtdglyYCwmVmdbqiSnzQz/+0DJSdy43daetlwsiRTJR1KPaUEbsuiVri8kZOCaZePIThoj0RMkIMnlVhlWgAxm4VigWKsN1aLXFqoWviDhts5TJVbaxi3ZDdkJJOBx7SCbw3XUh0UCBi1W5MmyoIUaK2L34QokoNibQV9AApbuGmVJQuZtQ8ch3ew9idns4jMk4PKCKoSsBb81waq3ql5D1yV7RyGMl7oJWP/oZBFNkfMftdyyRq5rT7XnJRpTqjzkO711bLkdm9LLW8o9JGAsV8crciw1ZCvlnNK1GyijtbhlKJ4q91Q83RDa/JGVRdeLndG1i15OplP+PEYPyYtBHPx3CZxOP4yNnjW+0Fb9DIYEWavtK/w8k6yKnMM1jQM6Luw5+xV6Q3aj6H4Cx/naGVrskJyOkXzVXqx0U8v/IP6Tk3H837FU8h8ogxviSCDE4p5yctRIQpJHVZIUA4HQK0GYF2KlqJTCF+jFKmpt9niZnVBKxWssLx/F/tcP7JmM7wGE1HcJVOQLzSxrtAupYuLJII305dI2LrqUicalLX865pooD0TZ2BIyKLw3LktTQ1yZeuLJ+RSNSvNScdWYhBzljVV+G67xBcjmi6HgmmsYoUbxHlrY9hzH+yWhDXwZF1+0rdAzLTAqbomrA+GdP2BlShoR1nyXsEXHvLvSwZ/yrAqXEQckwEBjVd9PptwEnKsKQ9P13N0PoX74HHfDgG5fPa5iFjw9+NSUqGqOIyS+7Ws239ckgWw/tELZ+GQ35AquczaHtl2io5ktu46P7xqyXJZFAhu0Cpecg3kLUjleS8hWWLrjETQE9uaq77e3Yjz/ngx/18w1t/IGy4Yirf+g7WHu8oB8dRDD6fiKEELOOm6OglCSDRmJok/R5bsbNnC4OuIlDj/eOMtzMv63uovBe7z8dn3D3d3P60pLvmPxnv8W4H0MU4cUhOcSzloosV43gd0g2uTfL8JaOxw=
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update subuser"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/users/{user}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update a given subuser in the system for the server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"user","in":"path","required":true,"description":"The user UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"permissions":{"type":"array","items":{"type":"string"}}},"required":["permissions"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

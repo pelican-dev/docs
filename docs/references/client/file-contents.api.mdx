@@ -1,0 +1,71 @@
+---
+id: file-contents
+title: "View file"
+description: "Return the contents of a specified file for the user."
+sidebar_label: "View file"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVcFu2zAM/RWBpw0w4qzrybcBa4dehqJrewlyUG06VidbKkWnywz/+0DZcd0k3aGn7RTJpMjHR/KlA+eRNBvXXBWQQWksLnLXMDYcIIECQ07Gix0yuEFuqVFcodr7KFcqrYLH3JQGCyUBVOkoOrUBaQEJsN4EyFZwaSzCOgGvSdfISPK1g0bXCBkEpC0SJGAkl9dcQQKET60hLCBjavEQ0G2Fanim7u6uvkICIa+w1pB1wDsfozKZZgN9n0yJBOM+zVOLtDuR5+04a3EO3jUBg9jPlkv5eQ0MEhgZEpv23po8spw+BnHo/pKg7xM4X34+Dvql5cqR+R0DKSRy9I487uERc4YEPEnv2Qxl1BiC3uAxoEPOLySvclukrcHnhTA7Y281BVrvKzk/ruS7Y1W6tin+A/xnZ8f477U1xT/QhjCvI4GIJZxKcjBIqkDWxmKhZgZZZdR5pUqDtlBcaVbl4LWd6pV11kVh5Kzt9SvsY1JNpGWlDGMd3hrwU4xPBUTq+wRq5MqJLG0wMiWSkEE6bHxIu+HQp7LQIZ3J1ugR1aUlCxlUzD5kaepRWtMsGAOn2ps0t0baJmsdMG/J8C4+kweQrdZzww9p4lDrYJ5qi9dRNeT+gJqilg2HS0e1ZtEFKcs0pYtvDVtxvh4wQQICemjRp8VSOupd4FrHCRrF697gsxoV7FVXu5cRfL9QD9Uw/uLUW20awRAJ7Eb2VxO3CWSTYscGvCxBEJGvXGDx77oHHfCObN/L50FwheHCBP1gZQRKbcOhts/L+XAzTstH9RbIn7h7Ufatti1GttdyISN53p/z+F/mJIT9+De7OYQ9tJGrft0nUKEukCKgwfglz9Hz7NmRhEgl0zp8u7iFvv8DLkWsMQ==
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View file"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}/files/contents"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return the contents of a specified file for the user.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"file","in":"query","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
