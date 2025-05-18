@@ -1,0 +1,71 @@
+---
+id: database-store
+title: "Create database"
+description: "Create a new database for the given server and return it.⚠️Cannot generate request documentation: Call to a member function parameter() on null"
+sidebar_label: "Create database"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVc1u00AQfpXVnFppFYfSk29VC1IvUNGWS5TDxB7HW9a77u44pVh+Bu6ceAyehxfgFdDYiZMmhQOncvLaMzvzffPzuQVfU0A23l3mkEKOjAuMNInsA4GGnGIWTC0OkMJ5IGRSqBw9qI2vKnxQXJJamhU5FSmsKCh0uQrETXDK8OTnt++/fnw9R+c8qyU5yUkq0H1DkVXus6Yixz2OVJ2jtYq9QlVRtaCgisZlYlI1BqyIKRwdK++Ua6wFDYzLCOkMLtaAYK5h9BRLCw4rghQGbKDBCJsauQQNgsIEyiHl0NA+5ZuSNpRuby8vQEPMSqoQ0hb4se6jcjBuCV03l2Cx9i5SFPvJdCqPpwFBQ+Ydk2OxYV1bk/XEk7soDu1fEnSdhtPp68OgZw2XPpgvfSBFIfjwD3n84o4yBg11kLFgM9CoKEZc0iGg/Vq9kbzKryisDD1MQOBuqzsbA803TE4PmbzzrArfuPw/wH9ycoj/I1qTv4A2xF0eGnos8bkke4OkcmI0lnK1Y1C+UIRZqQpDNldcIqti8FqNfCegAfPcyBnt1RPs66QYAj7K+jFV8U8D/lzFRwJ96TsNFXHpRbFqH/tSyS6nkAyrGpN2OHTJRqWibO5g7BWhCRZSKJnrmCZJTdIWN2GKnGBtkswaaZmsdKSsCYYf+2tyAdLZfNdwLQ0ceA7mkVf/ulYMeV8Qhl5/hsNbHypk0QShZFzh+7uGrThfDZhAg4Ae2vNqMpVuCukK++lZK9tamTds9/vabofwpYr4UDGmz5zUFo0Tnn2T2nVzZ2P/NKSjkm/7O9dQyjCkM2hb+XQbbNfJ5/uGgrRvrmGFweBC6jtrITdRzjmkBdq4L/27NTv6sB7KY3X4Q3gW+mbincz7Cm1Dg/Z/osftj6ibdxpKwpxCD2gwnmUZ1bxz7UA1ZPrGDbh6f30DXfcb4wy8Mg==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create database"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/databases"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new database for the given server and return it.⚠️Cannot generate request documentation: Call to a member function parameter() on null
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

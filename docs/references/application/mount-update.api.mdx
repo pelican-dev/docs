@@ -1,0 +1,71 @@
+---
+id: mount-update
+title: "Update mount"
+description: "Update an existing mount on the Panel.⚠️Cannot generate request documentation: Call to a member function parameter() on null"
+sidebar_label: "Update mount"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVc1u00AQfpXVnFrJikPpybeqgOgBFEHLJcph4p3EW+zd7e44NFh+Bu6ceAyehxfgFdCskzRNyoVTOdnemZ35vvn53IHzFJCNs1caCmhca3nUeo1MkIGmWAbjxQwF3KRjhVbRvYls7FIlf+Ws4orUBC3Vo1/ff/z++e0SrXWslmQlPKlAdy1FVtqVbUOWU8pCXWJdK3YKVUPNnIJatLYUk/IYsCGmcHIq8W1b15AB4zJCMYV3khdmGezc5LgDiw1taUAGRmB75AoyEAQmkIaCQ0uH3K4r2pC5egUZxLKiBqHogNdeIhrLtKQAfT+TUNE7GymKw9l4LI/H4SCD0lkmy2JD72tTJsr5bRSH7jhD5GDsEvq+7zM4H788DnrRcuWC+ZoCKQrBhX/I4+a3VEpxfJDesxloNBQjLukY0GGlXkte5VYUVoa+jEDgPtR2ugs02zI5P2by3rFauNbq/wD/2dkx/k9YG/0M2hD3eWSQsMSnkhwMktLEaGrSas+g3EIRlpVaGKq14gpZLQav1Y7vCDJArY28Yz15hH2TFEPAtSwfUxP/NuBPVXxHIJW+z6AhrpweVriUHU6rXECeNjXmXXr2sq8UVlsNaEMNBVTMPhZ57kl6YUdMkXP0Jt/rDsgyRyrbYHid7sotKKazfcNHad3AcDDvGKXPjVjI95wwkAzD8PLGhQZZ1EDIGLtw6a7hWpwnAzDIQJAPjXkxGksfvYvcYJqbjaBtpHera4/a2T3M3rOQ6KE2TPec+xqNFUapJ92mf9NBnyNkUDRbIa9cZDF13Rwj3YS67+X4rqUgrZllsMJgcC61m3agTZR3DcUC63go5/slOfmwGbVTdSDyTyLdDrGVEV5h3dIg559pvfux9LM+g4pQU0hgBttFWZLnvVtHOiBTtZvpycX15Vvo+z9BMqKS
+sidebar_class_name: "patch api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update mount"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/mounts/{mount}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update an existing mount on the Panel.⚠️Cannot generate request documentation: Call to a member function parameter() on null
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"mount","in":"path","required":true,"description":"The mount ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

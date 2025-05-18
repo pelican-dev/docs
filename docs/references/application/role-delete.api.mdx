@@ -1,0 +1,71 @@
+---
+id: role-delete
+title: "Delete role"
+description: "Delete a role from the Panel."
+sidebar_label: "Delete role"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVE1v2zAM/SsCTxsgxFnXk28FmgEFhqHoul2CHBiLjtXJlirR2TLD/32g7aT56DBgp+1kWaTI9/jxOvCBIrL1zZ2BHKJ3NDPkiAk0GEpFtEGskMPtcK1QiZMqo68VV6TusSE3Aw2MmwT5Eh68I1hpCBixJqYotx00WNOUATRYiRiQK9AQ6bm1kQzkHFs6T/tY0Zjx7hY0pKKiGiHvgHdB4tmGaUMR+n4lkVLwTaIkDlfzuXxOo4GGwjdMDYsNQ3C2GOhnT0kcussMiaNtNtD3fa/hev7+MuhNy5WP9ucQSFGMPv5FHr9+ooJBQ4jSFLYjjZpSwg1dAjov1ELyKr+luLX0fQYC96W0y0Og1Z7J9SWTT55V6dvG/Af4r64u8X9FZ80/0IZ0zEPDgCW9luRskJQhRuvIqCOD8qUiLCpVWnJGcYWsytFre+ArG4jGWDmjuz/BPiXFGHEnu8dUp98N+GsVPxAYSt9rqIkrL3pxkIphlXPIZFNT1smnl3WluN0LQBsd5FAxh5RnWSBpRTNjSpxhsNlRc0B2OVHRRsu74a28gny5OjZ8ls6NBEfzgdDwO2mF/K8JI8ksjIcPPtbIIgbCxTalH95aduJ8PwIDDYJ87Mu72VzaGHziGoexmdRs0sRJ1E6a2b1M3p+lc8TN9IOz4NA2km2oVzdVdjkIZwINeZz0tfKJxdB1a0z0Jbq+l+vnlqIUbaVhi9HiWlgtOzA2ydlAXqJL5zJ7jPbNwzQDb9Wp+L4Kcz9cjYzWFl1Lo8x+o91e7vtVr6EiNBQHKKPppigo8NGji/WUbh9G7XbxcfG4gL7/BeHST10=
+sidebar_class_name: "delete api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete role"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/roles/{role}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a role from the Panel.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"role","in":"path","required":true,"description":"The role ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

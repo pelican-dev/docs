@@ -1,0 +1,71 @@
+---
+id: application-eggs-eggs-view
+title: "View egg"
+description: "Return a single egg that exists"
+sidebar_label: "View egg"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVE1v2zAM/SsCTxsgxFnXk28Flg29DEXX9RLkwNiMrM62VIlOmxn+7wOtNHWSDhh22i62JErke/x4PThPAdm69rqEHND72hbjfkbGxPTZWnoCDSXFIlgvRsjhlrgLrUIVbWtqUmSM4gpZ0bONHEEDo4mQL2FhDKw0eAzYEFOQwx5abAhyIGNAgxWPHrkCDYEeOxuohJxDR6dh76oU6voTaIhFRQ1C3gPvvHizLZOhAMOwEkfRuzZSlAsX87n8jp2BhsK1TC2LbUI+e4hyoT+PEDnY1sAwDIOGy/nHc6dXHVcu2J+jI0UhuPAXcdz6gQoGDT5IidgmGg3FiIbOAZ3maSFxldtSkOrNQOC+ZnZ5cLR6YXJ5zuSrY7VxXVv+B/gvLs7x32Nty3+gDHHKQ8OIJb4V5KSRVEmMtqZSTQzKbRRhUamNpbpMI7dJt7YHvjPQgGVpZY31zRH2fVAMAXcyekxN/F2Dv5XxA4Ex9YOGhrhyoh6GxkzJGOeQiXRkPRkzyKRS2L5MfhdqyKFi9jHPMk9ShXbGFDlDb7NJXUDGOFLRBcu78a28gny5mhq+SdESt2Q+cBm3e5mQ/ZowkLRBWnx2oUEWHRAatt248a3lWi7fJGCgQZCnknyYzaWC3kVucOyYvYzdW3pSScuOiti/dtyfKGaCzfTMma/RthJsTFe/T+tSBFOu5pRUtXKR5bjv1xjpe6iHQY4fOwqSsZWGLQaLa6G07KG0UdYl5Bus46m6TtG+u93X/r060tw3Mb70VCsdtcW6o6SuP2i31/hhNWioCEsKI5BkuSoK8jx5czaUUuhDg31Z3MEw/AJtQVBX
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"View egg"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/eggs/{egg}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return a single egg that exists
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"egg","in":"path","required":true,"description":"The egg ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

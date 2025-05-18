@@ -1,0 +1,71 @@
+---
+id: file-rename
+title: "Rename file"
+description: "Renames a file on the remote machine."
+sidebar_label: "Rename file"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVUtv2zAM/isCTxugxV23k297FdhlKLp2l8AH1mZqdbKlSXS6zPB/Hyjl1SR7nrZcIovPj6Q+juA8BWTj+vcNlLAwlmaBeuwINDQU62C8SKGEq3QdFSrRUq5X3JIK1Dkm1WHdmp5moIHxLkI5hwtjCSoNHgN2xBTkdoTku4RIYUkBNBjx7ZFb0BDoy2ACNVByGOgwgeuWVDZTNzfv34KGWLfUIZQj8MonrxxMfwfTVGVnFPm1a1aiUbueqWc5ovfW1Al1cR/F93jsyt3eU82gwQepERuKIg3O8U5rvomooR+shWrSqYZxzxGGgCsBytTFXwdgdwKPhkVw3Smg+0Wbi/FatZoOZSnzTXoiTvLoXR9z5POzM/l7XHTQf1y5bW4S4eXZi2OnrwZuXTDfkiNFIbjwF3F+UMCOYsQ7Ok7ocJ7eSVzllhSWhh5mR8XcOKo2SF4eI/ngWC3c0Df/Qf7n58f5f0Jrmn+gDXEfh4aUy8nHcjBIqiFGY6lRewLlFoqwbtXCkG0Ut8hqkbWWW7xCVdg0Rs5oLx+/wZ+/3EcDfqriWwCp9JOGjrh1QrB+SJUSuiuhyGwWizEfpiI9zmJLwGt54s0hWCihZfaxLApP0ph+xhS5QG+K2hppmhBfpHoIhlfJTAygnFf7go/Swow0i7fI0ueaV+X7ljAkls6HCxc6ZGEFASUTcbUj2XdfsfM2NXxNgfPMZrvGZxLb1k/Y0vSLTHiGxRYuMzDQIMhzl5/PzmQovIvcYRrC9RLJKynto8PR2CP8399cuQhMX7nwFk0vUVPdx3XL5tuWaCi3KyzDlVFIeVUaWhdZtMfxFiPdBDtNcv1loCBtqTQsMRi8FcjzERoT5dxAuUAbDxffPpQnV+txe6qO1+HJ/Dez3MskL9EOlFn9M612azi1oiVsKKSEsvBNDvvsWlzsjI9YYdIbi1d1TZ5/qlvtvYbLm2uZrfWG7lwjJgEfpJb4kPN0qQp598rdCBb7uyFRC2SX8vsOobIJGg==
+sidebar_class_name: "put api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Rename file"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/servers/{server}/files/rename"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Renames a file on the remote machine.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"root":{"type":["string","null"]},"files":{"type":"array","items":{"type":"object","properties":{"to":{"type":"string"},"from":{"type":"string"}},"required":["to","from"]}}},"required":["root","files"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

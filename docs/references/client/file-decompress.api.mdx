@@ -1,0 +1,71 @@
+---
+id: file-decompress
+title: "Decompress files"
+description: "Decompress files"
+sidebar_label: "Decompress files"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVT1v2zAQ/SvCTS3AWm6aSVvaJECWNshHF0PDWTxbTCmRISknrqD/Xhxpy07sFGinVoso8r7e4+ldD8aSw6BMeyWhgIXSNJFUmcY68h4EBFx6KGZwqTRBKcCiw4YCOd7tocWGoABPbkUOBKgWCrAYahDg6LFTjiQUwXUkQJKvnLKcDAq4qylLbtn9/dU5CPBVTQ1C0UNY2xg1ONUuYRjKFIx8+Gzkmi0q0wZqAy/RWq2qiCF/8By7Pwxl5g9UBRBgHSMOijyfOmPCzmq2zSig7bSGchCRkWMl7cObJatyGNK+t6b1KcHJdMqvl9BB/HH9Y17OcDr9dBj0rAu1cepnDJSRc8b9RZ43eGrIe1weIeL1rV5w3sysyK0UPU0OiNoGKrdITg+RfDUhW5iulf9B/Scnh/V/R63kP3ANfh+HgFiLP5bkVSNlkgIqTTLbO8jMIiOs6myhSMss1BiyRbJajXgnIAClVLxGff2i9k1SdA7XLBSBGv9Wgx9jfAQQqR9eV30+ilbGPyNLV0OhNqxq1vjIJctSAXlSHZ/3aTHk0SF/IXsbm6hxndNQQB2C9UWeW+LrayeBfMjRqrzSiq+WRcpT1TkV1tGNHaCYlfsHt3zRiY90POKPnxsN5O85oYuKmhaXxjUYWDsYOvfNzU4QL56xsUmmklyNbLIgL0xMo0I8uU7lgwDGl7j7OJmyKdPUYGzIjawfIfUF62P1gZ5DbjWqlgNFwvoN37ORSwHFOCd24UbSSwE1X1Qxg76fo6d7p4eBtx87csxpKWCFTuGckcx6kMrzWkKxQO1fT5i9IQHvbjYd9T47nDtHMWzbteVmXaHuKAn3D1rv5t3AE6ImlORiQenwS0r74Y5D7JwPfvxBbD3Oqops+K1tudfP199u77gzNrOwMZJ9HD7x0MWnVKiJNKQpx3s9aGyXXZQPSDH5+QWQ7scZ
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Decompress files"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/files/decompress"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Decompress files
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"root":{"type":["string","null"]},"file":{"type":"string"}},"required":["file"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
