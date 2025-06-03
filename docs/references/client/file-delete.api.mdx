@@ -1,0 +1,71 @@
+---
+id: file-delete
+title: "Delete files/ folders"
+description: "Deletes files or folders for the server in the given root directory."
+sidebar_label: "Delete files/ folders"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v3DgM/SsCT7uAOk7TnHzLbluglzZIk70MfFAseqxWthyKnnTW8H9fUJqvzqSLbdHDdi4jixLJx0c9ThAGJMMu9O8slNA4jwuLHhlBg8VYkxvECiW8TttRyZmoAqkmeIsUVRNIcYsqIq2RlOvT18qtsVcUAivrCGsOtFmABjarCOUS3jqPUGkYDJkOGUl2J+hNh1BC9gUanIQeDLeggfBxdIQWSqYRT/O7O6Rwf//uNWiIdYudgXIC3gzJK5PrVzDPVXaGkf8IdiMn6tAz9ixLMwze1akoxacovqdzV+HhE9YMGgaSErLDKFbBezi13EXU0I/eQzXrVOJ45MgQmY0AZezic7nOx8CXOcLOTTVv7XEIfcx+Ly8u5O/r4oD+boSHBGYNVxevzp1ej9wGcn8nRwqJAv1AnG9UssMYzQrPEzrl/Y3EVWGNtHb4tIDTgu0cVTskV+dI3gdWTRh7+wvkf3l5nv9fxjv7P6AhHuPQkHKJzwU5aSRlkY3zaNWRQYVGoalb1Tj0VnFrWDX51HqPVyTFWOtkbfzNV7n/5xf2jYrvAaTSzxo65DaITg4hplKJLpVQZNmJxZQXc5FeZ7EX0q09CdxIHkpomYdYFsWAwky/YIxcmMEVtXfCmihUxHokx5t0TS5AuayODR+Fwww1m/fQ0udWAOX7AQ0lOc2Lt4E6wyILgkpa4vaghm++mG7wifGtVu1lTPTL9U1IkRzLIbjJCECDQMx8vlxcCP1Spc6kdtvKep4heYQUuwFy2g5HYvzThk4uC+MXLgZvXC/pJSamLYnLPUkayv30yQWQ/BKTlYZWmC+XME0PJuI9+XmW7ccRSYiqNKwNOfMgtVlOYF2UtYWyMT6ezqxjpL/dbjvwd3U+yZ7Nf9fevTT32vgRs9B/xs1hgs7CWYvGIqWEsvHPHPbFnbg4XD4TilnvblzXNQ78r2erowdy8+HjnbTbdrp2wcodMk8yxs1TTjSkMuS5KXsTeNOvxiQ3kH3K7x/gmP/c
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete files/ folders"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/files/delete"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Deletes files or folders for the server in the given root directory.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"root":{"type":["string","null"]},"files":{"type":"array","items":{"type":"string"}}},"required":["root","files"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

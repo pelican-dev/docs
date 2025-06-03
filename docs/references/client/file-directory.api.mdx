@@ -1,0 +1,71 @@
+---
+id: file-directory
+title: "List files"
+description: "Returns a listing of files in a given directory."
+sidebar_label: "List files"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVcFu2zAM/RWBpw0Q4qzrybcBa4cCw1B07S6BD4rNxOpkSZXobJnhfx8oJV6apDv0tJ0iWaL43iP5MoDzGBRpZ28aKGGlDc4aHbAmF7YgocFYB+35ApRwh9QHG4USRkfSdi3cSnBMFNoKJdZ6g1ZM8TOQQGodoVzAtTYIlQSvguqQMPDXAazqEEqIGDYYQILmNF5RCxICPvU6YAMlhR6Psdy3KHKYeHi4+QgSYt1ip6AcgLY+vUpB2zWMo5wSHXJLuZ56TJvj4MU+WoLtjYFqHCuGFL2zESNfvJjP+ec5LJBQO0toic+U90bXSd/iMfKF4S8wx1HC5fz96aMfempd0L/SQwJDcOEVedzyEWsCCT5w1UlnGh3GqNZ4CuhY8SvOK9wGw0bjjxnrelCjxfRQtWdyecrkiyOxcr1t/gP8Fxen+L8po5t/oAzxkIeEhCWeS3LUSKJBUtpgIw4OeIpR1a1YaTSNoFaRWOVbm4kvD7NqGs1rZW6fYd8lVSGoNFiEXXypwc8pPhFI0o8SOqTWsSGtMSnFhlBCkec9FkNejEXynoLNiEc4nyZf6YOBEloiH8ui8MhlsTPCSIXyuqiN5pLxSEes+6Bpm8I4AMpFdXjwlQuYeebjiVfa7qyD90tUIblYXly70CliT2BK2q5citVk+PJtxgQSGHQuz7vZnKvpXaROpe7Z2dZnHSkb7XFJhz/99yp7zkwIf1LhjdKW8yfxhp3qi0lXCeXk03ssSfpKQusi8d1hWKqID8GMI3/O7srKNjqqpeGyr5SJKOE7bo/8eKNMj0muijdBc8D54BcleHO3a6+34vQP4izZfe/aZxD2+HaEx2qU0KJqMCRA+fBDXaOng7CT+WcmUy9/urqHcfwNlmmTRQ==
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List files"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/servers/{server}/files/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns a listing of files in a given directory.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}},{"name":"directory","in":"query","schema":{"type":["string","null"]}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

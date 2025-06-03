@@ -1,0 +1,71 @@
+---
+id: application-mounts-nodes
+title: "Assign mounts to mount"
+description: "Adds nodes to the mount's many-to-many relation."
+sidebar_label: "Assign mounts to mount"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVT1v2zAQ/SvELW0BxXKDTNrSNgUytA2StIvh4SyeLaYSyZCUE0PQfy+OlBzFTgo0S7WI0pF3793HYwfGksOgjL6UUABaW6syfs8a0+rgZ9pI8pCBJF86ZdkEBZxL6UU0iWBEqEjE7e+8aFDvToI54bdwVCdnkEHAjYdiAd94IywzsOiwoUCOf3egsSEoIPqBDBSHsRgqyMDRfascSSiCa+kQy+0YXVx+gQx8WVGDUHQQdpY9Kh1oQw76fplckQ+fjNzxltLoQDrwcsI9v/PsuTv2ZVZ3VDI86zhzQZFna0rSSyGn4BfDvmXfJ4O3Rvt08HQ+59dzZpD9M0AfnNIbSBHO5mfHTr+bINam1fIN3l+h35D3uKFjGIelunDOOGG25LaKHmZH+RkdDRk6Oz09xv8LayUjTkHs7n/R8FMeGUQs/qUgB5MjJAVUNUkxMQizFoRlJdaKailChUGs067tni9PEUqpeI311TPsQ1B0Dnc8PYEa/1pbvJTxPYGY+j6DhkJlWBOs8TFVPIoF5EkW8i6++3yUB09uO05y62oooArB+iLPLXFB9CyQDzlalU9KBDySnsrWqbCLZ/kUFIvl1HDD9Us0k3lPK34OI8/fK0JH3BFp8dW4BgMPEjPidrh+Gv+LR2xsTZPxnfcsO2sTA6jANrhK6CEDppdK+HE254pzYhqMHTZo17n3aqOTGEVhHMXsWQtMVOdNOpqoB3oMua1RacYSU94NRVokEeWyFCOCQXkyqLicxQK6boWefrq67/n3fUuOK7DMYItO4YrZLzqQyvNaQrHG2h9q75TK++uhrT6IA0V+EfHYsJrbdYt1S0nwftNufwv0yz6DilCSi2CS7XMKeXLLHp7OHk1+n40nzsuSbPjr3uWk469+3NxyDw13RGMkn3H4wFcRPiScJqYgNmX810GNetNG/YDkk58/JF6PVA==
+sidebar_class_name: "post api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Assign mounts to mount"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/mounts/{mount}/nodes"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Adds nodes to the mount's many-to-many relation.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"mount","in":"path","required":true,"description":"The mount ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"nodes":{"type":"integer"}},"required":["nodes"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

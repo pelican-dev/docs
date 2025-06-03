@@ -1,0 +1,64 @@
+---
+id: s-sh-key-index
+title: "List ssh keys"
+description: "Returns all the SSH keys that have been configured for the logged-in"
+sidebar_label: "List ssh keys"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVEtz0zAQ/iuaPatxKJx841AoA4cOAS4hh429sdUqkqtdmwaP/zuzchr64sIMM5wse5/fQx4hdpRQXAwfaiiBV5cf6bBwoaY7sFATV8l1GoYSPpP0KbBB7420ZFarS3NDBzbSopgWBzJbomCqGHau6RPVZhdTTvWxaag+c+F76JmSwaqKfZAFWBBsGMo1rPJo2FhIxF0MTAzlCOfLpT4ebwIWqhiEgmgMu867KoMorlkTRuCqpT3qSQ4dKTJJLjQwTdNk4c3y9fOmb3tpY3I/cyNDKcX0F3Pi9poqAQtdUmrFzTD2xIwNPV/oKckXOtfEgdLg6McCdN1Et71LVCtN9402RyTn58+RfEPv6v8ABj/EYSHvwi8NeSKEqUnQearNg4CJO0NYtWbnyNez53Zz1nDCq4bCunZ6Rn/1aPfjUEwJD2DBCe35TwZ5ifETgEz9ZGFP0ka9NQ1lplBaKKE4ertgbs/0eoAFpjSQQl+P0CcPJbQiHZdF0ZFqERZCLAV2rqi8U52mjVZVfXJyyGVaAOV68zCwUtVmcHP4BCa/2llWfd8SJlIfzId3Me1R9CIpDhd2Mdc68Zp8Ne8EFnTpWZNXi6VK2EWWPWbLBMydPzkWw9yaI9RHUo6/ffev/h4zXqE7KTqPLuiWmeLxKMgajunKx70kGwttZNHoOG6R6Wvy06Sfb3tKyvjGwoDJ4VYpWW8mCy1hTSmLcUMH9WlVUadtB/R9ttbTm6VinVzy/uILTNMv3kzk+w==
+sidebar_class_name: "get api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List ssh keys"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/account/ssh-keys"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Returns all the SSH keys that have been configured for the logged-in
+user account.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

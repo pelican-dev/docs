@@ -1,0 +1,71 @@
+---
+id: user-assign-roles
+title: "Assign role to user"
+description: "Assign roles to a user."
+sidebar_label: "Assign role to user"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVUtz0zAQ/iuaPcGMqUPpybdQytAL0ymFS8aHjbWJVWzLldZpgyf/nVnJSZ0HZeAEvlj2Pr/d1bc92JYcsrHNtYYMOk/uDL03y+bWVuQhAU2+cKYVFchgGmTKiVCxVaiCCSTAuPSQzeCrJwd5Ai06rInJyd8eGqxpCAAJGPHVIpeQgKOHzjjSkLHr6DDgXUkhhLr+AAn4oqQaIeuB1634Mw3TkhxsNnn0RJ7fW70WlcI2TA3LEdu2MkXAmd57cdwf+7LzeyoYEmidVIUNeZEGrCM1dA7XgoGp9idTCY+k41vb+Gh8PpnIax8cJH+cpGdnmiXECBeTd8dOpx2X1pkfwZEi56z7izi/KEZN3uOSjhM67NuVxFV2RW5l6PEMYkG2nZ7tHOVbJBfHSD5bVgvbNfo/yP/8/Dj/b1gZ/Q+0wY9xJBBy8aeCHAyS0sRoKtJqJFB2oQiLUi0MVVpxiawWUWu1wyuEgFobOWN1s5f7b67R3oCfqvgOQD7cs5q4tDoSSiGMEoglg1R4w6e9vDZpuMZp5DZhEnKrLTd1roIMSubWZ2nakrSlOWPynGJr0lGjQGjGU9E5w+tgK1aQzfKx4It0MYKN4h248DnQmHzPCV0gxHj4aF2NLMQguGQobp8p7eoJ67aiESXNJvlGuHRhQwjDIoWbmD8kIABjK9+eTaTzrfVcY5i0gY9HfC50PtDz3hyMiPQl+o8AmZ44bSs0jcQLhe2HfswC+ctKyYYwblgxQ1PyBErrWTT7fo6evrpqs5HfDx05KXeewAqdwbkAnfWgjZezhmyBlT/cHePEX90Ok/Ra7W+Uk3lvR7SRAV1h1VEk6++03u6wjZS+JNTkQipRdBkDvrkTB8+mR1d9k2wtpkVBLb+om49G/GZ6d/lJ5mXYcbXVYuTwUeqJjzFPGyoQt5f866HCZtkFxoDoVJ6fMdLD7g==
+sidebar_class_name: "patch api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Assign role to user"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/users/{user}/roles/assign"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Assign roles to a user.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user","in":"path","required":true,"description":"The user ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"roles":{"type":"array","items":{"type":"integer"}}}}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
