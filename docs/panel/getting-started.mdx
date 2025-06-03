@@ -27,15 +27,20 @@ Pelican runs on a wide range of operating systems, so pick whichever you are mos
 </Admonition>
 
 | Operating System | Version | Supported | Notes                                                                 |
-|:----------------:|:-------:|:---------:|:---------------------------------------------------------------------:|
-| **Ubuntu**       | 22.04   |     ⚠️︎    |                                                                      |
-|                  | **24.04**|    ✅︎     |   Documentation written assuming Ubuntu 24.04 as the base OS.        |
-| **Rocky Linux**  | 9       |      ✅︎    |                                                                      |
-| **Debian**       | 11      |     ⚠️    | **No SQLite Support**                                                |
-|                  | 12      |     ✅︎     |                                                                      |
+|:----------------:|:--------:|:---------:|:---------------------------------------------------------------------:|
+| **Ubuntu**       | 22.04    |     ✅︎︎    |                                                                      |
+|                  | **24.04**|     ✅︎    |   Documentation written assuming Ubuntu 24.04 as the base OS.        |
+| **Alma Linux**   | 10       |     ✅︎    |                                                                      |
+|                  | 9        |     ⚠️   | **No SQLite Support**                                                |
+|                  | 8        |     ⚠️   | **No SQLite Support**                                                |
+| **Rocky Linux**  | 9        |     ⚠️   | **No SQLite Support**                                                |
+|                  | 8        |     ⚠️   | **No SQLite Support**                                                |
+| **CentOS**       | 10       |     ✅︎    |                                                                      |
+| **Debian**       | 11       |     ⚠️   | **No SQLite Support**                                                |
+|                  | 12       |     ✅︎    |                                                                      |
 
 SQLite support depends on [libsqlite3-0_3.35+](https://pkgs.org/download/libsqlite3-0) being on the host system.
-Ubuntu 20.04 & Debian 11 do not meet this requirement.
+**No SQLite Support** means you'll have to build the package from source.
 
 ### Dependencies
 
