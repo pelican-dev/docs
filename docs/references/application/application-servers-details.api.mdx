@@ -1,0 +1,71 @@
+---
+id: application-servers-details
+title: "Update details"
+description: "Update the details for a specific server.⚠️Cannot generate request documentation: Call to a member function parameter() on null"
+sidebar_label: "Update details"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVb1u2zAQfhXipgQQLDfNpC1IWrRLETRJF8PDWTxZTCWSIU9uU0HP0L1TH6PP0xfoKxQnKbJjJ0undDLpO9593/18asF5CsjG2fcaMkDvK5P391mksKEQZ5oYTRUhAU0xD8aLFTK48RqZFJekRhdVuKBQRU+5KUyuhgiz3z9+/vn1/RytdazWZCUhqUB3DUVW2uVNTZb7pJk6x6pS7BSqmuoVBVU0NheT8hiwJqZwdKycVbapKkiAcR0hW8BVn+tixLpMYHIXcwsWa4IMBkiQgBEKHrmEBASKCaQh49DQPs/rkkYm6v0FJBDzkmqErAW+9xLTWKY1Bei6pcSK3tlIURxO5nP5eRwPEsidZbIstp2Kp7dRHNrDDJGDsWvouq5L4HT++jDoWcOlC+ZbH0hRCC78Qx63uqWcIQEfZC7YDDRqihHXdAhov1RvJK9yGwobQ19mIHC3xV1MgZYPTE4PmXxwrArXWP0f4D85OcT/CSujX0Ab4i6PBHos8akke4M0LjNptWNQrlCEeakKQ5VWXCKrYvDaTHxnkABqbeSM1eUj7GNSDAHvZfuY6vjcgD9V8YlAX/ougZq4dHrY4VyWuN/lDNJRttJ2OHTpVr9GU68HTaggg5LZxyxNPUlX7IwpcorepDt9AlnrSHkTDN/3b+UVZIvlruFKmjhwHcwTt/46yobcV4Shl6Dh8NaFGll0QWgZW7j+reFKnC8HYJCAIB9a9Go2l456F7nGfoJGcRsV+RnBbrdz+FK0eygQ01dOfYXGCq2+Me3YzsXUswSySbv1VuVLF1nc2naFkW5C1XXy911DQXq1TGCDweBKirloQZsoZw1ZgVXcl/rdCh19HKfwWO1/AJ6E/TDgVsZ7g1VDg9R/pvvtZ6dbdgmUhJpCD2cwnuU5ed55diASMmjTwF+eXZ+/g677C/HquFg=
+sidebar_class_name: "patch api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update details"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/servers/{server}/details"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update the details for a specific server.⚠️Cannot generate request documentation: Call to a member function parameter() on null
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server ID","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

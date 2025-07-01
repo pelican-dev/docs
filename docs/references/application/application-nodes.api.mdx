@@ -1,0 +1,63 @@
+---
+id: application-nodes
+title: "List nodes"
+description: "Return all the nodes currently available on the Panel."
+sidebar_label: "List nodes"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVE2PEzEM/SuRz1GnFE5z47AgJIRWfF2qHtwZt5MlTbKOZ6CM5r8jZ3ZLd1sucOGUD9ux33t2RoiJGMXF8K6FGjAl75pyXoTYUgYLLeWGXdI7qOEjSc/BoPdGOjLFyTQ9MwXxR4MDOo9bTyaG4nCLgfwCLAjuM9Rr+BBbgo0FppxiyJShHmG1XOryNBVYaGIQCqK2s9Kqu6wOI+SmowPqTo6JoIYs7MIepmmaLLxavrx89HUvXWT3szxkiDnyX+SJ2ztqBCwkVgLFzTAOlDPu6bKg5yzeaF4TB+LB0fcFaLlM971japWkx4c2D0hWq0skX9G79j+Akc9xWCi15GtJnglhWhJ0nlpzZjBxZwibzuwc+dZIh2J2s9dwwqvthG3rdI/+9kntD0mRGY9gwQkd8p8a5BrjJwCF+snCgaSLOht7KkyhdFBD9TgdmXggxbseoWcPNXQiKddVlUgFCAuhLBUmV51JAtNGQ5uenRxLrEZBvd6cGz6pXjOs2XyCUY52FlTPW0Im7YB58ybyAUVHSBG4sIsl1olX59u5MLCglc9qvFgsVbwUsxywNEvA8vJ7l8Vc/QrG3+32D7/CjEfoh1TJowtaReFxfKB6DXP2jYUuZtGLcdxipi/sp0mv73tiJXFjYUB2mqcwaaEjbIkLv9/oqE3XNJRUxgF9T08/vHlMlP+T5G9vPsM0/QJD+Mor
+sidebar_class_name: "get api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List nodes"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/nodes"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return all the nodes currently available on the Panel.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

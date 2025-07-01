@@ -1,0 +1,71 @@
+---
+id: file-write
+title: "Write file"
+description: "Writes the contents of the specified file to the server."
+sidebar_label: "Write file"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVUtv2zAM/isGTxugxVnXk297tEAvW9HHdgh8UCy6VmdbqkQnzQz/94GS46ZJOmDbZcslEik+PpL+2IOx6CRp014oyKDUNc7WThOCAIW+cNqyEjL4xlKfUIVJYVrClnxiynD3FgtdalQJ2ydkohTdCt0MBJC885At4FzXCLkAK51skNCxtIdWNggZxPcgQHM4K6kCAQ4fOu1QQUauw/2cbqYwye3txScQ4IsKGwlZD7SxwSs53d7BMOTRGXr6YNSGX4ww+CitrXUR6pDee/bdH7oyy3ssCARYx1UjjZ61jPlYwN3kF/FVPgxR7q1pfTQ/mc/57zkwEL+d3RSXI5zO3x06fd9RZZz+ERwl6JxxfxDnhSo06L28O1KI/Z6dcdzErNCtNK5nB4XaOsq3SE4PkXw2lJSma9V/kP/JyWH+X2Wt1T/QBr+LQ0DIxR8LsjdIiUKSukaV7CiYDVAWVVJqrFVClaSkjK9WE16mA6mU5rOsL5/lPgaVzskN0wBh418a8GMVnwCE0g8CGqTKMK1Z40OpmFMySCNl+LSPhyHlj9OnW94b1YGbOldDBhWR9VmaWuTGtDNCT6m0Oi1qzU1jcvFYdE7TJpixAWSLfFdxzS2MSKN6QhauI3fxfYnSBSaMh3PjGknMCgyKJ+LqicjOHmVjIwFFIprqxERamhBGU9BcxvRBAOOLvXw7m/NTrlAjw6iNdBz4PhD6fv93mPOvtkIET/hIqa2lbjmPUO9+7NRiaoWAbFoPoVkgILYrF1Bxd7MF9P1Serx19TCw+KFDx93IBayk03LJNVj0oLTns4KslLXf3ym74F5djVP2OjncNEfT345wywO8knWHkcy/4+Zpww35IKBCqdCFhKLyYwz75oZdPBkfkMEgthbviwIt/fJtvvMRXH65vuGZGrdfYxTbOLnmNSvXMVETyhCGNMh6qGV71wVKgeiTfz8B0aHZ6w==
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Write file"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/files/write"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Writes the contents of the specified file to the server.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"file":{"type":"string"}},"required":["file"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

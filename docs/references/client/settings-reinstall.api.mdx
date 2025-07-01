@@ -1,0 +1,71 @@
+---
+id: settings-reinstall
+title: "Reinstall"
+description: "Reinstalls the server on the daemon."
+sidebar_label: "Reinstall"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVU1v2zAM/SsGTxvgxVnXk2/76IBetiJtdwlyYCwmVmdbqkSnzQz/94GSnaRJO2w7bblEMqlHPpJ66sBYcsjaNJcKcvDErJu1nzjSjWesKkhBkS+ctuIEOcxGi0+4pMST25BLTBN2Cqk2zQRSYFx7yOdwPSDCIgWLDmticmLpoMGaQkxBgBS0wFvkElJwdN9qRwpydi0d53CzD3x7e/kJUvBFSTVC3gFvbUBlp5s19P0igpHnD0ZtxaMwDVPDskRrK10E/tmdF+zuFMos76hg6Pu+FyxvTePJi8PZdCp/T5OD9I8j7JKVCOfTd6eg71sujdM/AlBCzhn3F3EGJilYJ31nHWnU5D2u6TSh47pfSNzEbMhtND1MIBZk7NR8B7QYmZyfMvliOFmZtlH/Qf5nZ6f5f8NKq3+gDf6QRwohF/9ckKNBShQx6opUcmBIzCohLMpkpalSCZfIySp6bXZ85VqjUlrWWF09yX0Iis7hVq4yU+1fGvDnKr4jEErfp1ATl0YkyRofSiW6kEMWr73Purjos1GyskPJGryCzLSughxKZuvzLLMk/WkmTJ4ztDorKi29E53wVLRO8zYckwOQzxeHhmvpZCQczTuCYTvIkOyXhC6IWlx8Nq5GFnEQbjIYs70mXTxibSvpey8iuDIBV7N8gquYL6QghGIP306m0nKpTI1hxAYpnb2k2gei99sCHokxPXJmK9SNhAy17IZmzHdlTiHfqfjYjyDiYzqLFErpYz6Hrluip1tX9b18vm/JScEXKWzQaVwK63kHSntZK8hXWPnjF+CQz6vZME+vk9N34VkW47A2MqobrFqKsv2dtvv3qF/0KZSEilxIKBo/xrBvbgRif/jk2vfpeOJ9UZDlX/ouDsb96uv1jYzN8FbVRskZhw9ST3yIiZpQhjCH4VsHFTbrNogHREz5/QR3ebzX
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Reinstall"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/servers/{server}/settings/reinstall"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Reinstalls the server on the daemon.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"server","in":"path","required":true,"description":"The server UUID","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"404":{"description":"Not found","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

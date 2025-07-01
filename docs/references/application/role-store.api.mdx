@@ -1,0 +1,72 @@
+---
+id: role-store
+title: "Create role"
+description: "Store a new role on the Panel and return an HTTP/201 response code with the"
+sidebar_label: "Create role"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVE1z0zAQ/SuaPYs4DT35VpgycCLTBi4hh421iVVsyZXWSYPH/51ZOaRu2jIDBwYfbFnar/ferjrwDQVk690nAzkEX9Eksg8EGgzFIthGDiGHW9lVqBztlZgp7xSXpOboqFLojArEbXAKnfq4WMyz2fRCBYqNd5FU4Q2pveVSfL65UxBkxqIkMwENjNsI+RJufEWw0hDovqXI77w5QN5B4R2TY1li01S2SGVnd1HK6yAWJdUoKz40BDn49R0VDBqaICDZUpRThzWNrCIH67bQ90M+G8hIDclq1ffD/gAiuc+mU/k85Qb0H1d3yisZLqdvnwe9arn0wf5IgRSF4MNf5HmFhZpixO0LRJzLfi15ld9R2FnaT54R9SvQkavL2ew5kq9YWfMfwIhjHBpSLfGlJGdCKEOMtiKjRgfKbxRhUaqNpcooLpHVZrDanfBKW6MxVtZYzZ/UfkyKIeABNFimOr7WIC8xfgKQqO811MSllylufExUIZeQQyaDFkFDpLAjAbzsoA0V5FAyNzHPsoZEATdhipxhY7ORJtCvxLVog+VD8hUvyJer8cGtCDbgGo5PONKvHhSV/zVhIGmBYfHBhxpZZkggiP43j2N//YB1U9Hj2J5Y0WDdxqc0lsUC5gMG0CAgB+UuJlMxFT5qdKMw7wMhU7qCzuUeXTT/4s4bSGJ64Kyp0DqpN4nTHfVbwqDfSkMpuuZL6Lo1RvoSqr6X7fuWgiiz0rDDYHEtfCxXvYaS0FBIon2ng+AeoL1ZSFoxr9rUg+cj2OtfHldFQQ3/1nY1ar3559uFaHu8s2tvxCfgHnR6p7vSJ6pTs6S9Dip02zYNMgwx5fkJ66tLcA==
+sidebar_class_name: "post api-method"
+info_path: docs/references/application/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create role"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/roles"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Store a new role on the Panel and return an HTTP/201 response code with the
+new role attached.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"name":{"type":"string"}},"required":["name"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

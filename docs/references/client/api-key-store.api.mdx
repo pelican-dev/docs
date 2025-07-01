@@ -1,0 +1,71 @@
+---
+id: api-key-store
+title: "Create api key"
+description: "Store a new API key for a user's account."
+sidebar_label: "Create api key"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVMFu2zAM/RWBl13UJOu6i29Z0QHFDgvWbhfDGBibidXKlirJST3D/z5QTjInWYd1p+UQyKJIvsdHsgNjyWFQpr4tIAG06hO1Ex+MI5BQkM+dsmyGBO74VqCoaSvmi1vxSK1YGSdQNJ7cGy8wz01ThwlICLj2kKQwjwEhk+DoqSEfPpiihaSD3NSB6sBHtFarPIKYPnhO1YHPS6qQT6G1BAmY5QPlASRYx5CDIs/WI4T7xyn44FS9Bgl1ozVkvQTU2myp+K6sH0VF57AFCSpQNb7f+fcSKny+HYzvZ30/0FCOCs4yTp71/WD21tR+AHc5m51hBJCv5r5HEzNczd6dB503oTRO/YiBBDln3D/keaHGFXmPazoHdNogN5xXmA25jaLtBE7rtQ+0q9XV5eU5k2+oVfEf0PBjHhIiFv+7JCdCiIICKk2FGBmEWQnCvBQrRboQocQgVsOrzYEvjw0WheIz6sUR9r9s1/6lih8IxNJzW1MoDU+8NT6WCkMJCUx3IzxFqy4eqfUgwZPbEHNPO2ichgTKEKxPplNLLEY9CeSjxzTXioXqM/bKG6dCG93YAZI0GxvuWLaB3WA+sImfctCVv5eEjrgRhsNH4yoMPElMhLvgy6/VcvOMldVR5KOJP6wE3gWqXpmYTwV+CouBB0hgooOQbycz1p3LU2HssxojmmtHGEigVbwATxtgtNhety8H6oGew9RqVDUnj9XudtqksHvObbJXJ5NQsoBJCl23RE9fne57vn5qyHHxMwkbdAqXzDRl9iVhQS7qwgQSuB4QX9wzBn6um9hsp7PWy73HPM/Jhj++zUY9tvh8d8/y7VZ/ZQr2cbgFGf/jUjSxgrEf4l0HGut1EycWhpj8+wkQeVII
+sidebar_class_name: "post api-method"
+info_path: docs/references/client/pelican
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create api key"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/account/api-keys"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Store a new API key for a user's account.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"description":{"type":["string","null"]},"allowed_ips":{"type":"array","items":{"type":"string"},"maxItems":50}},"required":["description"]}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"","content":{"application/json":{"schema":{"type":"string"}}}},"403":{"description":"Authorization error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Error overview."}},"required":["message"]}}}},"422":{"description":"Validation error","content":{"application/json":{"schema":{"type":"object","properties":{"message":{"type":"string","description":"Errors overview."},"errors":{"type":"object","description":"A detailed description of each field that failed validation.","additionalProperties":{"type":"array","items":{"type":"string"}}}},"required":["message","errors"]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
