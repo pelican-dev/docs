@@ -14,29 +14,17 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Homepage',
-    light: 'img/homepage/ss/1l.png',
-    dark: 'img/homepage/ss/1d.png'  },
+    title: 'Client Area',
+    light: 'img/homepage/ss/serverconsolel.gif',
+    dark: 'img/homepage/ss/serverconsoled.gif'  },
   {
-    title: 'User List',
-    light: 'img/homepage/ss/2l.png',
-    dark: 'img/homepage/ss/2d.png'  },
-  {
-    title: 'Create Node',
-    light: 'img/homepage/ss/3l.png',
-    dark: 'img/homepage/ss/3d.png'  },
-  {
-    title: 'Node List',
-    light: 'img/homepage/ss/4l.png',
-    dark: 'img/homepage/ss/4d.png'  },
+    title: 'Panel Settings',
+    light: 'img/homepage/ss/panelsettingsl.gif',
+    dark: 'img/homepage/ss/panelsettingsd.gif'  },
   {
     title: 'Create Server',
-    light: 'img/homepage/ss/5l.png',
-    dark: 'img/homepage/ss/5d.png'  },
-  {
-    title: 'Create API Key',
-    light: 'img/homepage/ss/6l.png',
-    dark: 'img/homepage/ss/6d.png'  },
+    light: 'img/homepage/ss/createserverl.gif',
+    dark: 'img/homepage/ss/createserverd.gif'  },
 ];
 
 function Feature({title, light, dark}: FeatureItem) {
@@ -69,13 +57,6 @@ export default function HomepageLook(): JSX.Element {
             <Feature key={idx} {...props} />
           ))}
         </div>
-        <span style={{textAlign: 'center', fontStyle: 'italic', fontWeight: 'normal'}}>
-          <h5 style={{fontWeight: 'normal'}}>
-            These are the current prerelease screenshots.
-            <br /><br />
-          </h5>
-        </span>
-
       </div>
     </section>
   );
