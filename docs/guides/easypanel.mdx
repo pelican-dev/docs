@@ -17,7 +17,7 @@ For a basic setup using SQLite as the database, you can use the following servic
           "type": "image",
           "image": "ghcr.io/pelican-dev/panel:latest"
         },
-        "env": "XDG_DATA_HOME: /pelican-data\nAPP_URL: \"https://$(EASYPANEL_DOMAIN)\"\nCADDY_URL: \"http://$(EASYPANEL_DOMAIN)\"",
+        "env": "XDG_DATA_HOME: /pelican-data\nAPP_URL: \"https://$(EASYPANEL_DOMAIN)\"\nCADDY_URL: \"http://$(EASYPANEL_DOMAIN)\"\nTRUSTED_PROXIES: \"10.0.0.0/8,172.16.0.0/12\"",
         "domains": [
           {
             "host": "$(EASYPANEL_DOMAIN)",
@@ -37,7 +37,7 @@ For a basic setup using SQLite as the database, you can use the following servic
           },
           {
             "type": "file",
-            "content": "{\n    admin off\n    auto_https off\n}\n\n{$CADDY_URL} {\n    root * /var/www/html/public\n    encode gzip\n\n    php_fastcgi 127.0.0.1:9000\n    file_server\n}",
+            "content": "{\n    admin off\n    auto_https off\n\n    servers {\n        trusted_proxies static 10.0.0.0/8 172.16.0.0/12\n    }\n}\n\n{$CADDY_URL} {\n    root * /var/www/html/public\n    encode gzip\n\n    php_fastcgi 127.0.0.1:9000\n    file_server\n}",
             "mountPath": "/etc/caddy/Caddyfile"
           }
         ]
@@ -62,7 +62,7 @@ For a more advanced setup using MariaDB and Redis, use this template:
           "type": "image",
           "image": "ghcr.io/pelican-dev/panel:latest"
         },
-        "env": "XDG_DATA_HOME: /pelican-data\nAPP_URL: \"https://$(EASYPANEL_DOMAIN)\"\nCADDY_URL: \"http://$(EASYPANEL_DOMAIN)\"",
+        "env": "XDG_DATA_HOME: /pelican-data\nAPP_URL: \"https://$(EASYPANEL_DOMAIN)\"\nCADDY_URL: \"http://$(EASYPANEL_DOMAIN)\"\nTRUSTED_PROXIES: \"10.0.0.0/8,172.16.0.0/12,192.168.0.0/16\"",
         "domains": [
           {
             "host": "$(EASYPANEL_DOMAIN)",
@@ -82,7 +82,7 @@ For a more advanced setup using MariaDB and Redis, use this template:
           },
           {
             "type": "file",
-            "content": "{\n    admin off\n    auto_https off\n}\n\n{$CADDY_URL} {\n    root * /var/www/html/public\n    encode gzip\n\n    php_fastcgi 127.0.0.1:9000\n    file_server\n}",
+            "content": "{\n    admin off\n    auto_https off\n\n    servers {\n        trusted_proxies static 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16\n    }\n}\n\n{$CADDY_URL} {\n    root * /var/www/html/public\n    encode gzip\n\n    php_fastcgi 127.0.0.1:9000\n    file_server\n}",
             "mountPath": "/etc/caddy/Caddyfile"
           }
         ]
