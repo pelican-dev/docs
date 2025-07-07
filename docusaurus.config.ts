@@ -135,6 +135,10 @@ const config: Config = {
     ],
     tailwindPlugin,
   ],
+  future:{
+    experimental_faster: true,
+    v4: true
+  }
 };
 
 export default config;
