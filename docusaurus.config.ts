@@ -29,6 +29,7 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
+          onUntruncatedBlogPosts: 'ignore',
         },
         theme: {
           customCss: [
