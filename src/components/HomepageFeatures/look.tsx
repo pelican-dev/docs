@@ -15,16 +15,16 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Client Area',
-    light: 'img/homepage/ss/serverconsolel.gif',
-    dark: 'img/homepage/ss/serverconsoled.gif'  },
+    light: 'img/homepage/ss/serverconsoled.gif',
+    dark: 'img/homepage/ss/serverconsolel.gif'  },
   {
     title: 'Panel Settings',
-    light: 'img/homepage/ss/panelsettingsl.gif',
-    dark: 'img/homepage/ss/panelsettingsd.gif'  },
+    light: 'img/homepage/ss/panelsettingsd.gif',
+    dark: 'img/homepage/ss/panelsettingsl.gif'  },
   {
     title: 'Create Server',
-    light: 'img/homepage/ss/createserverl.gif',
-    dark: 'img/homepage/ss/createserverd.gif'  },
+    light: 'img/homepage/ss/createserverd.gif',
+    dark: 'img/homepage/ss/createserverl.gif'  },
 ];
 
 function Feature({title, light, dark}: FeatureItem) {
