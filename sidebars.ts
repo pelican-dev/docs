@@ -1,4 +1,4 @@
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 /**
  * Creating a sidebar enables you to:
@@ -11,7 +11,6 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
  Create as many sidebars as you want.
  */
 const sidebars: SidebarsConfig = {
-
   Sidebar: [
     'welcome',
     {
@@ -28,10 +27,10 @@ const sidebars: SidebarsConfig = {
           type: 'category',
           label: 'Advanced',
           items: [
-              'panel/advanced/redis',
-              'panel/advanced/mysql',
-              'panel/advanced/artisan',
-              'panel/advanced/docker',
+            'panel/advanced/redis',
+            'panel/advanced/mysql',
+            'panel/advanced/artisan',
+            'panel/advanced/docker',
           ]
         }
       ],
@@ -39,12 +38,25 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Wings',
-      items: ['wings/install','wings/optional-config', 'wings/update'],
+      items: [
+        'wings/install',
+        'wings/optional-config',
+        'wings/update'
+      ],
     },
     {
       type: 'category',
       label: 'Guides',
-      items: ['guides/docker', 'guides/mounts', 'guides/ssl', 'guides/php-upgrade', 'guides/database-hosts', 'guides/uninstalling', 'guides/easypanel',],
+      items: [
+        'guides/docker',
+        'guides/mounts',
+        'guides/ssl',
+        'guides/php-upgrade',
+        'guides/database-hosts',
+        'guides/change-panel-domain',
+        'guides/uninstalling',
+        'guides/easypanel',
+      ],
     },
     'troubleshooting',
     'comparison',
