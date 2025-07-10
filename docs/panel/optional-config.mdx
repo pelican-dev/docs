@@ -78,23 +78,17 @@ If you're using Cloudflare's Flexible SSL you should set `TRUSTED_PROXIES` to co
 
 You can easily do this on the Settings page in the Panel.
 
-## reCAPTCHA
+## Captcha
 
-The Panel uses invisible reCAPTCHA to secure the login page from brute-force attacks. If the login attempt is considered suspicious, users may be required to perform a reCAPTCHA challenge.
+The Panel has options to enable captcha to secure the login page from brute-force attacks. By default only Cloudflare Turnstile is available.
 
-### Configuring reCAPTCHA
+### Disable Captcha
 
-While we provide a global Site Key and Secret Key by default, we highly recommend changing it for your own setup.
+If you cannot access your panel, you have to modify the `.env` directly to disable it.
 
-You can generate your own keys in the [reCAPTCHA Admin Console](https://www.google.com/recaptcha/admin).
+Edit the `.env` in the panel's root directory `/var/www/pelican/` and change the value of `CAPTCHA_TURNSTILE_ENABLED` to `false`.
 
-The keys can then be applied using the Settings in the Panel.
-
-#### Disabling Recaptcha
-
-If you cannot access your panel, you can modify the `.env` directly to disable it.
-
-Edit the `.env` in the panel's root directory `/var/www/pelican/` and change the value of `RECAPTCHA_ENABLED` to `false`.
+After that run `php artisan config:clear` to refresh the config cache.
 
 ## 2FA
 
