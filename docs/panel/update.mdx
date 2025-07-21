@@ -8,141 +8,124 @@ This documentation covers the process for updating the panel portion of Pelican.
 
 ## Version Requirements
 
-Each version of Pelican Panel also has a corresponding minimum version of Wings that
-is required for it to run.
+Each version of Pelican Panel also has a corresponding minimum version of Wings that is required for it to run.
 
-Please see the chart below for how these versions line up. In
-most cases your base Wings version should match that of your Panel.
+Please see the chart below for how these versions line up.
 
 | Panel Version | Wings Version | Supported | PHP Version |
 |:-------------:|:-------------:|:---------:|:-----------:|
 |      1.x      |      1.x      |    ✅︎     | 8.2/8.3/8.4 |
 
-### Enter Maintenance Mode
+## Updating
 
-Whenever you are performing an update you should be sure to place your Panel into maintenance mode. This will prevent
-users from encountering unexpected errors.
+You have two options for updating: use the automatic update script (recommended) or do the update steps manually.
 
-```sh
-cd /var/www/pelican
-php artisan down
-```
+<Tabs>
+    <TabItem value="Update script (recommended)">
+        Simply run the command below and the update script will guide you through the process:
 
-<Admonition type="warning">
-   If you are updating from < 1.0.0-beta13. Please use the below script! This will ensure all the recently deleted files are removed.
-
-Note: this script is experimental... IT WILL NOT CREATE A MYSQL DUMP FOR YOUR DATABASE!
-Note: This script runs all the below commands for you. 
-
-What the script does, is looks for `.env`, and if it exists pulls `DB_CONNECTION` to see if you are using mysql/mariadb/sqlite, if sqlite it will copy the database.sqlite to a backup folder
-along with the env. Once they're copied to the backup folder it will delete everything except the backup folder in the specified install directory. 
-
-Proceeds to download the latest release, extracts to install directory, Sets some permissions, runs composer install, restores old sqlite database and .env. Runs Filament Optimize, Updates migrations, asks you to input the webserver for file owner (www-data/apache/nginx), restarts the queue, and Voilà! If you have any issues please reach out on discord!
-
-If you do not wish to use the script and wish to do it manually, You can delete everything except the `.env` and the sqlite database file, if using sqlite. then follow the standard update process below. 
-
-```sh
-sudo bash -c "$(curl -fsSL https://pelican.dev/updatePanel.sh)"
-```
-
-</Admonition>
-
-### Download Update
-
-The first step in the update process is to download the new panel files from GitHub. The command below will download
-the release archive for the most recent version of Pelican, save it in the current directory and will automatically
-unpack the archive into your current folder.
-
-```sh
-curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv
-```
-
-Once the archive is downloaded and extracted we need to set the correct permissions on the cache and storage directories to avoid
-any webserver related errors.
-
-```sh
-sudo chmod -R 755 storage/* bootstrap/cache
-```
-
-### Update Dependencies
-
-```sh
-sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
-```
-
-<Admonition type="info">
-    Even though composer might tell you that you have outdated dependencies, do **not** run `composer update`!
-</Admonition>
-
-### Create storage symlinks
-
-```sh
-php artisan storage:link
-```
-
-### Clear Compiled Template Cache
-
-You'll also want to clear the compiled template cache to ensure that new and modified templates show up correctly for
-users.
-
-```sh
-php artisan view:clear
-php artisan config:clear
-```
-
-## Cache components
-
-To make sure your panel loads faster you'll want to cache filament components.
-
-```sh
-php artisan filament:optimize
-```
-
-### Update Database
-
-You'll also need to update your database schema. Running the command below
-will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
-remember, _never edit core eggs we ship_! They will be overwritten by this update process.
-
-```sh
-php artisan migrate --seed --force
-```
-
-### Set Permissions
-
-The last step is to set proper ownership of the files. In most cases this
-is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
-
-<Tabs className="unique-tabs">
-    <TabItem value="NGINX/Apache">
         ```sh
-        sudo chown -R www-data:www-data /var/www/pelican
+        sudo bash -c "$(curl -fsSL https://pelican.dev/updatePanel.sh)"
         ```
     </TabItem>
-    <TabItem value="Rocky Linux NGINX">
+    <TabItem value="Manual update">
+        ### Enter Maintenance Mode
+
+        Whenever you are performing an update you should be sure to place your Panel into maintenance mode. This will prevent
+        users from encountering unexpected errors.
+
         ```sh
-        sudo chown -R nginx:nginx /var/www/pelican
+        cd /var/www/pelican
+        sudo php artisan down
         ```
-    </TabItem>
-    <TabItem value="Rocky Linux Apache">
+
+        ### Download Update
+
+        The first step in the update process is to download the new panel files from GitHub. The command below will download
+        the release archive for the most recent version of Pelican, save it in the current directory and will automatically
+        unpack the archive into your current folder.
+
         ```sh
-        sudo chown -R apache:apache /var/www/pelican
+        curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv
+        ```
+
+        Once the archive is downloaded and extracted we need to set the correct permissions on the cache and storage directories to avoid
+        any webserver related errors.
+
+        ```sh
+        sudo chmod -R 755 storage/* bootstrap/cache
+        ```
+
+        ### Update Dependencies
+
+        ```sh
+        sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+        ```
+
+        <Admonition type="info">
+            Even though composer might tell you that you have outdated dependencies, do **not** run `composer update`!
+        </Admonition>
+
+        ### Create storage symlinks
+
+        ```sh
+        sudo php artisan storage:link
+        ```
+
+        ## Cache components
+
+        ```sh
+        sudo php artisan optimize:clear
+        sudo php artisan optimize
+        ```
+
+        ### Update Database
+
+        You'll also need to update your database schema. Running the command below
+        will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
+        remember, _never edit core eggs we ship_! They will be overwritten by this update process.
+
+        ```sh
+        sudo php artisan migrate --seed --force
+        ```
+
+        ### Set Permissions
+
+        The last step is to set proper ownership of the files. In most cases this
+        is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
+
+        <Tabs>
+            <TabItem value="NGINX/ Apache/ Caddy">
+                ```sh
+                sudo chown -R www-data:www-data /var/www/pelican
+                ```
+            </TabItem>
+            <TabItem value="Rocky Linux NGINX">
+                ```sh
+                sudo chown -R nginx:nginx /var/www/pelican
+                ```
+            </TabItem>
+            <TabItem value="Rocky Linux Apache">
+                ```sh
+                sudo chown -R apache:apache /var/www/pelican
+                ```
+            </TabItem>
+        </Tabs>
+
+        ### Restart Queue Workers
+
+        After _every update_ you should restart the queue worker.
+
+        ```sh
+        sudo php artisan queue:restart
+        ```
+
+        ### Exit Maintenance Mode
+
+        Now that everything has been updated you need to exit maintenance mode.
+
+        ```sh
+        sudo php artisan up
         ```
     </TabItem>
 </Tabs>
-
-### Restart Queue Workers
-
-After _every update_ you should restart the queue worker.
-
-```sh
-php artisan queue:restart
-```
-
-### Exit Maintenance Mode
-
-Now that everything has been updated you need to exit maintenance mode.
-
-```sh
-php artisan up
-```
