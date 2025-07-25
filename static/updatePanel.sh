@@ -12,28 +12,63 @@ function exitInstall {
   exit $1
 }
 
-read -p "Enter the directory for the panel location [/var/www/pelican]: " install_dir
-install_dir=${install_dir:-/var/www/pelican}
+if [ "$1" == "--config" ] && [ -n "$2" ]
+then
+	echo "Path:" $2;
+	install_dir=$(grep "^INSTALL_DIR=" "$2" | cut -d '=' -f 2)
 
-if [ ! -d "$install_dir" ]; then
-  echo "Directory $install_dir does not exist. Exiting..."
-  exit 1
-fi
+	if [ ! -d "$install_dir" ]; then
+	  echo "Directory $install_dir does not exist. Exiting..."
+	  exit 1
+	fi
 
-env_file="$install_dir/.env"
+	env_file="$install_dir/.env"
 
-if [ ! -f "$env_file" ]; then
-  echo "File $env_file does not exist. Exiting..."
-  exit 1
-fi
+	if [ ! -f "$env_file" ]; then
+	  echo "File $env_file does not exist. Exiting..."
+	  exit 1
+	fi
 
-owner=$(stat -c '%U' "$install_dir" || echo "www-data")
-read -p "Enter the owner of the files (www-data, apache, nginx) [$owner]: " owner
-owner=${owner:-www-data}
 
-group=$(stat -c '%G' "$install_dir" || echo "www-data")
-read -p "Enter the group of the files (www-data, apache, nginx) [$group]: " group
-group=${group:-www-data}
+	owner=$(grep "^WEBSERVER_USER=" "$2" | cut -d '=' -f 2)
+
+	group=$(grep "^WEBSERVER_GROUP=" "$2" | cut -d '=' -f 2)
+
+	backup_confirm=$(grep "^CREATE_BACKUP=" "$2" | cut -d '=' -f 2)
+
+	# for MySQL/MariaDB Databases.
+	#database_confirm=$(grep "^DATABASE_BACKUP=" "$2" | cut -d '=' -f 2)
+
+	checksum_confirm="n"
+
+	# Delete the files in the installation directory (excepting the backup folder)
+	delete_confirm=$(grep "^DELETE_FILES=" "$2" | cut -d '=' -f 2)
+	
+else
+	read -p "Enter the directory for the panel location [/var/www/pelican]: " install_dir
+	install_dir=${install_dir:-/var/www/pelican}
+
+	if [ ! -d "$install_dir" ]; then
+	  echo "Directory $install_dir does not exist. Exiting..."
+	  exit 1
+	fi
+
+	env_file="$install_dir/.env"
+
+	if [ ! -f "$env_file" ]; then
+	  echo "File $env_file does not exist. Exiting..."
+	  exit 1
+	fi
+
+	owner=$(stat -c '%U' "$install_dir" || echo "www-data")
+	read -p "Enter the owner of the files (www-data, apache, nginx) [$owner]: " owner
+	owner=${owner:-www-data}
+
+	group=$(stat -c '%G' "$install_dir" || echo "www-data")
+	read -p "Enter the group of the files (www-data, apache, nginx) [$group]: " group
+	group=${group:-www-data}
+fi;
+
 
 cd "$install_dir"
 php artisan down
@@ -52,9 +87,12 @@ fi
 
 echo "DB_CONNECTION is set to: $db_connection"
 
-read -p "Do you want to create a backup? (y/n) [y]: " backup_confirm
-backup_confirm=${backup_confirm:-y}
-if [ "$backup_confirm" != "y" ]; then
+if [ "$1" != "--config" ] || [ -z "$2" ]; then
+	read -p "Do you want to create a backup? (y/n) [y]: " backup_confirm
+	backup_confirm=${backup_confirm:-y}
+fi;
+
+if [ "$backup_confirm" != "y" ] && [ "$backup_confirm" != "true" ]; then
   echo "Backup canceled."
   exitInstall 0
 fi
@@ -82,7 +120,7 @@ if [ "$db_connection" = "sqlite" ]; then
 else
   read -p "NOTE: THIS WILL NOT BACKUP MySQL/MariaDB DATABASES!!! You should pause now and make your own backup!! You've been warned! Continue? (y/n) [y]: " database_confirm
   database_confirm=${database_confirm:-y}
-  if [ "$database_confirm" != "y" ]; then
+  if [ "$database_confirm" != "y" ] && [ "$database_confirm" != "true" ]; then
     echo "Update Canceled."
     exitInstall 0
   fi
@@ -101,8 +139,12 @@ expected_checksum=$(curl -L https://github.com/pelican-dev/panel/releases/latest
 calculated_checksum=$(sha256sum panel.tar.gz | awk '{ print $1 }')
 
 if [[ -z "$expected_checksum" || -z "$calculated_checksum" || "$expected_checksum" != "$calculated_checksum" ]]; then
-  read -p "NOTE: Checksum mismatch, the file may be corrupted!!! You've been warned! Continue? (y/n) [y]: " checksum_confirm
-  checksum_confirm=${checksum_confirm:-y}
+
+  if [ "$1" != "--config" ] || [ -z "$2" ]; then
+    read -p "NOTE: Checksum mismatch, the file may be corrupted!!! You've been warned! Continue? (y/n) [y]: " checksum_confirm
+    checksum_confirm=${checksum_confirm:-y}
+  fi;
+  
   if [ "$checksum_confirm" != "y" ]; then
     echo "Update Canceled."
     exitInstall 1
@@ -110,9 +152,13 @@ if [[ -z "$expected_checksum" || -z "$calculated_checksum" || "$expected_checksu
 fi
 
 echo "Checksum verified."
-read -p "Do you want to delete all files and folders in $install_dir except the backup folder? (y/n) [y]: " delete_confirm
-delete_confirm=${delete_confirm:-y}
-if [ "$delete_confirm" != "y" ]; then
+
+if [ "$1" != "--config" ] || [ -z "$2" ]; then
+	read -p "Do you want to delete all files and folders in $install_dir except the backup folder? (y/n) [y]: " delete_confirm
+	delete_confirm=${delete_confirm:-y}
+fi;
+
+if [ "$delete_confirm" != "y" ] && [ "$delete_confirm" != "true" ]; then
   echo "Deletion canceled."
   exitInstall 0
 fi
