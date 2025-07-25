@@ -15,16 +15,16 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Client Area',
-    light: 'img/homepage/ss/serverconsoled.gif',
-    dark: 'img/homepage/ss/serverconsolel.gif'  },
+    light: 'https://peli.nyc3.digitaloceanspaces.com/docs/serverconsoled.gif',
+    dark: 'https://peli.nyc3.digitaloceanspaces.com/docs/serverconsolel.gif'  },
   {
     title: 'Panel Settings',
-    light: 'img/homepage/ss/panelsettingsd.gif',
-    dark: 'img/homepage/ss/panelsettingsl.gif'  },
+    light: 'https://peli.nyc3.digitaloceanspaces.com/docs/panelsettingsd.gif',
+    dark: 'https://peli.nyc3.digitaloceanspaces.com/docs/panelsettingsl.gif'  },
   {
     title: 'Create Server',
-    light: 'img/homepage/ss/createserverd.gif',
-    dark: 'img/homepage/ss/createserverl.gif'  },
+    light: 'https://peli.nyc3.digitaloceanspaces.com/docs/createserverd.gif',
+    dark: 'https://peli.nyc3.digitaloceanspaces.com/docs/createserverl.gif'  },
 ];
 
 function Feature({title, light, dark}: FeatureItem) {
