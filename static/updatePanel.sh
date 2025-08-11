@@ -62,6 +62,19 @@ fi
 backup_dir="$install_dir/backup"
 mkdir -p "$backup_dir"
 
+cp "$env_file" "$backup_dir/.env.backup"
+if [ $? -ne 0 ]; then
+  echo "Failed to backup .env file, aborting"
+  exitInstall 1
+fi
+echo "Backed up .env file successfully."
+
+cp -R "$install_dir/storage/app/public" "$backup_dir/storage/app/public"
+if [ $? -ne 0 ]; then
+  echo "Failed to backup avatars & fonts files, aborting"
+  exitInstall 1
+fi
+
 if [ "$db_connection" = "sqlite" ]; then
   db_database=$(grep "^DB_DATABASE=" "$env_file" | cut -d '=' -f 2)
 
@@ -87,13 +100,6 @@ else
     exitInstall 0
   fi
 fi
-
-cp "$env_file" "$backup_dir/.env.backup"
-if [ $? -ne 0 ]; then
-  echo "Failed to backup .env file, aborting"
-  exitInstall 1
-fi
-echo "Backed up .env file successfully."
 
 echo "Downloading Files..."
 curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz -o panel.tar.gz
@@ -149,9 +155,16 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Restoring .env"
-mv "$backup_dir/.env.backup" "$install_dir/.env"
 if [ $? -ne 0 ]; then
+  mv "$backup_dir/.env.backup" "$install_dir/.env"
   echo "Failed to restore the .env file, aborting"
+  exitInstall 1
+fi
+
+echo "Restoring avatars & fonts"
+mv "$backup_dir/storage/app/public" "$install_dir/storage/app/public"
+if [ $? -ne 0 ]; then
+  echo "Failed to restore avatars & fonts files, aborting"
   exitInstall 1
 fi
 
