@@ -69,7 +69,7 @@ if [ $? -ne 0 ]; then
 fi
 echo "Backed up .env file successfully."
 
-cp -R "$install_dir/storage/app/public" "$backup_dir/storage/app/public"
+cp -a "$install_dir/storage/app/public" "$backup_dir/storage/app/"
 if [ $? -ne 0 ]; then
   echo "Failed to backup avatars & fonts files, aborting"
   exitInstall 1
@@ -155,14 +155,14 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Restoring .env"
+cp -a "$backup_dir/.env.backup" "$install_dir/.env"
 if [ $? -ne 0 ]; then
-  mv "$backup_dir/.env.backup" "$install_dir/.env"
   echo "Failed to restore the .env file, aborting"
   exitInstall 1
 fi
 
 echo "Restoring avatars & fonts"
-mv "$backup_dir/storage/app/public" "$install_dir/storage/app/public"
+cp -a "$backup_dir/storage/app/public" "$install_dir/storage/app/"
 if [ $? -ne 0 ]; then
   echo "Failed to restore avatars & fonts files, aborting"
   exitInstall 1
@@ -170,7 +170,7 @@ fi
 
 if [ "$db_connection" = "sqlite" ]; then
   echo "Restoring sqlite database"
-  mv "$backup_dir/$db_database.backup" "$install_dir/database/$db_database"
+  cp -a "$backup_dir/$db_database.backup" "$install_dir/database/$db_database"
   if [ $? -ne 0 ]; then
     echo "Failed to restore the database, aborting"
     exitInstall 1
