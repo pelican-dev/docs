@@ -55,7 +55,6 @@ const sidebars: SidebarsConfig = {
         'guides/database-hosts',
         'guides/change-panel-domain',
         'guides/uninstalling',
-        'guides/easypanel',
       ],
     },
     'troubleshooting',
