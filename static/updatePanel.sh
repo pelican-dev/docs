@@ -62,7 +62,7 @@ fi
 backup_dir="$install_dir/backup"
 mkdir -p "$backup_dir"
 
-cp "$env_file" "$backup_dir/.env.backup"
+cp -a "$env_file" "$backup_dir/.env.backup"
 if [ $? -ne 0 ]; then
   echo "Failed to backup .env file, aborting"
   exitInstall 1
@@ -87,7 +87,7 @@ if [ "$db_connection" = "sqlite" ]; then
     db_database="$db_database.sqlite"
   fi
   echo "DB_DATABASE is set to: $db_database"
-  cp "$install_dir/database/$db_database" "$backup_dir/$db_database.backup"
+  cp -a "$install_dir/database/$db_database" "$backup_dir/$db_database.backup"
   if [ $? -ne 0 ]; then
     echo "Failed to backup $db_database file, aborting"
     exitInstall 1
