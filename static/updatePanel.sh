@@ -60,7 +60,7 @@ if [ "$backup_confirm" != "y" ]; then
 fi
 
 backup_dir="$install_dir/backup"
-mkdir -p "$backup_dir"
+mkdir -p "$backup_dir/storage/app"
 
 cp -a "$env_file" "$backup_dir/.env.backup"
 if [ $? -ne 0 ]; then
