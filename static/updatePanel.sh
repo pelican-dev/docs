@@ -60,7 +60,20 @@ if [ "$backup_confirm" != "y" ]; then
 fi
 
 backup_dir="$install_dir/backup"
-mkdir -p "$backup_dir"
+mkdir -p "$backup_dir/storage/app"
+
+cp -a "$env_file" "$backup_dir/.env.backup"
+if [ $? -ne 0 ]; then
+  echo "Failed to backup .env file, aborting"
+  exitInstall 1
+fi
+echo "Backed up .env file successfully."
+
+cp -a "$install_dir/storage/app/public" "$backup_dir/storage/app/"
+if [ $? -ne 0 ]; then
+  echo "Failed to backup avatars & fonts files, aborting"
+  exitInstall 1
+fi
 
 if [ "$db_connection" = "sqlite" ]; then
   db_database=$(grep "^DB_DATABASE=" "$env_file" | cut -d '=' -f 2)
@@ -74,7 +87,7 @@ if [ "$db_connection" = "sqlite" ]; then
     db_database="$db_database.sqlite"
   fi
   echo "DB_DATABASE is set to: $db_database"
-  cp "$install_dir/database/$db_database" "$backup_dir/$db_database.backup"
+  cp -a "$install_dir/database/$db_database" "$backup_dir/$db_database.backup"
   if [ $? -ne 0 ]; then
     echo "Failed to backup $db_database file, aborting"
     exitInstall 1
@@ -87,13 +100,6 @@ else
     exitInstall 0
   fi
 fi
-
-cp "$env_file" "$backup_dir/.env.backup"
-if [ $? -ne 0 ]; then
-  echo "Failed to backup .env file, aborting"
-  exitInstall 1
-fi
-echo "Backed up .env file successfully."
 
 echo "Downloading Files..."
 curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz -o panel.tar.gz
@@ -149,15 +155,22 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Restoring .env"
-mv "$backup_dir/.env.backup" "$install_dir/.env"
+cp -a "$backup_dir/.env.backup" "$install_dir/.env"
 if [ $? -ne 0 ]; then
   echo "Failed to restore the .env file, aborting"
   exitInstall 1
 fi
 
+echo "Restoring avatars & fonts"
+cp -a "$backup_dir/storage/app/public" "$install_dir/storage/app/"
+if [ $? -ne 0 ]; then
+  echo "Failed to restore avatars & fonts files, aborting"
+  exitInstall 1
+fi
+
 if [ "$db_connection" = "sqlite" ]; then
   echo "Restoring sqlite database"
-  mv "$backup_dir/$db_database.backup" "$install_dir/database/$db_database"
+  cp -a "$backup_dir/$db_database.backup" "$install_dir/database/$db_database"
   if [ $? -ne 0 ]; then
     echo "Failed to restore the database, aborting"
     exitInstall 1
