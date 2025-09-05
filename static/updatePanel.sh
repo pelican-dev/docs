@@ -46,8 +46,8 @@ echo "Panel is now in maintenance mode."
 db_connection=$(grep "^DB_CONNECTION=" "$env_file" | cut -d '=' -f 2)
 
 if [ -z "$db_connection" ]; then
-  echo "DB_CONNECTION not found in $env_file."
-  exitInstall 0
+  db_connection='sqlite'
+  echo "DB_CONNECTION not found in $env_file using $db_connection as default."
 fi
 
 echo "DB_CONNECTION is set to: $db_connection"
@@ -79,8 +79,8 @@ if [ "$db_connection" = "sqlite" ]; then
   db_database=$(grep "^DB_DATABASE=" "$env_file" | cut -d '=' -f 2)
 
   if [ -z "$db_database" ]; then
-    echo "DB_DATABASE not found in $env_file."
-    exitInstall 1
+    db_database='database.sqlite'
+    echo "DB_DATABASE not found in $env_file using $db_database as default."
   fi
 
   if [[ "$db_database" != *.sqlite ]]; then
