@@ -48,9 +48,9 @@ db_connection=$(grep "^DB_CONNECTION=" "$env_file" | cut -d '=' -f 2)
 if [ -z "$db_connection" ]; then
   db_connection='sqlite'
   echo "DB_CONNECTION not found in $env_file using $db_connection as default."
+else
+  echo "DB_CONNECTION is set to: $db_connection"
 fi
-
-echo "DB_CONNECTION is set to: $db_connection"
 
 read -p "Do you want to create a backup? (y/n) [y]: " backup_confirm
 backup_confirm=${backup_confirm:-y}
@@ -79,6 +79,7 @@ if [ "$db_connection" = "sqlite" ]; then
   db_database=$(grep "^DB_DATABASE=" "$env_file" | cut -d '=' -f 2)
 
   if [ -z "$db_database" ]; then
+    uses_default=true
     db_database='database.sqlite'
     echo "DB_DATABASE not found in $env_file using $db_database as default."
   fi
@@ -86,7 +87,11 @@ if [ "$db_connection" = "sqlite" ]; then
   if [[ "$db_database" != *.sqlite ]]; then
     db_database="$db_database.sqlite"
   fi
-  echo "DB_DATABASE is set to: $db_database"
+
+  if [ -z $uses_default ]; then
+    echo "DB_DATABASE is set to: $db_database"
+  fi
+
   cp -a "$install_dir/database/$db_database" "$backup_dir/$db_database.backup"
   if [ $? -ne 0 ]; then
     echo "Failed to backup $db_database file, aborting"
