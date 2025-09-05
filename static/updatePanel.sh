@@ -69,7 +69,7 @@ if [ $? -ne 0 ]; then
 fi
 echo "Backed up .env file successfully."
 
-if [ -f "$install_dir/storage/app/public" ]; then
+if [ -d "$install_dir/storage/app/public" ]; then
   cp -a "$install_dir/storage/app/public" "$backup_dir/storage/app/"
   if [ $? -ne 0 ]; then
     echo "Failed to backup avatars & fonts files, aborting"
@@ -168,7 +168,7 @@ if [ $? -ne 0 ]; then
   exitInstall 1
 fi
 
-if [ -f "$backup_dir/storage/app/public" ]; then
+if [ -d "$backup_dir/storage/app/public" ]; then
   echo "Restoring avatars & fonts"
   cp -a "$backup_dir/storage/app/public" "$install_dir/storage/app/"
   if [ $? -ne 0 ]; then
