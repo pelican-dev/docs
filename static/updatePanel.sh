@@ -88,7 +88,7 @@ if [ "$db_connection" = "sqlite" ]; then
     db_database="$db_database.sqlite"
   fi
 
-  if [ -z $uses_default ]; then
+  if [ -z "$uses_default" ]; then
     echo "DB_DATABASE is set to: $db_database"
   fi
 
