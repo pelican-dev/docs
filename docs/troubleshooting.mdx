@@ -124,7 +124,8 @@ If your Schedules are stuck on `Processing` or don't execute the tasks check the
 * Is your Schedule set to run `ONLY WHEN SERVER IS ONLINE` and the server is currently offline?
 * Is your queue worker service running? (`systemctl status pelican-queue`)
 * Is your queue worker service using the correct PHP version? (`php -v`)
-* Is your cronjob setup correctly? (`crontab -l -u www-data` should show an entry that runs `php artisan schedule:run` every minute)
+* Is your cronjob setup correctly? `crontab -l -u www-data` (where `www-data` is your webserver user) should show the following entry:  
+`* * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1`
 
 If your queue worker service is not running you can also check the panel logs for errors.
 
