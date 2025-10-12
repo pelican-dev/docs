@@ -41,7 +41,7 @@ read -p "Do you want to create a backup? (y/n) [y]: " backup_confirm
 backup_confirm=${backup_confirm:-y}
 if [ "$backup_confirm" != "y" ]; then
   echo "Backup canceled."
-  exit 0
+  exit 1
 fi
 
 backup_dir="$install_dir/backup"
@@ -93,7 +93,7 @@ else
   database_confirm=${database_confirm:-y}
   if [ "$database_confirm" != "y" ]; then
     echo "Update Canceled."
-    exit 0
+    exit 1
   fi
 fi
 
@@ -109,14 +109,15 @@ if [[ -z "$expected_checksum" || -z "$calculated_checksum" || "$expected_checksu
     echo "Update Canceled."
     exit 1
   fi
+else
+  echo "Checksum verified."
 fi
 
-echo "Checksum verified."
 read -p "Do you want to delete all files and folders in $install_dir except the backup folder? (y/n) [y]: " delete_confirm
 delete_confirm=${delete_confirm:-y}
 if [ "$delete_confirm" != "y" ]; then
   echo "Deletion canceled."
-  exit 0
+  exit 1
 fi
 
 find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'panel.tar.gz' -exec rm -rf {} +
@@ -161,6 +162,8 @@ if [ -f "$backup_dir/$db_database.backup" ]; then
     exit 1
   fi
 fi
+
+cd $install_dir
 
 echo "Installing Composer"
 COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
