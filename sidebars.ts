@@ -18,21 +18,7 @@ const sidebars: SidebarsConfig = {
       label: 'Panel',
       collapsed: false,
       items: [
-        'panel/getting-started',
-        'panel/webserver-config',
-        'panel/panel-setup',
-        'panel/optional-config',
-        'panel/update',
-        {
-          type: 'category',
-          label: 'Advanced',
-          items: [
-            'panel/advanced/redis',
-            'panel/advanced/mysql',
-            'panel/advanced/artisan',
-            'panel/advanced/docker',
-          ]
-        }
+        'panel/getting-started'
       ],
     },
     {
@@ -57,9 +43,15 @@ const sidebars: SidebarsConfig = {
         'guides/uninstalling',
       ],
     },
-    'troubleshooting',
+    {
+      type: 'category',
+      label: 'Post-installation',
+      items: [
+        'post_install/troubleshooting',
+      ],
+    },
     'comparison',
-    'glossary'
+    'team'
   ],
 };
 
