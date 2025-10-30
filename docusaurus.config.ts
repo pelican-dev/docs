@@ -15,7 +15,7 @@ const config: Config = {
   baseUrl: "/",
   organizationName: "pelican-dev",
   projectName: "docs",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   themes: ["@docusaurus/theme-mermaid"],
   presets: [

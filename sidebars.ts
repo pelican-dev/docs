@@ -13,53 +13,39 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   Sidebar: [
     'welcome',
-    {
-      type: 'category',
-      label: 'Panel',
-      collapsed: false,
-      items: [
-        'panel/getting-started',
-        'panel/webserver-config',
-        'panel/panel-setup',
-        'panel/optional-config',
-        'panel/update',
-        {
-          type: 'category',
-          label: 'Advanced',
-          items: [
-            'panel/advanced/redis',
-            'panel/advanced/mysql',
-            'panel/advanced/artisan',
-            'panel/advanced/docker',
-          ]
-        }
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Wings',
-      items: [
-        'wings/install',
-        'wings/optional-config',
-        'wings/update'
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Guides',
-      items: [
-        'guides/docker',
-        'guides/mounts',
-        'guides/ssl',
-        'guides/php-upgrade',
-        'guides/database-hosts',
-        'guides/change-panel-domain',
-        'guides/uninstalling',
-      ],
-    },
-    'troubleshooting',
-    'comparison',
-    'glossary'
+    'getting-started',
+    // {
+    //   type: 'category',
+    //   label: 'Panel',
+    //   collapsed: false,
+    //   items: [
+    //   ],
+    // },
+    // {
+    //   type: 'category',
+    //   label: 'Wings',
+    //   items: [
+    //     'wings/install',
+    //     'wings/optional-config',
+    //     'wings/update'
+    //   ],
+    // },
+    // {
+    //   type: 'category',
+    //   label: 'Guides',
+    //   items: [
+    //     'guides/docker',
+    //     'guides/mounts',
+    //     'guides/ssl',
+    //     'guides/php-upgrade',
+    //     'guides/database-hosts',
+    //     'guides/change-panel-domain',
+    //     'guides/uninstalling',
+    //     'guides/troubleshooting',
+    //   ],
+    // },
+    //'comparison',
+    'contributors'
   ],
 };
 
