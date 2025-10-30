@@ -21,31 +21,31 @@ const sidebars: SidebarsConfig = {
     //   items: [
     //   ],
     // },
-    {
-      type: 'category',
-      label: 'Wings',
-      items: [
-        'wings/install',
-        'wings/optional-config',
-        'wings/update'
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Guides',
-      items: [
-        'guides/docker',
-        'guides/mounts',
-        'guides/ssl',
-        'guides/php-upgrade',
-        'guides/database-hosts',
-        'guides/change-panel-domain',
-        'guides/uninstalling',
-        'guides/troubleshooting',
-      ],
-    },
-    'comparison',
-    'team'
+    // {
+    //   type: 'category',
+    //   label: 'Wings',
+    //   items: [
+    //     'wings/install',
+    //     'wings/optional-config',
+    //     'wings/update'
+    //   ],
+    // },
+    // {
+    //   type: 'category',
+    //   label: 'Guides',
+    //   items: [
+    //     'guides/docker',
+    //     'guides/mounts',
+    //     'guides/ssl',
+    //     'guides/php-upgrade',
+    //     'guides/database-hosts',
+    //     'guides/change-panel-domain',
+    //     'guides/uninstalling',
+    //     'guides/troubleshooting',
+    //   ],
+    // },
+    //'comparison',
+    'contributors'
   ],
 };
 
