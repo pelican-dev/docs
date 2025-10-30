@@ -1,0 +1,190 @@
+import Admonition from '@theme/Admonition';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Plugins
+
+Plugins allow you to add new functionality to the panel without modifying any panel core files.
+
+<Admonition type="warning">
+    The plugin system is still in development and features might be missing!
+</Admonition>
+
+## Install a Plugin
+
+<Tabs>
+    <TabItem value="frontend" label="Via Panel Frontend">
+        Use the Import Button on the plugin list to upload & install a plugin.
+    </TabItem>
+    <TabItem value="manually" label="Manually">
+        Move the plugin folder to `/var/www/pelican/plugins`. Then run `php artisan p:plugin:install` and select the new plugin.
+    </TabItem>
+</Tabs>
+
+## Create a Plugin
+
+<Admonition type="danger">
+    You **need** at least basic [PHP](https://php.net), [Laravel](https://laravel.com) and [Filament](https://filamentphp.com) knowledge to create plugins!
+</Admonition>
+
+Use `php artisan p:plugin:make` to create the basic files and folders for your new plugin. This will create the `plugin.json`, the main plugin file, a config file and a service provider.
+
+### Plugin Structure
+
+The two most important files of your plugin are the `plugin.json` (which contains general information like name, version etc.) and the main plugin file. (where you can load Filament resources, pages etc.)  
+While the `plugin.json` is in the root of your plugin folder, the main plugin file is in `src`.
+
+In general the plugin folder tries to mimic the structure of a normal Laravel/ FilamentPHP project. For example, translations go into `lang` and migrations are in `database/migrations`.  
+Everything is auto discovered and service providers, artisan commands, migrations etc. are automatically registered.
+
+The only exception to a normal Laravel project is the `app` folder, it is called `src` instead. Besides that is still follows the same sub-structure, e.g. models go in `src/Models` and service providers are in `src/Providers`.
+
+<Admonition type="info">
+    The plugin id and the plugin folder name need to match!
+</Admonition>
+
+### Filament Resources
+
+To simply register Filament resources, pages or widgets you can add the following snippet to the `register` function in your main plugin file:
+
+```php {3-5}
+$id = str($panel->getId())->title();
+
+$panel->discoverPages(plugin_path($this->getId(), "src/Filament/$id/Pages"), "<namespace>\\Filament\\$id\\Pages");
+$panel->discoverResources(plugin_path($this->getId(), "src/Filament/$id/Resources"), "<namespace>\\Filament\\$id\\Resources");
+$panel->discoverWidgets(plugin_path($this->getId(), "src/Filament/$id/Widgets"), "<namespace>\\Filament\\$id\\Widgets");
+```
+
+Make sure to replace `<namespace>` with your actual namespace.
+
+### Translations
+
+Normally, translations will be registered under the namespace of your plugin.  
+This means you need to prefix translation keys with your plugin id when using `trans()`, e.g. `trans('myplugin::strings.test')` would look for `test` inside `plugins/myplugin/lang/strings.php`.
+
+If your plugin adds new default languages to the panel you need to set the plugin category to `language`. This way translations will be registered without any namespace.
+
+## Views
+
+View are automatically registered under the namespace of your plugin.  
+This means you need to prefix view-strings with your plugin id, e.g. `myplugin::my-view` would look for `my-view.blade.php` inside `plugins/myplugin/resources/views`.
+
+### Plugin Settings
+
+Your main plugin class can implement the `HasPluginSettings` interface to conveniently add a settings page to your plugin.  
+The settings page can be accessed on the plugin list on the panel. Your plugin needs to provide the form and how the data should be saved.
+
+If you want to save the settings in the `.env` file you can use the `EnvironmentWriterTrait`. Example:
+
+```php
+use EnvironmentWriterTrait;
+
+public function getSettingsForm(): array
+{
+    return [
+        TextInput::make('test_input')
+            ->required()
+            ->default(fn () => config('myplugin.test_input')),
+        Toggle::make('test_toggle')
+            ->inline(false)
+            ->default(fn () => config('myplugin.test_toggle')),
+    ];
+}
+
+public function saveSettings(array $data): void
+{
+    $this->writeToEnvironment([
+        'MYPLUGIN_TEST_INPUT' => $data['test_input'],
+        'MYPLUGIN_TEST_TOGGLE' => $data['test_toggle'],
+    ]);
+
+    Notification::make()
+        ->title('Settings saved')
+        ->success()
+        ->send();
+}
+```
+
+<Admonition type="info" title="Naming Conventions">
+    When adding new environment variables make sure to prefix them with your plugin id, e.g. `MYPLUGIN_TEST_INPUT` and not just `TEST_INPUT`.
+</Admonition>
+
+### Modify existing resources
+
+Most of the default panel resources and pages have static methods to register custom classes or to change existing ones. You can call these static methods inside the `register` function of a service provider.
+
+Examples:
+
+```php title="MyPluginProvider.php"
+public function register(): void
+{
+    // Add new relation manager to UserResource
+    UserResource::registerCustomRelations(MyCustomRelationManager::class);
+
+    // Add new widget to Console page
+    Console::registerCustomWidgets(ConsoleWidgetPosition::AboveConsole, [MyCustomWidget::class]);
+
+    // Add new header action to Server list page
+    ListServers::registerCustomHeaderActions(HeaderActionPosition::Before, MyCustomAction::make());
+}
+```
+
+For more information you can check the ["CanModify" and "CanCustomize" traits in `./app/Traits/Filament`](https://github.com/Boy132/pelican-panel/tree/main/app/Traits/Filament).
+
+### Add new role permissions
+
+To add new (admin) role permissions you can use `Role::registerCustomPermissions` and `Role::registerCustomDefaultPermissions`. You can call these static methods inside the `register` function of a service provider.
+
+Examples:
+
+```php title="MyPluginProvider.php"
+public function register(): void
+{
+    // Register default permissions: viewList, view, create, update, delete
+    Role::registerCustomDefaultPermissions('myModel');
+
+    // Register custom permissions
+    Role::registerCustomPermissions([
+        'myModel' => [
+            'customPerm1',
+            'customPerm2'
+        ]
+    ]);
+
+    // You can also add new permissions to existing models
+    Role::registerCustomPermissions([
+        'server' => [
+            'custom',
+        ]
+    ]);
+}
+```
+
+<Admonition type="warning" title="Subuser Permissions">
+    This will only work for admin role permisions, not subuser permissions!
+</Admonition>
+
+### Additional composer dependencies
+
+If you need additional composer packages as dependency for your plugin you can add the package name to the `composer_packages` array in your `plugin.json`:
+
+```json
+"composer_packages": {
+    "package/one": "^1.0",
+    "package/two": "^1.0"
+}
+```
+
+## Publish a Plugin
+
+To publish a plugin you only need to do two things:
+
+1. Open your `plugin.json` and remove the `meta` part.
+2. Zip up your whole plugin folder.
+
+And that's it! Now you can take the zip file and share it with the world!
+
+<Admonition type="info" title="License">
+    You can license your plugin code under whatever license you want. You do not have to use the same license as the panel!  
+    You also don't have to open source your plugin code. But if you do want to open source it we recommend [MIT](https://choosealicense.com/licenses/mit) or [GPL v3](https://choosealicense.com/licenses/gpl-3.0) as license.
+</Admonition>
