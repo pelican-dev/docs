@@ -13,14 +13,14 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   Sidebar: [
     'welcome',
-    {
-      type: 'category',
-      label: 'Panel',
-      collapsed: false,
-      items: [
-        'panel/getting-started'
-      ],
-    },
+    'getting-started',
+    // {
+    //   type: 'category',
+    //   label: 'Panel',
+    //   collapsed: false,
+    //   items: [
+    //   ],
+    // },
     {
       type: 'category',
       label: 'Wings',
@@ -41,13 +41,7 @@ const sidebars: SidebarsConfig = {
         'guides/database-hosts',
         'guides/change-panel-domain',
         'guides/uninstalling',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Post-installation',
-      items: [
-        'post_install/troubleshooting',
+        'guides/troubleshooting',
       ],
     },
     'comparison',

@@ -1,0 +1,75 @@
+---
+id: getting-started
+---
+
+import Admonition from '@theme/Admonition';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Getting Started
+
+:::warning[Standalone Installations]
+As of **[date of merge / announcement]**, installing the panel via **Docker** is now the preferred installation method.
+
+Standalone installations will continue to be supported, but users are highly recommended to switch to Docker.
+A migration guide can be found [here](/docs/guides/docker).
+:::
+
+The panel is designed to be run on a **dedicated Linux server**. We do not 
+This documentation is intended for beginners who understand Linux basics.
+
+Running it on unsupported hardware or operating systems may cause unwanted side-effects.
+
+### Prerequisites
+
+Pelican runs on a wide range of operating systems, so pick whichever you are most comfortable using.
+Please ensure that the operating system you are using supports [Docker Engine](https://docs.docker.com/engine/).
+
+When trying to run under `Virtuozzo`, `OpenVZ` / `OVZ`, or `LXC` virtualization, you may experience issues running Docker containers.
+Some providers have made the necessary changes for nested virtualization to support Docker.
+Typically, `kvm` and `none` are guaranteed to run Docker without an issue.
+
+:::info
+If your system is running systemd, the easiest way to check is to run `systemd-detect-virt` on your system.
+Otherwise, you can also run this command:
+```sh
+sudo dmidecode -s system-manufacturer
+```
+:::
+
+
+### Installing Docker  {#docker-install}
+
+For a quick install of Docker CE, you can use the command below:
+```sh
+curl -sSL https://get.docker.com/ | CHANNEL=stable sudo sh
+```
+
+### Enabling Docker on System Boot {#docker-on-boot}
+
+Most modern Linux operating system support systemd (Ubuntu 16+, Debian 8+, CentOS 7+).
+You should therefore have the ability to run the command below to have Docker start when you boot your machine.
+```sh
+sudo systemctl enable --now docker
+```
+
+### Enabling Swap on Docker {#docker-swap}
+
+On most systems, Docker will be unable to setup swap space by default. You can confirm this by running `docker info` and looking for the output of `WARNING: No swap limit support` near the bottom.
+
+Enabling swap is entirely optional, but we recommended doing it if you will be hosting for others and to prevent OOM errors.
+
+To enable swap, open `/etc/default/grub` as a root user and find the line starting with `GRUB_CMDLINE_LINUX_DEFAULT`. Make
+sure the line includes `swapaccount=1` somewhere inside the double-quotes.
+
+After that, run `sudo update-grub` followed by `sudo reboot` to restart the server and have swap enabled.
+Below is an example of what the line should look like, _do not copy this line verbatim. It often has additional OS-specific parameters._
+
+```text
+GRUB_CMDLINE_LINUX_DEFAULT="swapaccount=1"
+```
+
+<Admonition type="info" title="GRUB Configurations">
+    Some Linux distros may ignore `GRUB_CMDLINE_LINUX_DEFAULT`.  
+    Therefore you might have to use `GRUB_CMDLINE_LINUX` instead should the above variable not work for you.
+</Admonition>
