@@ -7,6 +7,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Introduction
+:::warning[Using Pelican in Production Environments]
+**Pelican is in active development.** Do not run this in production environments!
+Stability is not guaranteed, as Pelican may cause data corruption to your servers, and could even take your system down in a worst case scenario.
+
+**You have been warned.** Report issues immediately.
+:::
 
 ### What is [Pelican](https://github.com/pelican-dev/panel)?
 
@@ -22,8 +28,15 @@ The panel handles frontend interactions; this typically involves showing relevan
 Wings deals with the backend infrastructure such as managing, servicing, starting, restarting and stopping the container. The user never directly interacts with Wings.
 
 ### Open Source Software {#open-source}
-Pelican is developed and released under [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html), an open source license; Wings is also open source, licensed under [MIT](https://opensource.org/license/mit)!
+Pelican is developed and released under [AGPLv3](https://www.gnu.org/licenses/agpl-3.0.en.html), an open source license;
+Wings is also open source, licensed under [MIT](https://opensource.org/license/mit)!
 Contributions are welcome, and there are plenty of unresolved issues and feature requests on [GitHub](https://github.com/pelican-dev).
+
+:::danger[Reporting Security Vulnerabilities]
+When discussing security concerns, please be responsible and reach out via **team@pelican.dev**.
+
+If you've discovered a critical issue, please disclose this with the team immediately through appropriate means. **GitHub is not for zero-day vulnerabilities.**
+:::
 
 ### Glossary {#glossary}
 
@@ -142,9 +155,3 @@ flowchart TD
     B2 --> C3("Game")
     B2 --> C4("Application")
 ```
-
-:::danger[Reporting Security Vulnerabilities]
-When discussing security concerns, please be responsible and reach out via **team@pelican.dev**.
-
-If you've discovered a critical issue, please disclose this with the team immediately through appropriate means. **GitHub is not for zero-day vulnerabilities.**
-:::

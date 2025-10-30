@@ -8,6 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Getting Started
 
+<!-- CHANGE BEFORE MERGING! DATE NEEDS TO BE ADJUSTED TO CORRECT DATE! -->
 :::warning[Standalone Installations]
 As of **[date of merge / announcement]**, installing the panel via **Docker** is now the preferred installation method.
 
@@ -29,9 +30,9 @@ When trying to run under `Virtuozzo`, `OpenVZ` / `OVZ`, or `LXC` virtualization,
 Some providers have made the necessary changes for nested virtualization to support Docker.
 Typically, `kvm` and `none` are guaranteed to run Docker without an issue.
 
-:::info
+:::info[Checking Virtualization]
 If your system is running systemd, the easiest way to check is to run `systemd-detect-virt` on your system.
-Otherwise, you can also run this command:
+Otherwise, you may also be able to run this command:
 ```sh
 sudo dmidecode -s system-manufacturer
 ```
@@ -40,7 +41,7 @@ sudo dmidecode -s system-manufacturer
 
 ### Installing Docker  {#docker-install}
 
-For a quick install of Docker CE, you can use the command below:
+For a quick install of Docker CE, you can run the command below, which will automatically install it on most Linux systems.
 ```sh
 curl -sSL https://get.docker.com/ | CHANNEL=stable sudo sh
 ```
@@ -54,22 +55,29 @@ sudo systemctl enable --now docker
 ```
 
 ### Enabling Swap on Docker {#docker-swap}
+On most systems, Docker will be unable to setup swap space by default. 
+Enabling swap is entirely optional, but highly recommended when hosting for others, or running large servers to prevent OOM (out-of-memory) errors.
+You can confirm this by running `docker info`. If you find `WARNING: No swap limit support`, your Docker setup won't be able to support swap files.
 
-On most systems, Docker will be unable to setup swap space by default. You can confirm this by running `docker info` and looking for the output of `WARNING: No swap limit support` near the bottom.
+:::info[If you can't run commands...]
+On most versions of Ubuntu, `sudo` is provided for you, which allows you to run commands with elevated privileges.
+To understand if a command needs elevated privileges, it will typically describe **Authentication Required** or **Permission Denied** errors.
 
-Enabling swap is entirely optional, but we recommended doing it if you will be hosting for others and to prevent OOM errors.
+You can also use `sudo su` to run commands as the root user with elevated privileges, and `exit` to return to an unprivileged user.
+:::
 
-To enable swap, open `/etc/default/grub` as a root user and find the line starting with `GRUB_CMDLINE_LINUX_DEFAULT`. Make
-sure the line includes `swapaccount=1` somewhere inside the double-quotes.
-
-After that, run `sudo update-grub` followed by `sudo reboot` to restart the server and have swap enabled.
-Below is an example of what the line should look like, _do not copy this line verbatim. It often has additional OS-specific parameters._
-
-```text
+To enable **swap**, open `/etc/default/grub` with your command-line text editor of choice (**nano** or **vim**) as the root user,
+and find `GRUB_CMDLINE_LINUX_DEFAULT`. You'll want to then add `swapaccount=1` to the parameters, between the quotation marks, like so:
+```
 GRUB_CMDLINE_LINUX_DEFAULT="swapaccount=1"
 ```
+Make sure the line includes `swapaccount=1` somewhere inside the double-quotes.
 
-<Admonition type="info" title="GRUB Configurations">
-    Some Linux distros may ignore `GRUB_CMDLINE_LINUX_DEFAULT`.  
-    Therefore you might have to use `GRUB_CMDLINE_LINUX` instead should the above variable not work for you.
-</Admonition>
+After that, run `update-grub` followed by `reboot` to restart the server and have swap enabled.
+Below is an example of what the line should look like, _do not copy this line verbatim. It often has additional OS-specific parameters._
+
+
+:::info[GRUB Configuration]
+    In rare cases, `GRUB_CMDLINE_LINUX_DEFAULT` may not work.
+    You may be required to use `GRUB_CMDLINE_LINUX` instead.
+:::
