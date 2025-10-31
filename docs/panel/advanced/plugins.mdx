@@ -29,6 +29,10 @@ Plugins allow you to add new functionality to the panel without modifying any pa
 
 Use `php artisan p:plugin:make` to create the basic files and folders for your new plugin. This will create the `plugin.json`, the main plugin file, a config file and a service provider.
 
+<Admonition type="info" title="Need help?">
+    Visit our [Discord](https://discord.gg/pelican-panel) if you need any help when creating plugins!
+</Admonition>
+
 ### Plugin Structure
 
 The two most important files of your plugin are the `plugin.json` (which contains general information like name, version etc.) and the main plugin file. (where you can load Filament resources, pages etc.)  
@@ -183,6 +187,11 @@ To publish a plugin you only need to do two things:
 2. Zip up your whole plugin folder.
 
 And that's it! Now you can take the zip file and share it with the world!
+
+<Admonition type="info" title="Marketplace">
+    We are currently working on adding a plugin marketplace to the [Hub](https://hub.pelican.dev).  
+    Until then you can publish your plugins on our [plugins repo](https://github.com/pelican-dev/plugins). You can also share them in the `#plugins` channel in our [Discord](https://discord.gg/pelican-panel).
+</Admonition>
 
 <Admonition type="info" title="License">
     You can license your plugin code under whatever license you want. You do not have to use the same license as the panel!  
