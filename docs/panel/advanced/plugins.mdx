@@ -61,6 +61,39 @@ $panel->discoverWidgets(plugin_path($this->getId(), "src/Filament/$id/Widgets"),
 
 Make sure to replace `<namespace>` with your actual namespace.
 
+### Filament Panels
+
+By default there are three Filament panels:
+
+1. `admin` (Admin Area)
+2. `app` (Server list)
+3. `server` (Client Area)
+
+The `server` panel uses the `Server` model as [tenant](https://filamentphp.com/docs/4.x/users/tenancy).
+
+The `app` panel is solely used for the server list and has no navigation.  
+If you want to expand the `app` panel, you can re-enable the navigation by adding the following snippet to the `register` function in your main plugin file:
+
+```php
+if ($panel->getId() === 'app') {
+    // Optional: "Embed" the server list. This will add a Servers navigation item for the server list.
+    // ServerResource::embedServerList();
+
+    // Re-enable navigation
+    $panel->navigation(true);
+
+    // By default the topbar is always used. With proper navigation we want to conditionally enable it based on the users customization
+    $panel->topbar(function () {
+        $navigationType = user()?->getCustomization(CustomizationKey::TopNavigation);
+
+        return $navigationType === 'topbar' || $navigationType === 'mixed' || $navigationType === true;
+    });
+
+    // Rebuild component cache
+    $panel->clearCachedComponents();
+}
+```
+
 ### Translations
 
 Normally, translations will be registered under the namespace of your plugin.  
