@@ -38,13 +38,13 @@ Use `php artisan p:plugin:make` to create the basic files and folders for your n
 The two most important files of your plugin are the `plugin.json` (which contains general information like name, version etc.) and the main plugin file. (where you can load Filament resources, pages etc.)  
 While the `plugin.json` is in the root of your plugin folder, the main plugin file is in `src`.
 
-In general the plugin folder tries to mimic the structure of a normal Laravel/ FilamentPHP project. For example, translations go into `lang` and migrations are in `database/migrations`.  
+In general, the plugin folder tries to mimic the structure of a normal Laravel/ FilamentPHP project. For example, translations go into `lang` and migrations are in `database/migrations`.  
 Everything is auto discovered and service providers, artisan commands, migrations etc. are automatically registered.
 
 The only exception to a normal Laravel project is the `app` folder, it is called `src` instead. Besides that is still follows the same sub-structure, e.g. models go in `src/Models` and service providers are in `src/Providers`.
 
 <Admonition type="info">
-    The plugin id and the plugin folder name need to match!
+    The plugin id and the plugin root folder name need to match!
 </Admonition>
 
 ### Filament Resources
@@ -67,9 +67,9 @@ By default there are three Filament panels:
 
 1. `admin` (Admin Area)
 2. `app` (Server list)
-3. `server` (Client Area)
+3. `server` (Client Area, with `Server` model as [tenant](https://filamentphp.com/docs/4.x/users/tenancy))
 
-The `server` panel uses the `Server` model as [tenant](https://filamentphp.com/docs/4.x/users/tenancy).
+#### App panel
 
 The `app` panel is solely used for the server list and has no navigation.  
 If you want to expand the `app` panel, you can re-enable the navigation by adding the following snippet to the `register` function in your main plugin file:
@@ -104,7 +104,7 @@ If your plugin adds new default languages to the panel you need to set the plugi
 ## Views
 
 View are automatically registered under the namespace of your plugin.  
-This means you need to prefix view-strings with your plugin id, e.g. `myplugin::my-view` would look for `my-view.blade.php` inside `plugins/myplugin/resources/views`.
+This means you need to prefix view-strings with your plugin id, e.g. `myplugin::my-view` would look for `plugins/myplugin/resources/views/my-view.blade.php`.
 
 ### Plugin Settings
 
@@ -166,7 +166,7 @@ public function register(): void
 }
 ```
 
-For more information you can check the ["CanModify" and "CanCustomize" traits in `./app/Traits/Filament`](https://github.com/Boy132/pelican-panel/tree/main/app/Traits/Filament).
+For more information you can check the ["CanModify" and "CanCustomize" traits in `./app/Traits/Filament`](https://github.com/pelican-dev/panel/tree/main/app/Traits/Filament).
 
 ### Add new role permissions
 
