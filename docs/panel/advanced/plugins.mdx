@@ -101,7 +101,7 @@ This means you need to prefix translation keys with your plugin id when using `t
 
 If your plugin adds new default languages to the panel you need to set the plugin category to `language`. This way translations will be registered without any namespace.
 
-## Views
+### Views
 
 View are automatically registered under the namespace of your plugin.  
 This means you need to prefix view-strings with your plugin id, e.g. `myplugin::my-view` would look for `plugins/myplugin/resources/views/my-view.blade.php`.
@@ -209,6 +209,51 @@ If you need additional composer packages as dependency for your plugin you can a
 "composer_packages": {
     "package/one": "^1.0",
     "package/two": "^1.0"
+}
+```
+
+### Update URL
+
+In your `plugin.json` you can specify an `update_url` that is fetched when checking for plugin updates. It needs to point directly to a json file with the following format:
+
+```json title="update.json"
+{
+    "panel_version_1": {
+        "version": "1.0.0",
+        "download_url": "..."
+    },
+    "panel_version_2": {
+        "version": "1.1.0",
+        "download_url": "...
+    }
+}
+```
+
+If you don't have panel version specific plugin versions you can also use `*` as panel version wildcard:
+
+```json title="update.json"
+{
+    "*": {
+        "version": "1.1.0",
+        "download_url": "...
+    }
+}
+```
+
+You can also mix the wildcard with real panel versions. This way the wildcard will be used as fallback when the users panel version isn't specified in the update json.
+
+Example:
+
+```json title="update.json"
+{
+    "panel_version_1": {
+        "version": "1.0.0",
+        "download_url": "..."
+    },
+    "*": {
+        "version": "1.1.0",
+        "download_url": "...
+    }
 }
 ```
 
