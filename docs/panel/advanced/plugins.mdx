@@ -52,6 +52,84 @@ The only exception to a normal Laravel project is the `app` folder, it is called
     The plugin id and the plugin root folder name need to match!
 </Admonition>
 
+#### plugin.json
+
+Most of the fields inside the `plugin.json` are generated when running the [artisan command](#create-a-plugin).
+
+| Field             | Required | Description                                                                                                                               |
+| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| id                | Yes      | Unique identifier of the plugin. Has to match with the plugin root folder name!                                                           |
+| name              | Yes      | Display name of the plugin.                                                                                                               |
+| author            | Yes      | Display name of the plugin creator.                                                                                                       |
+| version           | No       | Version of the plugin. Ideally, this should follow [semantic versioning](https://semver.org/). When not set it will assume version 1.0.0. |
+| description       | No       | Short description of the plugin.                                                                                                          |
+| category          | Yes      | Either `plugin`, `theme` or `language`.                                                                                                   |
+| update_url        | No       | URL that will be fetched when checking for updates. See [below](#update-url) for more information.                                        |
+| namespace         | Yes      | The php namespace for the plugin files.                                                                                                   |
+| class             | Yes      | The name of the plugin main class.                                                                                                        |
+| panels            | No       | Array of [FilamentPHP panel](#filament-panels) ids the plugin should be loaded on. When not set the plugin will be loaded on all panels.  |
+| panel_version     | No       | The panel version required for the plugin. See [below](#panel-version) for more information.                                              |
+| composer_packages | No       | Array of additional composer packages. Key is the package name and value is the version.                                                  |
+
+<Admonition type="info">
+    You can ignore the `meta` fields. Those are used internally to keep track of the plugin status and load order.
+</Admonition>
+
+#### Update URL
+
+In your `plugin.json` you can specify an `update_url` that is fetched when checking for plugin updates.  
+When not set, there will be no update checking for the plugin.
+
+It needs to point directly to a json file with the following format:
+
+```json title="update.json"
+{
+    "panel_version_1": {
+        "version": "1.0.0",
+        "download_url": "..."
+    },
+    "panel_version_2": {
+        "version": "1.1.0",
+        "download_url": "...
+    }
+}
+```
+
+If you don't have panel version specific plugin versions you can also use `*` as panel version wildcard:
+
+```json title="update.json"
+{
+    "*": {
+        "version": "1.1.0",
+        "download_url": "...
+    }
+}
+```
+
+You can also mix the wildcard with real panel versions. This way the wildcard will be used as fallback when the users panel version isn't specified in the update json.
+
+Example:
+
+```json title="update.json"
+{
+    "panel_version_1": {
+        "version": "1.0.0",
+        "download_url": "..."
+    },
+    "*": {
+        "version": "1.1.0",
+        "download_url": "...
+    }
+}
+```
+
+#### Panel version
+
+In your `plugin.json` you can specify a `panel_version` that is used for compatibility checks.   
+When not set, the plugin will be loaded regardless of the panel version.
+
+You can add a `^` in front of the version to make it a minimum constraint instead of a strict one, e.g. `1.2.0` means "_only_ version 1.2.0" while `^1.2.0` means "version 1.2.0 _or higher_".
+
 ### Filament Resources
 
 To simply register Filament resources, pages or widgets you can add the following snippet to the `register` function in your main plugin file:
@@ -214,51 +292,6 @@ If you need additional composer packages as dependency for your plugin you can a
 "composer_packages": {
     "package/one": "^1.0",
     "package/two": "^1.0"
-}
-```
-
-### Update URL
-
-In your `plugin.json` you can specify an `update_url` that is fetched when checking for plugin updates. It needs to point directly to a json file with the following format:
-
-```json title="update.json"
-{
-    "panel_version_1": {
-        "version": "1.0.0",
-        "download_url": "..."
-    },
-    "panel_version_2": {
-        "version": "1.1.0",
-        "download_url": "...
-    }
-}
-```
-
-If you don't have panel version specific plugin versions you can also use `*` as panel version wildcard:
-
-```json title="update.json"
-{
-    "*": {
-        "version": "1.1.0",
-        "download_url": "...
-    }
-}
-```
-
-You can also mix the wildcard with real panel versions. This way the wildcard will be used as fallback when the users panel version isn't specified in the update json.
-
-Example:
-
-```json title="update.json"
-{
-    "panel_version_1": {
-        "version": "1.0.0",
-        "download_url": "..."
-    },
-    "*": {
-        "version": "1.1.0",
-        "download_url": "...
-    }
 }
 ```
 
