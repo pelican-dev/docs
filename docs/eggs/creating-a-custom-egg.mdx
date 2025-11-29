@@ -174,3 +174,100 @@ The default variables are always accessible to all eggs and don't have to be cre
 | P_SERVER_LOCATION         | Location of the server                      | `Example City`                                                 |
 | P_SERVER_UUID             | UUID of the server                          | `539fdca8-4a08-4551-a8d2-8ee5475b50d9`                         |
 | P_SERVER_ALLOCATION_LIMIT | Limit of allocations allowed for the server | `0`                                                            |
+
+## Install Script
+
+The install script is a crucial component of your egg that defines how the server files are downloaded, installed, and configured before the server can run for the first time. This script runs in a separate container during the installation process.
+
+### Install Script Configuration
+
+When configuring the install script, you'll need to specify:
+
+- **Script Container**: The Docker image that will be used to run the installation. This is often different from the runtime image and typically includes tools needed for downloading and extracting files (like `curl`, `wget`, `git`, `unzip`, etc.).
+- **Install Script**: The actual bash script that performs the installation steps.
+- **Script Entry**: This dropdown specifies which shell interpreter to use for running your install script:
+  - `bash` - Use for Debian/Ubuntu based install images
+  - `ash` - Use for Alpine Linux based install images
+
+### Example Install Script
+
+Here's an example of a typical install script for a Minecraft server:
+
+```bash
+#!/bin/bash
+# Minecraft Server Installation Script
+
+cd /mnt/server
+
+# Download the server jar
+echo "Downloading server jar..."
+curl -o server.jar https://example.com/minecraft-server.jar
+
+# Accept EULA
+echo "eula=true" > eula.txt
+
+echo "Installation complete!"
+```
+
+### Install Script Variables
+
+Install scripts have access to all egg variables as well as some special installation-specific variables. You can reference these using the `{{VARIABLE_NAME}}` syntax:
+
+```bash
+#!/bin/bash
+cd /mnt/server
+
+# Download specific version using egg variable
+echo "Downloading Minecraft version {{MINECRAFT_VERSION}}..."
+curl -o server.jar https://example.com/minecraft-{{MINECRAFT_VERSION}}.jar
+
+# Use server memory variable
+echo "Server will run with {{SERVER_MEMORY}}MB of RAM"
+```
+
+### Install Container Path
+
+:::warning
+Install scripts run in `/mnt/server` instead of `/home/container`. All files you download or create during installation should be placed in `/mnt/server`, which will be mapped to `/home/container` when the server runs.
+:::
+
+### Common Install Script Patterns
+
+**Downloading from a URL:**
+```bash
+curl -sSL -o server.jar https://example.com/server.jar
+```
+
+**Cloning from Git:**
+```bash
+git clone https://github.com/example/repo.git .
+```
+
+**Extracting Archives:**
+```bash
+curl -sSL https://example.com/archive.tar.gz | tar -xzv
+```
+
+**Building from Source:**
+```bash
+npm install
+npm run build
+```
+
+### Install Script Exit Codes
+
+Your install script should exit with code `0` on success. Any non-zero exit code will be treated as a failure and the installation will be marked as failed.
+
+```bash
+# Check if download was successful
+if [ ! -f "server.jar" ]; then
+    echo "Failed to download server.jar"
+    exit 1
+fi
+
+echo "Installation successful"
+exit 0
+```
+ 
+
+
