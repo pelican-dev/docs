@@ -44,6 +44,14 @@ const sidebars: SidebarsConfig = {
         'wings/update'
       ],
     },
+   {
+      type: 'category',
+      label: 'Creating Eggs',
+      items: [
+        'eggs/creating-a-custom-egg',
+        'eggs/creating-a-custom-docker-image',
+      ],
+    },
     {
       type: 'category',
       label: 'Guides',
