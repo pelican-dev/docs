@@ -110,8 +110,7 @@ Cloudflare handles SSL/TLS termination automatically, and your server IP remains
 
 **Upload failures or timeouts:**
 - The `Caddyfile` sets 256 MB upload limits; edit if you need more
-- Check Cloudflare dashboard → Rules → Transform Rules for upload size limits
-
+- Check your Cloudflare dashboard for any HTTP upload size or body size limits configured for your zone/plan, and raise them if needed
 **LAN access shows certificate warnings (LAN variant only):**
 - Caddy generates a self-signed internal CA certificate on first run
 - Your browser will show a warning until you trust the certificate
