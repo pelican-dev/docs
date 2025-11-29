@@ -46,10 +46,10 @@ const sidebars: SidebarsConfig = {
     },
    {
       type: 'category',
-      label: 'Creating Eggs',
+      label: 'Eggs',
       items: [
         'eggs/creating-a-custom-egg',
-        'eggs/creating-a-custom-docker-image',
+        'eggs/creating-a-custom-yolk',
       ],
     },
     {
