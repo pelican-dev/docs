@@ -15,17 +15,17 @@ Navigate to the Admin Panel and click the eggs option in the sidebar then select
 You will be taken to a new egg configuration page which is where most of the configuration happens.
 
 ### Name
-This is the name of your Egg
+This is the name of your egg.
 
 ### Author
-This is the orignal Creator of the Egg. 
+This is the orignal Creator of the egg. 
 
 ### Description
-This is the discription of your egg and what is needed to run your egg. 
+This is the description of your egg and what is needed to run it. 
 
 ### Startup Commands
-Here you can assign multiple Starup commands to run your server 
-Example Below
+Here you can assign multiple startup commands to run your server. 
+Example below:
 ```bash
 java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}
 ```
@@ -33,21 +33,21 @@ java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=t
 Here you can specify a list of files that the end user is not allowed to edit.
 
 ### Features (Egg Features)
-Egg feature can do diffrent things when specifyed. Example Below
+Egg feature can do different things when specified. Example below:
 | Tag                       | Description                                 |
 | ------------------------- | ------------------------------------------- |
-| eula                      | Makes a popup for excepting eula            |
-| java_version              | Specifys the java version                   |
+| eula                      | Makes a popup for accepting the EULA        |
+| java_version              | Specifies the java version                   |
 | pid_limit                 | Is setting that restricts the maximum number of processes that can run within a container or on a system |
 
 ### Tags
-The tag system is a system that you can use to group eggs together as the same egg type. This is the secsessor to nests. 
+The tag system is a system that you can use to group eggs together as the same egg type. This is the successor to nests. 
 
 ### Update URL
-This can be specifyed so that users that use your egg can Update the egg without having to look around for where the egg is hosted. 
+This can be specifyed so that users that use your egg can update the egg without having to look around for where the egg is hosted. 
 
 ### Docker Images
-For every egg there is always a docker image. They can be custom made and you can find how to make them from the "Creating a custom image guide". They have two variables that need defined. The name of the image and the url that the image is hosted on.  
+Every egg has a Docker image. Images can be custom made, and you can learn how to create them in the "Creating a Custom Docker Image" guide. They have two fields that need to be defined: the name of the image and the URL where the image is hosted.  
 
 :::info
 Docker images must be specifically designed to work with Pelican Panel. You should read more about that in our Creating a Docker Image guide.
