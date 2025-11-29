@@ -1,0 +1,93 @@
+---
+title: Cloudflare Tunnel Deployment
+description: Run Pelican Panel behind Cloudflare Tunnel using Docker Compose, Caddy, and cloudflared without exposing any ports.
+---
+
+Running Pelican Panel behind a Cloudflare Tunnel keeps your host firewalls closed while still benefiting from automatic HTTPS, DDoS protection, and identity-aware access. This guide explains how to use the example stack that ships with the repository under `pelicanpanel/examples/cloudflare-tunnel`.
+
+## Prerequisites
+
+- Docker Engine and Docker Compose plugin
+- A domain managed in Cloudflare
+- Cloudflare Zero Trust (free tier is fine)
+
+## 1. Copy the Example
+
+```bash
+cp -R pelicanpanel/examples/cloudflare-tunnel ~/pelican-deployment
+cd ~/pelican-deployment
+cp .env.example .env
+```
+
+Update `.env`:
+
+- `CLOUDFLARE_TUNNEL_TOKEN`: create a tunnel in Zero Trust (`Networks -> Tunnels`) and copy the token from the "Install cloudflared" command.
+- `PANEL_DOMAIN`: the hostname you route through Cloudflare (for example `panel.example.com`).
+- `ADMIN_EMAIL`: the email address Pelican sends system notifications to.
+- `APP_URL`: normally `https://${PANEL_DOMAIN}`.
+
+## 2. Configure the Tunnel Route
+
+In the Cloudflare dashboard:
+
+1. Navigate to **Zero Trust -> Networks -> Tunnels**.
+2. Select your tunnel, then add a **Public Hostname**.
+3. Set the hostname to your panel domain and choose service type **HTTP** with URL `panel:80`. The `panel` value matches the Docker Compose service name.
+
+## 3. Review the Stack
+
+The example includes three files:
+
+- `.env.example`: documents the environment variables consumed by the stack.
+- `docker-compose.yml`: runs two services on an isolated Docker network.
+  - `panel`: Pelican Panel container with Caddy bundled, persistent data volumes, and `APP_URL`/`ADMIN_EMAIL` wired in via environment variables.
+  - `cloudflared`: maintains the tunnel connection using the token you defined.
+- `Caddyfile`: disables the Caddy admin endpoint, trusts the Docker subnet, and raises PHP upload limits so large backups can pass through the tunnel.
+
+No ports are published on the host. Cloudflare reaches the panel exclusively over the tunnel.
+
+## 4. Start Pelican Panel
+
+```bash
+docker compose up -d
+```
+
+Check logs to confirm both containers are healthy:
+
+```bash
+docker compose logs cloudflared
+
+docker compose logs panel
+```
+
+The panel log will print `Generated app key:` on first boot—store that value securely.
+
+## 5. Finish the Installer
+
+Visit `https://your-panel-domain/installer` once the tunnel shows **Connected** in Cloudflare. Follow the on-screen wizard. Suggested defaults for single-server deployments:
+
+- Cache driver: Filesystem
+- Database driver: SQLite (or a managed database of your choice)
+- Queue driver: Database
+- Session driver: Filesystem
+
+## Troubleshooting
+
+- **Tunnel connected, site offline**: verify the public hostname maps to `panel:80` and that both containers share the same Docker network (`docker network inspect pelican`).
+- **"Unable to reach origin"**: ensure the `panel` service is running (`docker ps`) and `APP_URL` matches your Cloudflare hostname.
+- **Upload failures**: adjust the limits in `Caddyfile` if you need more than 256 MB.
+
+## Security Tips
+
+- Treat `.env` as sensitive—never commit it.
+- Store the generated app key outside of Docker volumes.
+- Consider Cloudflare Access policies for an additional authentication gate in front of the installer/admin area.
+
+## Cleanup
+
+```bash
+docker compose down       # stop services
+docker compose down -v    # stop and remove volumes (irreversible)
+```
+
+When you are ready to manage production traffic, pair this setup with Wings installs on your game server nodes.
