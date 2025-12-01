@@ -123,6 +123,19 @@ Example:
 }
 ```
 
+#### Additional composer dependencies
+
+If you need additional composer packages as dependency for your plugin, you can add the package name to the `composer_packages` array in your `plugin.json`.
+
+Example:
+
+```json
+"composer_packages": {
+    "package/one": "^1.0",
+    "package/two": "^1.0"
+}
+```
+
 #### Panel version
 
 In your `plugin.json` you can specify a `panel_version` that is used for compatibility checks.   
@@ -283,17 +296,6 @@ public function register(): void
 <Admonition type="warning" title="Subuser Permissions">
     This will only work for admin role permisions, not subuser permissions!
 </Admonition>
-
-### Additional composer dependencies
-
-If you need additional composer packages as dependency for your plugin you can add the package name to the `composer_packages` array in your `plugin.json`:
-
-```json
-"composer_packages": {
-    "package/one": "^1.0",
-    "package/two": "^1.0"
-}
-```
 
 ## Publish a Plugin
 
