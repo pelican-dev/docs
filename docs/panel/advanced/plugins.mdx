@@ -32,7 +32,7 @@ Plugins allow you to add new functionality to the panel without modifying any pa
     You **need** at least basic [PHP](https://php.net), [Laravel](https://laravel.com) and [Filament](https://filamentphp.com) knowledge to create plugins!
 </Admonition>
 
-Use `php artisan p:plugin:make` to create the basic files and folders for your new plugin. This will create the `plugin.json`, the main plugin file, a config file and a service provider.
+Run `php artisan p:plugin:make` to create the basic files and folders for your new plugin. This will create the `plugin.json`, the main plugin file, a config file and a service provider.
 
 <Admonition type="info" title="Need help?">
     Visit our [Discord](https://discord.gg/pelican-panel) if you need any help when creating plugins!
@@ -56,20 +56,20 @@ The only exception to a normal Laravel project is the `app` folder, it is called
 
 Most of the fields inside the `plugin.json` are generated when running the [artisan command](#create-a-plugin).
 
-| Field             | Required | Description                                                                                                                               |
-| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| id                | Yes      | Unique identifier of the plugin. Has to match with the plugin root folder name!                                                           |
-| name              | Yes      | Display name of the plugin.                                                                                                               |
-| author            | Yes      | Display name of the plugin creator.                                                                                                       |
-| version           | No       | Version of the plugin. Ideally, this should follow [semantic versioning](https://semver.org/). When not set it will assume version 1.0.0. |
-| description       | No       | Short description of the plugin.                                                                                                          |
-| category          | Yes      | Either `plugin`, `theme` or `language`.                                                                                                   |
-| update_url        | No       | URL that will be fetched when checking for updates. See [below](#update-url) for more information.                                        |
-| namespace         | Yes      | The php namespace for the plugin files.                                                                                                   |
-| class             | Yes      | The name of the plugin main class.                                                                                                        |
-| panels            | No       | Array of [FilamentPHP panel](#filament-panels) ids the plugin should be loaded on. When not set the plugin will be loaded on all panels.  |
-| panel_version     | No       | The panel version required for the plugin. See [below](#panel-version) for more information.                                              |
-| composer_packages | No       | Array of additional composer packages. Key is the package name and value is the version.                                                  |
+| Field             | Required | Description                                                                                                                                                   |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                | Yes      | Unique identifier of the plugin. Has to match with the plugin root folder name!                                                                               |
+| name              | Yes      | Display name of the plugin.                                                                                                                                   |
+| author            | Yes      | Display name of the plugin creator.                                                                                                                           |
+| version           | No       | Version of the plugin. Ideally, this should follow [semantic versioning](https://semver.org/). When not set it will assume version 1.0.0.                     |
+| description       | No       | Short description of the plugin.                                                                                                                              |
+| category          | Yes      | Either `plugin`, `theme` or `language`.                                                                                                                       |
+| update_url        | No       | URL that will be fetched when checking for updates. See [below](#update-url) for more information.                                                            |
+| namespace         | Yes      | The php namespace for the plugin files.                                                                                                                       |
+| class             | Yes      | The name of the plugin main class.                                                                                                                            |
+| panels            | No       | Array of [FilamentPHP panel](#filament-panels) ids the plugin should be loaded on. When not set the plugin will be loaded on all panels.                      |
+| panel_version     | No       | The panel version required for the plugin. See [below](#panel-version) for more information.                                                                  |
+| composer_packages | No       | Array of additional composer packages. Key is the package name and value is the version. See [below](#additional-composer-dependencies) for more information. |
 
 <Admonition type="info">
     You can ignore the `meta` fields. Those are used internally to keep track of the plugin status and load order.
@@ -284,6 +284,9 @@ public function register(): void
         ]
     ]);
 
+    // Optionally, register an icon for a custom model
+    Role::registerCustomModelIcon('myModel', 'tabler-star');
+
     // You can also add new permissions to existing models
     Role::registerCustomPermissions([
         'server' => [
@@ -294,7 +297,7 @@ public function register(): void
 ```
 
 <Admonition type="warning" title="Subuser Permissions">
-    This will only work for admin role permisions, not subuser permissions!
+    This will only work for admin role permisions, not subuser permissions! There is currently no way to register custom subuser permissions.
 </Admonition>
 
 ## Publish a Plugin
