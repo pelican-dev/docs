@@ -1,0 +1,153 @@
+---
+title: Cloudflare Tunnel Deployment
+description: Run Pelican Panel behind Cloudflare Tunnel using Docker Compose, Caddy, and cloudflared without exposing any ports.
+---
+
+Running Pelican Panel behind a Cloudflare Tunnel keeps your host firewalls closed while still benefiting from automatic HTTPS, DDoS protection, and identity-aware access. This guide walks through deploying the example stacks in `pelicanpanel/examples/cloudflare-tunnel` and `pelicanpanel/examples/cloudflare-tunnel-lan`.
+
+## Prerequisites
+
+- Docker Engine and Docker Compose plugin
+- A domain managed in Cloudflare
+- Cloudflare Zero Trust account (free tier is sufficient)
+
+## Quick Start
+
+### 1. Copy the Example
+
+```bash
+# For tunnel-only deployment (no LAN access):
+cp -R pelicanpanel/examples/cloudflare-tunnel ~/pelican-deployment
+
+# OR for LAN access fallback (recommended if local network access is needed):
+cp -R pelicanpanel/examples/cloudflare-tunnel-lan ~/pelican-deployment
+
+cd ~/pelican-deployment
+cp .env.example .env
+```
+
+Edit `.env` and set:
+- `PANEL_DOMAIN`: the hostname for your panel (e.g., `panel.example.com`)
+- `ADMIN_EMAIL`: administrator email for system notifications
+- `APP_URL`: normally `https://${PANEL_DOMAIN}`
+- `CLOUDFLARE_TUNNEL_TOKEN`: (we'll get this in the next step)
+- `LAN_BIND_ADDRESS`: (LAN variant only) your server's LAN IP (e.g., `192.168.1.50`)
+
+### 2. Create a Cloudflare Tunnel
+
+1. Open the [Cloudflare Zero Trust Dashboard](https://one.dash.cloudflare.com/)
+2. Navigate to **Networks** → **Tunnels**
+3. Click **Create a tunnel**
+4. Select **Cloudflared** as the connector type
+5. Give your tunnel a name (e.g., `pelican-panel`) and click **Save tunnel**
+6. On the installation screen, copy the token from the command shown (the long string after `--token`)
+7. Paste this token into `CLOUDFLARE_TUNNEL_TOKEN` in your `.env` file
+8. Click **Next** (don't install the tunnel locally—Docker will run it)
+
+### 3. Configure the Tunnel Route
+
+Still in the Cloudflare dashboard:
+
+1. Under **Public Hostname**, click **Add a public hostname**
+2. Configure:
+   - **Subdomain**: `panel` (or whatever matches your `PANEL_DOMAIN`)
+   - **Domain**: select your domain from the dropdown
+   - **Service Type**: `HTTP`
+   - **URL**: `panel:80` (this is the Docker service name and internal port)
+3. Click **Save hostname**
+
+### 4. Start the Stack
+
+```bash
+docker compose up -d
+```
+
+Verify both containers are running:
+
+```bash
+docker compose logs -f cloudflared
+# Should show "Connection registered" and tunnel status as connected
+
+docker compose logs panel
+# Will print "Generated app key:" on first boot—save this securely
+```
+
+### 5. Complete Installation
+
+Once the tunnel shows **Connected** in Cloudflare, visit `https://panel.example.com/installer` (using your actual domain) and follow the wizard. Recommended settings for single-server deployments:
+
+- **Cache Driver**: Filesystem
+- **Database Driver**: SQLite (or external database if you prefer)
+- **Queue Driver**: Database
+- **Session Driver**: Filesystem
+
+## How It Works
+
+The example stack consists of:
+
+- **`panel` service**: Pelican Panel container with integrated Caddy web server, persistent volumes, and environment variables for `APP_URL`/`ADMIN_EMAIL`
+- **`cloudflared` service**: maintains an outbound connection to Cloudflare's edge network using your tunnel token
+- **Docker network**: isolated `pelican` network (172.21.0.0/16) with no published ports (or port 443 bound to LAN IP in the LAN variant)
+
+Traffic flow:
+- **Remote access**: `User → Cloudflare → Tunnel → panel:80 → Caddy → Pelican Panel`
+- **LAN access** (LAN variant only): `User → LAN IP:443 → Caddy → Pelican Panel`
+
+Cloudflare handles SSL/TLS termination automatically, and your server IP remains hidden. The `Caddyfile` trusts the Docker subnet for forwarded headers and raises PHP upload limits to 256 MB. The LAN variant additionally serves HTTPS on port 443 using Caddy's internal CA, enabling local access when your internet connection is unavailable or for reduced latency on the same network.
+
+
+## Troubleshooting
+
+**Tunnel shows "Connected" but site is unreachable:**
+- Verify the public hostname in Cloudflare points to `panel:80` (not `localhost:80`)
+- Check both containers are on the same network: `docker network inspect pelican`
+- Ensure DNS for your domain is proxied (orange cloud) in Cloudflare
+
+**"Unable to reach origin service" error:**
+- Confirm the panel container is running: `docker ps`
+- Check `APP_URL` matches your configured Cloudflare hostname
+- Review panel logs for errors: `docker compose logs panel`
+
+**Upload failures or timeouts:**
+- The `Caddyfile` sets 256 MB upload limits; edit if you need more
+- Check your Cloudflare dashboard for any HTTP upload size or body size limits configured for your zone/plan, and raise them if needed
+
+**LAN access shows certificate warnings (LAN variant only):**
+- Caddy generates a self-signed internal CA certificate on first run
+- Your browser will show a warning until you trust the certificate
+- The panel remains fully functional; click through the warning or add a security exception
+- For production use, consider using a real certificate or internal PKI
+
+**Can't access panel on LAN (LAN variant only):**
+- Verify port 443 is bound: `docker ps` should show `192.168.1.50:443->443/tcp` (with your LAN IP)
+- Check firewall rules on the host aren't blocking port 443
+- Ensure you're using `https://` when accessing via LAN
+- Visit your `APP_URL` hostname, not the raw IP address, for proper routing
+
+## Security Recommendations
+
+- **Protect `.env`**: never commit it to version control; add it to `.gitignore`
+- **Save the app key**: store the generated encryption key outside Docker volumes
+- **Use Cloudflare Access** (optional): add an authentication layer before the installer/admin area by creating an Access application in Zero Trust
+- **Limit tunnel scope**: only expose the panel through the tunnel; keep Wings nodes on separate infrastructure
+
+## Cleanup
+
+Stop services (data persists):
+```bash
+docker compose down
+```
+
+Remove everything including volumes (irreversible):
+```bash
+docker compose down -v
+```
+
+## Next Steps
+
+After installation completes:
+1. Set up Wings (the node daemon) on your game server hosts
+2. Configure node allocations in the panel
+3. Create your first game server
+
+For Wings deployment, see the [Wings installation guide](/docs/wings/install).
