@@ -108,6 +108,7 @@ const config: Config = {
         "ini",
         "sql",
         "yaml",
+        "php",
       ],
     },
   } satisfies Preset.ThemeConfig,
@@ -136,7 +137,7 @@ const config: Config = {
     ],
     tailwindPlugin,
   ],
-  future:{
+  future: {
     experimental_faster: true,
     v4: true
   }
