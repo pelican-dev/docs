@@ -43,10 +43,10 @@ Run `php artisan p:plugin:make` to create the basic files and folders for your n
 The two most important files of your plugin are the `plugin.json` (which contains general information like name, version etc.) and the main plugin file. (where you can load Filament resources, pages etc.)  
 While the `plugin.json` is in the root of your plugin folder, the main plugin file is in `src`.
 
-In general, the plugin folder tries to mimic the structure of a normal Laravel/ FilamentPHP project. For example, translations go into `lang` and migrations are in `database/migrations`.  
-Everything is auto discovered and service providers, artisan commands, migrations etc. are automatically registered.
+In general, the plugin folder tries to mimic the structure of a normal Laravel/FilamentPHP project. For example, translations go into `lang` and migrations are in `database/migrations`.  
+Everything is auto-discovered and service providers, artisan commands, migrations etc. are automatically registered.
 
-The only exception to a normal Laravel project is the `app` folder, it is called `src` instead. Besides that is still follows the same sub-structure, e.g. models go in `src/Models` and service providers are in `src/Providers`.
+The only exception to a normal Laravel project is the `app` folder, it is called `src` instead. Besides that, is still follows the same sub-structure, e.g. models go in `src/Models` and service providers are in `src/Providers`.
 
 <Admonition type="info">
     The plugin id and the plugin root folder name need to match!
@@ -95,7 +95,7 @@ It needs to point directly to a json file with the following format:
 }
 ```
 
-If you don't have panel version specific plugin versions you can also use `*` as panel version wildcard:
+If you don't have panel-version-specific plugin versions, you can also use `*` as panel version wildcard:
 
 ```json title="update.json"
 {
@@ -199,7 +199,7 @@ If your plugin adds new default languages to the panel you need to set the plugi
 
 ### Views
 
-View are automatically registered under the namespace of your plugin.  
+Views are automatically registered under the namespace of your plugin.  
 This means you need to prefix view-strings with your plugin id, e.g. `myplugin::my-view` would look for `plugins/myplugin/resources/views/my-view.blade.php`.
 
 ### Plugin Settings
@@ -297,7 +297,7 @@ public function register(): void
 ```
 
 <Admonition type="warning" title="Subuser Permissions">
-    This will only work for admin role permisions, not subuser permissions! There is currently no way to register custom subuser permissions.
+    This will only work for admin role permissions, not subuser permissions! There is currently no way to register custom subuser permissions.
 </Admonition>
 
 ## Publish a Plugin
