@@ -264,11 +264,13 @@ public function register(): void
 
 For more information you can check the ["CanModify" and "CanCustomize" traits in `./app/Traits/Filament`](https://github.com/pelican-dev/panel/tree/main/app/Traits/Filament).
 
-### Add new role permissions
+### Add new permissions
 
-To add new (admin) role permissions you can use `Role::registerCustomPermissions` and `Role::registerCustomDefaultPermissions`. You can call these static methods inside the `register` function of a service provider.
+#### Admin Roles
 
-Examples:
+To add new admin role permissions you can use `Role::registerCustomPermissions` and `Role::registerCustomDefaultPermissions`.
+
+You can call these static methods inside the `register` function of a service provider. Examples:
 
 ```php title="MyPluginProvider.php"
 public function register(): void
@@ -296,9 +298,22 @@ public function register(): void
 }
 ```
 
-<Admonition type="warning" title="Subuser Permissions">
-    This will only work for admin role permissions, not subuser permissions! There is currently no way to register custom subuser permissions.
-</Admonition>
+#### Subuser
+
+To add new subuser permissions you can use `Subuser::registerCustomPermissions`.
+
+You can call this static method inside the `register` function of a service provider. Examples:
+
+```php title="MyPluginProvider.php"
+public function register(): void
+{
+    // Register new subuser permissions (call with icon and hidden param)
+    Subuser::registerCustomPermissions('custom', ['customPerm1', 'customPerm2'], 'tabler-star', false);
+
+    // You can also add new permissions to existing permission groups (call without icon and hidden param)
+    Subuser::registerCustomPermissions('console', ['custom']);
+}
+```
 
 ## Publish a Plugin
 
