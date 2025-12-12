@@ -17,7 +17,7 @@ Plugins allow you to add new functionality to the panel without modifying any pa
         Use the Import Button on the plugin list to upload & install a plugin.
     </TabItem>
     <TabItem value="manually" label="Manually">
-        Move the plugin folder to `/var/www/pelican/plugins`. Then run `php artisan p:plugin:install` and select the new plugin.
+        Move the plugin folder to `plugins` inside your panel directory (`/var/www/pelican/plugins` by default). Then run `php artisan p:plugin:install` inside your panel directory and select the new plugin.
     </TabItem>
 </Tabs>
 
@@ -32,7 +32,7 @@ Plugins allow you to add new functionality to the panel without modifying any pa
     You **need** at least basic [PHP](https://php.net), [Laravel](https://laravel.com) and [Filament](https://filamentphp.com) knowledge to create plugins!
 </Admonition>
 
-Run `php artisan p:plugin:make` to create the basic files and folders for your new plugin. This will create the `plugin.json`, the main plugin file, a config file and a service provider.
+Run `php artisan p:plugin:make` inside your panel directory (`/var/www/pelican` by default) to create the basic files and folders for your new plugin. This will create the `plugin.json`, the main plugin file, a config file and a service provider.
 
 <Admonition type="info" title="Need help?">
     Visit our [Discord](https://discord.gg/pelican-panel) if you need any help when creating plugins!
