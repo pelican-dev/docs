@@ -202,6 +202,11 @@ If your plugin adds new default languages to the panel you need to set the plugi
 Views are automatically registered under the namespace of your plugin.  
 This means you need to prefix view-strings with your plugin id, e.g. `myplugin::my-view` would look for `plugins/myplugin/resources/views/my-view.blade.php`.
 
+### Seeder
+
+If present, a seeder with the name of your plugin will be automatically registered. It needs to be named `<plugin name>Seeder` (e.g. `MyPluginSeeder`) and put inside your plugins `database/Seeder` folder, e.g. `plugins/myplugin/database/Seeder/MyPluginSeeder.php`.
+This seeder will be automatically called when a user installs the plugin or when seeders are run in general, e.g. when using `php artisan db:seed` or `php artisan migrate --seed`.
+
 ### Plugin Settings
 
 Your main plugin class can implement the `HasPluginSettings` interface to conveniently add a settings page to your plugin.  
