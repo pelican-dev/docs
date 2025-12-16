@@ -153,3 +153,58 @@ More commonly discussed values.
 | detect_clean_exit_as_crash |     true      | Mark server as crashed if it's stopped without user interaction, e.g., not pressing stop button                                                            |
 | (crash detection) timeout  |      60       | Timeout between server crashes that will not cause the server to be automatically restarted                                                                |
 | check_permissions_on_boot  |     true      | Check all file permissions on each boot. Disable this when you have a very large amount of files and the server startup is hanging on checking permissions |
+
+
+## Podman-specific options
+
+- Make sure you have podman-docker installed. and 
+- systemctl --user enable --now podman.socket
+- sudo systemctl enable --now podman.socket
+
+Change of tmp directory
+```
+sudo mkdir -p /var/lib/pelican/tmp
+```
+In /etc/pelican/config.yaml, change these lines.
+```
+system:
+  # ... other settings ...
+  # Change this from /tmp/pelican to the path below:
+  tmp_directory: /var/lib/pelican/tmp
+
+docker:
+  # ... other settings ...
+log_config:
+  # Change this from local to the k8s-file
+  type: k8s-file
+```
+Fix SELinux and permission issues:
+```
+#Chown to the pelican's uid
+sudo chown -R 973:973 /var/lib/pelican
+sudo chmod -R 755 /var/lib/pelican
+sudo semanage fcontext -a -t container_file_t "/var/lib/pelican(/.*)?"
+sudo restorecon -R -v /var/lib/pelican
+sudo systemctl restart wings
+```
+Custom service unit file.
+```ini title="/etc/systemd/system/wings.service"
+[Unit]
+Description=Wings Daemon
+
+[Service]
+User=root
+WorkingDirectory=/etc/pelican
+LimitNOFILE=4096
+PIDFile=/var/run/wings/daemon.pid
+ExecStart=/usr/local/bin/wings
+Restart=on-failure
+StartLimitInterval=180
+StartLimitBurst=30
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
+```
+### Important for podman: 
+OOM killer must always be enabled in the game servers' settings, or else the wings will crash on server start.

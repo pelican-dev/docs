@@ -1,0 +1,215 @@
+---
+title: Podman Deployment
+description: Deploy Pelican Panel using Rootless Podman and Quadlets.
+sidebar_label: Podman (Rootless)
+---
+
+# Deploying with Podman
+
+This guide details how to deploy the Pelican Panel using **Rootless Podman** on Fedora, RHEL, or CentOS Stream. We leverage **Quadlets** (Podman's systemd generator) to manage the container lifecycle.
+
+## Prerequisites
+
+* **OS:** Fedora, RHEL 9+, or Alma/Rocky Linux 9+.
+* **Packages:** `podman`, `systemd-container`.
+* **SELinux:** Enabled (Enforcing).
+
+:::info
+This guide uses **Podman Named Volumes** for data storage. Podman manages these volumes internally (usually in `~/.local/share/containers/storage/volumes`).
+:::
+
+## 1. Directory Structure
+
+Create a directory to house your configuration file.
+
+```bash
+# Configuration folder (for the Caddyfile)
+mkdir -p ~/pelican-kube/config
+mkdir -p ~/.config/containers/systemd
+```
+
+## 2. Configuration Files
+
+### Caddyfile
+
+Create the Caddy configuration to handle local traffic. (this guide does not cover https)
+
+**File:** `~/pelican-kube/config/Caddyfile`
+
+```caddyfile title="~/pelican-kube/config/Caddyfile"
+{
+    admin off
+    auto_https off
+}
+
+:8080 {
+    root * /var/www/html/public
+    encode gzip
+
+    php_fastcgi 127.0.0.1:9000 {
+        # Increase upload limits to 256MB
+        env PHP_VALUE "upload_max_filesize = 256M
+                       post_max_size = 256M"
+    }
+
+    file_server
+}
+```
+
+### Kubernetes Pod YAML
+
+This YAML defines a **Pod** containing the Panel container. We map the container's port 8080 to the host's port 80.
+
+**File:** `~/pelican-kube/pelican.yaml`
+
+```yaml title="~/pelican-kube/pelican.yaml"
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pelican-pod
+  # OPTIONAL Enables auto-updates for containers in this pod
+  annotations:
+    io.containers.autoupdate: registry
+spec:
+  containers:
+    # --- Container 1: Pelican Panel ---
+    - name: panel
+      image: ghcr.io/pelican-dev/panel:latest
+      # Expose the port to the host
+      ports:
+        - containerPort: 8080
+          hostPort: 80
+          protocol: TCP
+      volumeMounts:
+        # These match the volume names below
+        - name: pelican-data
+          mountPath: /pelican-data
+        - name: pelican-logs
+          mountPath: /var/www/html/storage/logs
+        - name: caddyfile
+          mountPath: /etc/caddy/Caddyfile
+      env:
+        - name: XDG_DATA_HOME
+          value: "/pelican-data"
+        # Use your Host IP or Domain with port 80
+        - name: APP_URL
+          value: "http://YOUR_SERVER_IP"  # <--- UPDATE THIS
+        - name: ADMIN_EMAIL
+          value: "admin@example.com"           # <--- UPDATE THIS
+
+  # --- Volume Definitions ---
+  volumes:
+    # 1. Named Volume: Data
+    - name: pelican-data
+      persistentVolumeClaim:
+        claimName: pelican-data
+
+    # 2. Named Volume: Logs
+    - name: pelican-logs
+      persistentVolumeClaim:
+        claimName: pelican-logs
+
+    # 3. Host Path: Config (Bind Mount)
+    - name: caddyfile
+      hostPath:
+        # ABSOLUTE path to the Caddyfile created in Step 1
+        path: /home/m3ow/pelican-kube/config/Caddyfile
+        type: File
+```
+
+### Systemd Quadlet
+
+This file instructs systemd to generate a service based on the YAML above.
+
+**File:** `~/.config/containers/systemd/pelican.kube`
+
+```ini title="~/.config/containers/systemd/pelican.kube"
+[Unit]
+Description=Pelican Panel Pod
+Documentation=man:podman-generate-systemd(1)
+Wants=network-online.target
+After=network-online.target
+
+[Kube]
+# Point this to the YAML created above
+Yaml=%h/pelican-kube/pelican.yaml
+# Use slirp4netns for rootless networking
+Network=slirp4netns
+# OPTIONAL: Enable auto-updates via systemd
+#AutoUpdate=registry
+
+[Install]
+WantedBy=default.target
+```
+
+## 3. Permissions & SELinux
+
+### SELinux (Config File Only)
+
+Podman automatically handles SELinux labeling for the named volumes (`pelican-data` and `pelican-logs`). However, you must manually allow access to the `Caddyfile` bind mount.
+
+```bash
+# Apply container_file_t context to the config folder
+sudo semanage fcontext -a -t container_file_t "/home/your-user/pelican-kube/config(/.*)?"
+sudo restorecon -R -v ~/pelican-kube/config
+# Allow containers to bind starting from port 80 
+echo 'net.ipv4.ip_unprivileged_port_start=80' | sudo tee /etc/sysctl.d/podman-ports.conf
+sudo sysctl --system
+```
+
+## 4. Startup & Maintenance
+
+### Enable Linger
+
+To ensure the panel runs even when you are logged out:
+
+```bash
+loginctl enable-linger $USER
+```
+
+### Start the Service
+
+Reload systemd to detect the new Quadlet and start the pod.
+
+```bash
+systemctl --user daemon-reload
+systemctl --user start pelican.service
+```
+
+### Verify Status
+
+```bash
+systemctl --user status pelican.service
+```
+
+### View Logs
+
+You can view logs for the container:
+
+```bash
+podman logs -f pelican-pod-panel
+```
+
+## 5. First Run
+
+On the very first startup, retrieve your generated encryption key:
+
+```bash
+podman logs pelican-pod-panel | grep 'Generated app key:'
+```
+
+Save this key securely. You can now access your panel at `http://YOUR_SERVER_IP:8080`.
+
+## 6. Managing Data
+
+Since we are using Named Volumes, your data is managed by Podman.
+
+**List Volumes:**
+```bash
+podman volume ls
+```
+
+**Find Data Location (if needed for backups):**
+```bash
+podman volume inspect pelican-data
+```
