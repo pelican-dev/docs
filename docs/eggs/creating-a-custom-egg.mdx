@@ -35,16 +35,16 @@ Egg feature can do different things when specified. Example below:
 | ------------------------- | ------------------------------------------- |
 | eula                      | Makes a popup for accepting the EULA        |
 | java_version              | Specifies the java version                   |
-| pid_limit                 | Is setting that restricts the maximum number of processes that can run within a container or on a system |
+| pid_limit                 | Setting that restricts the maximum number of processes that can run within a container or on a system |
 
 ### Tags
 The tag system is a system that you can use to group eggs together as the same egg type. This is the successor to nests. 
 
 ### Update URL
-This can be specifyed so that users that use your egg can update the egg without having to look around for where the egg is hosted. 
+This can be specified so that users who use your egg can update the egg without having to look around for where the egg is hosted. 
 
 ### Docker Images (Yolks)
-Every egg has a Docker image or Yolk as they are refurred to. Images can be custom made, and you can learn how to create them in the "Creating a Custom Yolk" guide. They have two fields that need to be defined: the name of the image and the URL where the image is hosted.  
+Every egg has a Docker image or Yolk as they are referred to. Images can be custom-made, and you can learn how to create them in the "Creating a Custom Yolk" guide. They have two fields that need to be defined: the name of the image and the URL where the image is hosted.  
 
 :::info
 Docker images must be specifically designed to work with Pelican Panel. You should read more about that in our Creating a Yolk guide.
@@ -105,8 +105,8 @@ You can have multiple files listed here, Wings will process them in parallel bef
         "parser": "yaml",
         "find": {
             "listeners[0].query_enabled": true,
-            "listeners[0].query_port": "{{server.build.default.port}}",
-            "listeners[0].host": "0.0.0.0:{{server.build.default.port}}",
+            "listeners[0].query_port": "{{server.allocations.default.port}}",
+            "listeners[0].host": "0.0.0.0:{{server.allocations.default.port}}",
             "servers.*.address": {
                 "127.0.0.1": "{{config.docker.interface}}",
                 "localhost": "{{config.docker.interface}}"
@@ -153,7 +153,7 @@ The next section is `Permissions`, which is a dropdown with two options: `Users 
 
 You should use caution here, even if you assign neither of the permissions it does not mean that the value will be hidden. Crafty users will still be able to get the environment on their server. In most cases this is simply hiding it from the user, and then used within the Dockerfile to perform actions, thus it is not important for the user to see.
 
-Finally, you will need to define some input rules to validate the value against. In this example, we use `required|string|between:1,10`, which means the field is `required`, must be a `string`, and must be between `1` and `10` characters in length. You can find all of the available validation rules on the Laravel website. You can also use regex based validation by using the `regex:` rule flag. For example, `required|regex:/^([\w\d._-]+)(\.jar)$/` will require the field, and will match the regex as any letters or numbers (`\w\d`) including underscore (`_`), periods (`.`), and dashes (`-`) ending in `.jar`.
+Finally, you will need to define some input rules to validate the value against. In this example, we use `required|string|between:1,10`, which means the field is `required`, must be a `string`, and must be between `1` and `10` characters in length. You can find all of the available validation rules in the [Laravel validation documentation](https://laravel.com/docs/validation#available-validation-rules). You can also use regex-based validation by using the `regex:` rule flag. For example, `required|regex:/^([\w\d._-]+)(\.jar)$/` will require the field, and will match the regex as any letters or numbers (`\w\d`) including underscore (`_`), periods (`.`), and dashes (`-`) ending in `.jar`.
 
 They will then be visible when managing the startup for a server in both the Admin CP and on the Front-End.
 
@@ -183,8 +183,8 @@ When configuring the install script, you'll need to specify:
 - **Script Container**: The Docker image that will be used to run the installation. This is often different from the runtime image and typically includes tools needed for downloading and extracting files (like `curl`, `wget`, `git`, `unzip`, etc.).
 - **Install Script**: The actual bash script that performs the installation steps.
 - **Script Entry**: This dropdown specifies which shell interpreter to use for running your install script:
-  - `bash` - Use for Debian/Ubuntu based install images
-  - `ash` - Use for Alpine Linux based install images
+  - `bash` - Use for Debian/Ubuntu-based install images
+  - `ash` - Use for Alpine Linux-based install images
 
 ### Example Install Script
 
