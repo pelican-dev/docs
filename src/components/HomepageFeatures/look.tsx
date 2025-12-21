@@ -40,7 +40,7 @@ function Feature({title, light, dark}: FeatureItem) {
     return (
       <div className={clsx('col col--4')}>
         <div className="text--center" style={{paddingBottom: '20px'}}>
-          <Zoom children={""}><img src={image}/></Zoom>
+          <Zoom><img src={image}/></Zoom>
           <Heading as="h3">{title}</Heading>
         </div>
       </div>

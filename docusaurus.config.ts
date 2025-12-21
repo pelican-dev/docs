@@ -129,7 +129,7 @@ const config: Config = {
     experimental_faster: true,
     v4: true
   },
-  clientModules: ['./static/js/snowflake.min.js']
+  scripts: ['./static/js/snowflake.min.js'],
 };
 
 export default config;
