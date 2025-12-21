@@ -46,7 +46,6 @@ fi
 
 backup_dir="$install_dir/backup"
 mkdir -p "$backup_dir/storage/app"
-mkdir -p "$backup_dir/plugins"
 if [ $? -ne 0 ]; then
   echo "Failed to create backup directory $backup_dir, aborting"
   exit 1
@@ -63,14 +62,6 @@ if [ -d "$install_dir/storage/app/public" ]; then
   cp -a "$install_dir/storage/app/public" "$backup_dir/storage/app/"
   if [ $? -ne 0 ]; then
     echo "Failed to backup avatars & fonts files, aborting"
-    exit 1
-  fi
-fi
-
-if [ -d "$install_dir/plugins" ]; then
-  cp -a "$install_dir/plugins" "$backup_dir/plugins"
-  if [ $? -ne 0 ]; then
-    echo "Failed to backup plugins, aborting"
     exit 1
   fi
 fi
@@ -129,7 +120,7 @@ if [ "$delete_confirm" != "y" ]; then
   exit 1
 fi
 
-find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'panel.tar.gz' -exec rm -rf {} +
+find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'plugins' ! -name 'panel.tar.gz' -exec rm -rf {} +
 if [ $? -ne 0 ]; then
   echo "Failed to delete old files, aborting"
   exit 1
@@ -159,15 +150,6 @@ if [ -d "$backup_dir/storage/app/public" ]; then
   cp -a "$backup_dir/storage/app/public" "$install_dir/storage/app/"
   if [ $? -ne 0 ]; then
     echo "Failed to restore avatars & fonts files, aborting"
-    exit 1
-  fi
-fi
-
-if [ -d "$backup_dir/plugins" ]; then
-  echo "Restoring plugins"
-  cp -a "$backup_dir/plugins" "$install_dir"
-  if [ $? -ne 0 ]; then
-    echo "Failed to restore plugins, aborting"
     exit 1
   fi
 fi
