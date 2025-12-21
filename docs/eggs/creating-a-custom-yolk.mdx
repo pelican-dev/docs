@@ -17,7 +17,7 @@ We try to make use of [Alpine Linux](https://alpinelinux.org) as much as possibl
 # Environment: Java
 # Minimum Panel Version: 1.0.0
 # ----------------------------------
-FROM openjdk:8-jdk-alpine
+FROM eclipse-temurin:8-jdk-noble
 
 LABEL author="Pelican Panel" maintainer="support@pelican.dev"
 
@@ -37,10 +37,10 @@ CMD ["/bin/bash", "/entrypoint.sh"]
 Let's walk through the `Dockerfile` above. The first thing you'll notice is the [`FROM`](https://docs.docker.com/engine/reference/builder/#from) declaration.
 
 ```dockerfile
-FROM openjdk:8-jdk-alpine
+FROM eclipse-temurin:8-jdk-noble
 ```
 
-In this case, we are using [`openjdk:8-jdk-alpine`](https://github.com/docker-library/openjdk) which provides us with Java 8.
+In this case, we are using [`eclipse-temurin:8-jdk-noble`](https://github.com/adoptium/temurin-build) which provides us with Java 8.
 
 ## Installing Dependencies
 
