@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {JSX} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
@@ -40,7 +40,7 @@ function Feature({title, light, dark}: FeatureItem) {
     return (
       <div className={clsx('col col--4')}>
         <div className="text--center" style={{paddingBottom: '20px'}}>
-          <Zoom><img src={image}/></Zoom>
+          <Zoom children={""}><img src={image}/></Zoom>
           <Heading as="h3">{title}</Heading>
         </div>
       </div>
