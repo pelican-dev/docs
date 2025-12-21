@@ -46,6 +46,7 @@ fi
 
 backup_dir="$install_dir/backup"
 mkdir -p "$backup_dir/storage/app"
+mkdir -p "$backup_dir/plugins"
 if [ $? -ne 0 ]; then
   echo "Failed to create backup directory $backup_dir, aborting"
   exit 1
@@ -62,6 +63,14 @@ if [ -d "$install_dir/storage/app/public" ]; then
   cp -a "$install_dir/storage/app/public" "$backup_dir/storage/app/"
   if [ $? -ne 0 ]; then
     echo "Failed to backup avatars & fonts files, aborting"
+    exit 1
+  fi
+fi
+
+if [ -d "$install_dir/plugins" ]; then
+  cp -a "$install_dir/plugins" "$backup_dir/plugins"
+  if [ $? -ne 0 ]; then
+    echo "Failed to backup plugins, aborting"
     exit 1
   fi
 fi
@@ -154,6 +163,15 @@ if [ -d "$backup_dir/storage/app/public" ]; then
   fi
 fi
 
+if [ -d "$backup_dir/plugins" ]; then
+  echo "Restoring plugins"
+  cp -a "$backup_dir/plugins" "$install_dir"
+  if [ $? -ne 0 ]; then
+    echo "Failed to restore plugins, aborting"
+    exit 1
+  fi
+fi
+
 if [ -f "$backup_dir/$db_database.backup" ]; then
   echo "Restoring sqlite database"
   cp -a "$backup_dir/$db_database.backup" "$install_dir/database/$db_database"
@@ -199,4 +217,7 @@ fi
 php artisan queue:restart
 
 echo "Panel Updated!"
+echo "To make sure permissions are correct, please run the following commands manually if they might have silently failed earlier:"
+echo "sudo $chmod_command"
+echo "sudo $chown_command"
 exit 0
