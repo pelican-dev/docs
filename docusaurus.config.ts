@@ -108,6 +108,7 @@ const config: Config = {
         "ini",
         "sql",
         "yaml",
+        "dockerfile",
       ],
     },
   } satisfies Preset.ThemeConfig,
