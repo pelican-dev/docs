@@ -120,7 +120,7 @@ if [ "$delete_confirm" != "y" ]; then
   exit 1
 fi
 
-find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'panel.tar.gz' -exec rm -rf {} +
+find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'plugins' ! -name 'panel.tar.gz' -exec rm -rf {} +
 if [ $? -ne 0 ]; then
   echo "Failed to delete old files, aborting"
   exit 1
@@ -199,4 +199,7 @@ fi
 php artisan queue:restart
 
 echo "Panel Updated!"
+echo "To make sure permissions are correct, please run the following commands manually if they might have silently failed earlier:"
+echo "sudo $chmod_command"
+echo "sudo $chown_command"
 exit 0
