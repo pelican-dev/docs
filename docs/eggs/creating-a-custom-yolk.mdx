@@ -72,7 +72,7 @@ The `--platform=$TARGETOS/$TARGETARCH` flag tells Docker which platform architec
 
 ## Build-time variables
 
-- `$TARGETOS` - Target operating system (e.g., `linux`, `windows`)
+- `$TARGETOS` - Target operating system (e.g., `Ubuntu`, `Arch`)
 - `$TARGETARCH` - Target CPU architecture (e.g., `amd64`, `arm64`, `arm`)
 
 Docker automatically sets these during the build based on your target platform.
@@ -116,6 +116,11 @@ All Pelican containers must have a user named `container`, and the user home **m
 :::
 
 After we create that user, we then define the default container [`USER`](https://docs.docker.com/engine/reference/builder/#user) as well as a few [`ENV`](https://docs.docker.com/engine/reference/builder/#env) settings to be applied to things running within the container.
+
+```bash
+ENV         USER=container HOME=/home/container
+WORKDIR     /home/container
+```
 
 ## Work Directory & Entrypoint
 
