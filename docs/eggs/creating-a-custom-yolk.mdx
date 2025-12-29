@@ -17,30 +17,66 @@ In the Past we have tred to make use of [Alpine Linux](https://alpinelinux.org) 
 # Environment: Java
 # Minimum Panel Version: 1.0.0
 # ----------------------------------
-FROM eclipse-temurin:8-jdk-noble
 
-LABEL author="Pelican Panel" maintainer="support@pelican.dev"
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:8-jdk-noble
 
-RUN apk add --no-cache --update curl ca-certificates openssl git tar bash sqlite fontconfig iproute2 tzdata \
-    && adduser --disabled-password --home /home/container container
+LABEL       author="Pelican Panel" maintainer="support@pelican.dev"
 
-USER container
-ENV  USER=container HOME=/home/container
+LABEL       org.opencontainers.image.source="https://github.com/pelican-eggs/yolks"
+LABEL       org.opencontainers.image.licenses=MIT
 
-WORKDIR /home/container
+RUN         apt update -y \
+            && apt install -y \
+                curl \
+                lsof \
+                ca-certificates \
+                openssl \
+                git \
+                tar \
+                sqlite3 \
+                fontconfig \
+                tzdata \
+                iproute2 \
+                libfreetype6 \
+                redis-tools \
+                tini \
+				zip \
+				unzip \
+                jq
 
-COPY ./entrypoint.sh /entrypoint.sh
+## Setup user and working directory
+RUN         useradd -m -d /home/container -s /bin/bash container
+USER        container
+ENV         USER=container HOME=/home/container
+WORKDIR     /home/container
 
-CMD ["/bin/bash", "/entrypoint.sh"]
+STOPSIGNAL SIGINT
+
+COPY        --chown=container:container ./../entrypoint.sh /entrypoint.sh
+RUN         chmod +x /entrypoint.sh
+ENTRYPOINT    ["/usr/bin/tini", "-g", "--"]
+CMD         ["/entrypoint.sh"]
 ```
 
 Let's walk through the `Dockerfile` above. The first thing you'll notice is the [`FROM`](https://docs.docker.com/engine/reference/builder/#from) declaration.
 
 ```dockerfile
-FROM eclipse-temurin:8-jdk-noble
+FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:8-jdk-noble
 ```
 
 In this case, we are using [`eclipse-temurin:8-jdk-noble`](https://github.com/adoptium/temurin-build) which provides us with Java 8.
+
+# Dockerfile Platform Architecture
+
+The `--platform=$TARGETOS/$TARGETARCH` flag tells Docker which platform architecture to use when pulling the base image.
+
+## Build-time variables
+
+- `$TARGETOS` - Target operating system (e.g., `linux`, `windows`)
+- `$TARGETARCH` - Target CPU architecture (e.g., `amd64`, `arm64`, `arm`)
+
+Docker automatically sets these during the build based on your target platform.
+This is essential for cross-platform builds and ensuring containers run correctly on different architectures.
 
 ## Installing Dependencies
 
@@ -51,7 +87,7 @@ The next thing we do is install the dependencies we will need using Alpine's pac
 Within this `RUN` block, you'll notice the `adduser` command.
 
 ```bash
-adduser --disabled-password --home /home/container container
+RUN         useradd -m -d /home/container -s /bin/bash container
 ```
 
 :::warning
@@ -62,14 +98,33 @@ After we create that user, we then define the default container [`USER`](https:/
 
 ## Work Directory & Entrypoint
 
-One of the last things we do is define a [`WORKDIR`](https://docs.docker.com/engine/reference/builder/#workdir) which is where everything else will be executed. The `WORKDIR` must be set to `/home/container`.
+One of the last things we do is define a `WORKDIR` which is where everything else will be executed. The `WORKDIR` must be set to `/home/container`.
 
-Finally, we need to copy our [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint) script into the docker image root. This is done using [`COPY`](https://docs.docker.com/engine/reference/builder/#copy), after which we define the command to be used when the container is started using [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd). The `CMD` line should always point to the `entrypoint.sh` file.
-
+Finally, we need to copy our `ENTRYPOINT` script into the docker image root. This is done using `COPY`, after which we define the command to be used when the container is started using `CMD`. The `CMD` line should always point to the `entrypoint.sh` file.
 ```dockerfile
-COPY ./entrypoint.sh /entrypoint.sh
-CMD ["/bin/bash", "/entrypoint.sh"]
+COPY        --chown=container:container ./../entrypoint.sh /entrypoint.sh
+RUN         chmod +x /entrypoint.sh
+ENTRYPOINT  ["/usr/bin/tini", "-g", "--"]
+CMD         ["/entrypoint.sh"]
 ```
+
+### Understanding the ENTRYPOINT
+
+The `ENTRYPOINT ["/usr/bin/tini", "-g", "--"]` line sets up Tini as the init process for the container.
+
+**What is Tini:** Tini is a minimal init system that acts as PID 1 inside the container, handling process signals and reaping zombie processes.
+
+**Flags:**
+- `-g` - Sends signals to the entire process group, not just the child process
+- `--` - Separates Tini's arguments from the command that follows
+
+**Why use it:**
+- **Signal handling:** Ensures signals (like `^SIGTERM` during container shutdown) are properly forwarded to your application, allowing graceful shutdowns
+- **Zombie reaping:** Prevents zombie processes from accumulating when child processes aren't properly cleaned up
+
+:::warning
+Sometimes you may need to change the permissions of the `entrypoint.sh` file. On Ubuntu Linux you can do this by executing `chmod +x entrypoint.sh` in the directory where the file is located.
+:::
 
 ## Entrypoint Script
 
@@ -130,7 +185,3 @@ java -Xms128M -Xmx1024M -jar server.jar
 ## Run the Command
 
 The last step is to run this modified startup command, which is done with the line `${MODIFIED_STARTUP}`.
-
-## Note
-
-Sometimes you may need to change the permissions of the `entrypoint.sh` file. On Linux you can do this by executing `chmod +x entrypoint.sh` in the directory where the file is located.
