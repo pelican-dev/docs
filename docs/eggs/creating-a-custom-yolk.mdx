@@ -119,12 +119,14 @@ After we create that user, we then define the default container [`USER`](https:/
 
 ```bash
 ENV         USER=container HOME=/home/container
-WORKDIR     /home/container
 ```
 
 ## Work Directory & Entrypoint
 
 One of the last things we do is define a `WORKDIR` which is where everything else will be executed. The `WORKDIR` must be set to `/home/container`.
+```bash
+WORKDIR     /home/container
+```
 
 Finally, we need to copy our `ENTRYPOINT` script into the docker image root. This is done using `COPY`, after which we define the command to be used when the container is started using `CMD`. The `CMD` line should always point to the `entrypoint.sh` file.
 ```dockerfile
