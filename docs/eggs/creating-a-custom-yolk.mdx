@@ -40,8 +40,8 @@ RUN         apt update -y \
                 libfreetype6 \
                 redis-tools \
                 tini \
-				zip \
-				unzip \
+                zip \
+                unzip \
                 jq
 
 ## Setup user and working directory
@@ -84,7 +84,7 @@ The next thing we do is install the dependencies we will need using Alpine's pac
 
 ## Creating a Container User
 
-Within this `RUN` block, you'll notice the `adduser` command.
+Within this `RUN` block, you'll notice the `useradd` command.
 
 ```bash
 RUN         useradd -m -d /home/container -s /bin/bash container
