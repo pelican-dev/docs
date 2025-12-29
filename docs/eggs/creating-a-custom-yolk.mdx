@@ -84,7 +84,7 @@ The next thing we do is install the dependencies we will need using Alpine's pac
 
 ## Creating a Container User
 
-Within this `RUN` block, you'll notice the `useradd` command.
+Within this `RUN` block, you'll notice the `useradd` command. This is needed to be sure the container has the correct permissions within the system. 
 
 ```bash
 RUN         useradd -m -d /home/container -s /bin/bash container
