@@ -35,7 +35,7 @@ Egg features can do different things when specified. Example below:
 | eula                      | Displays a popup for accepting the EULA        |
 | java_version              | Specifies the Java version                   |
 | pid_limit                 | Setting that restricts the maximum number of processes that can run within a container or on a system |
-| steam_disk_space          | Sets the storage limit for any Steam-based game normally controlled by Steam |
+| steam_disk_space          | Sets a limit to enable a "out of disk space" Popup if the host system is out of disk space |
 
 ### Tags
 The tag system allows you to group eggs together by type. This is the successor to nests. 
@@ -58,7 +58,7 @@ The first field you'll encounter is `Copy Settings From`. The default selection 
 
 ### Stop Command
 
-Next, you'll encounter `Stop Command` and, as the name implies, this should be the command used to safely stop the server. For some games, this is `stop` or `end`. Certain programs and games don't have a specified stop command, so you can enter `^C` to have Wings execute a `SIGINT` to end the process.
+Next, you'll encounter `Stop Command` and, as the name implies, this should be the command used to safely stop the server. For some games, this is `stop` or `end`. Certain programs and games don't have a specified stop command, so you can enter `^C` to have Wings execute `^SIGINT`, `^SIGABRT`, `^SIGTERM` or `^SIGKILL` to end the process.
 
 ### Log Storage
 
@@ -144,7 +144,7 @@ In the panel, we use this to copy settings that remain the same between similar 
 
 One of the great parts of Egg Variables is the ability to define specific variables that users and/or admins can control to tweak different settings without letting users modify the startup command. To create new variables, or edit existing ones, visit the egg you created, and click the `Variables` tab at the top of the page. Let's take a look at an example variable that we can create.
 
-The name and description are rather self-explanatory, so I'll skip down to the `Environment Variable` box. This should be an alphanumeric name with underscores, and should be uppercase. This will be the name of the environment variable which can be accessed in the startup command as `{{WOOZLE_WOO}}`, within file modifications as `{{env.WOOZLE_WOO}}`, or just `${WOOZLE_WOO}` in any shell scripts (it is passed through in the environment). We also define a default value for this environment variable in this example, but it is not required to do so.
+The name and description are rather self-explanatory, so I'll skip down to the `Environment Variable` box. This should be an alphanumeric name with underscores, and should be uppercase. This will be the name of the environment variable which can be accessed in the startup command as `{{WOOZLE_WOO}}`, within file modifications as `{{server.environment.WOOZLE_WOO}}`, or just `${WOOZLE_WOO}` in any shell scripts (it is passed through in the environment). We also define a default value for this environment variable in this example, but it is not required to do so.
 
 ### How to Reference Egg Variables
 
@@ -162,8 +162,8 @@ java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}
         "parser": "properties",
         "find": {
             "server-port": "{{server.allocations.default.port}}",
-            "max-players": "{{env.MAX_PLAYERS}}",
-            "server-name": "{{env.SERVER_NAME}}"
+            "max-players": "{{server.environment.MAX_PLAYERS}}",
+            "server-name": "{{server.environment.SERVER_NAME}}"
         }
     }
 }
