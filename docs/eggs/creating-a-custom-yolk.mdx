@@ -80,7 +80,28 @@ This is essential for cross-platform builds and ensuring containers run correctl
 
 ## Installing Dependencies
 
-The next thing we do is install the dependencies we will need using Alpine's package manager: `apk`. You'll notice some specific flags that keep the container small, including `--no-cache`, as well as everything being contained in a single [`RUN`](https://docs.docker.com/engine/reference/builder/#run) block.
+The next thing we do is install the dependencies we will need using Ubuntu's package manager: `apt`. To keep things clean everything is being contained in a single [`RUN`](https://docs.docker.com/engine/reference/builder/#run) block.
+
+```bash
+RUN         apt update -y \
+            && apt install -y \
+                curl \
+                lsof \
+                ca-certificates \
+                openssl \
+                git \
+                tar \
+                sqlite3 \
+                fontconfig \
+                tzdata \
+                iproute2 \
+                libfreetype6 \
+                redis-tools \
+                tini \
+                zip \
+                unzip \
+                jq
+```
 
 ## Creating a Container User
 
@@ -119,7 +140,7 @@ The `ENTRYPOINT ["/usr/bin/tini", "-g", "--"]` line sets up Tini as the init pro
 - `--` - Separates Tini's arguments from the command that follows
 
 **Why use it:**
-- **Signal handling:** Ensures signals (like `^SIGTERM` during container shutdown) are properly forwarded to your application, allowing graceful shutdowns
+- **Signal handling:** Ensures signals (like `SIGTERM` during container shutdown) are properly forwarded to your application, allowing graceful shutdowns
 - **Zombie reaping:** Prevents zombie processes from accumulating when child processes aren't properly cleaned up
 
 :::warning
