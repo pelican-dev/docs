@@ -183,7 +183,7 @@ echo "Updating database"
 php artisan migrate --seed --force
 
 echo "Setting Permissions"
-chmod_command="chmod -R 755 $install_dir/storage/* $install_dir/bootstrap/cache"
+chmod_command="chmod -R 755 \"$install_dir\"/storage/* \"$install_dir\"/bootstrap/cache"
 eval $chmod_command
 if [ $? -ne 0 ]; then
   echo "Failed to run chmod, Please run the following commands manually:"
