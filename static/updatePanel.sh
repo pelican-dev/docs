@@ -113,7 +113,7 @@ else
   echo "Checksum verified."
 fi
 
-read -p "Do you want to delete all files and folders in $install_dir except the backup folder? (y/n) [y]: " delete_confirm
+read -p "Do you want to delete all files and folders in \"$install_dir\" except the backup folder? (y/n) [y]: " delete_confirm
 delete_confirm=${delete_confirm:-y}
 if [ "$delete_confirm" != "y" ]; then
   echo "Deletion canceled."
@@ -125,7 +125,7 @@ if [ $? -ne 0 ]; then
   echo "Failed to delete old files, aborting"
   exit 1
 fi
-echo "Deleted all files and folders in $install_dir except the backup folder."
+echo "Deleted all files and folders in \"$install_dir\" except the backup folder."
 
 echo "Extracting tarball."
 tar -xzf panel.tar.gz -C "$install_dir"
@@ -163,7 +163,7 @@ if [ -f "$backup_dir/$db_database.backup" ]; then
   fi
 fi
 
-cd $install_dir
+cd "$install_dir"
 
 echo "Installing Composer"
 COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader --no-interaction
@@ -183,13 +183,13 @@ echo "Updating database"
 php artisan migrate --seed --force
 
 echo "Setting Permissions"
-chmod_command="chmod -R 755 storage/* bootstrap/cache"
+chmod_command="chmod -R 755 \"$install_dir\"/storage/* \"$install_dir\"/bootstrap/cache"
 eval $chmod_command
 if [ $? -ne 0 ]; then
   echo "Failed to run chmod, Please run the following commands manually:"
   echo "sudo $chmod_command"
 fi
-chown_command="chown -R $owner:$group $install_dir"
+chown_command="chown -R $owner:$group \"$install_dir\""
 eval $chown_command
 if [ $? -ne 0 ]; then
   echo "Failed to run chown, Please run the following commands manually:"
