@@ -14,7 +14,7 @@ You will be taken to a new egg configuration page which is where most of the con
 This is the name of your egg.
 
 ### Author
-This is the original creator of the egg. 
+This is the original creators email. 
 
 ### Description
 This is the description of your egg and what is needed to run it. 
@@ -60,7 +60,7 @@ The first field you'll encounter is `Copy Settings From`. The default selection 
 
 Next, you'll encounter `Stop Command` and, as the name implies, this should be the command used to safely stop the server. For some games, this is `stop` or `end`. Certain programs and games don't have a specified stop command, so you can enter `^C` to have Wings execute `^SIGINT`, `^SIGABRT`, `^SIGTERM` or `^SIGKILL` to end the process.
 
-### Log Storage
+### Log Storage (Coming Soon)
 
 Logs are completely handled by Wings and use Docker logs to output the complete output from the server. This can be set like below:
 
@@ -93,7 +93,7 @@ In this example, we are telling Wings to read `server.properties` in `/home/cont
 - `properties`
 - `ini`
 - `json` (supports `*` notation)
-- `xml`
+- `xml`  (supports `*` notation)
 
 Once you have defined a parser, we then define a `find` block which tells Wings what specific elements to find and replace. In this example, we have provided four separate items within the `server.properties` file that we want to find and replace to the assigned values. You can use either an exact value, or define a specific server setting from the server configuration. In this case, we're assigning the default server port to be used as the `server-port` and `query.port`. **These placeholders are case sensitive, and should have no spaces in them.**
 
@@ -136,7 +136,7 @@ That concludes basic egg configuration.
 
 ## Copy Settings From
 
-As mentioned above, there is a unique `Copy Settings From` dropdown when adding a new egg. This gives you the ability to, as the name suggests, copy settings defined above from a different egg.
+As mentioned above, there is a unique `Copy Settings From` dropdown when adding a new egg. This is used in two diffrent places, there is one for the Process Managment and one for the Install Script. This gives you the ability to, as the name suggests, copy settings defined above from a different egg.
 
 In the panel, we use this to copy settings that remain the same between similar eggs, such as many of the Minecraft eggs.
 
