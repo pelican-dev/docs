@@ -132,4 +132,57 @@ Here are some of the most asked questions that were asked in our Q&A stage on 4/
             We can't say that. That's up to the Maintainer of Pterodactyl. Pelican and Pterodactyl are separate projects.
         </details>
     </TabItem>
+    <TabItem label="Plugins" value="plugins">
+        <details>
+            <summary>When will the plugin system be available?</summary>
+
+            The plugin system was released with beta30!
+        </details>
+        <details>
+            <summary>Will pterodactyl addons work with the new system?</summary>
+
+            No. Pterodactyl "addons" are just code modifications. Our codebase now greatly differs from pterodactyls.
+            Pelicans plugin system will be a "real" plugin system where plugins don't touch any core files.
+        </details>
+        <details>
+            <summary>Will blueprint plugins work with the new system?</summary>
+
+            No. And the creator of blueprint won't port blueprint to also support pelican:
+            > [I] do not have the capacity to work on multiple Pterodactyl forks [and I] do not believe making an extension framework for a platform promising it's own addon system is worth our time.
+        </details>
+        <details>
+            <summary>Do I need the commercial license to use or develop plugins?</summary>
+
+            No. Pelicans plugin system will be a "real" plugin system where plugins don't touch any core files.
+        </details>
+        <details>
+            <summary>Do I need to license my plugins under the same license as pelican?</summary>
+
+            No. You can do whatever you want with your plugins, it's your code.
+        </details>
+        <details>
+            <summary>What can plugins do?</summary>
+
+            Pretty much anything you want! They can add new pages, change existing ones (to some extent), add new languages, change the theme (color/ font/ css) and more.
+
+            The first iteration _will_ have some limitations but we will continuously improve the capabilities of plugins.
+        </details>
+        <details>
+            <summary>How are plugins installed?</summary>
+
+            You can find information on that [here](./docs/panel/advanced/plugins#install-a-plugin).
+        </details>
+        <details>
+            <summary>How do you create plugins?</summary>
+
+            You can find detailed information on that [here](./docs/panel/advanced/plugins#create-a-plugin).
+        </details>
+        <details>
+            <summary>Are the plugins from the sneak peaks available?</summary>
+
+            Yes! Everything that was shown as little sneak peaks (+ more!) is available as plugin, for free and open source.
+
+            You can find the official plugin repo [here](https://github.com/pelican-dev/plugins).
+        </details>
+    </TabItem>
 </Tabs>
