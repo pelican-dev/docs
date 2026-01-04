@@ -23,7 +23,7 @@ FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:8-jdk-noble
 LABEL       org.opencontainers.image.authors=“support@pelican.dev” \
             org.opencontainers.image.source=“https://github.com/pelican-eggs/yolks” \
             org.opencontainers.image.licenses=MIT \
-            org.opencontainers.image.description=“Custom Yolk Pelican Hosting Panel”
+            org.opencontainers.image.description=“Custom Yolk for Pelican Hosting Panel”
 
 RUN         apt update -y \
             && apt install -y \
