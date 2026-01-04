@@ -20,10 +20,10 @@ In the past we have tried to make use of [Alpine Linux](https://alpinelinux.org)
 
 FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:8-jdk-noble
 
-LABEL       author="Pelican Panel" maintainer="support@pelican.dev"
-
-LABEL       org.opencontainers.image.source="https://github.com/pelican-eggs/yolks"
-LABEL       org.opencontainers.image.licenses=MIT
+LABEL       org.opencontainers.image.authors=“support@pelican.dev” \
+            org.opencontainers.image.source=“https://github.com/pelican-eggs/yolks” \
+            org.opencontainers.image.licenses=MIT \
+            org.opencontainers.image.description=“Custom Yolk Pelican Hosting Panel”
 
 RUN         apt update -y \
             && apt install -y \
