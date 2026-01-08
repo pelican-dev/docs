@@ -56,6 +56,15 @@ const sidebars: SidebarsConfig = {
         'guides/database-hosts',
         'guides/change-panel-domain',
         'guides/uninstalling',
+      
+        {
+          type: 'category',
+          label: 'Disk Quotas',
+          items: [
+            'guides/disk-quotas/about',
+            'guides/disk-quotas/ext4-xfs',
+          ]
+        }
       ],
     },
     'troubleshooting',
