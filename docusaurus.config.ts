@@ -110,6 +110,7 @@ const config: Config = {
         "yaml",
         "docker",
         "php",
+        "docker"
       ],
     },
   } satisfies Preset.ThemeConfig,
