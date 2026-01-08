@@ -137,10 +137,10 @@ These examples use the following:
 <summary>I agree and Pelican is not Liable for anything that breaks</summary>
 
 ## Manually Manage Quotas
-Limits for the servers are managed on a "project" level so they can be assinged per-directory.  
+Limits for the servers are managed on a "project" level so they can be assigned per-directory.  
 
 ### Add A New Project
-To add a new project 2 files must be edited.
+To add a new project, 2 files must be edited.
 
 First is the `projid` file which is formatted where each line is in the `project_name:project_id` format as seen below  
 * Pelican will use the server UUID as the project name
@@ -184,7 +184,7 @@ The `setquota` command sets the quota for any object that supports quotas.
 * The soft limit would send a warning to a user
   - This is not used by Pelican and will be set to 0
 * The hard limit is set to the disk resource limit set in the Pelican
-* Neither the block or inode/file grace sections will be used by the Pelican.
+* Neither the block or inode/file grace sections will be used by the Pelican
 * The path for either the device or the mount point
   - `/dev/sdb/` or `/var/lib/pelican/volumes/`
 ```bash
