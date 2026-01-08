@@ -130,7 +130,7 @@ WORKDIR     /home/container
 
 Finally, we need to copy our `ENTRYPOINT` script into the docker image root. This is done using `COPY`, after which we define the command to be used when the container is started using `CMD`. The `CMD` line should always point to the `entrypoint.sh` file.
 ```dockerfile
-COPY        --chown=container:container ./../entrypoint.sh /entrypoint.sh
+COPY        --chown=container:container ./entrypoint.sh /entrypoint.sh
 RUN         chmod +x /entrypoint.sh
 ENTRYPOINT  ["/usr/bin/tini", "-g", "--"]
 CMD         ["/entrypoint.sh"]
