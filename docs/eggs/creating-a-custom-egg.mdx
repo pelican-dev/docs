@@ -165,15 +165,19 @@ java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}
 }
 ```
 
+:::Note
+The double curly bracket `{{VAR_NAME}}` is only used in the Startup variables, everywhere else it is `${VAR_NAME}`.
+:::
+
 **In Install Scripts:**
 ```bash
 #!/bin/bash
 cd /mnt/server
 
-echo "Downloading Minecraft version {{MINECRAFT_VERSION}}..."
-curl -o server.jar https://example.com/minecraft-{{MINECRAFT_VERSION}}.jar
+echo "Downloading Minecraft version ${MINECRAFT_VERSION}..."
+curl -o server.jar https://example.com/minecraft-${MINECRAFT_VERSION}.jar
 
-echo "Setting max players to {{MAX_PLAYERS}}"
+echo "Setting default config from ${CONFIG_URL}"
 ```
 
 The next section is `Permissions`, which is a dropdown with two options: `Users Can View` and `Users Can Edit`.
@@ -235,18 +239,18 @@ echo "Installation complete!"
 
 ### Install Script Variables
 
-Install scripts have access to all egg variables as well as some special installation-specific variables. You can reference these using the `{{VARIABLE_NAME}}` syntax:
+Install scripts have access to all egg variables as well as some special installation-specific variables. You can reference these using the `${VARIABLE_NAME}` syntax:
 
 ```bash
 #!/bin/bash
 cd /mnt/server
 
 # Download specific version using egg variable
-echo "Downloading Minecraft version {{MINECRAFT_VERSION}}..."
-curl -o server.jar https://example.com/minecraft-{{MINECRAFT_VERSION}}.jar
+echo "Downloading Minecraft version ${MINECRAFT_VERSION}..."
+curl -o server.jar https://example.com/minecraft-${MINECRAFT_VERSION}.jar
 
 # Use server memory variable
-echo "Server will run with {{SERVER_MEMORY}}MB of RAM"
+echo "Server will run with ${SERVER_MEMORY}MB of RAM"
 ```
 
 ### Install Container Path
