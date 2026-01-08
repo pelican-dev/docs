@@ -165,8 +165,11 @@ java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}
 }
 ```
 
-:::Note
-The double curly bracket `{{VAR_NAME}}` is only used in the Startup variables, everywhere else it is `${VAR_NAME}`.
+:::note
+Variable syntax depends on the context:
+**Startup commands**: Use `{{VAR_NAME}}` (e.g., `{{SERVER_MEMORY}}`)
+**Configuration file parsers**: Use `{{server.environment.VAR_NAME}}` or `{{server.allocations.default.port}}`
+**Install scripts and shell environments**: Use `${VAR_NAME}`
 :::
 
 **In Install Scripts:**
