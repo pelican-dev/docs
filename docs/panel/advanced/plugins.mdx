@@ -207,6 +207,34 @@ This means you need to prefix view-strings with your plugin id, e.g. `myplugin::
 If present, a seeder with the name of your plugin will be automatically registered. It needs to be named `<plugin name>Seeder` (e.g. `MyPluginSeeder`) and put inside your plugins `database/Seeder` folder, e.g. `plugins/myplugin/database/Seeder/MyPluginSeeder.php`.
 This seeder will be automatically called when a user installs the plugin or when seeders are run in general, e.g. when using `php artisan db:seed` or `php artisan migrate --seed`.
 
+### Routes
+
+Routes need to be registered in a `RouteServiceProvider`. Example:
+
+```php
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider;
+
+class MyPluginRoutesProvider extends RouteServiceProvider
+{
+    public function boot(): void
+    {
+        $this->routes(function () {
+            // Single new endpoint with Controller
+            Route::get('test', [TestController::class, 'test'])->name('my-plugin.test');
+
+            // Load routes from file
+            Route::prefix('/my-plugin')->group(plugin_path('my-plugin', 'routes/web.php'));
+
+            // Add routes from file to existing client api
+            Route::middleware(['api', 'client-api', 'throttle:api.client'])
+                ->prefix('/api/client')
+                ->scopeBindings()
+                ->group(plugin_path('my-plugin', 'routes/api-client.php'));
+        });
+    }
+}
+```
+
 ### Plugin Settings
 
 Your main plugin class can implement the `HasPluginSettings` interface to conveniently add a settings page to your plugin.  
