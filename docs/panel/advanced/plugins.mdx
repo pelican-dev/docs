@@ -220,7 +220,7 @@ class MyPluginRoutesProvider extends RouteServiceProvider
     {
         $this->routes(function () {
             // Single new endpoint with Controller
-            Route::get('test', [TestController::class, 'test'])->name('my-plugin.test'));
+            Route::get('test', [TestController::class, 'test'])->name('my-plugin.test');
 
             // Load routes from file
             Route::prefix('/my-plugin')->group(plugin_path('my-plugin', 'routes/web.php'));
