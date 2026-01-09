@@ -109,6 +109,7 @@ const config: Config = {
         "sql",
         "yaml",
         "php",
+        "docker"
       ],
     },
   } satisfies Preset.ThemeConfig,
