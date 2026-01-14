@@ -108,6 +108,7 @@ const config: Config = {
         "ini",
         "sql",
         "yaml",
+        "docker",
         "php",
       ],
     },
