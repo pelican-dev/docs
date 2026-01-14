@@ -10,13 +10,13 @@ import TabItem from '@theme/TabItem';
 This documentation includes instructions for upgrading your system to the latest version of PHP. Please reference the
 table below to check what PHP version you need for your version of Pelican.
 
-| Panel Version | PHP Version   |
-|---------------|---------------|
-| 1.0.0+        | 8.2, 8.3, 8.4 |
+| Panel Version | PHP Version        |
+|---------------|--------------------|
+| 1.0.0+        | 8.2, 8.3, 8.4, 8.5 |
 
 ## Install PHP
 
-In order to install PHP 8.4, you will need to run the following commands. Please keep in mind different operating systems
+In order to install PHP 8.5, you will need to run the following commands. Please keep in mind different operating systems
 may have slightly different requirements for how this commands are formatted.
 
 ```bash
@@ -27,22 +27,22 @@ sudo apt -y update
 # Optional: Remove old PHP versions
 sudo apt -y purge php*
 
-# Install PHP 8.4
-sudo apt -y install php8.4 php8.4-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm}
+# Install PHP 8.5
+sudo apt -y install php8.5 php8.5-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm}
 ```
 
 ## Webserver Configuration
 
 <Tabs>
     <TabItem value='NGINX'>
-        After upgrading to PHP 8.4, you will most likely need to update your NGINX configuration. Your configuration file
+        After upgrading to PHP 8.5, you will most likely need to update your NGINX configuration. Your configuration file
         is most likely called `pelican.conf` and located in the `/etc/nginx/sites-available/` directory, or if on CentOS,
         `/etc/nginx/conf.d/`.
 
         Make sure to update the path in the command below to reflect the actual location of your configuration file.
 
         ``` bash
-        sed -i -e 's/php[7|8].[0-9]-fpm.sock/php8.4-fpm.sock/' /etc/nginx/sites-available/pelican.conf
+        sed -i -e 's/php[7|8].[0-9]-fpm.sock/php8.5-fpm.sock/' /etc/nginx/sites-available/pelican.conf
         ```
 
         Once you have edited the file run the command below to reload NGINX and apply your changes.
@@ -52,21 +52,21 @@ sudo apt -y install php8.4 php8.4-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sq
         ```
     </TabItem>
     <TabItem value='Apache'>
-        Run the commands below to disable all previous PHP versions and enable PHP 8.4 when serving requests.
+        Run the commands below to disable all previous PHP versions and enable PHP 8.5 when serving requests.
 
         ``` bash
         a2dismod php*
-        a2enmod php8.4
+        a2enmod php8.5
         ```
     </TabItem>
     <TabItem value='Caddy'>
-        After upgrading to PHP 8.4, you will most likely need to update your Caddy configuration. Your configuration file
+        After upgrading to PHP 8.5, you will most likely need to update your Caddy configuration. Your configuration file
         is most likely called `Caddyfile` and located in the `/etc/caddy/` directory.
 
         Make sure to update the path in the command below to reflect the actual location of your configuration file.
 
         ``` bash
-        sed -i -e 's/php[7|8].[0-9]-fpm.sock/php8.4-fpm.sock/' /etc/caddy/Caddyfile
+        sed -i -e 's/php[7|8].[0-9]-fpm.sock/php8.5-fpm.sock/' /etc/caddy/Caddyfile
         ```
 
         Once you have edited the file run the command below to restart Caddy and apply your changes.
