@@ -45,14 +45,6 @@ const sidebars: SidebarsConfig = {
         'wings/update'
       ],
     },
-   {
-      type: 'category',
-      label: 'Eggs',
-      items: [
-        'eggs/creating-a-custom-egg',
-        'eggs/creating-a-custom-yolk',
-      ],
-    },
     {
       type: 'category',
       label: 'Guides',
@@ -64,6 +56,15 @@ const sidebars: SidebarsConfig = {
         'guides/database-hosts',
         'guides/change-panel-domain',
         'guides/uninstalling',
+      
+        {
+          type: 'category',
+          label: 'Disk Quotas',
+          items: [
+            'guides/disk-quotas/about',
+            'guides/disk-quotas/ext4-xfs',
+          ]
+        }
       ],
     },
     'troubleshooting',
