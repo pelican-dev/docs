@@ -7,7 +7,7 @@ import Link from '@docusaurus/Link';
 
 This page covers disk quota management for EXT4/XFS.
 
-Both EXT4 and XFS use the built in quota management services in linux.
+Both EXT4 and XFS use the built-in quota management services in linux.
 
 <Admonition type="warning">
     Please read <Link to="/docs/guides/disk-quotas/about">About Quotas</Link> before continuing
@@ -26,7 +26,7 @@ How to format and mount a device for use with quotas
 </Admonition>
 
 These examples use the following:  
-`/dev/sdb` as the device formated as EXT4 enabling only project quotas.  
+`/dev/sdb` as the device formatted as EXT4 enabling only project quotas.  
 `/var/lib/pelican/volumes/` as the mount point and data directory  
 
 <Tabs>
@@ -35,7 +35,7 @@ These examples use the following:
         `mkfs.ext4` will format the disk with the ext4 filesystem
         * The `O` flag is the enable Feature Options
           - enable quotas while formatting
-        * The `E` flag is for Extented Options
+        * The `E` flag is for Extended Options
           - set the quota type as project
         ```bash
         mkfs.ext4 -O quota -E quotatype=prjquota /dev/sdb
@@ -85,7 +85,7 @@ These examples use the following:
         ```
 
         ## Unmount disk
-        Use `umount` to unmount Pelicans volume mount.
+        Use `umount` to unmount Pelican's volume mount.
         ```bash
         umount /var/lib/pelican/volumes/
         ```
@@ -137,7 +137,7 @@ These examples use the following:
 <summary>I agree and Pelican is not Liable for anything that breaks</summary>
 
 ## Manually Manage Quotas
-Limits for the servers are managed on a "project" level so they can be assinged per-directory.  
+Limits for the servers are managed on a "project" level so they can be assigned per-directory.  
 
 ### Add A New Project
 To add a new project 2 files must be edited.
