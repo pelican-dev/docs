@@ -11,12 +11,12 @@ type SponsorItem = {
 };
 
 const SponsorList: SponsorItem[] = [
-  {
-    sponsor: 'Aussie Server Hosts',
-    logo: '/img/homepage/sponsor/ash.png',
-    url: 'https://aussieserverhosts.com/',
+  /* {
+    sponsor: 'Name of Sponsor',
+    logo: '/img/homepage/sponsor/image.png',
+    url: 'https://example.com',
     desc: '',
-  },
+  }, */
 ];
 
 function Sponsor({sponsor, logo, url, desc}: SponsorItem) {
