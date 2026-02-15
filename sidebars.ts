@@ -45,7 +45,7 @@ const sidebars: SidebarsConfig = {
         'wings/update'
       ],
     },
-   {
+    {
       type: 'category',
       label: 'Eggs',
       items: [
