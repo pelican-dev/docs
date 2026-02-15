@@ -47,6 +47,14 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: 'Eggs',
+      items: [
+        'eggs/creating-a-custom-egg',
+        'eggs/creating-a-custom-yolk',
+      ],
+    },
+    {
+      type: 'category',
       label: 'Guides',
       items: [
         'guides/docker',
