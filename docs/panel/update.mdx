@@ -129,3 +129,15 @@ You have two options for updating: use the automatic update script (recommended)
         ```
     </TabItem>
 </Tabs>
+
+## Themes
+
+If you previously had any themes installed you need to manually build the panel assets again.
+Run the following commands inside your panel directory (`/var/www/pelican` by default):
+
+```sh
+yarn install
+yarn build
+
+php artisan view:clear
+```
