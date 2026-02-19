@@ -10,13 +10,15 @@ const config: Config = {
   favicon: "img/favicon.ico",
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    }
   },
   url: "https://pelican.dev",
   baseUrl: "/",
   organizationName: "pelican-dev",
   projectName: "docs",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
   themes: ["@docusaurus/theme-mermaid"],
   presets: [
     [
@@ -26,10 +28,6 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           editUrl: "https://github.com/pelican-dev/docs/blob/main/",
           remarkPlugins: [remarkgfm],
-        },
-        blog: {
-          showReadingTime: true,
-          onUntruncatedBlogPosts: 'ignore',
         },
         theme: {
           customCss: [
@@ -48,7 +46,6 @@ const config: Config = {
       },
       items: [
         { to: "/docs", label: "Docs", position: "left" },
-        { to: "/blog", label: "Blog", position: "left" },
         { to: "/support", label: "Support", position: "left" },
         { to: "/faq", label: "FAQ", position: "left" },
         { to: "/hub", label: "Hub", position: "left", target: "_blank", },
@@ -91,7 +88,6 @@ const config: Config = {
           title: "Community",
           items: [
             { label: "Discord", to: "/discord", target: "_blank", },
-            { label: "Blog", to: "/blog", target: "_blank", },
             { label: "GitHub", to: "/github", target: "_blank", },
           ],
         },
@@ -128,20 +124,13 @@ const config: Config = {
     ],
     require.resolve('docusaurus-lunr-search'),
     "docusaurus-plugin-sass",
-    [
-      "posthog-docusaurus",
-      {
-        apiKey: "phc_jFc0yrQBPn7T3u4LMXZbOVytUD3tGMxhbOdrooeuR9g",
-        appUrl: "https://app.posthog.com",
-        enableInDevelopment: "false",
-      },
-    ],
     tailwindPlugin,
   ],
   future: {
     experimental_faster: true,
     v4: true
-  }
+  },
+  // scripts: ['/js/snowflake.min.js'],
 };
 
 export default config;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {JSX} from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import 'react-medium-image-zoom/dist/styles.css';
