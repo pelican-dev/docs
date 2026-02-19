@@ -72,11 +72,11 @@ You have two options for updating: use the automatic update script (recommended)
         sudo php artisan storage:link
         ```
 
-        ## Cache components
+        ### Cache components
 
         ```sh
         sudo php artisan optimize:clear
-        sudo php artisan optimize
+        sudo php artisan filament:optimize
         ```
 
         ### Update Database
@@ -87,6 +87,15 @@ You have two options for updating: use the automatic update script (recommended)
 
         ```sh
         sudo php artisan migrate --seed --force
+        ```
+
+        ### Themes
+
+        If you previously had any themes installed you need to manually build the panel assets again:
+
+        ```sh
+        yarn install
+        yarn build
         ```
 
         ### Set Permissions
@@ -129,3 +138,4 @@ You have two options for updating: use the automatic update script (recommended)
         ```
     </TabItem>
 </Tabs>
+
