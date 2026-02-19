@@ -199,9 +199,9 @@ fi
 php artisan queue:restart
 
 echo "Panel Updated!"
-echo "To make sure permissions are correct, please run the following commands manually if they might have silently failed earlier:"
+echo "If you previously had any themes installed you need to build the panel assets again by manually running \"yarn install\" and \"yarn build\" inside \"$install_dir\"."
+echo ""
+echo "To make sure permissions are correct, please run the following commands manually:"
 echo "sudo $chmod_command"
 echo "sudo $chown_command"
-echo ""
-echo "If you previously had any themes installed you need to build the panel assets again by manually running 'yarn install' and 'yarn build'."
 exit 0
