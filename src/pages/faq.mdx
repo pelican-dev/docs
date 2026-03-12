@@ -5,13 +5,13 @@ import Admonition from '@theme/Admonition';
 
 # Frequently Asked Questions
 
-Here are some of the most asked questions that were asked in our Q&A stage on 4/12/2024, and our answers.
+Here are some of the most asked questions and our answers.
 
-**Last Updated: 2024-08-30**
+**Last Updated: 2026-03-12**
 
 <Admonition type="info" title="When is the beta?">
     The Beta is now available!
-    **Head over to the Install docs and try out Pelican yourself.**
+    **Head over to the [Install docs](/docs/panel/getting-started) and try out Pelican yourself.**
 </Admonition>
 
 <Tabs groupId="faq" queryString>
@@ -88,17 +88,21 @@ Here are some of the most asked questions that were asked in our Q&A stage on 4/
         </details>
     </TabItem>
     <TabItem label="Licensing" value="licensing">
-        The Pelican Panel has been relicensed to **AGPLv3**. Wings still uses **MIT**.
+        We forked from Pterodactyl and made the decision to relicense the Panel from the original [MIT license](https://choosealicense.com/licenses/mit/) to the [AGPLv3 license](https://choosealicense.com/licenses/agpl-3.0/).
+        
+        The AGPL license is what is known as a [copyleft](https://en.wikipedia.org/wiki/Copyleft) type license. It requires that any modifications to a public panel _must_ be open sourced under the same license. Private panels do not have that restriction!
 
-        This license change does only affect you if you meet _all_ of the following requirements:
-        1. You modified the Pelican panel source files.
-        2. These modifications are not open source.
-        3. Your modified panel is publicly available. (Note: People who are family, friends, and acquaintances are not the public)
+        Plugins do _not_ fall under the new license because they do not modify the panel source code. See the [plugin FAQ](?faq=plugins) for more information.
 
-        If you meet _all_ of the above requirements you need a commercial license.
-        Please note that the usage or development of plugins/ themes does not require a commercial license.
+        <Admonition type="info" title="Summary">
+            The license change does only affect you if you meet _all_ of the following requirements:
+            1. You modified the Pelican panel source files.
+            2. These modifications are not open source.
+            3. Your modified panel is publicly available. (Note: People who are family, friends, and acquaintances are not the public)
 
-        You can find more detailed information about the new license in [this blog post](https://pelican.dev/blog/relicensing-pelican-to-agpl).
+            If you meet _all_ of the above requirements you need a commercial license.  
+            **Please note that the usage or development of plugins/themes does not require a commercial license.**
+        </Admonition>
     </TabItem>
     <TabItem label="Project" value="project">
         <details>
