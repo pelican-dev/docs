@@ -1,8 +1,9 @@
-import Admonition from '@theme/Admonition';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Change Panel Domain
+
+A brief guide on how to change the Panel domain.
 
 ## Webserver & Panel
 
@@ -15,9 +16,9 @@ First you need to modify the server name in your web server config.
         # Search for "server_name"
         ```
 
-        <Admonition type="info" title="Using HTTPS?">
-            If you're using HTTPS, remember to also change the SSL paths in the config file to match your new domain and [generate a new certificate](./ssl).
-        </Admonition>
+        :::info[Using HTTPS?]
+            If you're using HTTPS, remember to also change the SSL paths in the config file to match your new domain and [generate a new certificate](../install/misc/ssl).
+        :::
     </TabItem>
     <TabItem value="apache" label="Apache">
         ```sh
@@ -25,9 +26,9 @@ First you need to modify the server name in your web server config.
         # Search for "ServerName"
         ```
 
-        <Admonition type="info" title="Using HTTPS?">
-            If you're using HTTPS, remember to also change the SSL paths in the config file to match your new domain and [generate a new certificate](./ssl).
-        </Admonition>
+        :::info[Using HTTPS?]
+            If you're using HTTPS, remember to also change the SSL paths in the config file to match your new domain and [generate a new certificate](../install/misc/ssl).
+        :::
     </TabItem>
     <TabItem value="caddy" label="Caddy">
         ```sh

@@ -1,4 +1,5 @@
 # Pelican Docs
+
 Pelican docs are created with [Docusaurus](https://docusaurus.io).
 
 ## Building

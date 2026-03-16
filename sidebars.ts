@@ -15,64 +15,87 @@ const sidebars: SidebarsConfig = {
     'welcome',
     {
       type: 'category',
-      label: 'Panel',
-      collapsed: false,
+      label: 'Installation',
+      link: {
+        type: 'doc',
+        id: 'install/install',
+      },
       items: [
-        'panel/getting-started',
-        'panel/webserver-config',
-        'panel/panel-setup',
-        'panel/optional-config',
-        'panel/update',
         {
           type: 'category',
-          label: 'Advanced',
+          label: 'Panel',
+          link: {
+            type: 'generated-index',
+            description: "You can choose between two installation methods:",
+          },
+          collapsed: false,
           items: [
-            'panel/advanced/redis',
-            'panel/advanced/mysql',
-            'panel/advanced/artisan',
-            'panel/advanced/docker',
-            'panel/advanced/plugins',
-          ]
-        }
+            'install/panel/standalone',
+            'install/panel/dockerized',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Wings',
+          link: {
+            type: 'generated-index',
+            description: "You can choose between two installation methods:",
+          },
+          collapsed: false,
+          items: [
+            'install/wings/standalone',
+            'install/wings/dockerized',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Misc',
+          link: {
+            type: 'generated-index',
+          },
+          items: [
+            'install/misc/ssl',
+            'install/misc/mysql',
+            'install/misc/redis',
+          ],
+        },
       ],
     },
-    {
-      type: 'category',
-      label: 'Wings',
-      items: [
-        'wings/install',
-        'wings/optional-config',
-        'wings/update'
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Eggs',
-      items: [
-        'eggs/creating-a-custom-egg',
-        'eggs/creating-a-custom-yolk',
-      ],
-    },
+    'plugins',
     {
       type: 'category',
       label: 'Guides',
+      link: {
+        type: 'generated-index',
+      },
       items: [
-        'guides/docker',
         'guides/mounts',
-        'guides/ssl',
         'guides/php-upgrade',
         'guides/database-hosts',
         'guides/change-panel-domain',
         'guides/uninstalling',
-      
+        {
+          type: 'category',
+          label: 'Eggs',
+          link: {
+            type: 'generated-index',
+          },
+          items: [
+            'guides/eggs/creating-a-custom-egg',
+            'guides/eggs/creating-a-custom-yolk',
+          ],
+        },
         {
           type: 'category',
           label: 'Disk Quotas',
+          link: {
+            type: 'doc',
+            id: 'guides/disk-quotas/index',
+          },
           items: [
-            'guides/disk-quotas/about',
             'guides/disk-quotas/ext4-xfs',
-          ]
-        }
+          ],
+        },
       ],
     },
     'troubleshooting',

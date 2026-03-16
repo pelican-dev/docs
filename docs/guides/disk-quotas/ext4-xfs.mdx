@@ -1,4 +1,3 @@
-import Admonition from '@theme/Admonition';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import Link from '@docusaurus/Link';
@@ -9,21 +8,22 @@ This page covers disk quota management for EXT4/XFS.
 
 Both EXT4 and XFS use the built-in quota management services in linux.
 
-<Admonition type="warning">
+:::warning
     Please read <Link to="/docs/guides/disk-quotas/about">About Quotas</Link> before continuing
-</Admonition>
+:::
 
 ## Configure Filesystem
+
 How to format and mount a device for use with quotas  
 
 <details>
 <summary>I understand the risks and Pelican is not Liable for anything that breaks</summary>
 
-<Admonition type="warning">
+:::warning
    Enabling quotas for `/` is difficult, as it requires booting a live disk to change.
 
    We do not recommended this!
-</Admonition>
+:::
 
 These examples use the following:  
 `/dev/sdb` as the device formatted as EXT4 enabling only project quotas.  
@@ -41,9 +41,9 @@ These examples use the following:
         mkfs.ext4 -O quota -E quotatype=prjquota /dev/sdb
         ```
 
-        <Admonition type="warning">
+        :::warning
             You need to update fstab so the disk mounts automatically on boot with quotas enabled.
-        </Admonition>
+        :::
 
         ## Add to fstab
         ### get device UUID
@@ -63,11 +63,11 @@ These examples use the following:
         ```
         For more information on fstab check the [Arch Linux fstab docs](https://wiki.archlinux.org/title/Fstab)
 
-        <Admonition type="warning">
+        :::warning
             Depending on the OS you may need to refresh services to be able to mount the partition after updating `fstab`.
 
             It is often easier to reboot and have the disk mount on boot.
-        </Admonition>
+        :::
     </TabItem>
     <TabItem value='Existing EXT4 Filesystem'>
         ## Update existing partition
@@ -91,9 +91,9 @@ These examples use the following:
         ```
 
         ## Enable quotas
-        <Admonition type="warning">
+        :::warning
             This can only be ran on an unmounted disk
-        </Admonition>
+        :::
         `tune2fs` is used to adjust tunable file system parameters for EXT filesystems
         * The `Q` flag is to manage quotas
           - `prjquota` is to enable project quotas
@@ -114,32 +114,35 @@ These examples use the following:
         ```
         For more information on fstab check the [Arch Linux fstab docs](https://wiki.archlinux.org/title/Fstab)
 
-        <Admonition type="warning">
+        :::warning
             Depending on the OS you may need to refresh services to be able to mount the partition after updating `fstab`.
 
             It is often easier to reboot and have the disk mount on boot.
-        </Admonition>
+        :::
     </TabItem>
 </Tabs>
 </details>
 
 ## Advanced EXT4 Quota Management
-<Admonition type="danger">
+
+:::danger
     The following section is for manual management of quotas.
-</Admonition>
+:::
 
 <details>
 <summary>I understand </summary>
-<Admonition type="danger">
+:::danger
     You should never need to go here, this is your last warning.
-</Admonition>
+:::
 <details>
 <summary>I agree and Pelican is not Liable for anything that breaks</summary>
 
 ## Manually Manage Quotas
+
 Limits for the servers are managed on a "project" level so they can be assigned per-directory.  
 
 ### Add A New Project
+
 To add a new project 2 files must be edited.
 
 First is the `projid` file which is formatted where each line is in the `project_name:project_id` format as seen below  
@@ -157,6 +160,7 @@ Second is the `projects` file which is formatted where each line is in the `proj
 ```
 
 ### Set directory attributes
+
 The project attribute must be set on the directory to track quota usage.
 
 The `chattr` command changes attribute for files and directories.
@@ -198,6 +202,7 @@ setquota -P 235844d3-9258-4846-bb04-bcff209ccf9a 0 10G 0 0 /var/lib/pelican/volu
 ```
 
 ### get quota stats
+
 The `repquota` command will generate a report on the quotas for the specified device or mount path  
 * The `P` flag will break down the report by project.
   - In this case it should be the server UUID that is the project name
@@ -221,6 +226,6 @@ cdb26bbb-963d-44b1-8353-360243032b1 --      2G      0G      2G             1g   
 </details>
 </details>
 
-<Admonition type="note">
+:::note
     TODO: Add documentation specifically for XFS
-</Admonition>
+:::

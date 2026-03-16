@@ -1,0 +1,85 @@
+# Dockerized installation
+
+Run the Wings Daemon inside a docker container.
+
+:::danger
+    **You should have some basic familiarity with Docker before you proceed!**
+:::
+
+Pelican provides pre-built Docker images via GitHub Packages. `ghcr.io/pelican-dev/wings:latest` is the current latest release, and `ghcr.io/pelican-dev/wings:main` is built automatically from the current `main` branch.
+
+## Install Docker
+
+For a quick install of Docker CE, you can use the command below:
+
+```sh
+curl -sSL https://get.docker.com/ | CHANNEL=stable sudo sh
+```
+
+:::info[Trouble installing?]
+    If the above command does not work, please refer to the [official Docker documentation](https://docs.docker.com/engine/install/) on how to install Docker CE on your server.
+:::
+
+### Start Docker on Boot
+
+If you are on an operating system with systemd (Ubuntu 16+, Debian 8+, CentOS 7+) run the command below to have Docker start when you boot your machine.
+
+```sh
+sudo systemctl enable --now docker
+```
+
+## Setup compose file
+
+The easiest deployment method is using the standard `compose.yml` file.
+
+This configuration includes an integrated web server that will automatically obtain SSL certificates if you are serving over HTTPS. For the database, it assumes you want to use SQLite (or you have an external database server to configure using the  installer.) It also assumes you intend to use the Filesystem driver for cache, filesystem or database driver for session, and database driver for queue (or you have an external Redis server to configure using the installer.) If you want to use other options built into Docker, see [Advanced Options](#advanced-options).
+
+### Create compose.yml
+
+```yml title="compose.yml"
+services:
+  wings:
+    image: ghcr.io/pelican-dev/wings:latest
+    restart: always
+    networks:
+      - wings0
+    ports:
+      - "8080:8080"
+      - "2022:2022"
+    tty: true
+    environment:
+      TZ: "UTC"
+      WINGS_UID: 988
+      WINGS_GID: 988
+      WINGS_USERNAME: pelican
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/docker/containers/:/var/lib/docker/containers/"
+      - "/etc/pelican/:/etc/pelican/"
+      - "/var/lib/pelican/:/var/lib/pelican/"
+      - "/var/log/pelican/:/var/log/pelican/"
+      - "/tmp/pelican/:/tmp/pelican/"
+      - "/etc/ssl/certs:/etc/ssl/certs:ro"
+      # you may need /srv/daemon-data if you are upgrading from an old daemon
+      #- "/srv/daemon-data/:/srv/daemon-data/"
+      # Required for ssl if you use let's encrypt. uncomment to use.
+      #- "/etc/letsencrypt/:/etc/letsencrypt/"
+
+networks:
+  wings0:
+    name: wings0
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.21.0.0/16"
+    driver_opts:
+      com.docker.network.bridge.name: wings0
+```
+
+## Start the container
+
+From the directory in which the compose file is located, run:
+
+```sh
+docker compose up -d
+```

@@ -1,29 +1,27 @@
-import Admonition from '@theme/Admonition';
-import Link from '@docusaurus/Link';
+# Quotas
 
-# About Quotas
-
-<Admonition type="tip">
+:::tip
     As called out in the Wings install docs, it is always recommended to keep the server files on a separate partition.  
-</Admonition>
+:::
 
 ## There are a lot of notices here for a reason!
 
-<Admonition type="danger">
+:::danger
     Support for disk quotas is still being worked on!
-</Admonition>
+:::
 
-<Admonition type="warning">
+:::warning
     These are advanced configurations meant for hosts but "should" work for individuals as well.
-</Admonition>
+:::
 
-<Admonition type="warning">
+:::warning
     Depending on the filesystem Quotas can be difficult to enable for the `/` mount, which requires booting a live disk to change.
-</Admonition>
+:::
 
-<Admonition type="info">
+:::info
     You can either make a new mount with quotas enabled or enable quotas on an existing partition.
-</Admonition>
+:::
 
 ## Filesystem-specific docs
-<Link to="/docs/guides/disk-quotas/ext4-xfs">EXT4/XFS</Link>
+
+- [EXT4/XFS](ext4-xfs)
