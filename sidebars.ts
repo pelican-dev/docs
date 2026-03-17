@@ -27,6 +27,7 @@ const sidebars: SidebarsConfig = {
           label: 'Installation',
           link: {
             type: 'generated-index',
+            slug: '/category/panel-installation',
             description: 'You can choose between two installation methods:',
           },
           items: [
@@ -64,6 +65,7 @@ const sidebars: SidebarsConfig = {
           label: 'Installation',
           link: {
             type: 'generated-index',
+            slug: '/category/wings-installation',
             description: 'You can choose between two installation methods:',
           },
           items: [
