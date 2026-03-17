@@ -61,6 +61,17 @@ const sidebars: SidebarsConfig = {
         },
       ],
     },
+    {
+      type: 'category',
+      label: 'Updating',
+      link: {
+        type: 'generated-index',
+      },
+      items: [
+        'update/panel',
+        'update/wings',
+      ],
+    },
     'plugins',
     {
       type: 'category',

@@ -1,0 +1,139 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Panel
+
+A brief guide on how to update the Pelican Panel to the latest version.
+
+## Version Requirements
+
+Each version of Pelican Panel also has a corresponding minimum version of Wings that is required for it to run.
+
+Please see the chart below for how these versions line up.
+
+| Panel Version | Wings Version | Supported | PHP Version     |
+|:-------------:|:-------------:|:---------:|:---------------:|
+|      1.x      |      1.x      |    ✅︎     | 8.2/8.3/8.4/8.5 |
+
+## Updating
+
+You have two options for updating: use the automatic update script (recommended) or do the update steps manually.
+
+<Tabs>
+    <TabItem value="Update script (recommended)">
+        Simply run the command below and the update script will guide you through the process:
+
+        ```sh
+        sudo bash -c "$(curl -fsSL https://pelican.dev/updatePanel.sh)"
+        ```
+    </TabItem>
+    <TabItem value="Manual update">
+        #### Enter Maintenance Mode
+
+        Whenever you are performing an update you should be sure to place your Panel into maintenance mode. This will prevent
+        users from encountering unexpected errors.
+
+        ```sh
+        cd /var/www/pelican
+        sudo php artisan down
+        ```
+
+        #### Download Update
+
+        The first step in the update process is to download the new panel files from GitHub. The command below will download
+        the release archive for the most recent version of Pelican, save it in the current directory and will automatically
+        unpack the archive into your current folder.
+
+        ```sh
+        curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv
+        ```
+
+        Once the archive is downloaded and extracted we need to set the correct permissions on the cache and storage directories to avoid
+        any webserver related errors.
+
+        ```sh
+        sudo chmod -R 755 storage/* bootstrap/cache
+        ```
+
+        #### Update Dependencies
+
+        ```sh
+        sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+        ```
+
+        :::info
+            Even though composer might tell you that you have outdated dependencies, do **not** run `composer update`!
+        :::
+
+        #### Create storage symlinks
+
+        ```sh
+        sudo php artisan storage:link
+        ```
+
+        #### Cache components
+
+        ```sh
+        sudo php artisan optimize:clear
+        sudo php artisan filament:optimize
+        ```
+
+        #### Update Database
+
+        You'll also need to update your database schema. Running the command below
+        will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
+        remember, _never edit core eggs we ship_! They will be overwritten by this update process.
+
+        ```sh
+        sudo php artisan migrate --seed --force
+        ```
+
+        #### Themes
+
+        If you previously had any themes installed you need to manually build the panel assets again:
+
+        ```sh
+        yarn install
+        yarn build
+        ```
+
+        #### Set Permissions
+
+        The last step is to set proper ownership of the files. In most cases this
+        is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
+
+        <Tabs>
+            <TabItem value="NGINX/ Apache/ Caddy">
+                ```sh
+                sudo chown -R www-data:www-data /var/www/pelican
+                ```
+            </TabItem>
+            <TabItem value="Rocky Linux NGINX">
+                ```sh
+                sudo chown -R nginx:nginx /var/www/pelican
+                ```
+            </TabItem>
+            <TabItem value="Rocky Linux Apache">
+                ```sh
+                sudo chown -R apache:apache /var/www/pelican
+                ```
+            </TabItem>
+        </Tabs>
+
+        #### Restart Queue Workers
+
+        After _every update_ you should restart the queue worker.
+
+        ```sh
+        sudo php artisan queue:restart
+        ```
+
+        #### Exit Maintenance Mode
+
+        Now that everything has been updated you need to exit maintenance mode.
+
+        ```sh
+        sudo php artisan up
+        ```
+    </TabItem>
+</Tabs>
