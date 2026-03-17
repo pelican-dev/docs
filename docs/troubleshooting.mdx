@@ -20,7 +20,7 @@ tail -n 1000 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(d
     <summary>Common errors</summary>
 
     * `ErrorException: file_put_contents(_____): failed to open stream: Permission denied`: Wrong file permissions/ownership for the panel files, see [below](#wrong-file-permissions).
-    * `502 Bad Gateway Error`: Make sure that php-fpm is running and that you are using the correct php version in your webserver config.
+    * `502 Bad Gateway Error`: Make sure that php-fpm is running and that you are using the correct php version in your web server config.
     * `CSRF token mismatch`: Enable SSL for your Panel with HTTPS protocol scheme in the `APP_URL`, or set `SESSION_SECURE_COOKIE` to `false` in your `.env` file.
     * `Connection refused [tcp://_______:6379]`: Redis isn't running or isn't reachable for some other reason. (start by checking the status of the redis service: `systemctl status redis-server`)
     * `SSL: no alternative certificate subject name matches target host name '_______'`: The used SSL certificate for your panel isn't valid for your panel domain, see [this guide](./guides/ssl) for creating a new SSL certificate.
@@ -124,7 +124,7 @@ If your Schedules are stuck on `Processing` or don't execute the tasks check the
 * Is your Schedule set to run `ONLY WHEN SERVER IS ONLINE` and the server is currently offline?
 * Is your queue worker service running? (`systemctl status pelican-queue`)
 * Is your queue worker service using the correct PHP version? (`php -v`)
-* Is your cronjob setup correctly? `crontab -l -u www-data` (where `www-data` is your webserver user) should show the following entry:  
+* Is your cronjob setup correctly? `crontab -l -u www-data` (where `www-data` is your web server user) should show the following entry:  
 `* * * * * php /var/www/pelican/artisan schedule:run >> /dev/null 2>&1`
 
 If your queue worker service is not running you can also check the panel logs for errors.
@@ -140,6 +140,6 @@ To recreate the queue worker service you can run `php /var/www/pelican/artisan p
 If a file upload form returns an error like `mountedActionsData.0.files.24d4b82d-a3ae-47fd-981f-8b2f0f6a21d4` it is most likely a proxy issue.
 
 Make sure your `Trusted Proxies` are set to the correct ips, both in the panel settings and your proxy settings!  
-Also make sure your webserver and/or proxy have a high enough upload limit. (e.g. `client_max_body_size`, `upload_max_filesize` and `post_max_size`)
+Also make sure your web server and/or proxy have a high enough upload limit. (e.g. `client_max_body_size`, `upload_max_filesize` and `post_max_size`)
 
 In some cases the issue can also be caused by incorrect file permissions. See [above](#wrong-file-permissions) on how to fix your file permissions.

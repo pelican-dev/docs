@@ -98,7 +98,7 @@ networks:
 ### Set Required Environment Variables
 
 1. Set `APP_URL` to the base URL your panel will be reachable on, including the protocol (https:// or http://) and port. 
-    - Note that Caddy, the integrated webserver, will serve a 308 redirect to any requests on port 80 if the `APP_URL` begins with `https://`. If your final site will be reachable over HTTPS but TLS (SSL) will be handled and terminated by an upstream server, such as a reverse proxy, you will need to use a [custom caddyfile](#custom-caddyfile).
+    - Note that Caddy, the integrated web server, will serve a 308 redirect to any requests on port 80 if the `APP_URL` begins with `https://`. If your final site will be reachable over HTTPS but TLS (SSL) will be handled and terminated by an upstream server, such as a reverse proxy, you will need to use a [custom caddyfile](#custom-caddyfile).
 2. Set the `LE_EMAIL` to your email address. Caddy will use this email address to generate a LetsEncrypt SSL certificate if you are serving via HTTPS.
 
 Now, close and save changes to `compose.yml`. 
@@ -161,7 +161,7 @@ docker compose down -v
 
 ### Custom Caddyfile
 
-The default Caddyfile will work for standard installations. If you need to edit the configuration of the integrated webserver, such as to place it behind a reverse proxy that terminates TLS, you can do so by bind-mounting a Caddyfile on the host to `/etc/caddy/Caddyfile` inside the container.
+The default Caddyfile will work for standard installations. If you need to edit the configuration of the integrated web server, such as to place it behind a reverse proxy that terminates TLS, you can do so by bind-mounting a Caddyfile on the host to `/etc/caddy/Caddyfile` inside the container.
 
 This example assumes there is a Caddyfile in the same directory as the `compose.yml` file. 
 

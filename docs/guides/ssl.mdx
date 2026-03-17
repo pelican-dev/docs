@@ -14,7 +14,7 @@ A brief guide on how to create SSL certificates for your Panel and/or Wings usin
 
 To begin, we will install certbot, a simple script that automatically renews our certificates and allows much easier creation of them.
 The command below is for Ubuntu distributions, but you can always check [Certbot's official site](https://certbot.eff.org/) for installation instructions.
-We have also included a command below to install certbot's Nginx/Apache plugin so you won't have to stop your webserver.
+We have also included a command below to install certbot's Nginx/Apache plugin so you won't have to stop your web server.
 
 <Tabs>
     <TabItem value="certbot_nginx" label="NGINX">
@@ -47,8 +47,8 @@ Then, in the command below, you should replace `example.com` with the domain you
 for.  When you have multiple domains you would like certificates for, simply add more `-d anotherdomain.com` flags to the
 command. You can also look into generating a wildcard certificate but that is not covered in this tutorial.
 
-When you are using certbot's Nginx/Apache plugin, you won't need to restart your webserver to have the certificate
-applied assuming that you've already configured the webservers to use SSL as instructed in the [web server configuration step](../panel/install/standalone#web-server-configuration).
+When you are using certbot's Nginx/Apache plugin, you won't need to restart your web server to have the certificate
+applied assuming that you've already configured the web servers to use SSL as instructed in the [web server configuration step](../panel/install/standalone#web-server-configuration).
     
 <Tabs>
     <TabItem value="http_challenge" label="HTTP challenge">
@@ -99,7 +99,7 @@ Deploy hook would restart the Nginx service to apply a new certificate when it's
 
 ## Troubleshooting
 
-If you get an `Insecure Connection` or SSL/TLS related error when trying to access your panel or wings, the certificate has likely expired.
+If you get an `Insecure Connection` or SSL/TLS-related error when trying to access your panel or wings, the certificate has likely expired.
 This can be easily fixed by renewing the SSL certificate, although using the command `certbot renew` might not do the job if port 80 is in use, as it'll return errors like: `Error: Attempting to renew cert (domain) from /etc/letsencrypt/renew/domain.conf produced an unexpected error`.
 
 This will happen especially if you're running Nginx instead of Apache. The solution for this is to use Nginx or Apache plugins with `--nginx` and `--apache`. Alternatively, you can stop Nginx, then renew the certificate, finally restart Nginx. Replace `nginx` with your own web server or with `wings` should you be renewing the certificate for Wings.
@@ -122,7 +122,7 @@ Once the process has completed, you can restart Nginx:
 systemctl start nginx
 ```
 
-You may also need to restart Wings as not every service is able to automatically apply an updated certificate:
+You may also need to restart Wings as not every service can automatically apply an updated certificate:
 
 ```sh
 systemctl restart wings
