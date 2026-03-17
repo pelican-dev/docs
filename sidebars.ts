@@ -42,7 +42,6 @@ const sidebars: SidebarsConfig = {
             type: 'generated-index',
           },
           items: [
-            'panel/advanced/ssl',
             'panel/advanced/mysql',
             'panel/advanced/redis',
           ],
@@ -81,6 +80,7 @@ const sidebars: SidebarsConfig = {
         type: 'generated-index',
       },
       items: [
+        'guides/ssl',
         'guides/mounts',
         'guides/php-upgrade',
         'guides/database-hosts',

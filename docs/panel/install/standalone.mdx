@@ -78,7 +78,7 @@ sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 
 :::info
     When using the SSL (https) configuration you MUST create SSL certificates, otherwise your web server will fail to start.
-    See the [Creating SSL Certificates](../misc/ssl) documentation page to learn how to create these certificates before continuing.
+    See the [Creating SSL Certificates](../../guides/ssl) documentation page to learn how to create these certificates before continuing.
 :::
 
 <Tabs>
@@ -501,10 +501,12 @@ sudo chmod -R 755 storage/* bootstrap/cache/
 
 ## Web Installer
 
-Once you've set the proper permissions, continue the Panel install on the web interface.  
+Once you've set the proper permissions, finish the Panel install via the web installer.  
 The web installer is located at `<domain>/installer` or `<ip>/installer`, e.g. `https://panel.example.com/installer`
 
+During this step you will choose the default drivers, create the queue worker and create the default admin user.
+
 :::info[Want something advanced?]
-    Make sure to read the [MySQL guide](./../misc/mysql) first if you want to use MySQL/MariaDB instead of SQLite!
-    If you want to use Redis make sure to read the [Redis guide](./../misc/redis) first.
+    Make sure to read the [MySQL guide](../advanced/mysql) first if you want to use MySQL/MariaDB instead of SQLite!  
+    If you want to use Redis make sure to read the [Redis guide](../advanced/redis) first.
 :::
