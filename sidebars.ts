@@ -18,7 +18,7 @@ const sidebars: SidebarsConfig = {
       label: 'Panel',
       link: {
         type: 'generated-index',
-        description: 'The Panel is a Laravel web application that serves as web interface for the user.',
+        description: 'The Panel is a Laravel web application that serves as the web interface for users.',
       },
       collapsible: false,
       items: [
@@ -55,7 +55,7 @@ const sidebars: SidebarsConfig = {
       label: 'Wings',
       link: {
         type: 'generated-index',
-        description: 'Wings is the backend service that will be installed on one or more node machines and serves as interface between Docker and the Panel.',
+        description: 'Wings is the backend service installed on one or more node machines and acts as the interface between Docker and the Panel.',
       },
       collapsible: false,
       items: [
