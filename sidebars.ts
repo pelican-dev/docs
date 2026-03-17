@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
           ],
         },
         'panel/update',
+        'panel/optional-config',
         {
           type: 'category',
           label: 'Advanced',
@@ -71,6 +72,7 @@ const sidebars: SidebarsConfig = {
           ],
         },
         'wings/update',
+        'wings/optional-config',
       ],
     },
     {
