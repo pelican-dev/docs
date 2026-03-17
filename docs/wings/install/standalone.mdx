@@ -1,3 +1,8 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -23,7 +28,7 @@ When your provider uses `Virtuozzo`, `OpenVZ` (or `OVZ`), or `LXC` virtualizatio
 run Wings. Some providers have made the necessary changes for nested virtualization to support Docker. Ask your provider's support team to make sure. KVM is guaranteed to work.
 
 The easiest way to check is to type `systemd-detect-virt`.
-If the result doesn't contain `OpenVZ` or`LXC`, it should be fine. The result of `none` will appear when running dedicated hardware without any virtualization.
+If the result doesn't contain `OpenVZ` or `LXC`, it should be fine. The result of `none` will appear when running dedicated hardware without any virtualization.
 
 Should that not work for some reason, or you're still unsure, you can also run the command below.
 

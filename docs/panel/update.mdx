@@ -1,7 +1,12 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Panel
+# Update
 
 A brief guide on how to update the Pelican Panel to the latest version.
 
@@ -103,7 +108,7 @@ You have two options for updating: use the automatic update script (recommended)
         is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
 
         <Tabs>
-            <TabItem value="NGINX/ Apache/ Caddy">
+            <TabItem value="NGINX/Apache/Caddy">
                 ```sh
                 sudo chown -R www-data:www-data /var/www/pelican
                 ```

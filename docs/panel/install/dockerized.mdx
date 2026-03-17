@@ -1,3 +1,8 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
 # Dockerized installation
 
 Run the Pelican Panel inside a docker container.
@@ -76,7 +81,7 @@ services:
       - pelican-data:/pelican-data
       - pelican-logs:/var/www/html/storage/logs
     environment:
-      <<: [*panel-environment, *mail-environment]
+      <<: [*panel-environment]
       XDG_DATA_HOME: /pelican-data
 
 volumes:
@@ -94,7 +99,7 @@ networks:
 
 1. Set `APP_URL` to the base URL your panel will be reachable on, including the protocol (https:// or http://) and port. 
     - Note that Caddy, the integrated webserver, will serve a 308 redirect to any requests on port 80 if the `APP_URL` begins with `https://`. If your final site will be reachable over HTTPS but TLS (SSL) will be handled and terminated by an upstream server, such as a reverse proxy, you will need to use a [custom caddyfile](#custom-caddyfile).
-2. Set the `ADMIN_EMAIL` to your email address. Caddy will use this email address to generate a LetsEncrypt SSL certificate if you are serving via HTTPS.
+2. Set the `LE_EMAIL` to your email address. Caddy will use this email address to generate a LetsEncrypt SSL certificate if you are serving via HTTPS.
 
 Now, close and save changes to `compose.yml`. 
 
@@ -179,7 +184,7 @@ services:
     environment:
       XDG_DATA_HOME: /pelican-data
       APP_URL: "http://localhost"
-      ADMIN_EMAIL: "USEYOUROWNEMAILHERE@example.com"
+      LE_EMAIL: "USEYOUROWNEMAILHERE@example.com"
 
 volumes:
   pelican-data:

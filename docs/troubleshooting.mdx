@@ -1,3 +1,8 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -14,13 +19,13 @@ tail -n 1000 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(d
 <details>
     <summary>Common errors</summary>
 
-    * `ErrorException: file_put_contents(_____): failed to open stream: Permission denied`: Wrong file permissions/ ownership for the panel files, see [below](#wrong-file-permissions).
+    * `ErrorException: file_put_contents(_____): failed to open stream: Permission denied`: Wrong file permissions/ownership for the panel files, see [below](#wrong-file-permissions).
     * `502 Bad Gateway Error`: Make sure that php-fpm is running and that you are using the correct php version in your webserver config.
     * `CSRF token mismatch`: Enable SSL for your Panel with HTTPS protocol scheme in the `APP_URL`, or set `SESSION_SECURE_COOKIE` to `false` in your `.env` file.
     * `Connection refused [tcp://_______:6379]`: Redis isn't running or isn't reachable for some other reason. (start by checking the status of the redis service: `systemctl status redis-server`)
-    * `SSL: no alternative certificate subject name matches target host name '_______'`: The used SSL certificate for your panel isn't valid for your panel domain, see [this guide](./install/misc/ssl) for creating a new SSL certificate.
+    * `SSL: no alternative certificate subject name matches target host name '_______'`: The used SSL certificate for your panel isn't valid for your panel domain, see [this guide](./panel/advanced/ssl) for creating a new SSL certificate.
     * `General error: 8 attempt to write a readonly database`: Your `database.sqlite` has wrong file permissions and is read-only. Make sure the file is writable and owned by the correct user.
-    * `Class '_____' not found`: This usually means you are missing php extensions. Make sure [all needed extensions](./install/panel/standalone#dependencies) are installed and that you are using the correct php version.
+    * `Class '_____' not found`: This usually means you are missing php extensions. Make sure [all needed extensions](./panel/install/standalone#dependencies) are installed and that you are using the correct php version.
     * `Connection timed out after 5001 milliseconds for _______:8080`: Your panel can't reach wings, see the wings connection issues steps below.
 </details>
 
@@ -57,22 +62,22 @@ It should say that the service is active and running. If its in a failed state r
 <details>
     <summary>Common errors</summary>
 
-    * `open /etc/letsencrypt/live/_____________/fullchain.pem: no such file or directory`: The SSL certificate for wings is missing, see [this guide](./install/misc/ssl) for creating a SSL certificate.
+    * `open /etc/letsencrypt/live/_____________/fullchain.pem: no such file or directory`: The SSL certificate for wings is missing, see [this guide](./panel/advanced/ssl) for creating an SSL certificate.
     * `Pool overlaps with other one on this address space`: You already have a docker network using the default subnet. (`172.18.0.0/16`) Change the subnet in your wings config file and use `systemctl stop wings && docker network rm pelican_nw && systemctl start wings` to apply the change.
-    * `Error response from Panel: AccessDeniedHttpException: You are not authorized to access this resource. (HTTP/403)`: Your wings token is wrong, you need [update the token in your config.yml file](./install/wings/standalone#configure)
-    * `Error response from Panel: _MissingResponseCode: No error response returned from API endpoint`: Your panel is not responding correctly. This usually happens when Cloudflare is blocking the connection. In that case make sure your wings ip is added to the Cloudflare firewall. If you aren't using Cloudflare it might be some other CDN/ DDoS protection service or your provider.
+    * `Error response from Panel: AccessDeniedHttpException: You are not authorized to access this resource. (HTTP/403)`: Your wings token is wrong, you need to [update the token in your config.yml file](./wings/install/standalone#configure)
+    * `Error response from Panel: _MissingResponseCode: No error response returned from API endpoint`: Your panel is not responding correctly. This usually happens when Cloudflare is blocking the connection. In that case make sure your wings ip is added to the Cloudflare firewall. If you aren't using Cloudflare it might be some other CDN/DDoS protection service or your provider.
     * `remote: could not unmarshal response: invalid character '<' looking for beginning of value`: This is basically the same error as above: Cloudflare is blocking the connection.
 </details>
 
 ### Check the wings port
 
-If you confirmed that wings is running without errors you should make sure that the wings port (`8080` by default) isn't blocked by any firewall. The best way to check this is to use online port checkers like [dnschecker.org](https://dnschecker.org/port-scanner.php)  
+If you confirmed that wings is running without errors you should make sure that the wings port (`8080` by default) isn't blocked by any firewall. The best way to check this is to use online port checkers like [dnschecker.org](https://dnschecker.org/port-scanner.php).  
 It should say "open" if you check for your node FQDN (e.g. `node.example.com` or `123.123.123.123`) and your wings port (e.g. `8080`). If it says "timed-out" you have some firewall blocking the port. This could be an internal firewall (like iptables) or an external firewall (e.g. from your provider).
 
 ### Check for NAT loop back
 
 If your panel and wings are on the same machine or same network, and you are using domains you should check for NAT loop back issues.  
-Edit the `/etc/hosts` file on your panel/ wings machine and add an entry for your ip and domain.
+Edit the `/etc/hosts` file on your panel/wings machine and add an entry for your ip and domain.
 
 Example:
 
@@ -107,7 +112,7 @@ In both cases it should output this when wings is reachable:
 ### Check node settings
 
 If the connection checks above were both successfull you might have misconfigured the Node settings in the Panel.  
-Make sure that your Node FQDN/ IP, Port and Scheme (HTTP/ HTTPS) is correct.
+Make sure that your Node FQDN/IP, Port and Scheme (HTTP/HTTPS) is correct.
 
 When using a reverse proxy you might have different external and internal ports for Wings. (e.g. `80` internally and `443` externally)  
 In that case make sure the Node settings in the Panel uses the external port while the Wings config file uses the internal port!
@@ -135,6 +140,6 @@ To recreate the queue worker service you can run `php /var/www/pelican/artisan p
 If a file upload form returns an error like `mountedActionsData.0.files.24d4b82d-a3ae-47fd-981f-8b2f0f6a21d4` it is most likely a proxy issue.
 
 Make sure your `Trusted Proxies` are set to the correct ips, both in the panel settings and your proxy settings!  
-Also make sure your webserver and/ or proxy have a high enough upload limit. (e.g. `client_max_body_size`, `upload_max_filesize` and `post_max_size`)
+Also make sure your webserver and/or proxy have a high enough upload limit. (e.g. `client_max_body_size`, `upload_max_filesize` and `post_max_size`)
 
 In some cases the issue can also be caused by incorrect file permissions. See [above](#wrong-file-permissions) on how to fix your file permissions.

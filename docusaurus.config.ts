@@ -80,7 +80,7 @@ const config: Config = {
             },
             {
               label: 'SSL Setup',
-              to: '/docs/install/misc/ssl'
+              to: '/docs/panel/advanced/ssl'
             },
           ],
         },

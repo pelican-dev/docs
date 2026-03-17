@@ -15,64 +15,65 @@ const sidebars: SidebarsConfig = {
     'welcome',
     {
       type: 'category',
-      label: 'Installation',
+      label: 'Panel',
       link: {
-        type: 'doc',
-        id: 'install/install',
+        type: 'generated-index',
+        description: 'The Panel is a Laravel web application that serves as web interface for the user.',
       },
+      collapsible: false,
       items: [
         {
           type: 'category',
-          label: 'Panel',
+          label: 'Installation',
           link: {
             type: 'generated-index',
-            description: "You can choose between two installation methods:",
+            description: 'You can choose between two installation methods:',
           },
-          collapsed: false,
           items: [
-            'install/panel/standalone',
-            'install/panel/dockerized',
+            'panel/install/standalone',
+            'panel/install/dockerized',
           ],
         },
+        'panel/update',
         {
           type: 'category',
-          label: 'Wings',
-          link: {
-            type: 'generated-index',
-            description: "You can choose between two installation methods:",
-          },
-          collapsed: false,
-          items: [
-            'install/wings/standalone',
-            'install/wings/dockerized',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Misc',
+          label: 'Advanced',
           link: {
             type: 'generated-index',
           },
           items: [
-            'install/misc/ssl',
-            'install/misc/mysql',
-            'install/misc/redis',
+            'panel/advanced/ssl',
+            'panel/advanced/mysql',
+            'panel/advanced/redis',
           ],
         },
+        'panel/plugins'
       ],
     },
     {
       type: 'category',
-      label: 'Updating',
+      label: 'Wings',
       link: {
         type: 'generated-index',
+        description: 'Wings is the backend service that will be installed on one or more node machines and serves as interface between Docker and the Panel.',
       },
+      collapsible: false,
       items: [
-        'update/panel',
-        'update/wings',
+        {
+          type: 'category',
+          label: 'Installation',
+          link: {
+            type: 'generated-index',
+            description: 'You can choose between two installation methods:',
+          },
+          items: [
+            'wings/install/standalone',
+            'wings/install/dockerized',
+          ],
+        },
+        'wings/update',
       ],
     },
-    'plugins',
     {
       type: 'category',
       label: 'Guides',
