@@ -16,63 +16,102 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Panel',
-      collapsed: false,
+      link: {
+        type: 'generated-index',
+        description: 'The Panel is a Laravel web application that serves as the web interface for users.',
+      },
+      collapsible: false,
       items: [
-        'panel/getting-started',
-        'panel/webserver-config',
-        'panel/panel-setup',
-        'panel/optional-config',
+        {
+          type: 'category',
+          label: 'Installation',
+          link: {
+            type: 'generated-index',
+            slug: '/category/panel-installation',
+            description: 'You can choose between two installation methods:',
+          },
+          items: [
+            'panel/install/standalone',
+            'panel/install/dockerized',
+          ],
+        },
         'panel/update',
+        'panel/optional-config',
         {
           type: 'category',
           label: 'Advanced',
+          link: {
+            type: 'generated-index',
+          },
           items: [
-            'panel/advanced/redis',
             'panel/advanced/mysql',
-            'panel/advanced/artisan',
-            'panel/advanced/docker',
-            'panel/advanced/plugins',
-          ]
-        }
+            'panel/advanced/redis',
+          ],
+        },
+        'panel/plugins'
       ],
     },
     {
       type: 'category',
       label: 'Wings',
+      link: {
+        type: 'generated-index',
+        description: 'Wings is the backend service installed on one or more node machines and acts as the interface between Docker and the Panel.',
+      },
+      collapsible: false,
       items: [
-        'wings/install',
+        {
+          type: 'category',
+          label: 'Installation',
+          link: {
+            type: 'generated-index',
+            slug: '/category/wings-installation',
+            description: 'You can choose between two installation methods:',
+          },
+          items: [
+            'wings/install/standalone',
+            'wings/install/dockerized',
+          ],
+        },
+        'wings/update',
         'wings/optional-config',
-        'wings/update'
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Eggs',
-      items: [
-        'eggs/creating-a-custom-egg',
-        'eggs/creating-a-custom-yolk',
       ],
     },
     {
       type: 'category',
       label: 'Guides',
+      link: {
+        type: 'generated-index',
+      },
       items: [
-        'guides/docker',
-        'guides/mounts',
         'guides/ssl',
+        'guides/mounts',
         'guides/php-upgrade',
         'guides/database-hosts',
         'guides/change-panel-domain',
         'guides/uninstalling',
-      
+        {
+          type: 'category',
+          label: 'Eggs',
+          link: {
+            type: 'generated-index',
+          },
+          items: [
+            'guides/eggs/creating-a-custom-egg',
+            'guides/eggs/creating-a-custom-yolk',
+          ],
+        },
         {
           type: 'category',
           label: 'Disk Quotas',
+          link: {
+            type: 'doc',
+            id: 'guides/disk-quotas/index',
+          },
           items: [
-            'guides/disk-quotas/about',
             'guides/disk-quotas/ext4-xfs',
-          ]
-        }
+          ],
+        },
       ],
     },
     'troubleshooting',

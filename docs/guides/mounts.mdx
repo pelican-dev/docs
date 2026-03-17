@@ -1,8 +1,6 @@
-import Admonition from '@theme/Admonition';
-
 # Using Mounts
 
-Mounts is a feature that allows administrators to mount other directories from the host file-system into a Server's container.
+Mounts allow administrators to mount other directories from the host file-system into a Server's container.
 
 ## Wings Configuration
 
@@ -23,10 +21,10 @@ You have to restart Wings to apply new changes to your Wings config.
 
 You have to configure mounts in admin Panel in order to use them with your servers. They consist of a source pad on the node and a target path where it will be mounted in the container.
 
-<Admonition type="warning">
+:::warning
     By default Mounts cannot target `/home/container` or any of its subdirectory, you can allow it by setting `BlockBaseDirMount` to `false` in the Wings configuration.
     You cannot cross-mount servers such as Server A's directory into Server B.
-</Admonition>
+:::
 
 ### Creating a Mount
 
@@ -41,9 +39,9 @@ You have to configure mounts in admin Panel in order to use them with your serve
    - **User Mountable**: Whether to allow users to self mount this mount.
 4. After creating the mount, you are required to add both **Eggs** and **Nodes** that this mount may be used on.
 
-<Admonition type="warning">
+:::warning
   All servers using the same mounts will **only** share their contents when they are on the same node. Mounts are not synchronized between nodes.
-</Admonition>
+:::
 
 ### Assigning a Mount to a Server
 
@@ -54,9 +52,9 @@ You have to configure mounts in admin Panel in order to use them with your serve
 
 The files of the mount should become available in the target path in the container. You can temporarily change your server startup command to `ls <mount target>`, which should output the contents of the mount if configured correctly.
 
-<Admonition type="tip">
+:::tip
     Mounts do not appear in the Panel's file manager, nor are they accessible via SFTP. However, the server itself will be able to see and use the mounts.
-</Admonition>
+:::
 
 ### Example Mount
 

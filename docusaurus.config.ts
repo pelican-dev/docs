@@ -72,11 +72,11 @@ const config: Config = {
           items: [
             {
               label: 'Panel',
-              to: '/docs/panel/getting-started',
+              to: '/docs/category/panel',
             },
             {
               label: 'Wings',
-              to: '/docs/wings/install',
+              to: '/docs/category/wings',
             },
             {
               label: 'SSL Setup',

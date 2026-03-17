@@ -1,10 +1,14 @@
-import Admonition from '@theme/Admonition';
+---
+pagination_prev: null
+pagination_next: null
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Updating the Panel
+# Update
 
-This documentation covers the process for updating the panel portion of Pelican.
+A brief guide on how to update the Pelican Panel to the latest version.
 
 ## Version Requirements
 
@@ -29,7 +33,7 @@ You have two options for updating: use the automatic update script (recommended)
         ```
     </TabItem>
     <TabItem value="Manual update">
-        ### Enter Maintenance Mode
+        #### Enter Maintenance Mode
 
         Whenever you are performing an update you should be sure to place your Panel into maintenance mode. This will prevent
         users from encountering unexpected errors.
@@ -39,7 +43,7 @@ You have two options for updating: use the automatic update script (recommended)
         sudo php artisan down
         ```
 
-        ### Download Update
+        #### Download Update
 
         The first step in the update process is to download the new panel files from GitHub. The command below will download
         the release archive for the most recent version of Pelican, save it in the current directory and will automatically
@@ -50,36 +54,36 @@ You have two options for updating: use the automatic update script (recommended)
         ```
 
         Once the archive is downloaded and extracted we need to set the correct permissions on the cache and storage directories to avoid
-        any webserver related errors.
+        any web server related errors.
 
         ```sh
         sudo chmod -R 755 storage/* bootstrap/cache
         ```
 
-        ### Update Dependencies
+        #### Update Dependencies
 
         ```sh
         sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
         ```
 
-        <Admonition type="info">
+        :::info
             Even though composer might tell you that you have outdated dependencies, do **not** run `composer update`!
-        </Admonition>
+        :::
 
-        ### Create storage symlinks
+        #### Create storage symlinks
 
         ```sh
         sudo php artisan storage:link
         ```
 
-        ### Cache components
+        #### Cache components
 
         ```sh
         sudo php artisan optimize:clear
         sudo php artisan filament:optimize
         ```
 
-        ### Update Database
+        #### Update Database
 
         You'll also need to update your database schema. Running the command below
         will update the schema and ensure the default eggs we ship are up to date (and add any new ones we might have). Just
@@ -89,7 +93,7 @@ You have two options for updating: use the automatic update script (recommended)
         sudo php artisan migrate --seed --force
         ```
 
-        ### Themes
+        #### Themes
 
         If you previously had any themes installed you need to manually build the panel assets again:
 
@@ -98,13 +102,13 @@ You have two options for updating: use the automatic update script (recommended)
         yarn build
         ```
 
-        ### Set Permissions
+        #### Set Permissions
 
         The last step is to set proper ownership of the files. In most cases this
         is `www-data` but can vary from system to system &mdash; sometimes being `nginx`, `caddy`, `apache`, or even `nobody`.
 
         <Tabs>
-            <TabItem value="NGINX/ Apache/ Caddy">
+            <TabItem value="NGINX/Apache/Caddy">
                 ```sh
                 sudo chown -R www-data:www-data /var/www/pelican
                 ```
@@ -121,7 +125,7 @@ You have two options for updating: use the automatic update script (recommended)
             </TabItem>
         </Tabs>
 
-        ### Restart Queue Workers
+        #### Restart Queue Workers
 
         After _every update_ you should restart the queue worker.
 
@@ -129,7 +133,7 @@ You have two options for updating: use the automatic update script (recommended)
         sudo php artisan queue:restart
         ```
 
-        ### Exit Maintenance Mode
+        #### Exit Maintenance Mode
 
         Now that everything has been updated you need to exit maintenance mode.
 
@@ -138,4 +142,3 @@ You have two options for updating: use the automatic update script (recommended)
         ```
     </TabItem>
 </Tabs>
-

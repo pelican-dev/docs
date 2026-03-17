@@ -1,14 +1,15 @@
-import Admonition from '@theme/Admonition';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Uninstalling
 
-This guide will show you how to uninstall the Pelican Panel and Wings. Note that the uninstallation of dependency services is not covered here.
+This guide will show you how to uninstall the Pelican Panel and Wings. 
 
-<Admonition type="danger">
+Note that the uninstallation of dependency services is not covered here.
+
+:::danger
     **You will lose all data and this action is irreversible!**
-</Admonition>
+:::
 
 ## Panel
 
@@ -20,9 +21,9 @@ First, run the following command to delete all panel files.
 sudo rm -rf /var/www/pelican
 ```
 
-### Webserver config
+### Web server config
 
-Next, remove the Pelican webserver config.
+Next, remove the Pelican web server config.
 
 <Tabs>
     <TabItem value="nginx" label="NGINX">
@@ -61,7 +62,7 @@ sudo rm /etc/systemd/system/pelican-queue.service
 
 ### (Optional) Panel database
 
-If you used MySQL/ MariaDB and also want to remove the panel database, run the following commands:
+If you used MySQL/MariaDB and also want to remove the panel database, run the following commands:
 
 ```sh
 mysql -u root -p

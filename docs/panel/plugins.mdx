@@ -1,4 +1,8 @@
-import Admonition from '@theme/Admonition';
+---
+pagination_prev: null
+pagination_next: null
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -6,9 +10,9 @@ import TabItem from '@theme/TabItem';
 
 Plugins allow you to add new functionality to the panel without modifying any panel core files.
 
-<Admonition type="warning">
+:::warning
     The plugin system is still in development and features might be missing!
-</Admonition>
+:::
 
 ## Install a Plugin
 
@@ -21,22 +25,22 @@ Plugins allow you to add new functionality to the panel without modifying any pa
     </TabItem>
 </Tabs>
 
-<Admonition type="info" title="Need some plugins?">
+:::info[Need some plugins?]
     Check out our [Plugins repo](https://github.com/pelican-dev/plugins)! It contains free and open source plugins created by the Pelican team and the community.  
     We are also working on adding a plugin marketplace to the [Hub](https://hub.pelican.dev).  
-</Admonition>
+:::
 
 ## Create a Plugin
 
-<Admonition type="danger">
+:::danger
     You **need** at least basic [PHP](https://php.net), [Laravel](https://laravel.com) and [Filament](https://filamentphp.com) knowledge to create plugins!
-</Admonition>
+:::
 
 Run `php artisan p:plugin:make` inside your panel directory (`/var/www/pelican` by default) to create the basic files and folders for your new plugin. This will create the `plugin.json`, the main plugin file, a config file and a service provider.
 
-<Admonition type="info" title="Need help?">
+:::info[Need help?]
     Visit our [Discord](https://discord.gg/pelican-panel) if you need any help when creating plugins!
-</Admonition>
+:::
 
 ### Plugin Structure
 
@@ -48,9 +52,9 @@ Everything is auto-discovered and service providers, artisan commands, migration
 
 The only exception to a normal Laravel project is the `app` folder, it is called `src` instead. Besides that, is still follows the same sub-structure, e.g. models go in `src/Models` and service providers are in `src/Providers`.
 
-<Admonition type="info">
+:::info
     The plugin id and the plugin root folder name need to match!
-</Admonition>
+:::
 
 #### plugin.json
 
@@ -71,9 +75,9 @@ Most of the fields inside the `plugin.json` are generated when running the [arti
 | panel_version     | No       | The panel version required for the plugin. See [below](#panel-version) for more information.                                                                  |
 | composer_packages | No       | Array of additional composer packages. Key is the package name and value is the version. See [below](#additional-composer-dependencies) for more information. |
 
-<Admonition type="info">
+:::info
     You can ignore the `meta` fields. Those are used internally to keep track of the plugin status and load order.
-</Admonition>
+:::
 
 #### Update URL
 
@@ -271,9 +275,9 @@ public function saveSettings(array $data): void
 }
 ```
 
-<Admonition type="info" title="Naming Conventions">
+:::info[Naming Conventions]
     When adding new environment variables make sure to prefix them with your plugin id, e.g. `MYPLUGIN_TEST_INPUT` and not just `TEST_INPUT`.
-</Admonition>
+:::
 
 ### Modify existing resources
 
@@ -350,10 +354,10 @@ public function register(): void
 
 ## Publish a Plugin
 
-<Admonition type="danger">
+:::danger
     While Pelican is still in beta, please do **not** sell plugins. Also, if possible, please make them open source.  
     During the beta we still add new features and change existing ones. So keeping your plugins open helps us to improve the plugin system!
-</Admonition>
+:::
 
 To publish a plugin you only need to do two things:
 
@@ -362,12 +366,12 @@ To publish a plugin you only need to do two things:
 
 And that's it! Now you can take the zip file and share it with the world!
 
-<Admonition type="info" title="Marketplace">
+:::info[Marketplace]
     We are currently working on adding a plugin marketplace to the [Hub](https://hub.pelican.dev).  
     Until then you can publish your plugins on our [plugins repo](https://github.com/pelican-dev/plugins). You can also share them in the `#plugins` channel in our [Discord](https://discord.gg/pelican-panel).
-</Admonition>
+:::
 
-<Admonition type="info" title="License">
+:::info[License]
     You can license your plugin code under whatever license you want. You do not have to use the same license as the panel!  
     You also don't have to open source your plugin code. But if you do want to open source it we recommend [MIT](https://choosealicense.com/licenses/mit) or [GPL v3](https://choosealicense.com/licenses/gpl-3.0) as license.
-</Admonition>
+:::

@@ -1,11 +1,8 @@
-import Admonition from '@theme/Admonition';
-
 # Additional Configuration
 
-<Admonition type="danger">
-These are advanced configurations for Wings. You risk breaking Wings and making containers unusable if
-you misconfigure something. Proceed only if you know what each configuration value does.
-</Admonition>
+:::danger
+  These are advanced configurations for Wings. You risk breaking Wings and making containers unusable if you misconfigure something. Proceed only if you know what each configuration value does.
+:::
 
 You must apply all changes to your Wings `config.yml` file located at `/etc/pelican` and restart wings.  
 Verify your config file using [Yaml Lint](http://www.yamllint.com/) should you receive errors related to YAML parsing.
@@ -36,9 +33,9 @@ docker:
 
 You can change the network interface that Wings uses for all containers by editing the network name; it is by default set to `pelican_nw`. For example, to enable Docker host mode change the network name to `host`.
 
-<Admonition type="warning">
-  Changing network mode to `host` grants Pelican direct access to all machine interfaces and Panel users can bind to any IP or Port even if it's not allocated to their container. You will lose all benefits of Docker network isolation. It is not recommended for public installations that are hosting other users' servers.
-</Admonition>
+:::warning
+    Changing network mode to `host` grants Pelican direct access to all machine interfaces and Panel users can bind to any IP or Port even if it's not allocated to their container. You will lose all benefits of Docker network isolation. It is not recommended for public installations that are hosting other users' servers.
+:::
 
 ### Example of usage
 

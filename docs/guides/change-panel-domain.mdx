@@ -1,10 +1,11 @@
-import Admonition from '@theme/Admonition';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Change Panel Domain
 
-## Webserver & Panel
+A brief guide on how to change the Panel domain.
+
+## Web server & Panel
 
 First you need to modify the server name in your web server config.
 
@@ -15,9 +16,9 @@ First you need to modify the server name in your web server config.
         # Search for "server_name"
         ```
 
-        <Admonition type="info" title="Using HTTPS?">
-            If you're using HTTPS, remember to also change the SSL paths in the config file to match your new domain and [generate a new certificate](./ssl).
-        </Admonition>
+        :::info[Using HTTPS?]
+            If you're using HTTPS, remember to also change the SSL paths in the config file to match your new domain and [generate a new certificate](ssl).
+        :::
     </TabItem>
     <TabItem value="apache" label="Apache">
         ```sh
@@ -25,9 +26,9 @@ First you need to modify the server name in your web server config.
         # Search for "ServerName"
         ```
 
-        <Admonition type="info" title="Using HTTPS?">
-            If you're using HTTPS, remember to also change the SSL paths in the config file to match your new domain and [generate a new certificate](./ssl).
-        </Admonition>
+        :::info[Using HTTPS?]
+            If you're using HTTPS, remember to also change the SSL paths in the config file to match your new domain and [generate a new certificate](ssl).
+        :::
     </TabItem>
     <TabItem value="caddy" label="Caddy">
         ```sh
@@ -38,7 +39,7 @@ First you need to modify the server name in your web server config.
 
 Next, modify the `APP_URL` in the `.env` file located at `/var/www/pelican` by typing `sudo nano /var/www/pelican/.env`.
 
-Finally, restart your webserver to apply the changes.
+Finally, restart your web server to apply the changes.
 
 <Tabs groupId="webserver">
     <TabItem value="nginx" label="Nginx">

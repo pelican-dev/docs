@@ -1,5 +1,3 @@
-import Admonition from '@theme/Admonition';
-
 # Database Hosts
 
 Database hosts allow to create per-server databases on the given host.
@@ -35,15 +33,15 @@ Open `my.cnf`, add text below to the bottom of the file and save it:
 bind-address=0.0.0.0
 ```
 
-Restart MySQL/ MariaDB to apply these changes. This will override the default MySQL configuration, which by default will only accept requests from localhost. Updating this will allow connections on all interfaces, and thus, external connections. Make sure to allow the MySQL port (default 3306) in your firewall.
+Restart MySQL/MariaDB to apply these changes. This will override the default MySQL configuration, which by default will only accept requests from localhost. Updating this will allow connections on all interfaces, and thus, external connections. Make sure to allow the MySQL port (default 3306) in your firewall.
 
 ## Panel Configuration
 
 In the admin area of the panel, go to "Databases" and click the "New Database Host" button.
 
-<Admonition type="tip">
+:::tip
     Users will later see the host as their database endpoint. Therefore, you should set it to a public ip or FQDN and not to `localhost` for example.
-</Admonition>
+:::
 
 Hit "Create" and if everything was entered correctly you should be redirected to the database host list and see your new database host.
 

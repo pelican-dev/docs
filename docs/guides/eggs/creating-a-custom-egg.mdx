@@ -1,5 +1,7 @@
 # Creating a Custom Egg
 
+A guide on how to create a custom Egg.
+
 ## Create New Egg
 
 Navigate to the Admin Panel and click the eggs option in the sidebar then select `New Egg` button.
@@ -7,24 +9,32 @@ Navigate to the Admin Panel and click the eggs option in the sidebar then select
 You will be taken to a new egg configuration page which is where most of the configuration happens.
 
 ### Name
+
 This is the name of your egg.
 
 ### Author
+
 This is the original creator's email. 
 
 ### Description
+
 This is the description of your egg and what is needed to run it. 
 
 ### Startup Commands
+
 Here you can assign multiple startup commands to run your server. 
 Example below:
+
 ```bash
 java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}
 ```
+
 ### File Denylist
+
 Here you can specify a list of files that the end user is not allowed to edit.
 
 ### Features (Egg Features)
+
 Egg features can do different things when specified. Example below:
 | Tag                       | Description                                 |
 | ------------------------- | ------------------------------------------- |
@@ -34,12 +44,15 @@ Egg features can do different things when specified. Example below:
 | steam_disk_space          | Sets a limit to enable an "out of disk space" Popup if the host system is out of disk space |
 
 ### Tags
+
 The tag system allows you to group eggs together by type. This is the successor to nests. 
 
 ### Update URL
+
 This can be specified so that users who use your egg can update the egg without having to look around for where the egg is hosted. 
 
 ### Docker Images (Yolks)
+
 Every egg has a Docker image or Yolk as they are referred to. Images can be custom-made, and you can learn how to create them in the "Creating a Custom Yolk" guide or you can use the pre-made ones found here [Yolk Repo](https://github.com/pelican-eggs/yolks). They have two fields that need to be defined: the name of the image and the URL where the image is hosted. 
 
 :::info
@@ -166,13 +179,14 @@ java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}
 ```
 
 :::note
-Variable syntax depends on the context:
-**Startup commands**: Use `{{VAR_NAME}}` (e.g., `{{SERVER_MEMORY}}`)
-**Configuration file parsers**: Use `{{server.environment.VAR_NAME}}` or `{{server.allocations.default.port}}`
-**Install scripts and shell environments**: Use `${VAR_NAME}`
+    Variable syntax depends on the context:
+    **Startup commands**: Use `{{VAR_NAME}}` (e.g., `{{SERVER_MEMORY}}`)
+    **Configuration file parsers**: Use `{{server.environment.VAR_NAME}}` or `{{server.allocations.default.port}}`
+    **Install scripts and shell environments**: Use `${VAR_NAME}`
 :::
 
 **In Install Scripts:**
+
 ```bash
 #!/bin/bash
 cd /mnt/server

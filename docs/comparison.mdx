@@ -1,18 +1,20 @@
 ---
-id: comparison
+pagination_prev: null
+pagination_next: null
 ---
 
-import Admonition from '@theme/Admonition';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Comparison
 
-Pelican is a fork of [Pterodactyl](https://pterodactyl.io). However, Pelican has many Improvements over it now!
+Pelican is a fork of [Pterodactyl](https://pterodactyl.io). However, Pelican has many improvements over it now!
 
-<Admonition type="info">
+:::info
     Want to see these changes in action? Check out our [Demo](https://demo.pelican.dev)!
-</Admonition>
+:::
+
+## Roadmap
 
 <Tabs>
     <TabItem value="1" label="General">
@@ -93,24 +95,26 @@ Pelican is a fork of [Pterodactyl](https://pterodactyl.io). However, Pelican has
     </TabItem>
 </Tabs>
 
-## Comparison with our competitors.
-|                          | Pelican   | Pterodactyl | PufferPanel | Crafty Controller     | Multicraft     | TCAdmin | AMP            |
-|--------------------------|-----------|-------------|-------------|-----------------------|----------------|---------|----------------|
-| File manager             | ✅         | ✅           | ✅           | ✅                     | ✅              | ✅       | ✅              |
-| Scheduled Tasks          | ✅         | ✅           | ❌           | ✅                     | ✅              | ✅       | ✅              |
-| Free and Open Source     | ✅         | ✅           | ✅           | ✅                     | ❌              | ❌       | ❌              |
-| Multilingual             | ✅         | ❌           | ✅           | ✅                     | ✅              | ✅       | ✅              |
-| Database Management      | ✅         | ✅           | ❌           | ❌                     | ✅              | ✅       | ✅              |
-| OAuth                    | ✅         | ❌           | ✅           | ✅                     | ❌              | ❌       | ✅              |
-| Webhooks                 | ✅         | ❌           | ❌           | ✅                     | ❌              | ❌       | ✅              |
-| Roles & Permissions      | ✅         | ❌           | ❌           | ✅                     | ✅              | ✅       | ✅              |
-| Announcements            | ❌         | ❌           | ❌           | ❌                     | ❌              | ✅       | ✅              |
-| Themes                   | ✅         | ❌           | ✅           | ❌                     | ✅              | ✅       | ✅              |
-| Plugins                  | ✅         | ❌           | ❌           | ❌                     | ❌              | ✅       | ✅              |
-| Self update              | ✅         | ❌           | ❌           | ❌                     | ❌              | ✅       | ✅              |
-| Captcha Login            | ✅         | ✅           | ❌           | ❌                     | ❌              | ❌       | ❌              |
-| Remote Backups           | ✅         | ✅           | ❌           | ❌                     | ❌              | ❌       | ✅              |
+## Comparison with other software
 
-### Features information.
-- Plugins can add any features that Pelican doesn't have by default.
-- These values are not constantly updated, and competitors may have implemented some of the features marked with a cross in their latest version.
+|                      | Pelican | Pterodactyl | PufferPanel | Crafty Controller | Multicraft | TCAdmin | AMP |
+| -------------------- | ------- | ----------- | ----------- | ----------------- | ---------- | ------- | --- |
+| Free and Open Source | ✅      | ✅          | ✅          | ✅                | ❌         | ❌      | ❌  |
+| Multilingual         | ✅      | ❌          | ✅          | ✅                | ✅         | ✅      | ✅  |
+| Plugins              | ✅      | ❌          | ❌          | ❌                | ❌         | ✅      | ✅  |
+| Themes               | ✅      | ❌          | ✅          | ❌                | ✅         | ✅      | ✅  |
+| File manager         | ✅      | ✅          | ✅          | ✅                | ✅         | ✅      | ✅  |
+| Scheduled Tasks      | ✅      | ✅          | ❌          | ✅                | ✅         | ✅      | ✅  |
+| Database Management  | ✅      | ✅          | ❌          | ❌                | ✅         | ✅      | ✅  |
+| OAuth                | ✅      | ❌          | ✅          | ✅                | ❌         | ❌      | ✅  |
+| Webhooks             | ✅      | ❌          | ❌          | ✅                | ❌         | ❌      | ✅  |
+| Roles & Permissions  | ✅      | ❌          | ❌          | ✅                | ✅         | ✅      | ✅  |
+| Captcha Login        | ✅      | ✅          | ❌          | ❌                | ❌         | ❌      | ❌  |
+| Remote Backups       | ✅      | ✅          | ❌          | ❌                | ❌         | ❌      | ✅  |
+| Self update          | ❌      | ❌          | ❌          | ❌                | ❌         | ✅      | ✅  |
+| Announcements        | ❌      | ❌          | ❌          | ❌                | ❌         | ✅      | ✅  |
+
+#### Features information
+
+- Plugins can add any feature that Pelican doesn't have by default.
+- These values are not constantly updated and the other software may have implemented some of the features marked with a cross in their latest version.

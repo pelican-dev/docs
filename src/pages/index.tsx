@@ -1,4 +1,4 @@
-import React, {JSX} from 'react';
+import React, { JSX } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -13,7 +13,7 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
@@ -25,8 +25,8 @@ function HomepageHeader() {
           <Link
             style={{ fontSize: '26px' }}
             className="button button--secondary button--md"
-            to="/docs/panel/getting-started"
-          >Install</Link>
+            to="/docs"
+          >Documentation</Link>
           <Link
             style={{ fontSize: '26px', margin: '15px' }}
             className="button button--secondary button--md"
@@ -39,7 +39,7 @@ function HomepageHeader() {
 }
 
 export default function Home(): JSX.Element {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`Home`}

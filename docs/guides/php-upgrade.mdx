@@ -1,14 +1,11 @@
----
-id: php-upgrade
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Upgrading PHP
 
-This documentation includes instructions for upgrading your system to the latest version of PHP. Please reference the
-table below to check what PHP version you need for your version of Pelican.
+A brief guide on how to upgrade PHP to the latest supported version.
+
+Please reference the table below to check what PHP version you need for your version of Pelican.
 
 | Panel Version | PHP Version        |
 |---------------|--------------------|
@@ -31,7 +28,7 @@ sudo apt -y purge php*
 sudo apt -y install php8.5 php8.5-{gd,mysql,mbstring,bcmath,xml,curl,zip,intl,sqlite3,fpm}
 ```
 
-## Webserver Configuration
+## Web server Configuration
 
 <Tabs>
     <TabItem value='NGINX'>

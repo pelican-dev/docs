@@ -1,21 +1,93 @@
-import Admonition from '@theme/Admonition';
+---
+pagination_prev: null
+pagination_next: null
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Webserver Configuration
+# Standalone installation
 
-<Admonition type="info">
-    When using the SSL (https) configuration you MUST create SSL certificates, otherwise your webserver will fail to start.
-    See the [Creating SSL Certificates](../guides/ssl) documentation page to learn how to create these certificates before continuing.
-</Admonition>
+Run the Pelican Panel directly on a web server.
+
+:::danger
+    **You should have some basic familiarity with Linux before you proceed!**
+:::
+
+## Requirements
+
+### Operating System (OS)
+
+The Panel runs on a wide range of operating systems, so pick whichever you are most comfortable using.  
+This documentation assumes a Debian-based OS with `apt`.
+
+:::info
+SQLite support depends on [libsqlite3-0_3.35+](https://pkgs.org/download/libsqlite3-0) being on the host system.  
+OS's that do _not_ support SQLite include: Debian 11, Alma Linux 8 or 9, Rocky Linux 8 or 9.
+:::
+
+### Dependencies
+
+For the Panel you need to install **PHP `8.5` (recommended), `8.4`, `8.3` or `8.2`**, with the following **extensions**:  
+`gd`, `mysql`, `mbstring`, `bcmath`, `xml`, `curl`, `zip`, `intl`, `sqlite3` and `fpm`.
+
+You will also need a web server. Currently, **Apache, NGINX or Caddy** are supported.
+
+If you want to use MySQL, MariaDB or PostgreSQL for the panel database make sure to install either **MySQL 8+, MariaDB 10.6+ or PostgreSQL 14+**. (both client and server!)
+
+Finally, for some commands during the installation you need `curl`, `tar` and `unzip`.
+
+:::warning
+    Please make sure you installed **all** needed dependencies before continuing!
+:::
+
+## Download Panel files
+
+The first step in this process is to create the folder where the panel will live and then move ourselves into that
+newly created folder.
+
+```sh
+sudo mkdir -p /var/www/pelican
+cd /var/www/pelican
+```
+
+Once you have created a new directory to use and moved into it, you'll need to download the Panel files.
+This is as simple as using `curl` to download the latest release.
+
+```sh
+curl -L https://github.com/pelican-dev/panel/releases/latest/download/panel.tar.gz | sudo tar -xzv
+```
+
+## Install Composer
+
+Next we will set up Composer along with the required dependencies.
+
+```sh
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+```
+
+```sh
+sudo COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
+```
+
+:::info
+    Even though composer might tell you that you have outdated dependencies, do **not** run `composer update`!
+:::
+
+## Web server Configuration
+
+:::info
+    When using the SSL (https) configuration you MUST create SSL certificates, otherwise your web server will fail to start.
+    See the [Creating SSL Certificates](../../guides/ssl) documentation page to learn how to create these certificates before continuing.
+:::
 
 <Tabs>
     <TabItem value="nginx" label="Nginx">
-        <Admonition type="warning" title="php & fpm">
+        :::warning[php & fpm]
             If you're **not** using php8.5, you will need to edit the config file to point to the proper php fpm socket.
 
             The line is highlighted below.
-        </Admonition>
+        :::
         First, remove the default NGINX configuration.
         ```sh
         sudo rm /etc/nginx/sites-enabled/default
@@ -24,9 +96,9 @@ import TabItem from '@theme/TabItem';
         `pelican.conf` and place the file in `/etc/nginx/sites-available/`.
         <Tabs>
             <TabItem value="ahttps" label="https">
-                <Admonition type="warning">
+                :::warning
                     **Note:** IPs cannot be used with SSL.
-                </Admonition>
+                :::
 
                 ```nginx {5,11,25-26,47} title="/etc/nginx/sites-available/pelican.conf"
                 server_tokens off;
@@ -146,7 +218,8 @@ import TabItem from '@theme/TabItem';
                 ```
             </TabItem>
         </Tabs>
-        ### Enabling Configuration
+
+        #### Enabling Configuration
 
         The final step is to enable your NGINX configuration and restart it.
 
@@ -171,12 +244,12 @@ import TabItem from '@theme/TabItem';
         Now, you should paste the contents of the file below, replacing `<domain>` with your domain name being used in a file called
         `pelican.conf` and place the file in `/etc/apache2/sites-available/`.
 
-        Note: When using Apache, make sure you have the `libapache2-mod-php` package installed or else PHP will not display on your webserver.
+        Note: When using Apache, make sure you have the `libapache2-mod-php` package installed or else PHP will not display on your web server.
         <Tabs>
             <TabItem value="chttps" label="https">
-                <Admonition type="warning">
+                :::warning
                     **Note:** IPs cannot be used with SSL.
-                </Admonition>
+                :::
                 ```apacheconf {2,10,24-25} title="/etc/apache2/sites-available/pelican.conf"
                     <VirtualHost *:80>
                         ServerName <domain>
@@ -225,15 +298,16 @@ import TabItem from '@theme/TabItem';
                 ```
             </TabItem>
         </Tabs>
-        ### Enabling Configuration
+
+        #### Enabling Configuration
 
         Once you've created the file above, simply run the commands below.
 
-        <Admonition type="warning" title="php & fpm">
+        :::warning[php & fpm]
             If you're **not** using php8.5, you will need to edit the command to point to enable the correct mod.
 
             The line is highlighted below.
-        </Admonition>
+        :::
         
         ```sh {3}
         sudo a2ensite pelican.conf
@@ -249,11 +323,11 @@ import TabItem from '@theme/TabItem';
         
     </TabItem>
     <TabItem value="caddy" label="Caddy">
-        <Admonition type="warning" title="php & fpm">
+        :::warning[php & fpm]
             If you're **not** using php8.5, you will need to edit the config file to point to the proper php fpm socket.
 
             The line is highlighted below.
-        </Admonition>
+        :::
         First, remove the default Caddy configuration.
 
         ```sh
@@ -264,9 +338,9 @@ import TabItem from '@theme/TabItem';
         
         <Tabs>
             <TabItem value="ehttps" label="https">
-                <Admonition type="warning">
+                :::warning
                     **Note:** IPs cannot be used with SSL.
-                </Admonition>
+                :::
                 ```caddy {9,14} title="/etc/caddy/Caddyfile"
                 {
                     servers :443 {
@@ -372,7 +446,9 @@ import TabItem from '@theme/TabItem';
                 ```
             </TabItem>
         </Tabs>
-        ### Enabling Configuration
+
+        #### Enabling Configuration
+
         The final step is to restart Caddy.
 
         ```sh
@@ -380,3 +456,57 @@ import TabItem from '@theme/TabItem';
         ```
     </TabItem>
 </Tabs>
+
+## Panel Setup
+
+The core environment is easily configured using a single CLI command & the web installer built into the app.  
+These steps will cover setting up things such as sessions, caching, database credentials, and email sending.
+
+Running `php artisan p:environment:setup` will, if it does not exist, auto-create the required `.env` file and generate a `APP_KEY`.
+
+```sh
+sudo php artisan p:environment:setup
+```
+
+:::warning[BACK UP `APP_KEY`!]
+    **Back up** your encryption key (APP_KEY in the `.env` file). This is used as an encryption key for all data that needs to be stored securely (e.g. api keys).
+    Store it somewhere safe - not just on your server. If you lose it all encrypted data is irrecoverable -- **even if you have database backups.**
+:::
+
+## Setting Permissions
+
+The next step in the installation process is to set the correct permissions on the Panel files so that the web server can use them correctly.
+
+```sh
+sudo chmod -R 755 storage/* bootstrap/cache/
+```
+
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache/Caddy'>
+        ```sh
+        sudo chown -R www-data:www-data /var/www/pelican
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```sh
+        sudo chown -R nginx:nginx /var/www/pelican
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```sh
+        sudo chown -R apache:apache /var/www/pelican
+        ```
+    </TabItem>
+</Tabs>
+
+## Web Installer
+
+Once you've set the proper permissions, finish the Panel install via the web installer.  
+The web installer is located at `<domain>/installer` or `<ip>/installer`, e.g. `https://panel.example.com/installer`
+
+During this step you will choose the default drivers, create the queue worker and create the default admin user.
+
+:::info[Want something advanced?]
+    Make sure to read the [MySQL guide](../advanced/mysql) first if you want to use MySQL/MariaDB instead of SQLite!  
+    If you want to use Redis make sure to read the [Redis guide](../advanced/redis) first.
+:::

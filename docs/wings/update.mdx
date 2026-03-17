@@ -1,47 +1,47 @@
-import Admonition from '@theme/Admonition';
+---
+pagination_prev: null
+pagination_next: null
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Updating Wings
+# Update
 
-Updating Wings is a painless process and should take less than a minute to complete.
+A brief guide on how to update the Wings Daemon to the latest version.
 
 ## Wings Version Requirements
 
 | Panel Version | Wings Version | Supported |
 |:-------------:|:-------------:|:---------:|
-|1.0.0+         | 1.0.0+        |     ✅︎  |
+|1.0.0+         | 1.0.0+        |     ✅︎    |
 
 ## Download Update
 
-<Admonition type="tip">
-    Running servers **will not** be affected.
-</Admonition>
+:::tip
+    Updating Wings **will not** affect running (game-) servers.
+:::
 
 <Tabs>
     <TabItem value="Self-update">
-        First, you need to run the Wings auto-updater, which is included starting from **beta9**.
+        Since **beta9** Wings includes a self updater. Simply run the following commands to update:
 
         ```sh
         sudo wings update
+
+        sudo systemctl restart wings
         ```
     </TabItem>
     <TabItem value="Manual update">
-        First, download the updated wings binary into `/usr/local/bin`. You will need to stop Wings briefly.
+        Manually updating Wings is very simple. Briefly stop the Wings service, download the new Wings release and start the service again:
 
         ```sh
         sudo systemctl stop wings
+
         sudo curl -L -o /usr/local/bin/wings "https://github.com/pelican-dev/wings/releases/latest/download/wings_linux_$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")"
         sudo chmod u+x /usr/local/bin/wings
+        
+        sudo systemctl restart wings
         ```
     </TabItem>
 </Tabs>
-
-
-## Restart 
-
-Secondly, Restart the process.
-
-```sh
-sudo systemctl restart wings
-```

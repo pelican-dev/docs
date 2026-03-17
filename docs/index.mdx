@@ -1,47 +1,76 @@
 ---
 id: welcome
+pagination_prev: null
+pagination_next: null
 ---
 
-import Admonition from '@theme/Admonition';
+# Welcome
 
-# Welcome to Pelican!
+## What is Pelican?
 
-### Who is Pelican?
-In the realm of technology and hosting services, bold pioneers left the constraints of Pterodactyl to forge their own path.  
+Pelican is an open-source game server management tool built upon [Pterodactyl](https://pterodactyl.io), paired with Wings, which runs the game servers in isolated Docker containers for maximum separation and stability.
 
-United by a shared vision and a relentless pursuit of excellence, they came together to form the heart and soul of **Pelican**—a beacon of innovation and reliability, defined not only by its technological prowess but also by its unwavering dedication to customer satisfaction. 
+:::note[Reporting Security Issues]
+    If you notice anything that raises a concern, please create a [Github security advisory](https://github.com/pelican-dev/panel/security/advisories/new) or reach out directly to **team@pelican.dev**  
+    For security reasons, we ask that you handle security disclosures responsibly and **avoid posting them as GitHub issues/discussions.**
+:::
 
-With innovation as their compass and collaboration as their strength, Pelican soars to new heights, shaping the future of server management with each triumphant flight.
+:::info
+    Want to see these Pelican in action? Check out our [Demo](https://demo.pelican.dev)!
+:::
+
+## Installation
+
+Pelican consists of two main components: the **Panel** and **Wings**.
+
+The Panel is a [Laravel](https://laravel.com) web application that serves as the web interface for users.  
+Wings is the backend service installed on one or more node machines and acts as the interface between [Docker](https://docker.com) and the Panel.
+
+:::warning
+    Pelican is currently in **Beta**! Some things might change/break between beta versions!
+:::
+
+### First steps
+
+:::info[What is...?]
+    Not sure what a specific term means? Check out our [Glossary](/docs/glossary)!
+:::
+
+First you will need to install the Panel. You can choose between two installation methods:
+
+1. [Standalone](panel/install/standalone) - run the Pelican Panel directly on a web server.
+2. [Dockerized](panel/install/dockerized) - run the Pelican Panel inside a docker container.
+
+### Node setup
+
+After you set up your Panel, you will need to create some Nodes. To do that, install and configure the Wings daemon on the same machine as the Panel or on a separate machine.
+
+Similar to the Panel installation you can choose between two installation methods:
+
+1. [Standalone](wings/install/standalone) - run the Wings Daemon directly on a linux server.
+2. [Dockerized](wings/install/dockerized) - run the Wings Daemon inside a docker container.
+
+:::note
+    A Panel can have multiple Nodes but a Node is always tied to just one Panel.
+:::
+
+## The Team
 
 ### Core Team
 
-| Name                                                   | Discord         | Role                        |
-|--------------------------------------------------------|-----------------|-----------------------------|
-| [Lance Pioch](https://github.com/lancepioch)           | `shadowlancer`  | Project Lead & Fullstack Dev|
-| [Michael Parker](https://github.com/parkervcp)         | `parkervcp`     | Egg / Docker Maintainer     |
-| [Charles Morgan](https://github.com/notAreYouScared)   | `areyouscared`  | Fullstack Dev               |
-| [Alex 'Scai' Vlad](https://github.com/alexevladgabriel)| `.scai`         | Fullstack Dev               |
-| [Boy132](https://github.com/boy132)                    | `boy132`        | Fullstack Dev               |
-| [Martin Oscar](https://github.com/RMartinOscar)        | `rmartinoscar`  | Fullstack Dev               |
-
-Core members of Pelican have a light blue username in Discord.
+| Name                                                   | Discord         |
+|--------------------------------------------------------|-----------------|
+| [Lance Pioch](https://github.com/lancepioch)           | `shadowlancer`  |
+| [Michael Parker](https://github.com/parkervcp)         | `parkervcp`     |
+| [Charles Morgan](https://github.com/notAreYouScared)   | `areyouscared`  |
+| [Alex 'Scai' Vlad](https://github.com/alexevladgabriel)| `.scai`         |
+| [Boy132](https://github.com/boy132)                    | `boy132`        |
+| [Martin Oscar](https://github.com/RMartinOscar)        | `rmartinoscar`  |
 
 ### Community Staff
 
-| Name                                           | Discord       | Role          |
-|------------------------------------------------|---------------|---------------|
-| [Trixter](https://github.com/TrixterTheTux)    | `trixter`     | Moderator     |
-| [Quinten](https://github.com/QuintenQVD0)      | `quintenqvd`  | Egg Maintainer|
-| [Red-Thirten](https://github.com/redthirten)   | `red_thirten` | Egg Maintainer|
-
-Community Staff have a darker blue username in Discord.
-### What is Pelican?
-Pelican is an open-source game server management tool built upon Pterodactyl, paired with Wings, which runs the game servers in isolated Docker containers for maximum separation and stability.
-
-### Open Source!
-Pelican is open-source, allowing users to browse the code, contribute improvements, and help to identify bugs and security issues.
-
-<Admonition type="warning" title="🔒 Reporting Security Issues 🔒">
-    If you notice anything that raises a concern, please reach out directly to **team@pelican.dev**  
-    For security reasons, we ask that you handle security disclosures responsibly and **avoid posting them on GitHub.**
-</Admonition>
+| Name                                           | Discord       |
+|------------------------------------------------|---------------|
+| [Trixter](https://github.com/TrixterTheTux)    | `trixter`     |
+| [Quinten](https://github.com/QuintenQVD0)      | `quintenqvd`  |
+| [Red-Thirten](https://github.com/redthirten)   | `red_thirten` |
