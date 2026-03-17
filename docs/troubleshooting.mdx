@@ -23,7 +23,7 @@ tail -n 1000 /var/www/pelican/storage/logs/laravel-$(date +%F).log | grep "\[$(d
     * `502 Bad Gateway Error`: Make sure that php-fpm is running and that you are using the correct php version in your webserver config.
     * `CSRF token mismatch`: Enable SSL for your Panel with HTTPS protocol scheme in the `APP_URL`, or set `SESSION_SECURE_COOKIE` to `false` in your `.env` file.
     * `Connection refused [tcp://_______:6379]`: Redis isn't running or isn't reachable for some other reason. (start by checking the status of the redis service: `systemctl status redis-server`)
-    * `SSL: no alternative certificate subject name matches target host name '_______'`: The used SSL certificate for your panel isn't valid for your panel domain, see [this guide](./panel/advanced/ssl) for creating a new SSL certificate.
+    * `SSL: no alternative certificate subject name matches target host name '_______'`: The used SSL certificate for your panel isn't valid for your panel domain, see [this guide](./guides/ssl) for creating a new SSL certificate.
     * `General error: 8 attempt to write a readonly database`: Your `database.sqlite` has wrong file permissions and is read-only. Make sure the file is writable and owned by the correct user.
     * `Class '_____' not found`: This usually means you are missing php extensions. Make sure [all needed extensions](./panel/install/standalone#dependencies) are installed and that you are using the correct php version.
     * `Connection timed out after 5001 milliseconds for _______:8080`: Your panel can't reach wings, see the wings connection issues steps below.
@@ -62,7 +62,7 @@ It should say that the service is active and running. If its in a failed state r
 <details>
     <summary>Common errors</summary>
 
-    * `open /etc/letsencrypt/live/_____________/fullchain.pem: no such file or directory`: The SSL certificate for wings is missing, see [this guide](./panel/advanced/ssl) for creating an SSL certificate.
+    * `open /etc/letsencrypt/live/_____________/fullchain.pem: no such file or directory`: The SSL certificate for wings is missing, see [this guide](./guides/ssl) for creating an SSL certificate.
     * `Pool overlaps with other one on this address space`: You already have a docker network using the default subnet. (`172.18.0.0/16`) Change the subnet in your wings config file and use `systemctl stop wings && docker network rm pelican_nw && systemctl start wings` to apply the change.
     * `Error response from Panel: AccessDeniedHttpException: You are not authorized to access this resource. (HTTP/403)`: Your wings token is wrong, you need to [update the token in your config.yml file](./wings/install/standalone#configure)
     * `Error response from Panel: _MissingResponseCode: No error response returned from API endpoint`: Your panel is not responding correctly. This usually happens when Cloudflare is blocking the connection. In that case make sure your wings ip is added to the Cloudflare firewall. If you aren't using Cloudflare it might be some other CDN/DDoS protection service or your provider.
