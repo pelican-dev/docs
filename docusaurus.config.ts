@@ -127,7 +127,7 @@ const config: Config = {
     tailwindPlugin,
   ],
   future: {
-    experimental_faster: true,
+    faster: true,
     v4: true
   },
   // scripts: ['/js/snowflake.min.js'],

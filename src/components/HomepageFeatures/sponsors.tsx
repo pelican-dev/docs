@@ -2,12 +2,14 @@ import React, {JSX} from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import 'react-medium-image-zoom/dist/styles.css';
+import {useColorMode} from "@docusaurus/theme-common";
 
 type SponsorItem = {
   sponsor: string;
   logo: string;
+  logoDM: string;
   url: string;
-  desc: string
+  desc: string;
 };
 
 const SponsorList: SponsorItem[] = [
@@ -17,14 +19,30 @@ const SponsorList: SponsorItem[] = [
     url: 'https://example.com',
     desc: '',
   }, */
+    {
+  sponsor: 'DataForest',
+  logo: '/img/homepage/sponsor/df-cloud-logo.svg',
+  logoDM: '/img/homepage/sponsor/df-cloud-logo-darkmode.svg',
+  url: 'https://cloud.dataforest.net/?mtm_campaign=pelican&mtm_kwd=main',
+  desc: '',
+},
 ];
 
-function Sponsor({sponsor, logo, url, desc}: SponsorItem) {
+function Sponsor({sponsor, logo, logoDM, url, desc}: SponsorItem) {
+
+    const {colorMode} = useColorMode();
+    let image: string;
+
+    if (colorMode === 'dark') {
+        image = logoDM;
+    } else {
+        image = logo;
+    }
 
   return (
       <div className={clsx('col col--4')}>
         <div className="text--center" style={{paddingBottom: '20px'}}>
-          <a href={url}><img src={logo}/></a>
+          <a href={url}><img src={image}/></a>
         </div>
         {desc}
       </div>
