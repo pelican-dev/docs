@@ -154,6 +154,20 @@ It will ask for which plugin you want to remove and if you want to delete its da
 Uninstalling may take a few seconds
 
 After all this, try visiting the plugins page on the admin dashboard. If you see any 500 error, setup permissions back running this command on the root directory (`/var/www/pelican/`):
-```sh
-sudo chown -R www-data:www-data /var/www/pelican
-```
+<Tabs groupId="webserver">
+    <TabItem value='NGINX/Apache/Caddy'>
+        ```sh
+        sudo chown -R www-data:www-data /var/www/pelican
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux NGINX'>
+        ```sh
+        sudo chown -R nginx:nginx /var/www/pelican
+        ```
+    </TabItem>
+    <TabItem value='Rocky Linux Apache'>
+        ```sh
+        sudo chown -R apache:apache /var/www/pelican
+        ```
+    </TabItem>
+</Tabs>
