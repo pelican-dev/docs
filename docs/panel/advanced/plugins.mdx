@@ -238,22 +238,25 @@ class MyPluginRoutesProvider extends RouteServiceProvider
 ### Plugin Settings
 
 Your main plugin class can implement the `HasPluginSettings` interface to conveniently add a settings page to your plugin.  
-The settings page can be accessed on the plugin list on the panel. Your plugin needs to provide the form and how the data should be saved.
+The settings page can be accessed on the plugin list on the panel. Your plugin needs to provide the form, the form data and how the data should be saved.
 
 If you want to save the settings in the `.env` file you can use the `EnvironmentWriterTrait`. Example:
 
 ```php
 use EnvironmentWriterTrait;
 
+public function getSettingsFormData(): array
+{
+    return config('myplugin');
+}
+
 public function getSettingsForm(): array
 {
     return [
         TextInput::make('test_input')
-            ->required()
-            ->default(fn () => config('myplugin.test_input')),
+            ->required(),
         Toggle::make('test_toggle')
-            ->inline(false)
-            ->default(fn () => config('myplugin.test_toggle')),
+            ->inline(false),
     ];
 }
 
