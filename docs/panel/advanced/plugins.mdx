@@ -12,9 +12,11 @@ Plugins allow you to add new functionality to the panel without modifying any pa
 
 ## Install a Plugin
 
-<Tabs>
+<Tabs groupId="method">
     <TabItem value="frontend" label="Via Panel Frontend">
-        Use the Import Button on the plugin list to upload & install a plugin.
+        Use the Import button on the plugin list to upload a plugin. After the import is done, use the Install button to complete the installation.
+
+        Plugin installs run in the background so it might take a few seconds. If a plugin isn't installing [check your queue worker configuration](../../troubleshooting#schedules-not-running).
     </TabItem>
     <TabItem value="manually" label="Manually">
         Move the plugin folder to `plugins` inside your panel directory (`/var/www/pelican/plugins` by default). Then run `php artisan p:plugin:install` inside your panel directory and select the new plugin.
@@ -25,6 +27,34 @@ Plugins allow you to add new functionality to the panel without modifying any pa
     You can find various offical and third party plugins on the [Hub plugin marketplace](https://hub.pelican.dev/plugins)!  
     Also check out our [Plugins repo](https://github.com/pelican-dev/plugins)! It contains free and open source plugins created by the Pelican team.
 </Admonition>
+
+## Update a Plugin
+
+For one-click updates to work the plugin needs to have a [update url](#update-url) set. Otherwise you need to manually update the plugin files.
+
+<Tabs groupId="method">
+    <TabItem value="frontend" label="Via Panel Frontend">
+        The panel will automatically check for plugins updates when visiting the plugin list. If an update is available you can use the Update button to download and install the update.
+
+        Plugin updates run in the background so it might take a few seconds. If a plugin isn't updating [check your queue worker configuration](../../troubleshooting#schedules-not-running).
+    </TabItem>
+    <TabItem value="manually" label="Manually">
+        Run `php artisan p:plugin:uninstall` inside your panel directory (`/var/www/pelican` by default) and select the plugin you want to uninstall.
+    </TabItem>
+</Tabs>
+
+## Uninstall a Plugin
+
+<Tabs groupId="method">
+    <TabItem value="frontend" label="Via Panel Frontend">
+        Use the Uninstall button on the plugin list.
+
+        Plugin uninstalls run in the background so it might take a few seconds. If a plugin isn't uninstalling [check your queue worker configuration](../../troubleshooting#schedules-not-running).
+    </TabItem>
+    <TabItem value="manually" label="Manually">
+        Run `php artisan p:plugin:update` inside your panel directory (`/var/www/pelican` by default) and select the plugin you want to update.
+    </TabItem>
+</Tabs>
 
 ## Create a Plugin
 
