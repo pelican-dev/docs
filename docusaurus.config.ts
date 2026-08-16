@@ -16,7 +16,7 @@ const config: Config = {
   },
   url: "https://pelican.dev",
   baseUrl: "/",
-  organizationName: "pelican-dev",
+  organizationName: "pelican",
   projectName: "docs",
   onBrokenLinks: "throw",
   themes: ["@docusaurus/theme-mermaid"],
@@ -26,7 +26,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/pelican-dev/docs/blob/main/",
+          editUrl: "https://github.com/pelican/docs/blob/main/",
           remarkPlugins: [remarkgfm],
         },
         theme: {
@@ -116,7 +116,7 @@ const config: Config = {
         redirects: [
           { from: '/discord', to: 'https://discord.gg/pelican-panel' },
           { from: '/eggs', to: 'https://pelican-eggs.github.io/pelican' },
-          { from: '/github', to: 'https://github.com/pelican-dev/panel' },
+          { from: '/github', to: 'https://github.com/pelican/panel' },
           { from: '/hub', to: 'https://hub.pelican.dev' },
           { from: '/donate', to: 'https://pelican.dev/support' },
         ],
