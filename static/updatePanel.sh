@@ -120,7 +120,12 @@ if [ "$delete_confirm" != "y" ]; then
   exit 1
 fi
 
-find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'plugins' ! -name 'panel.tar.gz' -exec rm -rf {} +
+echo "Enabling maintenance mode"
+(cd "$install_dir" && php artisan down) || echo "Failed to enable maintenance mode, continuing."
+
+# storage is excluded: the panel keeps writing logs/sessions into it while this runs,
+# which makes rm -rf fail with "Directory not empty" and abort mid-update
+find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'plugins' ! -name 'storage' ! -name 'panel.tar.gz' -exec rm -rf {} +
 if [ $? -ne 0 ]; then
   echo "Failed to delete old files, aborting"
   exit 1
@@ -197,6 +202,7 @@ if [ $? -ne 0 ]; then
 fi
 
 php artisan queue:restart
+php artisan up
 
 echo "Panel Updated!"
 echo "If you previously had any themes installed you need to build the panel assets again by manually running \"yarn install\" and \"yarn build\" inside \"$install_dir\"."
