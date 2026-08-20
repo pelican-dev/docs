@@ -121,11 +121,18 @@ if [ "$delete_confirm" != "y" ]; then
 fi
 
 echo "Enabling maintenance mode"
-(cd "$install_dir" && php artisan down) || echo "Failed to enable maintenance mode, continuing."
+(cd "$install_dir" && php artisan down)
+if [ $? -ne 0 ]; then
+  echo "Failed to enable maintenance mode, aborting"
+  exit 1
+fi
 
-# storage is excluded: the panel keeps writing logs/sessions into it while this runs,
-# which makes rm -rf fail with "Directory not empty" and abort mid-update
-find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'plugins' ! -name 'storage' ! -name 'panel.tar.gz' -exec rm -rf {} +
+# The maintenance flag (storage/framework/down) must survive the delete: it stops the
+# live panel from writing logs/sessions into storage mid-delete, which made rm fail
+# with "Directory not empty" and abort the update. Everything else in storage goes too.
+find "$install_dir" -mindepth 1 -maxdepth 1 ! -name 'backup' ! -name 'plugins' ! -name 'storage' ! -name 'panel.tar.gz' -exec rm -rf {} + &&
+find "$install_dir/storage" -mindepth 1 -maxdepth 1 ! -name 'framework' -exec rm -rf {} + &&
+find "$install_dir/storage/framework" -mindepth 1 -maxdepth 1 ! -name 'down' ! -name 'maintenance.php' -exec rm -rf {} +
 if [ $? -ne 0 ]; then
   echo "Failed to delete old files, aborting"
   exit 1
